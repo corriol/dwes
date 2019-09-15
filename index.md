@@ -1,7 +1,7 @@
 # Continguts
 
 * [UD1. Introducció a la programació web](UD01/index.html)
-* UD2. PHP - Característiques bàsiques del llenguatge	
+* [UD2. PHP - Característiques bàsiques del llenguatge](UD02/index.html)
 * UD3. Preparant el projecte
 * UD4. PHP - Classes i objectes
 * UD5. PHP - accés a bases de dades amb PDO
