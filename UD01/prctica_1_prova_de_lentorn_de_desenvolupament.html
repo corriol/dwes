@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Pràctica 1. Prova de l'entorn de desenvolupament | Introducció a la programació web </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Vicent Jordà" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning  - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-17"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
+<header id="header" ><div id="headerContent">Introducció a la programació web</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">1. Introducció a la programació web</a></li>
+   <li><a href="1_arquitectura_duna_aplicaci_web.html" class="daddy">1. Arquitectura d'una aplicació web</a>
+   <ul class="other-section">
+      <li><a href="1_elements_navegador_servidor_protocol_http_i_html.html" class="no-ch">1. Elements: navegador, servidor, protocol HTTP i HTML</a></li>
+      <li><a href="2_el_model_clientservidor.html" class="no-ch">2. El model client/servidor</a></li>
+      <li><a href="3_pgines_web_esttiques_i_dinmiques.html" class="no-ch">3. Pàgines web estàtiques i dinàmiques</a></li>
+      <li><a href="4_execuci_de_codi_en_el_servidor_i_en_el_client.html" class="no-ch">4. Execució de codi en el servidor i en el client</a></li>
+   </ul>
+   </li>
+   <li><a href="2_tecnologies_per_a_programaci_web_del_costat_del_servidor.html" class="no-ch">2. Tecnologies per a programació web del costat del servidor</a></li>
+   <li><a href="3_llenguatges.html" class="no-ch">3. Llenguatges</a></li>
+   <li><a href="4_preparant_lentorn_de_desenvolupament.html" class="daddy">4. Preparant l'entorn de desenvolupament</a>
+   <ul class="other-section">
+      <li><a href="activitat_1_installaci_de_xampp.html" class="no-ch">Activitat 1. Instal·lació de XAMPP</a></li>
+   </ul>
+   </li>
+   <li class="current-page-parent"><a href="5_eines_de_desenvolupament.html" class="current-page-parent daddy">5. Eines de desenvolupament</a>
+   <ul>
+      <li><a href="activitat_2_installaci_de_phpstorm.html" class="no-ch">Activitat 2. Instal·lació de PHPStorm</a></li>
+      <li id="active"><a href="prctica_1_prova_de_lentorn_de_desenvolupament.html" class="active no-ch">Pràctica 1. Prova de l'entorn de desenvolupament</a></li>
+   </ul>
+   </li>
+   <li><a href="6_eines_per_a_depuraci_de_codi.html" class="daddy">6. Eines per a depuració de codi</a>
+   <ul class="other-section">
+      <li><a href="prctica_3_installaci_dxdebug.html" class="no-ch">Pràctica 3. Instal·lació d'Xdebug</a></li>
+   </ul>
+   </li>
+   <li><a href="crdits_fonts_i_bibliografia.html" class="no-ch">Crèdits, fonts i bibliografia</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="activitat_2_installaci_de_phpstorm.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="6_eines_per_a_depuraci_de_codi.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Pràctica 1. Prova de l'entorn de desenvolupament</h1></header>
+<article class="iDevice_wrapper activityIdevice em_iDevice" id="id29">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Prova de l'entorn de desenvolupament</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta29_52_2" class="block iDevice_content">
+<p>Durant les activitats anteriors has preparat el teu propi entorn de desenvolupament sobre una màquina virtual (o una real) tal com s'ha explicat en les anotacions. Després, has de crear un projecte php utilitzant PHPStorm i visualitzar la pàgina principal a través del teu servidor XAMPP.</p>
+<p>Pràctica 1: Prova d'Apache i PHP</p>
+<p>L'objectiu d'aquesta pràctica és aprendre el maneig bàsic de l'entorn de desenvolupament PHPStorm creant una primera pàgina PHP que alhora servirà per a comprovar la correcta instal·lació de XAMPP.</p>
+<p>Per a aconseguir aquest objectiu, seguirem els passos que s'indiquen a continuació:</p>
+<p>1. Arrancar XAMPP</p>
+<p>2. Iniciar el mòdul Apache</p>
+<p>3. Executar PHPStorm</p>
+<p>4. Crear un projecte buit amb <code>Create New &gt; Project PHP Empty Project</code></p>
+<p>5. Posar al projecte el nom <code>practica1</code> i situar-lo en el directori <code>/opt/lampp/htdocs</code> . Amb açò es crea un directori de nom <code>practica1</code> dintre de <code>/opt/lampp/htdocs</code>.</p>
+<p><img src="projecte.png" alt="" width="499" height="318" /></p>
+<p>6. En la finestra de l'esquerra (explorador de projectes) apareix el projecte creat. Dins d'ell crearem un nou fitxer PHP prement botó dret sobre el nom i seleccionant <code>New &gt; PHP File</code> . Li posem de nom <code>index.php</code> .</p>
+<p>7. En el fitxer creat introduïm les següents línies de codi:</p>
+<div class="highlighted-code language-php line-numbers">
+<div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="és"&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;title&gt;Desenvolupament web en entorn servidor&lt;/title&gt;
+&lt;meta name="description" content="PHP, PHPStorm"&gt;
+&lt;meta name="author" content="Homer Simpson"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;?php
+	phpinfo();
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</div>
+<p>8. Canviem l'autor del document al nostre nom.</p>
+<p>9. Obrim el navegador i teclegem en la barra d'adreces la url: <a href="http://localhost/practica1">http://localhost/practica1</a></p>
+<p>10. Apareixerà una pàgina similar a la de la següent imatge:</p>
+<p><img src="phpinfo.png" alt="" width="500" height="488" /></p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Llicenciat sota la </span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Llicència Creative Commons Reconeixement CompartirIgual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="activitat_2_installaci_de_phpstorm.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="6_eines_per_a_depuraci_de_codi.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<script type="text/javascript" src="_intef_js.js"></script></body></html>

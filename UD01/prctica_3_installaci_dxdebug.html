@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Pràctica 3. Instal·lació d'Xdebug | Introducció a la programació web </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Vicent Jordà" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning  - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-15"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
+<header id="header" ><div id="headerContent">Introducció a la programació web</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">1. Introducció a la programació web</a></li>
+   <li><a href="1_arquitectura_duna_aplicaci_web.html" class="daddy">1. Arquitectura d'una aplicació web</a>
+   <ul class="other-section">
+      <li><a href="1_elements_navegador_servidor_protocol_http_i_html.html" class="no-ch">1. Elements: navegador, servidor, protocol HTTP i HTML</a></li>
+      <li><a href="2_el_model_clientservidor.html" class="no-ch">2. El model client/servidor</a></li>
+      <li><a href="3_pgines_web_esttiques_i_dinmiques.html" class="no-ch">3. Pàgines web estàtiques i dinàmiques</a></li>
+      <li><a href="4_execuci_de_codi_en_el_servidor_i_en_el_client.html" class="no-ch">4. Execució de codi en el servidor i en el client</a></li>
+   </ul>
+   </li>
+   <li><a href="2_tecnologies_per_a_programaci_web_del_costat_del_servidor.html" class="no-ch">2. Tecnologies per a programació web del costat del servidor</a></li>
+   <li><a href="3_llenguatges.html" class="no-ch">3. Llenguatges</a></li>
+   <li><a href="4_preparant_lentorn_de_desenvolupament.html" class="daddy">4. Preparant l'entorn de desenvolupament</a>
+   <ul class="other-section">
+      <li><a href="activitat_1_installaci_de_xampp.html" class="no-ch">Activitat 1. Instal·lació de XAMPP</a></li>
+   </ul>
+   </li>
+   <li><a href="5_eines_de_desenvolupament.html" class="daddy">5. Eines de desenvolupament</a>
+   <ul class="other-section">
+      <li><a href="activitat_2_installaci_de_phpstorm.html" class="no-ch">Activitat 2. Instal·lació de PHPStorm</a></li>
+      <li><a href="prctica_1_prova_de_lentorn_de_desenvolupament.html" class="no-ch">Pràctica 1. Prova de l'entorn de desenvolupament</a></li>
+   </ul>
+   </li>
+   <li class="current-page-parent"><a href="6_eines_per_a_depuraci_de_codi.html" class="current-page-parent daddy">6. Eines per a depuració de codi</a>
+   <ul>
+      <li id="active"><a href="prctica_3_installaci_dxdebug.html" class="active no-ch">Pràctica 3. Instal·lació d'Xdebug</a></li>
+   </ul>
+   </li>
+   <li><a href="crdits_fonts_i_bibliografia.html" class="no-ch">Crèdits, fonts i bibliografia</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="6_eines_per_a_depuraci_de_codi.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="crdits_fonts_i_bibliografia.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Pràctica 3. Instal·lació d'Xdebug</h1></header>
+<article class="iDevice_wrapper activityIdevice em_iDevice" id="id24">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Instal·lació d'Xdebug</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta24_51_2" class="block iDevice_content">
+<p>Per poder depurar les nostres aplicacions necessitem tenir instal·lat en el nostre XAMPP el mòdul XDebug. A continuació, explicarem com instal·lar aquest mòdul. Abans de res comprovarem que no el tenim instal·lat, per a això seguirem els següents passos:</p>
+<p>1. Obrim la pàgina de benvinguda de XAMPP escrivint al navegador la URL http: // localhost.</p>
+<p>2. A la part superior de la pàgina tenim una sèrie d'enllaços, entre els que es troba un que diu phpinfo. Feu clic en aquest enllaç.</p>
+<p>3. Se'ns mostrarà la pàgina de configuració del nostre mòdul php. Anem a seleccionar tots els continguts d'aquesta pàgina i els anem a copiar.</p>
+<p>4. Obrirem al navegador la següent URL: <a href="http://xdebug.org/wizard.php">http://xdebug.org/wizard.php</a>.</p>
+<p>5. En aquesta pàgina podrem comprovar quins mòduls tenim instal·lats en nostre mòdul PHP. Per a això, enganxarem els continguts que hem copiat prèviament a la caixa de text que apareix i premerem Analyse<br />mi phpinfo () output.</p>
+<p>6. Ens apareixeran els resultats de la següent manera:</p>
+<p><img src="Screenshot_2019-09-14_Xdebug_Support__Tailored_Installation_Instructions.png" alt="XDebug" width="500" height="237" /></p>
+<p>Com es pot observar, l'extensió XDebug no està instal·lada. Una altra informació important que ens dóna és que el nostre fitxer de configuració del PHP el podem trobar en <code>/opt/lampp/etc/php.ini</code> i les extensions les tenim en <code>/opt/lampp/lib/php/extensions/no-debug-non-zts-20180731</code></p>
+<p>És important que recordem aquestes dades.</p>
+<p>Per instal·lar l'extensió XDebug seguirem les instruccions que ens indica la pàgina anterior però compte perquè cal fer algunes modificacions:</p>
+<ol>
+<li>Descarregueu <a href="http://xdebug.org/files/xdebug-2.7.2.tgz">xdebug-2.7.2.tgz</a></li>
+<li>Instal·leu els requisits previs per a la compilació d’extensions PHP.<br />Instal·leu-lo amb el sistema Ubuntu amb: <code>apt-get install php-dev autoconf automake</code></li>
+<li>Desempaqueteu el fitxer descarregat amb <code>tar -xvzf xdebug-2.7.2.tgz</code></li>
+<li>Executar: <code>cd xdebug-2.7.2</code></li>
+<li>
+<p>Executar: <code>/opt/lampp/bin/phpize</code> (hem canviat la ruta perquè execute el phpize de XAMPP).</p>
+<p>Com a part de la seva eixida hauria de mostrar:</p>
+<pre>Configuring for:
+...
+Zend Module Api No: 20180731
+Zend Extension Api No: 320180731
+</pre>
+<p>Si no és així, estàs utilitzant phpize incorrecta. Seguiu aquesta entrada de FAQ i passeu al pas següent.</p>
+</li>
+<li>Executar: <code>./configure --with-php-config=/opt/lampp/bin/php-config</code> (hem afegit la ruta del php-config de XAMPP).</li>
+<li>Compilem les fonts: <code>make</code></li>
+<li>Executar: <code>sudo cp modules/xdebug.so /opt/lampp/lib/php/extensions/no-debug-non-zts-20180731</code></li>
+<li>Edita <code>/opt/lampp/etc/php.ini</code> i afegeix les següents línies al final
+<pre>[xdebug]
+zend_extension = /opt/lampp/lib/php/extensions/no-debug-non-zts-20180731/xdebug.so
+xdebug.remote_enable=1
+xdebug.remote_host="localhost"
+xdebug.remote_port=9000
+</pre>
+</li>
+<li>Reinicieu el servidor web</li>
+</ol>
+<p>Repeteix els passos del 1 al 5 inicials per comprovar que XDebug sí està instal·lat.</p>
+<p><img src="Screenshot_2019-09-14_Xdebug_Support__Tailored_Installation_Instructions(1).png" alt="" width="597" height="54" /></p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Llicenciat sota la </span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Llicència Creative Commons Reconeixement CompartirIgual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="6_eines_per_a_depuraci_de_codi.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="crdits_fonts_i_bibliografia.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<script type="text/javascript" src="_intef_js.js"></script></body></html>

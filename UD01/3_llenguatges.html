@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>3. Llenguatges | Introducció a la programació web </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Vicent Jordà" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning  - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-13"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
+<header id="header" ><div id="headerContent">Introducció a la programació web</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">1. Introducció a la programació web</a></li>
+   <li><a href="1_arquitectura_duna_aplicaci_web.html" class="daddy">1. Arquitectura d'una aplicació web</a>
+   <ul class="other-section">
+      <li><a href="1_elements_navegador_servidor_protocol_http_i_html.html" class="no-ch">1. Elements: navegador, servidor, protocol HTTP i HTML</a></li>
+      <li><a href="2_el_model_clientservidor.html" class="no-ch">2. El model client/servidor</a></li>
+      <li><a href="3_pgines_web_esttiques_i_dinmiques.html" class="no-ch">3. Pàgines web estàtiques i dinàmiques</a></li>
+      <li><a href="4_execuci_de_codi_en_el_servidor_i_en_el_client.html" class="no-ch">4. Execució de codi en el servidor i en el client</a></li>
+   </ul>
+   </li>
+   <li><a href="2_tecnologies_per_a_programaci_web_del_costat_del_servidor.html" class="no-ch">2. Tecnologies per a programació web del costat del servidor</a></li>
+   <li id="active"><a href="3_llenguatges.html" class="active no-ch">3. Llenguatges</a></li>
+   <li><a href="4_preparant_lentorn_de_desenvolupament.html" class="daddy">4. Preparant l'entorn de desenvolupament</a>
+   <ul class="other-section">
+      <li><a href="activitat_1_installaci_de_xampp.html" class="no-ch">Activitat 1. Instal·lació de XAMPP</a></li>
+   </ul>
+   </li>
+   <li><a href="5_eines_de_desenvolupament.html" class="daddy">5. Eines de desenvolupament</a>
+   <ul class="other-section">
+      <li><a href="activitat_2_installaci_de_phpstorm.html" class="no-ch">Activitat 2. Instal·lació de PHPStorm</a></li>
+      <li><a href="prctica_1_prova_de_lentorn_de_desenvolupament.html" class="no-ch">Pràctica 1. Prova de l'entorn de desenvolupament</a></li>
+   </ul>
+   </li>
+   <li><a href="6_eines_per_a_depuraci_de_codi.html" class="daddy">6. Eines per a depuració de codi</a>
+   <ul class="other-section">
+      <li><a href="prctica_3_installaci_dxdebug.html" class="no-ch">Pràctica 3. Instal·lació d'Xdebug</a></li>
+   </ul>
+   </li>
+   <li><a href="crdits_fonts_i_bibliografia.html" class="no-ch">Crèdits, fonts i bibliografia</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="2_tecnologies_per_a_programaci_web_del_costat_del_servidor.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="4_preparant_lentorn_de_desenvolupament.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">3. Llenguatges</h1></header>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id17">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">PHP</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta17_48_2" class="block iDevice_content">
+<div class="exe-text"><p>PHP (PHP Hypertex Preprocessor) és un llenguatge de programació de costat servidor dissenyat principalment per al desenvolupament web.</p>
+<p>PHP s'utilitza com a llenguatge de script embegut en pàgines HTML i funciona, normalment, com un mòdul del servidor web (per exemple, a Apache). El servidor web combina els resultats d'executar els scripts PHP amb l'HTML al qual va encastat i genera la pàgina web resultant per al navegador.</p>
+<p>Actualment PHP funciona pràcticament amb qualsevol servidor web i en qualsevol Sistema Operatiu existents, i gairebé amb qualsevol SGBD en cas que necessitem utilitzar una base de dades. Tot i això, el més habitual és veure-ho formant el que es coneix com una arquitectura LAMP (Linux, Apache, MySQL i PHP), és a dir, funcionant sobre un sistema operatiu Linux, executant-com un mòdul del servidor web Apache i utilitzant a MySQL com SGBD per emmagatzemar la informació en cas que es requereixi una base de dades.</p>
+<figure class="exe-figure exe-image position-center" style="width: 700px;">
+<figcaption class="figcaption header"><strong>Arquitectura LAMP Arquitectura LAMP</strong></figcaption>
+<img src="lamp.jpg" alt="Arquitectura LAMP Arquitectura LAMP" width="700" height="300" /></figure>
+<p>El llenguatge PHP va ser dissenyat per Rasmus Lerdorf i ara es manté per una comunitat de desenvolupadors, a més és de codi obert.</p>
+<p>A continuació, un fragment d'una pàgina web dinàmica escrita amb PHP on es pot apreciar com s'incrusta el codi juntament amb l'HTML de la pàgina:</p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id18">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">JSP / Servlets</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta18_49_2" class="block iDevice_content">
+<div class="exe-text"><p>JavaServer Pages (també conegut com JSP) és una tecnologia creada per a la creació de pàgines web dinàmiques del costat servidor. Igual que PHP, el seu codi s'escriu encastat juntament amb l'HTML de la pàgina web i és el servidor d'aplicacions, en aquest cas, qui ha de processar-per generar la pàgina web resultant, en HTML.</p>
+<p>D'altra banda, Java Servlets és una tecnologia que també es pot utilitzar per crear contingut web dinàmic però que a més estén la seva funcionalitat a la possibilitat de connectar aquestes webs dinàmiques amb un altre contingut accessible a través d'Internet. De vegades s'utilitza juntament amb JSP per crear aplicacions web més complexes.</p>
+<p>Totes dues són tecnologies desenvolupades per Sun Microsystems i propietat ara d'Oracle, després d'adquirir aquesta última a la primera fa ja alguns anys.</p>
+<figure class="exe-figure exe-image position-center" style="width: 554px;">
+<figcaption class="figcaption header"><strong>Arquitectura habitual JSP / Servlets</strong></figcaption>
+<img src="jsp.gif" alt="" title="Arquitectura habitual JSP / Servlets" width="554" height="381" /></figure>
+<p><br /><br /></p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id19">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Python</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta19_50_2" class="block iDevice_content">
+<div class="exe-text"><p>El llenguatge Python va ser dissenyat per Guido van Rossum i ara es manté gràcies a una comunitat de desenvolupadors, i és codi obert.</p>
+<p>Exemple de codi escrit amb Python. En aquest cas utilitzant el framework Django per al desenvolupament d'aplicacions web:</p>
+<p>En aquest cas, al tractar-se d'un framework MVC, tindrem la vista:</p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id20">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">ASP.NET</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta20_51_2" class="block iDevice_content">
+<div class="exe-text"><p>ASP.NET és una tecnologia, creada per Microsoft, per al desenvolupament de lloc web dinàmics, aplicacions i serveis web. És la tecnologia successora del que abans es coneixia com ASP, l'antiga tecnologia de Microsoft per a la creació de pàgines web dinàmiques.</p>
+<p>Com que funciona sobre la plataforma .NET de Microsoft, permet que es pugui desenvolupar en qualsevol dels llenguatges de programació d'aquesta plataforma, Visual Basic .NET o C#.</p>
+<p>El més habitual és veure-ho funcionar juntament amb el lloc web de Microsoft, IIS (Internet Information Server).</p>
+<p>A continuació, un exemple de pàgina web dinàmica amb ASP.NET (desenvolupada en llenguatge C #) programant l'acció que passa en prémer un botó (apareix el text d'un formulari a la part final del web):</p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Llicenciat sota la </span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Llicència Creative Commons Reconeixement CompartirIgual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="2_tecnologies_per_a_programaci_web_del_costat_del_servidor.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="4_preparant_lentorn_de_desenvolupament.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<script type="text/javascript" src="_intef_js.js"></script></body></html>

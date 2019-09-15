@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>2. Tecnologies per a programació web del costat del servidor | Introducció a la programació web </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Vicent Jordà" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning  - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-2"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
+<header id="header" ><div id="headerContent">Introducció a la programació web</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">1. Introducció a la programació web</a></li>
+   <li><a href="1_arquitectura_duna_aplicaci_web.html" class="daddy">1. Arquitectura d'una aplicació web</a>
+   <ul class="other-section">
+      <li><a href="1_elements_navegador_servidor_protocol_http_i_html.html" class="no-ch">1. Elements: navegador, servidor, protocol HTTP i HTML</a></li>
+      <li><a href="2_el_model_clientservidor.html" class="no-ch">2. El model client/servidor</a></li>
+      <li><a href="3_pgines_web_esttiques_i_dinmiques.html" class="no-ch">3. Pàgines web estàtiques i dinàmiques</a></li>
+      <li><a href="4_execuci_de_codi_en_el_servidor_i_en_el_client.html" class="no-ch">4. Execució de codi en el servidor i en el client</a></li>
+   </ul>
+   </li>
+   <li id="active"><a href="2_tecnologies_per_a_programaci_web_del_costat_del_servidor.html" class="active no-ch">2. Tecnologies per a programació web del costat del servidor</a></li>
+   <li><a href="3_llenguatges.html" class="no-ch">3. Llenguatges</a></li>
+   <li><a href="4_preparant_lentorn_de_desenvolupament.html" class="daddy">4. Preparant l'entorn de desenvolupament</a>
+   <ul class="other-section">
+      <li><a href="activitat_1_installaci_de_xampp.html" class="no-ch">Activitat 1. Instal·lació de XAMPP</a></li>
+   </ul>
+   </li>
+   <li><a href="5_eines_de_desenvolupament.html" class="daddy">5. Eines de desenvolupament</a>
+   <ul class="other-section">
+      <li><a href="activitat_2_installaci_de_phpstorm.html" class="no-ch">Activitat 2. Instal·lació de PHPStorm</a></li>
+      <li><a href="prctica_1_prova_de_lentorn_de_desenvolupament.html" class="no-ch">Pràctica 1. Prova de l'entorn de desenvolupament</a></li>
+   </ul>
+   </li>
+   <li><a href="6_eines_per_a_depuraci_de_codi.html" class="daddy">6. Eines per a depuració de codi</a>
+   <ul class="other-section">
+      <li><a href="prctica_3_installaci_dxdebug.html" class="no-ch">Pràctica 3. Instal·lació d'Xdebug</a></li>
+   </ul>
+   </li>
+   <li><a href="crdits_fonts_i_bibliografia.html" class="no-ch">Crèdits, fonts i bibliografia</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="4_execuci_de_codi_en_el_servidor_i_en_el_client.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="3_llenguatges.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">2. Tecnologies per a programació web del costat del servidor</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id11">
+<div class="iDevice emphasis0">
+<div id="ta11_85" class="block iDevice_content">
+<p>Des d'un punt de vista de desenvolupament una aproximació més detallada al model client-servidor és el que es coneix com a <strong>model en 3 capes</strong>. És un model on es mostra més en detall com es distribueix el programari que participa en qualsevol desenvolupament web. Segueix estant present l'arquitectura client-servidor (tot es basa en ella) però apareixen més detalls com el programari utilitzat en cada un dels dos actors i com interactuen les diferents tecnologies o aplicacions.</p>
+<p>Per comprendre millor que és el model de desenvolupament de 3 capes podem tirar un ull al següent esquema on es mostra cadascuna d'aquestes capes i que s'encarrega cadascuna d'elles:</p>
+<figure class="exe-figure exe-image position-center" style="width: 439px;">
+<figcaption class="figcaption header"><strong>Model de desenvolupament de 3 capes</strong></figcaption>
+<img src="3_capas.png" alt="Model de desenvolupament de 3 capes" title="Model de desenvolupament de 3 capes" width="439" height="325" /></figure>
+<ul>
+<li><strong>Capa de presentació:</strong> És la capa on l'aplicació es mostra a l'usuari. Bàsicament és la GUI (<em>Graphical User Interface, interfície gràfica d'usuari</em>). En el cas d'una aplicació web seria el codi HTML que es carrega directament al navegador web. En qualsevol cas, s'executa directament en l'equip del client.</li>
+<li><strong>Capa de negoci:</strong> És la capa intermèdia on es porta a terme tota la lògica de l'aplicació. Sempre s'executarà en el costat servidor. Aquesta capa, després de realitzar tots els càlculs i / o operacions sobre les dades, genera el codi HTML que serà presentat a l'usuari en la capa següent.</li>
+<li><strong>Capa de dades:</strong> És la capa que emmagatzema les dades. Bàsicament, en condicions normals, fa referència al propi SGBD que és l'encarregat d'emmagatzemar les dades. Depenent de l'arquitectura de l'aplicació, aquesta capa i la de negoci es poden trobar físicament en el mateix equip, encara que també és possible que s'hagin de separar per qüestions de rendiment. La capa de dades serveix totes la informació necessària a la capa de negoci per dur a terme les seves operacions.</li>
+</ul>
+<p>Si ens imaginem una botiga online, la capa de dades emmagatzema tota la informació en una base de dades (usuaris, comandes, articles, ofertes,...), La capa de negoci ha d'accedir a aquesta informació i, després processar una comanda, per exemple, ha de presentar el resultat final a l'usuari en el navegador, que és la capa de presentació.</p>
+<p>I si ens centrem en un cas concret amb programari i tecnologies ja definits, un model de 3 capes podria ser el següent:</p>
+<figure class="exe-figure exe-image position-center" style="width: 500px;">
+<figcaption class="figcaption header"><strong>Modelo de desarrollo de 3 capas (desarrollo web con PHP)</strong></figcaption>
+<img src="3_capas2.jpg" alt=": Modelo de desarrollo de 3 capas (desarrollo web con PHP)" title=": Modelo de desarrollo de 3 capas (desarrollo web con PHP)" width="500" height="140" /></figure>
+<ul>
+<li>Navegador web: En aquest cas, Mozilla Firefox, Internet Explorer o Google Chrome podrien ser qualsevol de les aplicacions que ocuparien aquesta capa</li>
+<li>Apache + PHP / IIS + ASP: Un servidor web acompanyat del seu corresponent llenguatge de programació web permeten desenvolupar la part que ocupa la capa de negoci. També podríem col·locar la combinació Apache Tomcat + Servlets</li>
+<li>MySQL / PostgreSQL: Finalment a la capa de dades podem posar qualsevol SGBD, com poden ser MySQL o PostgreSQL.</li>
+</ul>
+<h2>Front-end, Back-end, Full stack</h2>
+<p>També tenint en compte en quin costat se situen les tecnologies i per a què s'utilitzen aquestes, actualment es parla molt de 3 perfils diferenciats en l'àmbit del desenvolupament web:</p>
+<ul>
+<li><strong>Front-end:</strong> És la part del desenvolupament que s'encarrega del disseny i maquetació de l'aplicació web utilitzant tecnologies com HTML, CSS i Javascript (i els seus frameworks). En aquest cas s'ha de preocupar també de la correcta presentació en qualsevol tipus de dispositiu i fins i tot del posicionament en cercadors</li>
+<li><strong>Back-end:</strong> És la part del desenvolupament que s'encarrega del costat servidor utilitzant tecnologies com PHP, JSP i Python. També s'encarrega de l'administració del servidor d'aplicacions i la base de dades.</li>
+<li><strong>Full stack:</strong> En un perfil que engloba els dos anteriors. En aquest cas el desenvolupador potser no és un expert de cap tecnologia concreta però té amplis coneixements de tot el conjunt i és capaç de col·laborar en qualsevol de les parts.</li>
+</ul>
+<p><img src="fullstack.jpg" alt="" style="display: block; margin-left: auto; margin-right: auto;" width="768" height="479" /></p>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id13">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Servidors web i servidors d'aplicacions</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta13_60_2" class="block iDevice_content">
+<div class="exe-text"><p>Així com les aplicacions d'escriptori s'executen directament sobre el propi Sistema Operatiu, les pàgines i aplicacions web necessiten d'una eina addicional que permeti desplegar-les per a la seva posada en marxa. Parlem de <a href="https://en.wikipedia.org/wiki/Comparison_of_web_server_software" target="_blank" rel="noopener">servidors web</a> i <a href="https://en.wikipedia.org/wiki/List_of_application_servers" target="_blank" rel="noopener">servidors d'aplicacions</a>, respectivament.</p>
+<p><strong>Què és un servidor web?</strong></p>
+<p>Un servidor web és una aplicació que rep una petició HTTP (normalment a través d'un navegador web) i retorna la pàgina web sol·licitada (escrita en llenguatge HTML i podent contenir codi Javascript inscrustado) perquè aquesta sigui interpretada i visualitzada pel navegador de qui va realitzar la sol·licitud (l'usuari).</p>
+<p><strong>Què és un servidor d'aplicacions?</strong></p>
+<p>Un servidor d'aplicacions és una aplicació que conté una sèrie de serveis dels quals estan accessibles a través d'una API exposada a través d'Internet. Normalment els servidors d'aplicacions proporcionen més serveis que els servidors web. Per exemple, en el cas dels servidors d'aplicacions per a Java o Python, aquests proporcionen un accés transparent a la base de dades perquè el desenvolupador se centri exclusivament en implementar la capa de negoci. A més, poden proporcionar també serveis com <em>fail-over</em> o balanceig de càrrega.</p>
+<p><strong>Apache</strong></p>
+<p>Apache és un dels servidors web més coneguts. És programari lliure i multiplataforma, encara que aproximadament el 90% dels servidors Apache s'executen actualment en entorns Linux ja que és el servidor preferit per a aquesta plataforma.</p>
+<p>És molt modular el que permet incorporar característiques un cop instal·lat i posat en marxa. Això li fa també molt flexible i pot donar servei a webs escrites en els llenguatges de programació web més estesos (com PHP, Python, ASP,...) A través del mòdul corresponent.</p>
+<p><strong>Apache Tomcat</strong></p>
+<p>Apache Tomcat és un servidor d'aplicacions que funciona com a contenidor de Servlets de Java. Actualment és capaç d'implementar diverses especificacions de Java EE com Servlets i JSP (Java Server Pages) i més proporciona un servidor web pur perquè es faci servir en combinació amb l'entorn Java.</p>
+<p><strong>WSGI (<em>Web Server Gateway Interface</em>)</strong></p>
+<p>WSGI és una interfície que defineix com es comunica un servidor web amb aplicacions web o frameworks escrits en Python.</p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Llicenciat sota la </span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Llicència Creative Commons Reconeixement CompartirIgual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="4_execuci_de_codi_en_el_servidor_i_en_el_client.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="3_llenguatges.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<script type="text/javascript" src="_intef_js.js"></script></body></html>
