@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>2.2. Maneig de dates | Característiques bàsiques del llenguatge PHP </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning  - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-5"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
+<header id="header" ><div id="headerContent">Característiques bàsiques del llenguatge PHP</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">2. Característiques bàsiques del llenguatge</a></li>
+   <li><a href="1_programaci_web_amb_php.html" class="no-ch">1. Programació web amb PHP</a></li>
+   <li class="current-page-parent"><a href="2_maneig_de_cadenes_de_text_i_dates.html" class="current-page-parent daddy">2. Maneig de cadenes de text i dates</a>
+   <ul>
+      <li><a href="21_maneig_de_cadenes_de_text.html" class="no-ch">2.1. Maneig de cadenes de text</a></li>
+      <li id="active"><a href="22_maneig_de_dates.html" class="active no-ch">2.2. Maneig de dates</a></li>
+   </ul>
+   </li>
+   <li><a href="3_maneig_darrays.html" class="no-ch">3. Maneig d'arrays</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="21_maneig_de_cadenes_de_text.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="3_maneig_darrays.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">2.2. Maneig de dates</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id2">
+<div class="iDevice emphasis0">
+<div id="ta2_85" class="block iDevice_content">
+<h2>Funció <code>time()</code></h2>
+<p>En PHP les dates s'emmagatzemen com a números enters. La funció <code>time()</code> retorna el nombre de segons transcorreguts des de l'1 de gener de 1970 (instant conegut com a època Unix). A aquesta forma d'expressar data i hora se li denomina <strong>timestamp</strong>.</p>
+<h2>Funció <code>date()</code></h2>
+<div class="highlighted-code language-php">
+<div>
+<pre><code> date ( string $format [, int $timestamp = time() ] ) : string</code></pre>
+</div>
+</div>
+<p>La funció <code>date</code> retorna una cadena formatada segons els codi de format. Si no li passem la variable <code>timestamp</code> ens retorna la cadena formatada per a la data i l'hora actual.</p>
+<p>Els codis de format més habituals  per a la funció <code>date</code> són:</p>
+<table class="exe-table" style="height: 824px; width: 426px; margin-left: auto; margin-right: auto;" width="364" height="809" border="1">
+<tbody>
+<tr style="height: 21px;">
+<td style="width: 45px; height: 21px;">CODI</td>
+<td style="width: 310.8px; height: 21px;">DESCRIPCIÓ</td>
+</tr>
+<tr style="height: 21px;">
+<td style="width: 45px; height: 21px;">a</td>
+<td style="width: 310.8px; height: 21px;">am o pm</td>
+</tr>
+<tr style="height: 21px;">
+<td style="width: 45px; height: 21px;">A</td>
+<td style="width: 310.8px; height: 21px;">AM o PM</td>
+</tr>
+<tr style="height: 21px;">
+<td style="width: 45px; height: 21px;">d</td>
+<td style="width: 310.8px; height: 21px;">Dia del mes amb zeros</td>
+</tr>
+<tr style="height: 21px;">
+<td style="width: 45px; height: 21px;">D</td>
+<td style="width: 310.8px; height: 21px;">Abreviatura del dia de la setmana (en anglès)</td>
+</tr>
+<tr style="height: 21px;">
+<td style="width: 45px; height: 21px;">F</td>
+<td style="width: 310.8px; height: 21px;">Nom del mes (en anglès)</td>
+</tr>
+<tr style="height: 21px;">
+<td style="width: 45px; height: 21px;">h</td>
+<td style="width: 310.8px; height: 21px;">Hora en format 1-12</td>
+</tr>
+<tr style="height: 21px;">
+<td style="width: 45px; height: 21px;">H</td>
+<td style="width: 310.8px; height: 21px;">Hora en format 0-23</td>
+</tr>
+<tr style="height: 21px;">
+<td style="width: 45px; height: 21px;">i</td>
+<td style="width: 310.8px; height: 21px;">Minuts</td>
+</tr>
+<tr style="height: 21px;">
+<td style="width: 45px; height: 21px;">j</td>
+<td style="width: 310.8px; height: 21px;">Dia del mes sense zeros</td>
+</tr>
+<tr>
+<td style="width: 45px;">l</td>
+<td style="width: 310.8px;">Dia de la setmana</td>
+</tr>
+<tr>
+<td style="width: 45px;">m</td>
+<td style="width: 310.8px;">Número de mes (1-12)</td>
+</tr>
+<tr>
+<td style="width: 45px;">M</td>
+<td style="width: 310.8px;">Abreviatura del mes (en anglès)</td>
+</tr>
+<tr>
+<td style="width: 45px;">s</td>
+<td style="width: 310.8px;">Segons</td>
+</tr>
+<tr>
+<td style="width: 45px;">y</td>
+<td style="width: 310.8px;">Any amb 2 dígits</td>
+</tr>
+<tr>
+<td style="width: 45px;">Y</td>
+<td style="width: 310.8px;">Any amb 4 dígits</td>
+</tr>
+<tr>
+<td style="width: 45px;">z</td>
+<td style="width: 310.8px;">Dia de l'any (1-365)</td>
+</tr>
+</tbody>
+</table>
+<p>La informació completa la pots trobar en el <a href=" AM o PM" target="_blank" rel="noopener">manual oficial de PHP: date</a></p>
+<p>Suposant que hui és 15 de setembre de 2019 i les 19 hores 20 minuts i 23 segons et mostrem alguns exemples:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>date("d-m-Y"); // 15-09-2019
+
+date("H:i:s");  //  19:20:23
+
+date("Y"); // 2019
+
+date("YmdHis"); // 20190915192023
+
+date("d/m/y H:i a"); // 15/09/19 19:20 pm
+
+date("d-m-Y H:i", time()); // Moment actual</code></pre>
+</div>
+</div>
+<h2>Funció <code>mktime(hora, min, seg, mes, dia, any)</code> </h2>
+<p>La funció mktime permet obtenir la marca de temps Unix (<em>timestamp</em>) d'una data.</p>
+<p>Per exemple:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>$data = mktime(0, 0, 0, 1, 1,2020);
+echo date('d-m-Y', $data); // mostrarà 01-01-2020</code></pre>
+</div>
+</div>
+<p>Més informació en <a href="https://www.php.net/manual/es/function.mktime.php">https://www.php.net/manual/es/function.mktime.php</a></p>
+<h2>Operar amb dates</h2>
+<p>Com hem dit al principi les dates s'emmagatzem com a enters on cada unitat representa un segon. Així podem sumar i restar dates (<em>timestamp</em>) per a afegir, llevar o calcular diferències entre ells.</p>
+<p>Per exemple, per poder determinar els dies que falten per a l'1 de gener de 2020 faríem:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>$data = mktime(0, 0, 0, 1, 1,2020); // timestamp que representa l'1 de gener de 2020
+$diferencia = $data - time(); // restem a l'1 de gener de 2020 el temps actual, el resultat estarà en segons.
+$diferenciaEnDies =((( $diferencia / 60) / 60 ) / 24 );
+/*  
+    dividim els segons entre 60 i obtenim els minuts,
+    els dividim entre 60 i obtenim les hores,
+    els dividim entre 24 i obtenim els dies 
+
+*/</code></pre>
+</div>
+</div>
+<p><code></code></p>
+<p>La funció time.<br />S'utilitza la classe DateTime per a representar-les.<br />Igual que ocorre amb les cadenes no té sentit estudiar les funcions relacionades una a una. <br />Les pots consultar en: http://php.net/manual/es/ref.datetime.php</p>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Llicenciat sota la </span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Llicència Creative Commons Reconeixement CompartirIgual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="21_maneig_de_cadenes_de_text.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="3_maneig_darrays.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<script type="text/javascript" src="_intef_js.js"></script></body></html>
