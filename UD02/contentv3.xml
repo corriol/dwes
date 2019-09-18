@@ -3,7 +3,7 @@
 <instance xmlns="http://www.exelearning.org/content/v0.3" reference="4" version="0.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.exelearning.org/content/v0.3 content.xsd" class="exe.engine.package.Package">
  <dictionary>
   <string role="key" value="_title"></string>
-  <unicode value="Característiques bàsiques del llenguatge PHP"></unicode>
+  <unicode value=""></unicode>
   <string role="key" value="idevices"></string>
   <list></list>
   <string role="key" value="_addPagination"></string>
@@ -85,9 +85,9 @@
   <string role="key" value="_name"></string>
   <unicode value="02._Caracterstiques_bsiques_del_llenguatge"></unicode>
   <string role="key" value="_nextIdeviceId"></string>
-  <int value="3"></int>
-  <string role="key" value="_nextNodeId"></string>
   <int value="6"></int>
+  <string role="key" value="_nextNodeId"></string>
+  <int value="9"></int>
   <string role="key" value="_nodeIdDict"></string>
   <dictionary>
    <unicode role="key" value="0"></unicode>
@@ -291,7 +291,7 @@
      <list></list>
      <string role="key" value="children"></string>
      <list>
-      <instance class="exe.engine.node.Node" reference="9">
+      <instance class="exe.engine.node.Node" reference="14">
        <dictionary>
         <string role="key" value="_title"></string>
         <unicode value="1. Programació web amb PHP"></unicode>
@@ -341,7 +341,7 @@
         <list></list>
         <string role="key" value="children"></string>
         <list>
-         <instance class="exe.engine.node.Node" reference="11">
+         <instance class="exe.engine.node.Node" reference="15">
           <dictionary>
            <string role="key" value="_title"></string>
            <unicode value="2.1. Maneig de cadenes de text"></unicode>
@@ -505,7 +505,7 @@ date(&quot;d/m/y H:i a&quot;); // 15/09/19 19:20 pm
 date(&quot;d-m-Y H:i&quot;, time()); // Moment actual&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;h2&gt;Funció &lt;code&gt;mktime(hora, min, seg, mes, dia, any)&lt;/code&gt; &lt;/h2&gt;
+&lt;h2&gt;Funció &lt;code&gt;mktime(hora, min, seg, mes, dia, any)&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;La funció mktime permet obtenir la marca de temps Unix (&lt;em&gt;timestamp&lt;/em&gt;) d'una data.&lt;/p&gt;
 &lt;p&gt;Per exemple:&lt;/p&gt;
 &lt;div class=&quot;highlighted-code language-php&quot;&gt;
@@ -515,6 +515,12 @@ echo date('d-m-Y', $data); // mostrarà 01-01-2020&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Més informació en &lt;a href=&quot;https://www.php.net/manual/es/function.mktime.php&quot;&gt;https://www.php.net/manual/es/function.mktime.php&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Un altra forma de crear dates és mitjançant la funció &lt;code&gt;strtotime()&lt;/code&gt; on podem indicar les dates mitjançant una cadena de text. Per exemple:&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;$date =strtotime(&quot;2020-01-01&quot;); // posarem la data en el format any-mes-dia per a evitar confusions.&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h2&gt;Operar amb dates&lt;/h2&gt;
 &lt;p&gt;Com hem dit al principi les dates s'emmagatzem com a enters on cada unitat representa un segon. Així podem sumar i restar dates (&lt;em&gt;timestamp&lt;/em&gt;) per a afegir, llevar o calcular diferències entre ells.&lt;/p&gt;
 &lt;p&gt;Per exemple, per poder determinar els dies que falten per a l'1 de gener de 2020 faríem:&lt;/p&gt;
@@ -530,9 +536,7 @@ $diferenciaEnDies =((( $diferencia / 60) / 60 ) / 24 );
 
 */&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;La funció time.&lt;br /&gt;S'utilitza la classe DateTime per a representar-les.&lt;br /&gt;Igual que ocorre amb les cadenes no té sentit estudiar les funcions relacionades una a una. &lt;br /&gt;Les pots consultar en: http://php.net/manual/es/ref.datetime.php&lt;/p&gt;"></unicode>
+&lt;/div&gt;"></unicode>
                 <string role="key" value="exe.engine.field.Field.persistenceVersion"></string>
                 <int value="4"></int>
                 <string role="key" value="exe.engine.field.FieldWithResources.persistenceVersion"></string>
@@ -588,6 +592,241 @@ $diferenciaEnDies =((( $diferencia / 60) / 60 ) / 24 );
               <int value="0"></int>
              </dictionary>
             </instance>
+            <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="9">
+             <dictionary>
+              <string role="key" value="_title"></string>
+              <unicode value="Free Text"></unicode>
+              <string role="key" value="_author"></string>
+              <unicode value="University of Auckland"></unicode>
+              <string role="key" value="_purpose"></string>
+              <unicode value="The majority of a learning resource will be 
+establishing context, delivering instructions and providing general information.
+This provides the framework within which the learning activities are built and 
+delivered."></unicode>
+              <string role="key" value="_tip"></string>
+              <string value=""></string>
+              <string role="key" value="childs"></string>
+              <list></list>
+              <string role="key" value="content"></string>
+              <instance class="exe.engine.field.TextAreaField" reference="10">
+               <dictionary>
+                <string role="key" value="_id"></string>
+                <int value="85"></int>
+                <string role="key" value="_idevice"></string>
+                <reference key="9"></reference>
+                <string role="key" value="_instruc"></string>
+                <unicode value="Use this field to enter text. This 
+iDevice has no emphasis applied although limited formatting can be applied to 
+text through the text editing buttons associated with the field."></unicode>
+                <string role="key" value="_name"></string>
+                <unicode value="Free Text"></unicode>
+                <string role="key" value="anchor_names"></string>
+                <list></list>
+                <string role="key" value="anchors_linked_from_fields"></string>
+                <dictionary></dictionary>
+                <string role="key" value="content_w_resourcePaths"></string>
+                <unicode content="true" value="&lt;h2&gt;Classe DateTime&lt;/h2&gt;
+&lt;p&gt;PHP disposa també de la classe DateTime per a representar les dates, la veurem més avant.&lt;/p&gt;"></unicode>
+                <string role="key" value="exe.engine.field.Field.persistenceVersion"></string>
+                <int value="4"></int>
+                <string role="key" value="exe.engine.field.FieldWithResources.persistenceVersion"></string>
+                <int value="2"></int>
+                <string role="key" value="exe.engine.field.TextAreaField.persistenceVersion"></string>
+                <int value="3"></int>
+                <string role="key" value="htmlTag"></string>
+                <string value="div"></string>
+                <string role="key" value="images"></string>
+                <instance class="exe.engine.galleryidevice.GalleryImages">
+                 <dictionary>
+                  <string role="key" value=".listitems"></string>
+                  <list></list>
+                  <string role="key" value="idevice"></string>
+                  <reference key="10"></reference>
+                 </dictionary>
+                </instance>
+                <string role="key" value="intlinks_to_anchors"></string>
+                <dictionary></dictionary>
+                <string role="key" value="nextImageId"></string>
+                <int value="0"></int>
+                <string role="key" value="parentNode"></string>
+                <reference key="8"></reference>
+               </dictionary>
+              </instance>
+              <string role="key" value="edit"></string>
+              <bool value="0"></bool>
+              <string role="key" value="emphasis"></string>
+              <int value="0"></int>
+              <string role="key" value="exe.engine.freetextidevice.FreeTextIdevice.persistenceVersion"></string>
+              <int value="7"></int>
+              <string role="key" value="icon"></string>
+              <string value=""></string>
+              <string role="key" value="id"></string>
+              <unicode value="3"></unicode>
+              <string role="key" value="lastIdevice"></string>
+              <bool value="0"></bool>
+              <string role="key" value="originalicon"></string>
+              <string value=""></string>
+              <string role="key" value="parent"></string>
+              <none></none>
+              <string role="key" value="parentNode"></string>
+              <reference key="8"></reference>
+              <string role="key" value="systemResources"></string>
+              <list></list>
+              <string role="key" value="type"></string>
+              <none></none>
+              <string role="key" value="undo"></string>
+              <bool value="1"></bool>
+              <string role="key" value="userResources"></string>
+              <list></list>
+              <string role="key" value="version"></string>
+              <int value="0"></int>
+             </dictionary>
+            </instance>
+            <instance class="exe.engine.jsidevice.JsIdevice" reference="11">
+             <dictionary>
+              <string role="key" value="_title"></string>
+              <unicode value="Tasca: treballar amb dates"></unicode>
+              <string role="key" value="_attributes"></string>
+              <list>
+               <tuple>
+                <string value="title"></string>
+                <list>
+                 <string value="Title"></string>
+                 <int value="0"></int>
+                 <int value="0"></int>
+                </list>
+               </tuple>
+               <tuple>
+                <string value="category"></string>
+                <list>
+                 <string value="Category"></string>
+                 <int value="0"></int>
+                 <int value="1"></int>
+                </list>
+               </tuple>
+               <tuple>
+                <string value="css-class"></string>
+                <list>
+                 <string value="CSS class"></string>
+                 <int value="0"></int>
+                 <int value="2"></int>
+                </list>
+               </tuple>
+               <tuple>
+                <string value="icon"></string>
+                <list>
+                 <string value="Icon"></string>
+                 <int value="0"></int>
+                 <int value="3"></int>
+                </list>
+               </tuple>
+              </list>
+              <string role="key" value="_author"></string>
+              <string value=""></string>
+              <string role="key" value="_editionFolder"></string>
+              <string value="pbl-tools/edition/"></string>
+              <string role="key" value="_editionResources"></string>
+              <list>
+               <string value="pbl-tools.css"></string>
+               <string value="pbl-tools.js"></string>
+              </list>
+              <string role="key" value="_exportFolder"></string>
+              <none></none>
+              <string role="key" value="_exportResources"></string>
+              <list></list>
+              <string role="key" value="_iDeviceDir"></string>
+              <string value="/home/vicent/.exe/scripts/idevices/pbl-tools"></string>
+              <string role="key" value="_purpose"></string>
+              <string value=""></string>
+              <string role="key" value="_tip"></string>
+              <string value=""></string>
+              <string role="key" value="_valid"></string>
+              <bool value="1"></bool>
+              <string role="key" value="class_"></string>
+              <unicode value="pbl"></unicode>
+              <string role="key" value="edit"></string>
+              <bool value="0"></bool>
+              <string role="key" value="emphasis"></string>
+              <int value="1"></int>
+              <string role="key" value="exe.engine.jsidevice.JsIdevice.persistenceVersion"></string>
+              <int value="1"></int>
+              <string role="key" value="fields"></string>
+              <list>
+               <instance class="exe.engine.field.TextAreaField" reference="12">
+                <dictionary>
+                 <string role="key" value="_id"></string>
+                 <unicode value="50_2"></unicode>
+                 <string role="key" value="_idevice"></string>
+                 <reference key="11"></reference>
+                 <string role="key" value="_instruc"></string>
+                 <string value=""></string>
+                 <string role="key" value="_name"></string>
+                 <string value=""></string>
+                 <string role="key" value="anchor_names"></string>
+                 <list></list>
+                 <string role="key" value="anchors_linked_from_fields"></string>
+                 <dictionary></dictionary>
+                 <string role="key" value="content_w_resourcePaths"></string>
+                 <unicode content="true" value="&lt;dl class=&quot;pbl-task-info&quot;&gt;&lt;dt class=&quot;pbl-task-duration&quot;&gt;&lt;span&gt;Duració:&lt;/span&gt;&lt;/dt&gt;&lt;dd class=&quot;pbl-task-duration&quot;&gt;01:00&lt;/dd&gt;&lt;dt class=&quot;pbl-task-participants&quot;&gt;&lt;span&gt;Agrupament:&lt;/span&gt;&lt;/dt&gt;&lt;dd class=&quot;pbl-task-participants&quot;&gt;1&lt;/dd&gt;&lt;/dl&gt;&lt;div class=&quot;pbl-task-description&quot;&gt;&lt;p&gt;Crea una pàgina anomenada dates.php i realitza les següents tasques:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Mostra la data i hora actuals amb el format: &lt;code&gt;dd/mm/yyyy hh:mm:ss&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Mostra el nom de la zona horària que s'utilitza per defecte.&lt;/li&gt;
+&lt;li&gt;Mostra la data de que serà d’ací 45 dies.&lt;/li&gt;
+&lt;li&gt;Mostra el nombre de dies que han passat des de l'1 de gener.&lt;/li&gt;
+&lt;li&gt;Mostra la data i hora actuals de Nova York.&lt;/li&gt;
+&lt;li&gt;Mostra el dia de la setmana que era l'1 de gener d'enguany.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;En acabar penja el document a Moodle.&lt;/p&gt;&lt;/div&gt;"></unicode>
+                 <string role="key" value="exe.engine.field.Field.persistenceVersion"></string>
+                 <int value="4"></int>
+                 <string role="key" value="exe.engine.field.FieldWithResources.persistenceVersion"></string>
+                 <int value="2"></int>
+                 <string role="key" value="exe.engine.field.TextAreaField.persistenceVersion"></string>
+                 <int value="3"></int>
+                 <string role="key" value="htmlTag"></string>
+                 <string value="div"></string>
+                 <string role="key" value="images"></string>
+                 <instance class="exe.engine.galleryidevice.GalleryImages">
+                  <dictionary>
+                   <string role="key" value=".listitems"></string>
+                   <list></list>
+                   <string role="key" value="idevice"></string>
+                   <reference key="12"></reference>
+                  </dictionary>
+                 </instance>
+                 <string role="key" value="intlinks_to_anchors"></string>
+                 <dictionary></dictionary>
+                 <string role="key" value="nextImageId"></string>
+                 <int value="0"></int>
+                 <string role="key" value="parentNode"></string>
+                 <reference key="8"></reference>
+                </dictionary>
+               </instance>
+              </list>
+              <string role="key" value="icon"></string>
+              <unicode value="atom"></unicode>
+              <string role="key" value="id"></string>
+              <unicode value="5"></unicode>
+              <string role="key" value="ideviceCategory"></string>
+              <unicode value="Text and Tasks"></unicode>
+              <string role="key" value="lastIdevice"></string>
+              <bool value="0"></bool>
+              <string role="key" value="nextFieldId"></string>
+              <int value="3"></int>
+              <string role="key" value="originalicon"></string>
+              <unicode value="activity"></unicode>
+              <string role="key" value="parentNode"></string>
+              <reference key="8"></reference>
+              <string role="key" value="systemResources"></string>
+              <list></list>
+              <string role="key" value="undo"></string>
+              <bool value="1"></bool>
+              <string role="key" value="userResources"></string>
+              <list></list>
+              <string role="key" value="version"></string>
+              <int value="0"></int>
+             </dictionary>
+            </instance>
            </list>
            <string role="key" value="_id"></string>
            <unicode value="5"></unicode>
@@ -612,7 +851,7 @@ $diferenciaEnDies =((( $diferencia / 60) / 60 ) / 24 );
         </list>
        </dictionary>
       </instance>
-      <instance class="exe.engine.node.Node" reference="10">
+      <instance class="exe.engine.node.Node" reference="13">
        <dictionary>
         <string role="key" value="_title"></string>
         <unicode value="3. Maneig d'arrays"></unicode>
@@ -635,22 +874,107 @@ $diferenciaEnDies =((( $diferencia / 60) / 60 ) / 24 );
         <string role="key" value="top_anchors_linked_from_fields"></string>
         <list></list>
         <string role="key" value="children"></string>
-        <list></list>
+        <list>
+         <instance class="exe.engine.node.Node" reference="16">
+          <dictionary>
+           <string role="key" value="_title"></string>
+           <unicode value="3.1. Introducció"></unicode>
+           <string role="key" value="idevices"></string>
+           <list></list>
+           <string role="key" value="_id"></string>
+           <unicode value="6"></unicode>
+           <string role="key" value="_package"></string>
+           <reference key="4"></reference>
+           <string role="key" value="anchor_fields"></string>
+           <list></list>
+           <string role="key" value="exe.engine.node.Node.persistenceVersion"></string>
+           <int value="2"></int>
+           <string role="key" value="exportType"></string>
+           <string value="website"></string>
+           <string role="key" value="last_full_node_path"></string>
+           <string value="exe-node:2.%20Caracter%C3%ADstiques%20b%C3%A0siques%20del%20llenguatge:3.%20Maneig%20d%27arrays:3.1.%20Introducci%C3%B3"></string>
+           <string role="key" value="parent"></string>
+           <reference key="13"></reference>
+           <string role="key" value="top_anchors_linked_from_fields"></string>
+           <list></list>
+           <string role="key" value="children"></string>
+           <list></list>
+          </dictionary>
+         </instance>
+         <instance class="exe.engine.node.Node" reference="17">
+          <dictionary>
+           <string role="key" value="_title"></string>
+           <unicode value="3.2. Arrays associatius"></unicode>
+           <string role="key" value="idevices"></string>
+           <list></list>
+           <string role="key" value="_id"></string>
+           <unicode value="7"></unicode>
+           <string role="key" value="_package"></string>
+           <reference key="4"></reference>
+           <string role="key" value="anchor_fields"></string>
+           <list></list>
+           <string role="key" value="exe.engine.node.Node.persistenceVersion"></string>
+           <int value="2"></int>
+           <string role="key" value="exportType"></string>
+           <string value="website"></string>
+           <string role="key" value="last_full_node_path"></string>
+           <string value="exe-node:2.%20Caracter%C3%ADstiques%20b%C3%A0siques%20del%20llenguatge:3.%20Maneig%20d%27arrays:3.2.%20Arrays%20associatius"></string>
+           <string role="key" value="parent"></string>
+           <reference key="13"></reference>
+           <string role="key" value="top_anchors_linked_from_fields"></string>
+           <list></list>
+           <string role="key" value="children"></string>
+           <list></list>
+          </dictionary>
+         </instance>
+         <instance class="exe.engine.node.Node" reference="18">
+          <dictionary>
+           <string role="key" value="_title"></string>
+           <unicode value="3.3. Arrays multidimensionals"></unicode>
+           <string role="key" value="idevices"></string>
+           <list></list>
+           <string role="key" value="_id"></string>
+           <unicode value="8"></unicode>
+           <string role="key" value="_package"></string>
+           <reference key="4"></reference>
+           <string role="key" value="anchor_fields"></string>
+           <list></list>
+           <string role="key" value="exe.engine.node.Node.persistenceVersion"></string>
+           <int value="2"></int>
+           <string role="key" value="exportType"></string>
+           <string value="website"></string>
+           <string role="key" value="last_full_node_path"></string>
+           <string value="exe-node:2.%20Caracter%C3%ADstiques%20b%C3%A0siques%20del%20llenguatge:3.%20Maneig%20d%27arrays:3.3.%20Arrays%20multidimensionals"></string>
+           <string role="key" value="parent"></string>
+           <reference key="13"></reference>
+           <string role="key" value="top_anchors_linked_from_fields"></string>
+           <list></list>
+           <string role="key" value="children"></string>
+           <list></list>
+          </dictionary>
+         </instance>
+        </list>
        </dictionary>
       </instance>
      </list>
     </dictionary>
    </instance>
    <unicode role="key" value="1"></unicode>
-   <reference key="9"></reference>
+   <reference key="14"></reference>
    <unicode role="key" value="2"></unicode>
    <reference key="5"></reference>
    <unicode role="key" value="3"></unicode>
-   <reference key="10"></reference>
+   <reference key="13"></reference>
    <unicode role="key" value="4"></unicode>
-   <reference key="11"></reference>
+   <reference key="15"></reference>
    <unicode role="key" value="5"></unicode>
    <reference key="8"></reference>
+   <unicode role="key" value="6"></unicode>
+   <reference key="16"></reference>
+   <unicode role="key" value="7"></unicode>
+   <reference key="17"></reference>
+   <unicode role="key" value="8"></unicode>
+   <reference key="18"></reference>
   </dictionary>
   <string role="key" value="_objectives"></string>
   <unicode value=""></unicode>
@@ -692,7 +1016,7 @@ $diferenciaEnDies =((( $diferencia / 60) / 60 ) / 24 );
     <string role="key" value="subject"></string>
     <unicode value=""></unicode>
     <string role="key" value="title"></string>
-    <unicode value="Característiques bàsiques del llenguatge PHP"></unicode>
+    <unicode value=""></unicode>
     <string role="key" value="type"></string>
     <unicode value=""></unicode>
    </dictionary>
@@ -845,25 +1169,7 @@ $diferenciaEnDies =((( $diferencia / 60) / 60 ) / 24 );
       <string role="key" value="structure"></string>
       <none></none>
       <string role="key" value="title"></string>
-      <instance class="exe.engine.lom.lomsubs.titleSub">
-       <dictionary>
-        <string role="key" value="extensiontype_"></string>
-        <none></none>
-        <string role="key" value="string"></string>
-        <list>
-         <instance class="exe.engine.lom.lomsubs.LangStringSub">
-          <dictionary>
-           <string role="key" value="language"></string>
-           <string value="ca"></string>
-           <string role="key" value="valueOf_"></string>
-           <string value="Caracter\xc3\xadstiques b\xc3\xa0siques del llenguatge PHP"></string>
-          </dictionary>
-         </instance>
-        </list>
-        <string role="key" value="uniqueElementName"></string>
-        <none></none>
-       </dictionary>
-      </instance>
+      <none></none>
       <string role="key" value="uniqueElementName"></string>
       <string value="general"></string>
      </dictionary>
@@ -874,7 +1180,98 @@ $diferenciaEnDies =((( $diferencia / 60) / 60 ) / 24 );
     <instance class="exe.engine.lom.lomsubs.metaMetadataSub">
      <dictionary>
       <string role="key" value="contribute"></string>
-      <list></list>
+      <list>
+       <instance class="exe.engine.lom.lomsubs.contributeMetaSub">
+        <dictionary>
+         <string role="key" value="date"></string>
+         <instance class="exe.engine.lom.lomsubs.dateSub">
+          <dictionary>
+           <string role="key" value="dateTime"></string>
+           <instance class="exe.engine.lom.lomsubs.DateTimeValueSub">
+            <dictionary>
+             <string role="key" value="uniqueElementName"></string>
+             <string value="dateTime"></string>
+             <string role="key" value="valueOf_"></string>
+             <string value="2019-09-18T15:59:12.00+02:00"></string>
+            </dictionary>
+           </instance>
+           <string role="key" value="description"></string>
+           <instance class="exe.engine.lom.lomsubs.LanguageStringSub">
+            <dictionary>
+             <string role="key" value="extensiontype_"></string>
+             <none></none>
+             <string role="key" value="string"></string>
+             <list>
+              <instance class="exe.engine.lom.lomsubs.LangStringSub">
+               <dictionary>
+                <string role="key" value="language"></string>
+                <string value="ca"></string>
+                <string role="key" value="valueOf_"></string>
+                <string value="Data de creaci\xc3\xb3 de les metadades"></string>
+               </dictionary>
+              </instance>
+             </list>
+            </dictionary>
+           </instance>
+           <string role="key" value="extensiontype_"></string>
+           <none></none>
+           <string role="key" value="uniqueElementName"></string>
+           <none></none>
+           <string role="key" value="valueOf_"></string>
+           <none></none>
+          </dictionary>
+         </instance>
+         <string role="key" value="entity"></string>
+         <list>
+          <instance class="exe.engine.lom.lomsubs.entitySub">
+           <dictionary>
+            <string role="key" value="extensiontype_"></string>
+            <none></none>
+            <string role="key" value="valueOf_"></string>
+            <string value="BEGIN:VCARD VERSION:3.0 FN: EMAIL;TYPE=INTERNET: ORG: END:VCARD"></string>
+           </dictionary>
+          </instance>
+         </list>
+         <string role="key" value="role"></string>
+         <instance class="exe.engine.lom.lomsubs.roleSub">
+          <dictionary>
+           <string role="key" value="extensiontype_"></string>
+           <none></none>
+           <string role="key" value="source"></string>
+           <instance class="exe.engine.lom.lomsubs.sourceValueSub">
+            <dictionary>
+             <string role="key" value="extensiontype_"></string>
+             <none></none>
+             <string role="key" value="string"></string>
+             <list></list>
+             <string role="key" value="uniqueElementName"></string>
+             <string value="source"></string>
+             <string role="key" value="valueOf_"></string>
+             <string value="LOMv1.0"></string>
+            </dictionary>
+           </instance>
+           <string role="key" value="uniqueElementName"></string>
+           <string value="role"></string>
+           <string role="key" value="value"></string>
+           <instance class="exe.engine.lom.lomsubs.roleValueSub">
+            <dictionary>
+             <string role="key" value="extensiontype_"></string>
+             <none></none>
+             <string role="key" value="source"></string>
+             <none></none>
+             <string role="key" value="uniqueElementName"></string>
+             <string value="value"></string>
+             <string role="key" value="value"></string>
+             <none></none>
+             <string role="key" value="valueOf_"></string>
+             <string value="creator"></string>
+            </dictionary>
+           </instance>
+          </dictionary>
+         </instance>
+        </dictionary>
+       </instance>
+      </list>
       <string role="key" value="identifier"></string>
       <list></list>
       <string role="key" value="language"></string>
@@ -1091,25 +1488,7 @@ $diferenciaEnDies =((( $diferencia / 60) / 60 ) / 24 );
       <string role="key" value="structure"></string>
       <none></none>
       <string role="key" value="title"></string>
-      <instance class="exe.engine.lom.lomsubs.titleSub">
-       <dictionary>
-        <string role="key" value="extensiontype_"></string>
-        <none></none>
-        <string role="key" value="string"></string>
-        <list>
-         <instance class="exe.engine.lom.lomsubs.LangStringSub">
-          <dictionary>
-           <string role="key" value="language"></string>
-           <string value="ca"></string>
-           <string role="key" value="valueOf_"></string>
-           <string value="Caracter\xc3\xadstiques b\xc3\xa0siques del llenguatge PHP"></string>
-          </dictionary>
-         </instance>
-        </list>
-        <string role="key" value="uniqueElementName"></string>
-        <none></none>
-       </dictionary>
-      </instance>
+      <none></none>
       <string role="key" value="uniqueElementName"></string>
       <string value="general"></string>
      </dictionary>
@@ -1120,7 +1499,98 @@ $diferenciaEnDies =((( $diferencia / 60) / 60 ) / 24 );
     <instance class="exe.engine.lom.lomsubs.metaMetadataSub">
      <dictionary>
       <string role="key" value="contribute"></string>
-      <list></list>
+      <list>
+       <instance class="exe.engine.lom.lomsubs.contributeMetaSub">
+        <dictionary>
+         <string role="key" value="date"></string>
+         <instance class="exe.engine.lom.lomsubs.dateSub">
+          <dictionary>
+           <string role="key" value="dateTime"></string>
+           <instance class="exe.engine.lom.lomsubs.DateTimeValueSub">
+            <dictionary>
+             <string role="key" value="uniqueElementName"></string>
+             <string value="dateTime"></string>
+             <string role="key" value="valueOf_"></string>
+             <string value="2019-09-18T15:59:12.00+02:00"></string>
+            </dictionary>
+           </instance>
+           <string role="key" value="description"></string>
+           <instance class="exe.engine.lom.lomsubs.LanguageStringSub">
+            <dictionary>
+             <string role="key" value="extensiontype_"></string>
+             <none></none>
+             <string role="key" value="string"></string>
+             <list>
+              <instance class="exe.engine.lom.lomsubs.LangStringSub">
+               <dictionary>
+                <string role="key" value="language"></string>
+                <string value="ca"></string>
+                <string role="key" value="valueOf_"></string>
+                <string value="Data de creaci\xc3\xb3 de les metadades"></string>
+               </dictionary>
+              </instance>
+             </list>
+            </dictionary>
+           </instance>
+           <string role="key" value="extensiontype_"></string>
+           <none></none>
+           <string role="key" value="uniqueElementName"></string>
+           <none></none>
+           <string role="key" value="valueOf_"></string>
+           <none></none>
+          </dictionary>
+         </instance>
+         <string role="key" value="entity"></string>
+         <list>
+          <instance class="exe.engine.lom.lomsubs.entitySub">
+           <dictionary>
+            <string role="key" value="extensiontype_"></string>
+            <none></none>
+            <string role="key" value="valueOf_"></string>
+            <string value="BEGIN:VCARD VERSION:3.0 FN: EMAIL;TYPE=INTERNET: ORG: END:VCARD"></string>
+           </dictionary>
+          </instance>
+         </list>
+         <string role="key" value="role"></string>
+         <instance class="exe.engine.lom.lomsubs.roleSub">
+          <dictionary>
+           <string role="key" value="extensiontype_"></string>
+           <none></none>
+           <string role="key" value="source"></string>
+           <instance class="exe.engine.lom.lomsubs.sourceValueSub">
+            <dictionary>
+             <string role="key" value="extensiontype_"></string>
+             <none></none>
+             <string role="key" value="string"></string>
+             <list></list>
+             <string role="key" value="uniqueElementName"></string>
+             <string value="source"></string>
+             <string role="key" value="valueOf_"></string>
+             <string value="LOM-ESv1.0"></string>
+            </dictionary>
+           </instance>
+           <string role="key" value="uniqueElementName"></string>
+           <string value="role"></string>
+           <string role="key" value="value"></string>
+           <instance class="exe.engine.lom.lomsubs.roleValueSub">
+            <dictionary>
+             <string role="key" value="extensiontype_"></string>
+             <none></none>
+             <string role="key" value="source"></string>
+             <none></none>
+             <string role="key" value="uniqueElementName"></string>
+             <string value="value"></string>
+             <string role="key" value="value"></string>
+             <none></none>
+             <string role="key" value="valueOf_"></string>
+             <string value="creator"></string>
+            </dictionary>
+           </instance>
+          </dictionary>
+         </instance>
+        </dictionary>
+       </instance>
+      </list>
       <string role="key" value="identifier"></string>
       <list></list>
       <string role="key" value="language"></string>

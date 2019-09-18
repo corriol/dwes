@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="content.css" />
 <link rel="stylesheet" type="text/css" href="nav.css" />
 <meta http-equiv="content-type" content="text/html;  charset=utf-8" />
-<title>2.2. Maneig de dates | Característiques bàsiques del llenguatge PHP </title>
+<title>2.2. Maneig de dates </title>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
 <meta name="generator" content="eXeLearning  - exelearning.net" />
@@ -20,7 +20,7 @@
 <body class="exe-web-site" id="exe-node-5"><script type="text/javascript">document.body.className+=" js"</script>
 <div id="content">
 <p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
-<header id="header" ><div id="headerContent">Característiques bàsiques del llenguatge PHP</div></header>
+<section id="emptyHeader"></section>
 <nav id="siteNav">
 <ul>
    <li><a href="index.html" class="daddy main-node">2. Característiques bàsiques del llenguatge</a></li>
@@ -31,7 +31,13 @@
       <li id="active"><a href="22_maneig_de_dates.html" class="active no-ch">2.2. Maneig de dates</a></li>
    </ul>
    </li>
-   <li><a href="3_maneig_darrays.html" class="no-ch">3. Maneig d'arrays</a></li>
+   <li><a href="3_maneig_darrays.html" class="daddy">3. Maneig d'arrays</a>
+   <ul class="other-section">
+      <li><a href="31_introducci.html" class="no-ch">3.1. Introducció</a></li>
+      <li><a href="32_arrays_associatius.html" class="no-ch">3.2. Arrays associatius</a></li>
+      <li><a href="33_arrays_multidimensionals.html" class="no-ch">3.3. Arrays multidimensionals</a></li>
+   </ul>
+   </li>
 </ul>
 </nav>
 <div id='topPagination'>
@@ -144,7 +150,7 @@ date("d/m/y H:i a"); // 15/09/19 19:20 pm
 date("d-m-Y H:i", time()); // Moment actual</code></pre>
 </div>
 </div>
-<h2>Funció <code>mktime(hora, min, seg, mes, dia, any)</code> </h2>
+<h2>Funció <code>mktime(hora, min, seg, mes, dia, any)</code></h2>
 <p>La funció mktime permet obtenir la marca de temps Unix (<em>timestamp</em>) d'una data.</p>
 <p>Per exemple:</p>
 <div class="highlighted-code language-php">
@@ -154,6 +160,12 @@ echo date('d-m-Y', $data); // mostrarà 01-01-2020</code></pre>
 </div>
 </div>
 <p>Més informació en <a href="https://www.php.net/manual/es/function.mktime.php">https://www.php.net/manual/es/function.mktime.php</a></p>
+<p>Un altra forma de crear dates és mitjançant la funció <code>strtotime()</code> on podem indicar les dates mitjançant una cadena de text. Per exemple:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>$date =strtotime("2020-01-01"); // posarem la data en el format any-mes-dia per a evitar confusions.</code></pre>
+</div>
+</div>
 <h2>Operar amb dates</h2>
 <p>Com hem dit al principi les dates s'emmagatzem com a enters on cada unitat representa un segon. Així podem sumar i restar dates (<em>timestamp</em>) per a afegir, llevar o calcular diferències entre ells.</p>
 <p>Per exemple, per poder determinar els dies que falten per a l'1 de gener de 2020 faríem:</p>
@@ -170,8 +182,35 @@ $diferenciaEnDies =((( $diferencia / 60) / 60 ) / 24 );
 */</code></pre>
 </div>
 </div>
-<p><code></code></p>
-<p>La funció time.<br />S'utilitza la classe DateTime per a representar-les.<br />Igual que ocorre amb les cadenes no té sentit estudiar les funcions relacionades una a una. <br />Les pots consultar en: http://php.net/manual/es/ref.datetime.php</p>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper FreeTextIdevice" id="id3">
+<div class="iDevice emphasis0">
+<div id="ta3_85" class="block iDevice_content">
+<h2>Classe DateTime</h2>
+<p>PHP disposa també de la classe DateTime per a representar les dates, la veurem més avant.</p>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper pblIdevice em_iDevice" id="id5">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header" style="background-image:url(icon_atom.png)"><h1 class="iDeviceTitle">Tasca: treballar amb dates</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta5_50_2" class="block iDevice_content">
+<dl class="pbl-task-info"><dt class="pbl-task-duration"><span>Duració:</span></dt><dd class="pbl-task-duration">01:00</dd><dt class="pbl-task-participants"><span>Agrupament:</span></dt><dd class="pbl-task-participants">1</dd></dl><div class="pbl-task-description"><p>Crea una pàgina anomenada dates.php i realitza les següents tasques:</p>
+<ol>
+<li>Mostra la data i hora actuals amb el format: <code>dd/mm/yyyy hh:mm:ss</code></li>
+<li>Mostra el nom de la zona horària que s'utilitza per defecte.</li>
+<li>Mostra la data de que serà d’ací 45 dies.</li>
+<li>Mostra el nombre de dies que han passat des de l'1 de gener.</li>
+<li>Mostra la data i hora actuals de Nova York.</li>
+<li>Mostra el dia de la setmana que era l'1 de gener d'enguany.</li>
+</ol>
+<p>En acabar penja el document a Moodle.</p></div>
+</div>
+</div>
 </div>
 </div>
 </article>
