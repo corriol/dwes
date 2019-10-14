@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>2. Característiques bàsiques de la utilització d'objectes en PHP </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning  - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-2"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
+<section id="emptyHeader"></section>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">4. PHP - Classes i objectes</a></li>
+   <li><a href="1_introducci.html" class="no-ch">1. Introducció</a></li>
+   <li id="active"><a href="2_caracterstiques_bsiques_de_la_utilitzaci_dobjectes_en_php.html" class="active daddy">2. Característiques bàsiques de la utilització d'objectes en PHP</a>
+   <ul>
+      <li><a href="1_definici_de_classes.html" class="daddy">1. Definició de classes</a>
+      <ul class="other-section">
+         <li><a href="constructor_i_destructor.html" class="no-ch">Constructor i destructor</a></li>
+      </ul>
+      </li>
+      <li><a href="2_utilitzaci_dobjectes.html" class="no-ch">2. Utilització d'objectes</a></li>
+      <li><a href="secci.html" class="no-ch">Secció</a></li>
+   </ul>
+   </li>
+   <li><a href="3_herncia.html" class="no-ch">3. Herència</a></li>
+   <li><a href="3_interfcies.html" class="no-ch">3. Interfícies</a></li>
+   <li><a href="4_traits.html" class="no-ch">4. Traits</a></li>
+   <li><a href="5_treball_amb_objectes.html" class="no-ch">5. Treball amb objectes</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="1_introducci.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="1_definici_de_classes.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">2. Característiques bàsiques de la utilització d'objectes en PHP</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id2">
+<div class="iDevice emphasis0">
+<div id="ta2_85" class="block iDevice_content">
+<p>Segurament tot, o la majoria de el que acabes de veure, ja ho coneixies, i és fins i tot probable que sàpies utilitzar algun llenguatge de programació orientat a objectes, així que anem a veure directament les peculiaritats pròpies de PHP en el que fa referència a la POO.</p>
+<p>Com ja has vist en les unitats anteriors, especialment amb les extensions per a utilitzar bases de dades, amb PHP pots utilitzar dos estils de programació: estructurada i orientada a objectes.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code> // utilitzant programació estructurada
+$dwes = mysqli_connect('localhost', 'dwes', 'abc123.', 'dwes');
+// utilizant POO
+$dwes = new mysqli();
+$dwes-&gt;connect('localhost', 'dwes', 'abc123.', 'dwes');</code></pre>
+</div>
+</div>
+<p>No obstant açò, el llenguatge PHP original no es va dissenyar amb característiques d'orientació a objectes. Només a partir de la versió 3, es van començar a introduir alguns trets de POO en el llenguatge. Açò es va potenciar en la versió 4, encara que encara de forma molt rudimentària. Per exemple, en PHP4:</p>
+<ul>
+<li>Els objectes es passen sempre per valor, no per referència.</li>
+<li>No es pot definir el nivell d'accés per als membres de la classe. Tots són públics.</li>
+<li>No existeixen les interfícies.</li>
+<li>No existeixen mètodes destructors.</li>
+</ul>
+<p>En la versió actual, PHP5, es ha reescrit i potenciat el suport d'orientació a objectes del llenguatge, ampliant les seues característiques i millorant el seu rendiment i el seu funcionament general. Encara que anirem detallant i explicant cadascuna posteriorment amb deteniment, les característiques de POO que suporta PHP5 inclouen:</p>
+<ul>
+<li>Mètodes estàtics.</li>
+<li>Mètodes constructors i destructors.</li>
+<li>Herència.</li>
+<li>Interfícies.</li>
+<li>Classes abstractes.</li>
+</ul>
+<p>Entre les característiques que no inclou PHP5, i que pots conèixer d'altres llenguatges de programació, estan:</p>
+<ul>
+<li>Herència múltiple.</li>
+<li>Sobrecàrrega de mètodes (tenir diversos mètodes amb el mateix nom, però amb funcionalitats diferents. Els mètodes sobrecarregats han de tenir diferents paràmetres. Quan es diu al mètode, s'utilitza una o una altra versió en funció dels paràmetres amb que es realitze la trucada (podent distingir per el seu nombre i per el seu tipus, segons el llenguatge de programació utilitzat)) (inclosos els mètodes constructors).</li>
+<li>Sobrecàrrega d'operadors (similar a la sobrecàrrega de mètodes. Es poden definir diverses funcionalitats a un mateix operador, i s'utilitzarà una o una altra en funció del tipus dels operands que s'usen en cada instant).</li>
+</ul>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Llicenciat sota la </span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Llicència Creative Commons Reconeixement CompartirIgual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="1_introducci.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="1_definici_de_classes.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<script type="text/javascript" src="_intef_js.js"></script></body></html>

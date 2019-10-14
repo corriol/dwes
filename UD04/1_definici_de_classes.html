@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>1. Definició de classes </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning  - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-6"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
+<section id="emptyHeader"></section>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">4. PHP - Classes i objectes</a></li>
+   <li><a href="1_introducci.html" class="no-ch">1. Introducció</a></li>
+   <li class="current-page-parent"><a href="2_caracterstiques_bsiques_de_la_utilitzaci_dobjectes_en_php.html" class="current-page-parent daddy">2. Característiques bàsiques de la utilització d'objectes en PHP</a>
+   <ul>
+      <li id="active"><a href="1_definici_de_classes.html" class="active daddy">1. Definició de classes</a>
+      <ul>
+         <li><a href="constructor_i_destructor.html" class="no-ch">Constructor i destructor</a></li>
+      </ul>
+      </li>
+      <li><a href="2_utilitzaci_dobjectes.html" class="no-ch">2. Utilització d'objectes</a></li>
+      <li><a href="secci.html" class="no-ch">Secció</a></li>
+   </ul>
+   </li>
+   <li><a href="3_herncia.html" class="no-ch">3. Herència</a></li>
+   <li><a href="3_interfcies.html" class="no-ch">3. Interfícies</a></li>
+   <li><a href="4_traits.html" class="no-ch">4. Traits</a></li>
+   <li><a href="5_treball_amb_objectes.html" class="no-ch">5. Treball amb objectes</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="2_caracterstiques_bsiques_de_la_utilitzaci_dobjectes_en_php.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="constructor_i_destructor.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">1. Definició de classes</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id3">
+<div class="iDevice emphasis0">
+<div id="ta3_85" class="block iDevice_content">
+<p>La declaració de una classe en PHP es fa utilitzant la paraula <code>class</code>. A continuació i entre claus, han de figurar els membres de la classe. Convé fer-ho de forma ordenada, primer les propietats o atributs, i després els mètodes, cadascun amb el seu codi respectiu.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>class Producto {
+    private $codigo;
+    public $nombre;
+    public $PVP;
+    public function muestra() {
+        print "&lt;p&gt;" . $this-&gt;codigo . "&lt;/p&gt;";
+    }
+}</code></pre>
+</div>
+</div>
+<p>Com comentàvem abans, és preferible que cada classe figure en el seu propi fitxer (<strong><code>producte.php</code></strong>). A més, molts programadors prefereixen utilitzar per a les classes noms que comencen per lletra majúscula, per a, d'aquesta forma, distingir-los dels objectes i altres variables.</p>
+<p>Una vegada definida la classe, podem usar la paraula <strong><code>new</code></strong> per a instanciar objectes de la següent forma:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>$p = new Producto();</code></pre>
+</div>
+</div>
+<p>Perquè la línia anterior s'execute sense error, prèviament hem d'haver declarat la classe. Per a açò, en aqueix mateix fitxer hauràs de incloure la classe posant alguna cosa com:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>require('producto.php');</code></pre>
+</div>
+</div>
+<p>Els atributs de una classe són similars a les variables de PHP. És possible indicar un valor en la declaració de la classe. En aquest cas, tots els objectes que s'instancien a partir de aqueixa classe, partiran amb aqueix valor per defecte en l'atribut.</p>
+<p>Per a accedir des de un objecte a els seus atributs o a els mètodes de la classe, has d'utilitzar l'operador fletxa (fixa't que només es posa el símbol $ davant de el nom de l'objecte):</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>$p-&gt;nombre = 'Samsung Galaxy S';
+$p-&gt;mostra();</code></pre>
+</div>
+</div>
+<p>Quan es declara un atribut, s'ha d'indicar el seu nivell d'accés. Els principals nivells són:</p>
+<ul>
+<li><code>public</code>. Els atributs declarats com <code>public</code> poden utilitzar-se directament per els objectes de la classe. És el cas de l'atribut $nom anterior.</li>
+<li><code>private</code>. Els atributs declarats com <code>private</code> només poden ser accedits i modificats per els mètodes definits en la classe, no directament per els objectes de la mateixa. És el cas de l'atribut <code>$<strong>codigo</strong></code>.</li>
+</ul>
+<p>En PHP4 no es podia definir nivell d'accés per als atributs de una classe, per la qual cosa tots es precedien de la paraula var.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>var $nombre;</code></pre>
+</div>
+</div>
+<p>Avui dia, encara que encara és acceptat per PHP5, no es recomana el seu ús. Si trobes algun codi que ho utilitze, tingues en compte que té el mateix efecte que <code>public</code>.</p>
+<p>Un dels motius per a crear atributs privats és que el seu valor forma part de la informació interna de l'objecte i no ha de formar part de la seua interfície. Un altre motiu és mantenir cert control sobre els seus possibles valors. Per exemple, si no vols que es puga canviar lliurement el valor del codi de un producte. O necessites conèixer quin serà el nou valor abans d'assignar-ho. En aquests casos, se solen definir aqueixos atributs com a privats i a més es creen dins de la classe mètodes per a permetre'ns obtenir i/o modificar els valors d'aqueixos atributs. Per exemple:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>private $codigo;
+public function setCodigo($nuevo_codigo) {
+    if (noExisteCodigo($nuevo_codigo)) {
+        $this-&gt;codigo = $nuevo_codigo;
+        return true;
+    }
+    return false;
+}
+public function getCodigo() { return $this-&gt;codigo; }</code></pre>
+</div>
+</div>
+<p>Encara que no és obligatori, el nom del mètode que ens permet obtenir el valor de un atribut sol començar per get, i el que ens permet modificar-ho per set.</p>
+<p>En PHP5 es van introduir els anomenats mètodes màgics, entre ells <code>__set</code> i <code>__get</code>. Si es declaren aquests dos mètodes en una classe, PHP els invoca automàticament quan des de un objecte s'intenta usar un atribut no existent o no accessible. Per exemple, el codi següent simula que la classe Producte té qualsevol atribut que vulguem usar.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>class Producto {
+    private $atributos = array();
+    public function __get($atributo) {
+        return $this-&gt;atributos[$atributo];
+    }
+    public function __set($atributo, $valor) {
+        $this-&gt;atributos[$atributo] = $valor;
+    }
+}</code></pre>
+</div>
+</div>
+<h3>La pseuodovariable $this</h3>
+<p>Quan des de un objecte s'invoca un mètode de la classe, a aquest se li passa sempre una referència a l'objecte que ha fet la crida. Aquesta referència s'emmagatzema en la pseudovariable <code>$this.</code> S'utilitza, per exemple, en el codi anterior per a tenir accés a els atributs privats de l'objecte (que només són accessibles des dels mètodes de la classe).</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>print "&lt;p&gt;" . $this-&gt;codigo . "&lt;/p&gt;";</code></pre>
+</div>
+</div>
+<p>En la documentació de PHP tens més informació sobre els mètodes màgics: <a href="http://es.php.net/manual/es/language.oop5.magic.php">http://es.php.net/manual/es/language.oop5.magic.php</a></p>
+<h3>Constants de classe</h3>
+<p>A més de mètodes i propietats, en una classe també es poden definir constants, utilitzant la paraula const. És important que no confongues els atributs amb les constants. Són conceptes diferents: les constants no poden canviar el seu valor (òbviament, de ací el seu nom), no usen el caràcter $ i, a més, el seu valor va sempre entre cometes i està associat a la classe, és a dir, no existeix una còpia de el mateix en cada objecte. Per tant, per a accedir a les constants de una classe, s'ha d'utilitzar el nom de la classe i l'operador <code><strong>::</strong></code>, anomenat operador de resolució d'àmbit (que s'utilitza per a accedir a els elements de una classe).</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>class DB {
+    const USUARIO = 'dwes';
+    ...
+}
+echo DB::USUARIO;</code></pre>
+</div>
+</div>
+<p>És important ressaltar que no és necessari que existisca cap objecte de una classe per a poder accedir al valor de les constants que definisca. A més, els seus noms solen escriure's en majúscules.</p>
+<h3>Mètodes o atributs estàtics</h3>
+<p>Tampoc s'han de confondre les constants amb els membres estàtics de una classe. En PHP5, una classe pot tenir atributs o mètodes estàtics, també cridats a voltes atributs o mètodes de classe. Es defineixen utilitzant la paraula clau static.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>class Producte {
+    private static $num_productes = 0;
+    public static function nuevoProducto() {
+        self::$num_productes++;
+    }
+   …
+}</code></pre>
+</div>
+</div>
+<p>Els atributs i mètodes estàtics no poden ser cridats des d'un objecte de la classe utilitzant l'operador <code>-&gt;</code>. Si el mètode o atribut és públic, haurà d'accedir-se utilitzant el nom de la classe i l'operador de resolució d'àmbit.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>Producto::nuevoProducto();</code></pre>
+</div>
+</div>
+<p>Si és privat, com l'atribut <code>$num_productos</code> en l'exemple anterior, només es podrà accedir a ell des dels mètodes de la pròpia classe, utilitzant la paraula <code>self</code>. De la mateixa forma que <code>$this</code> referencia a l'objecte actual, <code>self</code> fa referència a la classe actual.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>self::$num_productes ++;</code></pre>
+</div>
+</div>
+<p>Els atributs estàtics de una classe s'utilitzen per a guardar informació general sobre la mateixa, com pot ser el nombre d'objectes que s'han instanciat. Només existeix un valor de l'atribut, que s'emmagatzema a nivell de classe.</p>
+<p>Els mètodes estàtics solen realitzar alguna tasca específica o retornar un objecte concret. Per exemple, les classes matemàtiques solen tenir mètodes estàtics per a realitzar logaritmes o arrels quadrades. No té sentit crear un objecte si l'única cosa que volem és realitzar una operació matemàtica.</p>
+<p>Els mètodes estàtics es criden des de la classe. No és possible cridar-los des d'un objecte i per tant, no podem usar <code>$this</code> dins d'un mètode estàtic.</p>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Llicenciat sota la </span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Llicència Creative Commons Reconeixement CompartirIgual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="2_caracterstiques_bsiques_de_la_utilitzaci_dobjectes_en_php.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="constructor_i_destructor.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<script type="text/javascript" src="_intef_js.js"></script></body></html>

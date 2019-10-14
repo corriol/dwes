@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>1. Introducció </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning  - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-1"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
+<section id="emptyHeader"></section>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">4. PHP - Classes i objectes</a></li>
+   <li id="active"><a href="1_introducci.html" class="active no-ch">1. Introducció</a></li>
+   <li><a href="2_caracterstiques_bsiques_de_la_utilitzaci_dobjectes_en_php.html" class="daddy">2. Característiques bàsiques de la utilització d'objectes en PHP</a>
+   <ul class="other-section">
+      <li><a href="1_definici_de_classes.html" class="daddy">1. Definició de classes</a>
+      <ul class="other-section">
+         <li><a href="constructor_i_destructor.html" class="no-ch">Constructor i destructor</a></li>
+      </ul>
+      </li>
+      <li><a href="2_utilitzaci_dobjectes.html" class="no-ch">2. Utilització d'objectes</a></li>
+      <li><a href="secci.html" class="no-ch">Secció</a></li>
+   </ul>
+   </li>
+   <li><a href="3_herncia.html" class="no-ch">3. Herència</a></li>
+   <li><a href="3_interfcies.html" class="no-ch">3. Interfícies</a></li>
+   <li><a href="4_traits.html" class="no-ch">4. Traits</a></li>
+   <li><a href="5_treball_amb_objectes.html" class="no-ch">5. Treball amb objectes</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="index.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="2_caracterstiques_bsiques_de_la_utilitzaci_dobjectes_en_php.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">1. Introducció</h1></header>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id1">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">La programació orientada a objectes (POO)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta1_49_2" class="block iDevice_content">
+<div class="exe-text"><p>La programació orientada a objectes (OOP, per les seues sigles en anglès) és un paradigma de programació.</p>
+<p>Paradigma:</p>
+<blockquote>
+<p>Teoria […] el nucli central de la qual […] suministra la base i el model per resoldre problemes i avançar en el coneixement.</p>
+</blockquote>
+<p>Per la qual cosa podem definir la programació orientada a objecte com  un mètode -provat i estudiat- el qual es basa en les interaccions d'objectes per resoldre les necessitats d'un sistema informàtic.</p>
+<p>Un objecte és una estructura que conté dades i el codi que els maneja.</p>
+<p>L'estructura dels objectes es defineix en les classes. En elles s'escriu el codi que defineix el comportament dels objectes i s'indiquen els membres que formaran part dels objectes d'aquesta classe. Entre els membres de una classe pot haver-hi:</p>
+<ul>
+<li>Mètodes. Són els membres de la classe que contenen el codi de la mateixa. Un mètode és com una funció. Pot rebre paràmetres i retornar valors.</li>
+<li>Atributs o propietats. Emmagatzemen informació sobre el estat de l'objecte al que pertanyen (i per tant, el seu valor pot ser diferent per a cadascun dels objectes de la mateixa classe).</li>
+</ul>
+<p>A la creació de un objecte basat en una classe se li anomena instanciar una classe i a l'objecte obtingut també se li coneix com a instància d'aqueixa classe.</p>
+<p>Els pilars fonamentals de la POO són:</p>
+<ul>
+<li>Herència. És el procés de crear una classe a partir de una altra, heretant el seu comportament i característiques i podent redefinir-los.</li>
+<li>Abstracció. Fa referència al fet que cada classe oculta en el seu interior les peculiaritats de la seua implementació, i presenta a l'exterior una sèrie de mètodes (interface) el comportament dels quals està ben definit. Vist des de l'exterior, cada objecte és un ens abstracte que realitza un treball.</li>
+<li>Polimorfisme. Un mateix mètode pot tenir comportaments diferents en funció de l'objecte amb que s'utilitze.</li>
+<li>Encapsulació. En la POO s'ajunten en un mateix lloc les dades i el codi que els manipula.</li>
+</ul>
+<p>Els avantatges més importants que aporta la programació orientada a objectes són:</p>
+<ul>
+<li><strong>Modularitat</strong>. La POO permet dividir els programes en parts o mòduls més xicotets, que són independents uns d'uns altres però poden comunicar-se entre ells.</li>
+<li><strong>Extensibilitat</strong>. Si es desitgen afegir noves característiques a una aplicació, la POO facilita aquesta tasca de dues formes: afegint nous mètodes al codi, o creant nous objectes que estenguen el comportament dels ja existents.</li>
+<li><strong>Manteniment</strong>. Els programes desenvolupats utilitzant POO són més senzills de mantenir, a causa de la modularitat abans comentada. També ajuda seguir certes convencions en escriure'ls , per exemple, escriure cada classe en un fitxer propi. No ha d'haver-hi dues classes en un mateix fitxer, ni un altre codi a part de el propi de la classe.</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Llicenciat sota la </span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Llicència Creative Commons Reconeixement CompartirIgual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="index.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="2_caracterstiques_bsiques_de_la_utilitzaci_dobjectes_en_php.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<script type="text/javascript" src="_intef_js.js"></script></body></html>
