@@ -3,7 +3,7 @@
 * [UD1. Introducció a la programació web](UD01/index.html)
 * [UD2. PHP - Característiques bàsiques del llenguatge](UD02/index.html)
 * UD3. Preparant el projecte
-* [UD4. PHP - Classes i objectes](UD04/index.hmtl)
+* [UD4. PHP - Classes i objectes](UD04/index.html)
 * UD5. PHP - accés a bases de dades amb PDO
 * UD6. Cap a un miniframework MVC
 * UD7. Composer	
