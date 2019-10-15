@@ -69,7 +69,7 @@
   <string role="key" value="_intendedEndUserRoleType"></string>
   <unicode value=""></unicode>
   <string role="key" value="_isChanged"></string>
-  <bool value="0"></bool>
+  <bool value="1"></bool>
   <string role="key" value="_isTemplate"></string>
   <bool value="0"></bool>
   <string role="key" value="_lang"></string>
@@ -85,7 +85,7 @@
   <string role="key" value="_name"></string>
   <unicode value="04._PHP_Classes_i_objectes"></unicode>
   <string role="key" value="_nextIdeviceId"></string>
-  <int value="6"></int>
+  <int value="7"></int>
   <string role="key" value="_nextNodeId"></string>
   <int value="11"></int>
   <string role="key" value="_nodeIdDict"></string>
@@ -189,7 +189,7 @@ text through the text editing buttons associated with the field."></unicode>
           <string role="key" value="nextImageId"></string>
           <int value="0"></int>
           <string role="key" value="parentNode"></string>
-          <none></none>
+          <reference key="3"></reference>
          </dictionary>
         </instance>
         <string role="key" value="edit"></string>
@@ -328,6 +328,8 @@ text through the text editing buttons associated with the field."></unicode>
               <string value=""></string>
               <string role="key" value="anchor_names"></string>
               <list></list>
+              <string role="key" value="anchors_linked_from_fields"></string>
+              <dictionary></dictionary>
               <string role="key" value="content_w_resourcePaths"></string>
               <unicode content="true" value="&lt;div class=&quot;exe-text&quot;&gt;&lt;p&gt;La programació orientada a objectes (OOP, per les seues sigles en anglès) és un paradigma de programació.&lt;/p&gt;
 &lt;p&gt;Paradigma:&lt;/p&gt;
@@ -377,7 +379,7 @@ text through the text editing buttons associated with the field."></unicode>
               <string role="key" value="nextImageId"></string>
               <int value="0"></int>
               <string role="key" value="parentNode"></string>
-              <none></none>
+              <reference key="7"></reference>
              </dictionary>
             </instance>
            </list>
@@ -519,7 +521,7 @@ $dwes-&amp;gt;connect('localhost', 'dwes', 'abc123.', 'dwes');&lt;/code&gt;&lt;/
              <string role="key" value="nextImageId"></string>
              <int value="0"></int>
              <string role="key" value="parentNode"></string>
-             <none></none>
+             <reference key="10"></reference>
             </dictionary>
            </instance>
            <string role="key" value="edit"></string>
@@ -755,7 +757,7 @@ echo DB::USUARIO;&lt;/code&gt;&lt;/pre&gt;
                 <string role="key" value="nextImageId"></string>
                 <int value="0"></int>
                 <string role="key" value="parentNode"></string>
-                <none></none>
+                <reference key="13"></reference>
                </dictionary>
               </instance>
               <string role="key" value="edit"></string>
@@ -924,7 +926,7 @@ $p = new Producto('GALAXYS');&lt;/code&gt;&lt;/pre&gt;
                    <string role="key" value="nextImageId"></string>
                    <int value="0"></int>
                    <string role="key" value="parentNode"></string>
-                   <none></none>
+                   <reference key="16"></reference>
                   </dictionary>
                  </instance>
                  <string role="key" value="edit"></string>
@@ -1070,7 +1072,7 @@ text through the text editing buttons associated with the field."></unicode>
                 <string role="key" value="nextImageId"></string>
                 <int value="0"></int>
                 <string role="key" value="parentNode"></string>
-                <none></none>
+                <reference key="19"></reference>
                </dictionary>
               </instance>
               <string role="key" value="edit"></string>
@@ -1124,37 +1126,241 @@ text through the text editing buttons associated with the field."></unicode>
            <list></list>
           </dictionary>
          </instance>
-         <instance class="exe.engine.node.Node" reference="23">
-          <dictionary>
-           <string role="key" value="_title"></string>
-           <string value=""></string>
-           <string role="key" value="idevices"></string>
-           <list></list>
-           <string role="key" value="_id"></string>
-           <unicode value="8"></unicode>
-           <string role="key" value="_package"></string>
-           <reference key="4"></reference>
-           <string role="key" value="exe.engine.node.Node.persistenceVersion"></string>
-           <int value="2"></int>
-           <string role="key" value="exportType"></string>
-           <string value="website"></string>
-           <string role="key" value="last_full_node_path"></string>
-           <string value="exe-node:4.%20PHP%20-%20Classes%20i%20objectes:2.%20Caracter%C3%ADstiques%20b%C3%A0siques%20de%20la%20utilitzaci%C3%B3%20d%27objectes%20en%20PHP:Secci%C3%B3"></string>
-           <string role="key" value="parent"></string>
-           <reference key="10"></reference>
-           <string role="key" value="children"></string>
-           <list></list>
-          </dictionary>
-         </instance>
         </list>
        </dictionary>
       </instance>
-      <instance class="exe.engine.node.Node" reference="24">
+      <instance class="exe.engine.node.Node" reference="22">
        <dictionary>
         <string role="key" value="_title"></string>
         <unicode value="3. Herència"></unicode>
         <string role="key" value="idevices"></string>
-        <list></list>
+        <list>
+         <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="20">
+          <dictionary>
+           <string role="key" value="_title"></string>
+           <unicode value="Free Text"></unicode>
+           <string role="key" value="_author"></string>
+           <unicode value="University of Auckland"></unicode>
+           <string role="key" value="_purpose"></string>
+           <unicode value="The majority of a learning resource will be 
+establishing context, delivering instructions and providing general information.
+This provides the framework within which the learning activities are built and 
+delivered."></unicode>
+           <string role="key" value="_tip"></string>
+           <string value=""></string>
+           <string role="key" value="childs"></string>
+           <list></list>
+           <string role="key" value="content"></string>
+           <instance class="exe.engine.field.TextAreaField" reference="21">
+            <dictionary>
+             <string role="key" value="_id"></string>
+             <int value="85"></int>
+             <string role="key" value="_idevice"></string>
+             <reference key="20"></reference>
+             <string role="key" value="_instruc"></string>
+             <unicode value="Use this field to enter text. This 
+iDevice has no emphasis applied although limited formatting can be applied to 
+text through the text editing buttons associated with the field."></unicode>
+             <string role="key" value="_name"></string>
+             <unicode value="Free Text"></unicode>
+             <string role="key" value="anchor_names"></string>
+             <list></list>
+             <string role="key" value="anchors_linked_from_fields"></string>
+             <dictionary></dictionary>
+             <string role="key" value="content_w_resourcePaths"></string>
+             <unicode content="true" value="&lt;h2&gt;Conceptes bàsics&lt;/h2&gt;
+&lt;p&gt;L'herència és un mecanisme de la POO que ens permet definir noves classes sobre la base d'una altra ja existent. Les noves classes que hereten també es coneixen amb el nom de subclasses. La classe de la qual hereten es diu classe base o superclasse.&lt;/p&gt;
+&lt;p&gt;Per exemple, en la nostra tenda web anem a tenir productes de diferents tipus. En principi hem creat per a manejar-los una classe anomenada Producte, amb alguns atributs i un mètode que genera una eixida personalitzada en format HTML del codi.&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;class Producte {
+    public $codi;
+    public $nom;
+    public $nom_curt;
+    public $PVP;
+    
+    public function mostra() {
+        print &quot;&amp;lt;p&amp;gt;&quot; . $this-&amp;gt;codigo . &quot;&amp;lt;/p&amp;gt;&quot;;
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Aquesta classe és molt útil si l'única informació que tenim dels diferents productes és la que es mostra a dalt. Però, si vols personalitzar la informació que vas a tractar de cada tipus de producte (i emmagatzemar, per exemple per als televisors, les polzades que tenen o la seua tecnologia de fabricació), pots crear noves classes que hereten de &lt;span style=&quot;font-family: andale mono, monospace;&quot;&gt;Producte&lt;/span&gt;. Per exemple, &lt;span style=&quot;font-family: andale mono, monospace;&quot;&gt;TV&lt;/span&gt;, &lt;span style=&quot;font-family: andale mono, monospace;&quot;&gt;Ordinador&lt;/span&gt;, &lt;span style=&quot;font-family: andale mono, monospace;&quot;&gt;Mòbil&lt;/span&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;class TV extends Producte {
+    public $polzades;
+    public $tecnologia;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;La paraula reservada &lt;code&gt;extends&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Com pots veure, per a definir una classe que herete d'una altra, simplement has de utilitzar la paraula &lt;span style=&quot;font-family: andale mono, monospace;&quot;&gt;extends&lt;/span&gt; indicant la superclasse. Els nous objectes que s'instancien a partir de la subclasse són també objectes de la classe base; es pot comprovar utilitzant l'operador &lt;span style=&quot;font-family: andale mono, monospace;&quot;&gt;instanceof&lt;/span&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;$t = new TV();
+if ($t instanceof Producte) {
+    // Aquest codi s'executa doncs la condició és certa
+    …
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;La nova classe hereta tots els atributs i mètodes públics de la classe base, però no els privats. Si vols crear en la classe base un mètode no visible a l'exterior (com els privats) que s'herete a les subclasses, has d'utilitzar la paraula protected en lloc de private. A més, pots redefinir el comportament dels mètodes existents en la classe base, simplement creant en la subclasse un nou mètode amb el mateix nom.&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;class TV extends Producte { 
+    public $polzades;
+    public $tecnologia;
+    
+    public function mostra() {
+        print &quot;&amp;lt;p&amp;gt;&quot; . $this-&amp;gt;polzades . &quot; polzades&amp;lt;/p&amp;gt;&quot;;
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;La paraula reservada &lt;code&gt;final&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Existeix una forma d'evitar que les classes heretades puguen redefinir el comportament dels mètodes existents en la superclasse: utilitzar la paraula &lt;span style=&quot;font-family: andale mono, monospace;&quot;&gt;final&lt;/span&gt;. Si en el nostre exemple haguérem fet:&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;class Producte { 
+    public $codi; 
+    public $nom;
+    public $nom_curt; 
+    public $PVP;
+
+    public final function mostra() {
+        print &quot;&amp;lt;p&amp;gt;&quot; . $this-&amp;gt;codi . &quot;&amp;lt;/p&amp;gt;&quot;;
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;En aquest cas el mètode &lt;span style=&quot;font-family: andale mono, monospace;&quot;&gt;mostra&lt;/span&gt; no podria redefinir-se en la classe TV.&lt;/p&gt;
+&lt;p&gt;Inclòs és pot declarar una classe utilitzant final. En aquest cas no podran crear-se classes heretades utilitzant-les com a base.&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;final class Producte {
+...
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;La paraula reservada &lt;code&gt;abstract&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Oposadament al modificador &lt;span style=&quot;font-family: andale mono, monospace;&quot;&gt;final&lt;/span&gt;, existeix també &lt;span style=&quot;font-family: andale mono, monospace;&quot;&gt;abstract&lt;/span&gt;. S'utilitza de la mateixa forma, tant amb mètodes com amb classes completes, però en lloc de prohibir l'herència, obliga a que s'herete. És a dir,&lt;br /&gt;una classe amb el modificador abstract  no pot tenir objectes que la instancien, però sí podrà utilitzar-se de classe base i les seues subclasses sí podran utilitzar-se per a instanciar objectes.&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;abstract class Producte {
+...
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Un mètode en el qual s'indique abstract, ha de ser redefinit obligatòriament per les subclasses, i no podrà contenir codi.&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;class Producte {
+    …
+    abstract public function mostra();
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Anem a fer una petita modificació en la nostra classe Producte. Per a facilitar la creació de nous objectes, crearem un constructor al que se li passarà un array amb els valors dels atributs del nou producte.&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;class Producte {
+    public $codige;
+    public $nom;
+    public $nom_curt;
+    public $PVP;
+
+    public function mostra() {
+        print &quot;&amp;lt;p&amp;gt;&quot; . $this-&amp;gt;codi . &quot;&amp;lt;/p&amp;gt;&quot;;
+    }
+    public function __construct($row) {
+        $this-&amp;gt;codi = $row['codi'];
+        $this-&amp;gt;nom = $row['nom'];
+        $this-&amp;gt;nom_curt = $row['nom_curt'];
+        $this-&amp;gt;PVP = $row['PVP'];
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Què passa ara amb la classe TV, què hereta de Producte? Quan crees un nou objecte d'aqueixa classe, es cridarà al constructor de Producte? Pots crear un nou constructor específic perquè redefinisca el comportament de la classe base?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Començant per aquesta última pregunta, òbviament pots definir un nou constructor per a les classes heretades que redefinisquen el comportament del que existeix en la classe base, tal com faries amb qualsevol altre mètode. I depenent de si programes o no el constructor en la classe heretada, es cridarà  o no automàticament al constructor de la classe base.&lt;/p&gt;
+&lt;p&gt;En PHP5+, si la classe heretada no té constructor propi, es cridarà automàticament al constructor de la classe base (si existeix). No obstant açò, si la classe heretada defineix el seu propi constructor, hauràs de ser tu el que realitze la crida al constructor de la classe base si ho consideres necessari, utilitzant per a açò la paraula &lt;code&gt;parent&lt;/code&gt; i l'operador de resolució d'àmbit.&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;class TV extends Producte {
+    public $polzades;
+    public $tecnologia;
+
+    public function mostra() {
+        print &quot;&amp;lt;p&amp;gt;&quot; . $this-&amp;gt;polzades . &quot; polzades&amp;lt;/p&amp;gt;&quot;;
+    }
+
+    public function __construct($row) {
+        parent::__construct($row);
+        $this-&amp;gt;polzades = $row['polzades'];
+        $this-&amp;gt;tecnologia = $row['tecnologia'];
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Ja has vist amb amb anterioritat com s'utilitzava la paraula clau &lt;code&gt;self&lt;/code&gt; per a tenir accés a la classe actual. La paraula parent és semblant. En utilitzar parent fas referència a la classe base de la actual, ta com apareix rere &lt;code&gt;extends&lt;/code&gt;.&lt;/p&gt;"></unicode>
+             <string role="key" value="exe.engine.field.Field.persistenceVersion"></string>
+             <int value="4"></int>
+             <string role="key" value="exe.engine.field.FieldWithResources.persistenceVersion"></string>
+             <int value="2"></int>
+             <string role="key" value="exe.engine.field.TextAreaField.persistenceVersion"></string>
+             <int value="3"></int>
+             <string role="key" value="htmlTag"></string>
+             <string value="div"></string>
+             <string role="key" value="images"></string>
+             <instance class="exe.engine.galleryidevice.GalleryImages">
+              <dictionary>
+               <string role="key" value=".listitems"></string>
+               <list></list>
+               <string role="key" value="idevice"></string>
+               <reference key="21"></reference>
+              </dictionary>
+             </instance>
+             <string role="key" value="intlinks_to_anchors"></string>
+             <dictionary></dictionary>
+             <string role="key" value="nextImageId"></string>
+             <int value="0"></int>
+             <string role="key" value="parentNode"></string>
+             <none></none>
+            </dictionary>
+           </instance>
+           <string role="key" value="edit"></string>
+           <bool value="0"></bool>
+           <string role="key" value="emphasis"></string>
+           <int value="0"></int>
+           <string role="key" value="exe.engine.freetextidevice.FreeTextIdevice.persistenceVersion"></string>
+           <int value="7"></int>
+           <string role="key" value="icon"></string>
+           <string value=""></string>
+           <string role="key" value="id"></string>
+           <unicode value="6"></unicode>
+           <string role="key" value="lastIdevice"></string>
+           <bool value="0"></bool>
+           <string role="key" value="originalicon"></string>
+           <string value=""></string>
+           <string role="key" value="parent"></string>
+           <none></none>
+           <string role="key" value="parentNode"></string>
+           <reference key="22"></reference>
+           <string role="key" value="systemResources"></string>
+           <list></list>
+           <string role="key" value="type"></string>
+           <none></none>
+           <string role="key" value="undo"></string>
+           <bool value="1"></bool>
+           <string role="key" value="userResources"></string>
+           <list></list>
+           <string role="key" value="version"></string>
+           <int value="0"></int>
+          </dictionary>
+         </instance>
+        </list>
         <string role="key" value="_id"></string>
         <unicode value="9"></unicode>
         <string role="key" value="_package"></string>
@@ -1175,10 +1381,10 @@ text through the text editing buttons associated with the field."></unicode>
         <list></list>
        </dictionary>
       </instance>
-      <instance class="exe.engine.node.Node" reference="20">
+      <instance class="exe.engine.node.Node" reference="23">
        <dictionary>
         <string role="key" value="_title"></string>
-        <unicode value="3. Interfícies"></unicode>
+        <unicode value="4. Interfícies"></unicode>
         <string role="key" value="idevices"></string>
         <list></list>
         <string role="key" value="_id"></string>
@@ -1192,7 +1398,7 @@ text through the text editing buttons associated with the field."></unicode>
         <string role="key" value="exportType"></string>
         <string value="website"></string>
         <string role="key" value="last_full_node_path"></string>
-        <string value="exe-node:4.%20PHP%20-%20Classes%20i%20objectes:3.%20Interf%C3%ADcies"></string>
+        <string value="exe-node:4.%20PHP%20-%20Classes%20i%20objectes:4.%20Interf%C3%ADcies"></string>
         <string role="key" value="parent"></string>
         <reference key="3"></reference>
         <string role="key" value="top_anchors_linked_from_fields"></string>
@@ -1201,7 +1407,7 @@ text through the text editing buttons associated with the field."></unicode>
         <list></list>
        </dictionary>
       </instance>
-      <instance class="exe.engine.node.Node" reference="21">
+      <instance class="exe.engine.node.Node" reference="24">
        <dictionary>
         <string role="key" value="_title"></string>
         <unicode value="4. Traits"></unicode>
@@ -1227,7 +1433,7 @@ text through the text editing buttons associated with the field."></unicode>
         <list></list>
        </dictionary>
       </instance>
-      <instance class="exe.engine.node.Node" reference="22">
+      <instance class="exe.engine.node.Node" reference="25">
        <dictionary>
         <string role="key" value="_title"></string>
         <unicode value="5. Treball amb objectes"></unicode>
@@ -1263,19 +1469,17 @@ text through the text editing buttons associated with the field."></unicode>
    <unicode role="key" value="2"></unicode>
    <reference key="10"></reference>
    <unicode role="key" value="3"></unicode>
-   <reference key="20"></reference>
+   <reference key="23"></reference>
    <unicode role="key" value="4"></unicode>
-   <reference key="21"></reference>
+   <reference key="24"></reference>
    <unicode role="key" value="5"></unicode>
-   <reference key="22"></reference>
+   <reference key="25"></reference>
    <unicode role="key" value="6"></unicode>
    <reference key="13"></reference>
    <unicode role="key" value="7"></unicode>
    <reference key="19"></reference>
-   <unicode role="key" value="8"></unicode>
-   <reference key="23"></reference>
    <unicode role="key" value="9"></unicode>
-   <reference key="24"></reference>
+   <reference key="22"></reference>
   </dictionary>
   <string role="key" value="_objectives"></string>
   <unicode value=""></unicode>
@@ -1286,7 +1490,7 @@ text through the text editing buttons associated with the field."></unicode>
   <string role="key" value="backgroundImgTile"></string>
   <bool value="0"></bool>
   <string role="key" value="currentNode"></string>
-  <reference key="13"></reference>
+  <reference key="22"></reference>
   <string role="key" value="dublinCore"></string>
   <instance class="exe.engine.package.DublinCore">
    <dictionary>
