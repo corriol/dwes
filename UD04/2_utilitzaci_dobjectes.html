@@ -2,6 +2,7 @@
 <html lang="ca">
 <head>
 <link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
 <link rel="stylesheet" type="text/css" href="content.css" />
 <link rel="stylesheet" type="text/css" href="nav.css" />
 <meta http-equiv="content-type" content="text/html;  charset=utf-8" />
@@ -11,6 +12,7 @@
 <meta name="generator" content="eXeLearning  - exelearning.net" />
 <!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
 <script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
 <script type="text/javascript" src="common_i18n.js"></script>
 <script type="text/javascript" src="common.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -39,8 +41,8 @@
    </ul>
    </li>
    <li><a href="4_interfcies.html" class="no-ch">4. Interfícies</a></li>
-   <li><a href="4_traits.html" class="no-ch">4. Traits</a></li>
-   <li><a href="5_treball_amb_objectes.html" class="no-ch">5. Treball amb objectes</a></li>
+   <li><a href="5_traits.html" class="no-ch">5. Traits</a></li>
+   <li><a href="6_treball_amb_objectes.html" class="no-ch">6. Treball amb objectes</a></li>
 </ul>
 </nav>
 <div id='topPagination'>
@@ -54,34 +56,84 @@
 <article class="iDevice_wrapper FreeTextIdevice" id="id4">
 <div class="iDevice emphasis0">
 <div id="ta4_85" class="block iDevice_content">
-<p>Ja saps com instanciar un objecte utilitzant new, i com accedir a els seus mètodes i atributs públics amb l'operador fletxa:</p>
-<p>$p = new Producte();<br />$p-&gt;nomene = 'Samsung Galaxy S';<br />$p-&gt;mostra();</p>
-<p>Una vegada creat un objecte, pots utilitzar l'operador instanceof per a comprovar si és o no una instància de una classe determinada.</p>
-<p>if ($p instanceof Producte) {<br />…<br />}</p>
+<p>Ja saps com instanciar un objecte utilitzant <code>new</code>, i com accedir a els seus mètodes i atributs públics amb l'operador fletxa:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>$p = new Producte();
+$p-&gt;nom = 'Samsung Galaxy S';
+$p-&gt;mostra();</code></pre>
+</div>
+</div>
+<p>Una vegada creat un objecte, pots utilitzar l'operador <code>instanceof</code> per a comprovar si és o no una instància de una classe determinada.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>if ($p instanceof Producte) {
+    …
+}</code></pre>
+</div>
+</div>
 <p>A més, en PHP5 s'inclouen una sèrie de funcions útils per al desenvolupament d'aplicacions utilitzant POO.</p>
 <p>Funcions d'utilitat per a objectes i classes en PHP5</p>
-<p>Funció Exemple Significat<br />get_class tire "La classe és: " . get_class($p); Retorna el nom de la classe de l'objecte.</p>
-<p><br />class_exists<br />if (class_exists('Producte') {<br />$p = new Producte();<br />…<br />}<br />Retorna true si la classe està definida o false en cas contrari.<br />get_declared_classes print_r(get_declared_classes()); Retorna un array amb els noms de les<br />classes definides.<br />class_àlies<br />class_àlies('Producte', 'Articule');<br />$p = new Articule();<br />Crea un àlies per a una classe.<br />Retorna un array amb els noms de<br />get_class_methods print_r(get_class_methods('Producte')); els mètodes de una classe que són<br />accessibles des d'on es fa <br />la trucada.</p>
-<p>method_exists</p>
-<p>Retorna true si existeix el mètode en l'objecte o la classe que s'indica, o false en cas contrari, independentment de si és accessible o no.</p>
-<p>if (method_exists('Producte', 'ven'){<br />…<br />}</p>
-<p></p>
-<p><br />Retorna un array amb els noms de<br />get_class_vars print_r(get_class_vars('Producte')); els atributs de una classe que són<br />accessibles des d'on es fa <br />la trucada.</p>
-<p>Retorna un array amb els noms dels mètodes de un objecte que són accessibles des d'on es fa la trucada.<br />get_object_vars<br />print_r(get_object_vars($p));</p>
-<p></p>
-<p><br />if (property_exists('Producte', Retorna true si existeix l'atribut en <br />el property_exists 'codigo') { objecte o la classe que s'indica, o false<br />… en cas contrari, independentment<br />} de si és accessible o no.</p>
+<ul>
+<li>get_class</li>
+<li>class_exists</li>
+<li>get_declared_classes</li>
+<li>class_alias</li>
+<li>get_class_methods</li>
+<li>method_exists</li>
+<li>get_class_vars</li>
+<li>get_object_vars</li>
+<li>property_exists</li>
+</ul>
 <p>Des de PHP5, pots indicar en les funcions i mètodes de quina classe han de ser els objectes que es passen com a paràmetres. Per a açò, has d'especificar el tipus abans del paràmetre.</p>
-<p>public function vendeProducto(Producte $p) {<br />…<br />}</p>
-<p>Si quan es realitza la trucada, el paràmetre no és del tipus adequat, es produeix un error que podries capturar. A més, tingues en compte que només funciona amb objectes (i a partir de PHP5.1 també amb arrays).</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>public function venProducte(Producte $p) {
+    …
+}</code></pre>
+</div>
+</div>
+<p>Si quan es realitza la crida, el paràmetre no és del tipus adequat, es produeix un error que podries capturar. A més, tingues en compte que només funciona amb objectes (i a partir de PHP5.1 també amb arrays).</p>
 <p>Una característica de la POO que has de tenir molt en compte és què succeeix amb els objectes quan els panses a una funció, o simplement quan executes un codi com el següent:</p>
-<p>$p = new Producte();<br />$p-&gt;nomene = 'Samsung Galaxy S';<br />$a = $p;</p>
-<p>En PHP4, l'última línia del codi anterior crea un nou objecte amb els mateixos valors de l'original, de la mateixa forma que es copia qualsevol altre tipus de variable. Si després de fer la còpia es modifica, per exemple, l'atribut 'nomene' de un dels objectes, l'altre objecte no es veuria modificat.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>$p = new Producte();
+$p-&gt;nom = 'Samsung Galaxy S';
+$a = $p;</code></pre>
+</div>
+</div>
+<p>En PHP4, l'última línia del codi anterior crea un nou objecte amb els mateixos valors de l'original, de la mateixa forma que es copia qualsevol altre tipus de variable. Si després de fer la còpia es modifica, per exemple, l'atribut 'nom' de un dels objectes, l'altre objecte no es veuria modificat.</p>
 <p>No obstant açò, en PHP5 aquest comportament varia. El codi anterior simplement crearia un nou identificador de el mateix objecte. Açò és, quan s'utilitze un qualsevol dels identificadors per a canviar el valor de algun atribut, aquest canvi es veuria també reflectit en accedir utilitzant l'altre identificador. Recorda que, encara que hi haja dos o més identificadors de el mateix objecte, en realitat tots es refereixen a l'única còpia que s'emmagatzema del mateix.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Per tant, a partir de PHP5 no pots copiar un objecte utilitzant l'operador =. Si necessites copiar un objecte, has d'utilitzar clone. En utilitzar els atributs de el mateix en un nou objecte.<br />sobre un objecte existent, es crea una còpia de</p>
-<p>A més, existeix una forma senzilla de personalitzar la còpia per a cada classe particular. Per exemple, pot succeir que vulgues copiar tots els atributs menys algun. En el nostre exemple, almenys el codi de cada producte ha de ser diferent i, per tant, potser no tinga sentit copiar-ho en crear un nou objecte. Si aquest fóra el cas, pots crear un mètode de nom clone en la classe. Aquest mètode es cridarà automàticament després de copiar tots els atributs en el nou objecte.</p>
+<p>Per tant, a partir de PHP5 no pots copiar un objecte utilitzant l'operador =. Si necessites copiar un objecte, has d'utilitzar clone. En utilitzar els atributs del mateix en un nou objecte.<br />sobre un objecte existent, es crea una còpia de</p>
+<p>A més, existeix una forma senzilla de personalitzar la còpia per a cada classe particular. Per exemple, pot succeir que vulgues copiar tots els atributs menys algun. En el nostre exemple, almenys el codi de cada producte ha de ser diferent i, per tant, potser no tinga sentit copiar-ho en crear un nou objecte. Si aquest fóra el cas, pots crear un mètode de nom <code>__clone</code> en la classe. Aquest mètode es cridarà automàticament després de copiar tots els atributs en el nou objecte.</p>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper FreeTextIdevice" id="id11">
+<div class="iDevice emphasis0">
+<div id="ta11_85" class="block iDevice_content">
+<h2>Comparació d'Objectes</h2>
+<p>En utilitzar l'operador de comparació (==), es comparen d'una manera senzilla les variables de cada objecte, és a dir: dues instàncies d'un objecte són iguals si tenen els mateixos atributs i valors (els valors es comparen amb ==), i són instàncies de la mateixa classe.</p>
+<p>Quan s'utilitza l'operador identitat (===), les variables d'un objecte són idèntiques si i només sí fan referència a la mateixa instància de la mateixa classe.</p>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper FreeTextIdevice" id="id12">
+<div class="iDevice emphasis0">
+<div id="ta12_85" class="block iDevice_content">
+<h2>Clonació d'Objectes</h2>
+<p>Per crear una còpia d'un objecte s'utilitza la paraula clau <code>clone</code> (que invoca, si fos possible, al mètode __clone () de l'objecte). No es pot cridar el mètode __clone () d'un objecte directament.</p>
+<p>$ Copia_objecte = clone $objecte;</p>
+<p>Quan es clona un objecte, PHP5 durà a terme una còpia superficial de les propietats de l'objecte. Les propietats que siguin referències a altres variables, mantindran les referències.</p>
+<p>Si els atributs són objectes no es clonaran.</p>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper FreeTextIdevice" id="id13">
+<div class="iDevice emphasis0">
+<div id="ta13_85" class="block iDevice_content">
+<h2>Iteració d'objectes</h2>
+<p>PHP 5 ofereix una manera per definir objectes, de manera que és possible recórrer una llista d'elements amb, per exemple, una sentència foreach. Per defecte, s'utilitzaran totes les propietats visibles per a la iteració.</p>
 </div>
 </div>
 </article>

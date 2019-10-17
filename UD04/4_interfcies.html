@@ -2,6 +2,7 @@
 <html lang="ca">
 <head>
 <link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
 <link rel="stylesheet" type="text/css" href="content.css" />
 <link rel="stylesheet" type="text/css" href="nav.css" />
 <meta http-equiv="content-type" content="text/html;  charset=utf-8" />
@@ -11,6 +12,7 @@
 <meta name="generator" content="eXeLearning  - exelearning.net" />
 <!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
 <script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
 <script type="text/javascript" src="common_i18n.js"></script>
 <script type="text/javascript" src="common.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -39,18 +41,122 @@
    </ul>
    </li>
    <li id="active"><a href="4_interfcies.html" class="active no-ch">4. Interfícies</a></li>
-   <li><a href="4_traits.html" class="no-ch">4. Traits</a></li>
-   <li><a href="5_treball_amb_objectes.html" class="no-ch">5. Treball amb objectes</a></li>
+   <li><a href="5_traits.html" class="no-ch">5. Traits</a></li>
+   <li><a href="6_treball_amb_objectes.html" class="no-ch">6. Treball amb objectes</a></li>
 </ul>
 </nav>
 <div id='topPagination'>
 <nav class="pagination noprt">
-<a href="exercicis_prctics.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="4_traits.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+<a href="exercicis_prctics.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="5_traits.html" class="next"><span>Següent<span> &raquo;</span></span></a>
 </nav>
 </div>
 <div id="main-wrapper">
 <section id="main">
 <header id="nodeDecoration"><h1 id="nodeTitle">4. Interfícies</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id10">
+<div class="iDevice emphasis0">
+<div id="ta10_85" class="block iDevice_content">
+<p>Un interfície (<em>interface</em>) és com una classe buida que solament conté declaracions de mètodes. Es defineixen utilitzant la paraula interface.  Per exemple, abans vas veure que podies crear noves classes heretades de Producte, com TV o Ordinador. També vas veure que en les subclasses podies redefinir el comportament del mètode perquè generara una eixida en HTML diferent per a cada tipus de producte.</p>
+<p>Si vols assegurar-te que tots els tipus de productes tinguen un mètode <code>mostra</code>, pots crear un interface com el següent.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>interface IMostra {
+    public function mostra();
+}</code></pre>
+</div>
+</div>
+<p>I quan crees les subclasses hauràs d'indicar amb la paraula <code>implements</code> que han de implementar els mètodes declarats en aquest interface. </p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>class TV extends Producte implements IMostra {
+        …
+        public function mostra() {
+            print "&lt;p&gt;" . $this-&gt;polzades . " polzades&lt;/p&gt;";
+        }
+        …
+}</code></pre>
+</div>
+</div>
+<p>Tots els mètodes que es declaren en un <code>interface</code> han de ser públics. A més de mètodes, els interfícies podran contenir constants però no atributs.</p>
+<p>Un interface és com un contracte que la classe ha de complir. En implementar tots els mètodes declarats en la interfície s'assegura la interoperabilitat entre classes. Si saps que una classe implementa un interfície determinada saps quins noms tenen els seus mètodes, quins paràmetres els has de passar i, probablement, podràs esbrinar fàcilment amb quins objectiu han sigut escrits.</p>
+<p>Per exemple, en la llibreria de PHP està definit la interfície <code>countable</code>.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>Countable {
+    abstract public int count ( void )
+}</code></pre>
+</div>
+</div>
+<p>Si crees una classe per a la cistella de la compra en la tenda web, podries implementar aquesta interfície per a contar els productes que figuren en la mateixa.</p>
+<p>Abans vas aprendre que en PHP5 una classe només pot heretar d'una altra. En PHP5 no existeix l'herència múltiple. No obstant açò, sí és possible crear classes que implementen diverses interfícies, simplement separant la llista d'interfícies per comes després de la paraula <code>implements</code>.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>class TV extends Producte implements IMostra, Countable {
+     …
+}</code></pre>
+</div>
+</div>
+<p>L'única restricció és que els noms dels mètodes que s'hagen d'implementar en els diferents interfícies no coincidisquen. És a dir, en el nostre exemple, la interfície <code>IMostra</code> no podria contenir el mètode <code>count</code>, doncs aquest ja està declarat en <code>Countable</code>.</p>
+<p>En PHP5 també es poden crear nous interfícies heretant d'uns altres ja existents. Es fa de la mateixa forma que amb les classes, utilitzant la paraula <code>extends</code>.</p>
+<p>Una dels dubtes més comuns en POO, és quina solució adoptar en algunes situacions: interfícies o classes abstractes. Ambdues permeten definir regles per a les classes que els implementen o hereten respectivament. I cap permet instanciar objectes. Les diferències principals entre ambdues opcions són:</p>
+<ul>
+<li>En les classes abstractes, els mètodes poden contenir codi. Si van a existir diverses subclasses amb un comportament comú, es podria programar en els mètodes de la classe abstracta. Si s'opta per un interface, caldria repetir el codi en totes les classes que ho implemente.</li>
+<li>Les classes abstractes poden contenir atributs, i els interfícies no.</li>
+<li>No es pot crear una classe que herete de dues classes abstractes, però sí es pot crear una classe que implemente diverses interfícies.</li>
+</ul>
+<p>Per exemple, en la botiga <em>online</em> va a haver-hi dos tipus d'usuaris: clients i empleats. Si necessites crear en la teua aplicació objectes de tipus Usuari  (per exemple, per a manejar de forma conjunta a els clients i a els empleats), hauries de crear una classe no abstracta amb aqueix nom, de la qual heretarien Client i Empleat.</p>
+<p><code></code><code></code></p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>class Usuari {
+    ...
+}
+class Client extends Usuari {
+    ...
+}
+class Empleat extends Usuari {
+    ...
+}</code></pre>
+</div>
+</div>
+<p>Però si no fóra així, hauries de decidir si crees o no Usuari, i si ho faries com una classe abstracta o com una interfície.</p>
+<p>Si per exemple, volgueres definir en un únic lloc els atributs comuns a Client i a Empleat, hauries de crear una classe abstracta Usuari de la qual hereten.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>abstract class Usuari {
+    public $dni;
+
+    protected $nom;
+    ...
+}</code></pre>
+</div>
+</div>
+<p>Però açò no podries fer-ho si ja tens planificada alguna relació d'herència per a una d'aquestes dues classes.</p>
+<p>Per a finalitzar amb els interfícies, a la llista de funcions de PHP relacionades amb la POO pots afegir les següents.</p>
+<table class="exe-table">
+<thead>
+<tr>
+<th>Funció</th>
+<th>Exemple</th>
+<th>Significat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>get_declared_interfícies</td>
+<td>print_r (get_declared_interfícies());</td>
+<td>Retorna un array amb els noms dels interfícies declarats.</td>
+</tr>
+<tr>
+<td>interface_exists</td>
+<td>if (interface_exists('iMuestra') { … }</td>
+<td>Retorna true si existeix l'interface que s'indica, o false en cas contrari.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</article>
 <div id="packageLicense" class="cc cc-by-sa">
 <p><span>Llicenciat sota la </span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Llicència Creative Commons Reconeixement CompartirIgual 4.0</a></p>
 </div>
@@ -58,7 +164,7 @@
 </div>
 <div id='bottomPagination'>
 <nav class="pagination noprt">
-<a href="exercicis_prctics.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="4_traits.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+<a href="exercicis_prctics.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="5_traits.html" class="next"><span>Següent<span> &raquo;</span></span></a>
 </nav>
 </div>
 </div>

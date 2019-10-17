@@ -85,7 +85,7 @@
   <string role="key" value="_name"></string>
   <unicode value="04._PHP_Classes_i_objectes"></unicode>
   <string role="key" value="_nextIdeviceId"></string>
-  <int value="10"></int>
+  <int value="14"></int>
   <string role="key" value="_nextNodeId"></string>
   <int value="13"></int>
   <string role="key" value="_nodeIdDict"></string>
@@ -1022,34 +1022,56 @@ text through the text editing buttons associated with the field."></unicode>
                 <string role="key" value="anchors_linked_from_fields"></string>
                 <dictionary></dictionary>
                 <string role="key" value="content_w_resourcePaths"></string>
-                <unicode content="true" value="&lt;p&gt;Ja saps com instanciar un objecte utilitzant new, i com accedir a els seus mètodes i atributs públics amb l'operador fletxa:&lt;/p&gt;
-&lt;p&gt;$p = new Producte();&lt;br /&gt;$p-&amp;gt;nomene = 'Samsung Galaxy S';&lt;br /&gt;$p-&amp;gt;mostra();&lt;/p&gt;
-&lt;p&gt;Una vegada creat un objecte, pots utilitzar l'operador instanceof per a comprovar si és o no una instància de una classe determinada.&lt;/p&gt;
-&lt;p&gt;if ($p instanceof Producte) {&lt;br /&gt;…&lt;br /&gt;}&lt;/p&gt;
+                <unicode content="true" value="&lt;p&gt;Ja saps com instanciar un objecte utilitzant &lt;code&gt;new&lt;/code&gt;, i com accedir a els seus mètodes i atributs públics amb l'operador fletxa:&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;$p = new Producte();
+$p-&amp;gt;nom = 'Samsung Galaxy S';
+$p-&amp;gt;mostra();&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Una vegada creat un objecte, pots utilitzar l'operador &lt;code&gt;instanceof&lt;/code&gt; per a comprovar si és o no una instància de una classe determinada.&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;if ($p instanceof Producte) {
+    …
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;p&gt;A més, en PHP5 s'inclouen una sèrie de funcions útils per al desenvolupament d'aplicacions utilitzant POO.&lt;/p&gt;
 &lt;p&gt;Funcions d'utilitat per a objectes i classes en PHP5&lt;/p&gt;
-&lt;p&gt;Funció Exemple Significat&lt;br /&gt;get_class tire &quot;La classe és: &quot; . get_class($p); Retorna el nom de la classe de l'objecte.&lt;/p&gt;
-&lt;p&gt;&lt;br /&gt;class_exists&lt;br /&gt;if (class_exists('Producte') {&lt;br /&gt;$p = new Producte();&lt;br /&gt;…&lt;br /&gt;}&lt;br /&gt;Retorna true si la classe està definida o false en cas contrari.&lt;br /&gt;get_declared_classes print_r(get_declared_classes()); Retorna un array amb els noms de les&lt;br /&gt;classes definides.&lt;br /&gt;class_àlies&lt;br /&gt;class_àlies('Producte', 'Articule');&lt;br /&gt;$p = new Articule();&lt;br /&gt;Crea un àlies per a una classe.&lt;br /&gt;Retorna un array amb els noms de&lt;br /&gt;get_class_methods print_r(get_class_methods('Producte')); els mètodes de una classe que són&lt;br /&gt;accessibles des d'on es fa &lt;br /&gt;la trucada.&lt;/p&gt;
-&lt;p&gt;method_exists&lt;/p&gt;
-&lt;p&gt;Retorna true si existeix el mètode en l'objecte o la classe que s'indica, o false en cas contrari, independentment de si és accessible o no.&lt;/p&gt;
-&lt;p&gt;if (method_exists('Producte', 'ven'){&lt;br /&gt;…&lt;br /&gt;}&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;br /&gt;Retorna un array amb els noms de&lt;br /&gt;get_class_vars print_r(get_class_vars('Producte')); els atributs de una classe que són&lt;br /&gt;accessibles des d'on es fa &lt;br /&gt;la trucada.&lt;/p&gt;
-&lt;p&gt;Retorna un array amb els noms dels mètodes de un objecte que són accessibles des d'on es fa la trucada.&lt;br /&gt;get_object_vars&lt;br /&gt;print_r(get_object_vars($p));&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;br /&gt;if (property_exists('Producte', Retorna true si existeix l'atribut en &lt;br /&gt;el property_exists 'codigo') { objecte o la classe que s'indica, o false&lt;br /&gt;… en cas contrari, independentment&lt;br /&gt;} de si és accessible o no.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;get_class&lt;/li&gt;
+&lt;li&gt;class_exists&lt;/li&gt;
+&lt;li&gt;get_declared_classes&lt;/li&gt;
+&lt;li&gt;class_alias&lt;/li&gt;
+&lt;li&gt;get_class_methods&lt;/li&gt;
+&lt;li&gt;method_exists&lt;/li&gt;
+&lt;li&gt;get_class_vars&lt;/li&gt;
+&lt;li&gt;get_object_vars&lt;/li&gt;
+&lt;li&gt;property_exists&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Des de PHP5, pots indicar en les funcions i mètodes de quina classe han de ser els objectes que es passen com a paràmetres. Per a açò, has d'especificar el tipus abans del paràmetre.&lt;/p&gt;
-&lt;p&gt;public function vendeProducto(Producte $p) {&lt;br /&gt;…&lt;br /&gt;}&lt;/p&gt;
-&lt;p&gt;Si quan es realitza la trucada, el paràmetre no és del tipus adequat, es produeix un error que podries capturar. A més, tingues en compte que només funciona amb objectes (i a partir de PHP5.1 també amb arrays).&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;public function venProducte(Producte $p) {
+    …
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Si quan es realitza la crida, el paràmetre no és del tipus adequat, es produeix un error que podries capturar. A més, tingues en compte que només funciona amb objectes (i a partir de PHP5.1 també amb arrays).&lt;/p&gt;
 &lt;p&gt;Una característica de la POO que has de tenir molt en compte és què succeeix amb els objectes quan els panses a una funció, o simplement quan executes un codi com el següent:&lt;/p&gt;
-&lt;p&gt;$p = new Producte();&lt;br /&gt;$p-&amp;gt;nomene = 'Samsung Galaxy S';&lt;br /&gt;$a = $p;&lt;/p&gt;
-&lt;p&gt;En PHP4, l'última línia del codi anterior crea un nou objecte amb els mateixos valors de l'original, de la mateixa forma que es copia qualsevol altre tipus de variable. Si després de fer la còpia es modifica, per exemple, l'atribut 'nomene' de un dels objectes, l'altre objecte no es veuria modificat.&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;$p = new Producte();
+$p-&amp;gt;nom = 'Samsung Galaxy S';
+$a = $p;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;En PHP4, l'última línia del codi anterior crea un nou objecte amb els mateixos valors de l'original, de la mateixa forma que es copia qualsevol altre tipus de variable. Si després de fer la còpia es modifica, per exemple, l'atribut 'nom' de un dels objectes, l'altre objecte no es veuria modificat.&lt;/p&gt;
 &lt;p&gt;No obstant açò, en PHP5 aquest comportament varia. El codi anterior simplement crearia un nou identificador de el mateix objecte. Açò és, quan s'utilitze un qualsevol dels identificadors per a canviar el valor de algun atribut, aquest canvi es veuria també reflectit en accedir utilitzant l'altre identificador. Recorda que, encara que hi haja dos o més identificadors de el mateix objecte, en realitat tots es refereixen a l'única còpia que s'emmagatzema del mateix.&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;Per tant, a partir de PHP5 no pots copiar un objecte utilitzant l'operador =. Si necessites copiar un objecte, has d'utilitzar clone. En utilitzar els atributs de el mateix en un nou objecte.&lt;br /&gt;sobre un objecte existent, es crea una còpia de&lt;/p&gt;
-&lt;p&gt;A més, existeix una forma senzilla de personalitzar la còpia per a cada classe particular. Per exemple, pot succeir que vulgues copiar tots els atributs menys algun. En el nostre exemple, almenys el codi de cada producte ha de ser diferent i, per tant, potser no tinga sentit copiar-ho en crear un nou objecte. Si aquest fóra el cas, pots crear un mètode de nom clone en la classe. Aquest mètode es cridarà automàticament després de copiar tots els atributs en el nou objecte.&lt;/p&gt;"></unicode>
+&lt;p&gt;Per tant, a partir de PHP5 no pots copiar un objecte utilitzant l'operador =. Si necessites copiar un objecte, has d'utilitzar clone. En utilitzar els atributs del mateix en un nou objecte.&lt;br /&gt;sobre un objecte existent, es crea una còpia de&lt;/p&gt;
+&lt;p&gt;A més, existeix una forma senzilla de personalitzar la còpia per a cada classe particular. Per exemple, pot succeir que vulgues copiar tots els atributs menys algun. En el nostre exemple, almenys el codi de cada producte ha de ser diferent i, per tant, potser no tinga sentit copiar-ho en crear un nou objecte. Si aquest fóra el cas, pots crear un mètode de nom &lt;code&gt;__clone&lt;/code&gt; en la classe. Aquest mètode es cridarà automàticament després de copiar tots els atributs en el nou objecte.&lt;/p&gt;"></unicode>
                 <string role="key" value="exe.engine.field.Field.persistenceVersion"></string>
                 <int value="4"></int>
                 <string role="key" value="exe.engine.field.FieldWithResources.persistenceVersion"></string>
@@ -1105,6 +1127,280 @@ text through the text editing buttons associated with the field."></unicode>
               <int value="0"></int>
              </dictionary>
             </instance>
+            <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="20">
+             <dictionary>
+              <string role="key" value="_title"></string>
+              <unicode value="Free Text"></unicode>
+              <string role="key" value="_author"></string>
+              <unicode value="University of Auckland"></unicode>
+              <string role="key" value="_purpose"></string>
+              <unicode value="The majority of a learning resource will be 
+establishing context, delivering instructions and providing general information.
+This provides the framework within which the learning activities are built and 
+delivered."></unicode>
+              <string role="key" value="_tip"></string>
+              <string value=""></string>
+              <string role="key" value="childs"></string>
+              <list></list>
+              <string role="key" value="content"></string>
+              <instance class="exe.engine.field.TextAreaField" reference="21">
+               <dictionary>
+                <string role="key" value="_id"></string>
+                <int value="85"></int>
+                <string role="key" value="_idevice"></string>
+                <reference key="20"></reference>
+                <string role="key" value="_instruc"></string>
+                <unicode value="Use this field to enter text. This 
+iDevice has no emphasis applied although limited formatting can be applied to 
+text through the text editing buttons associated with the field."></unicode>
+                <string role="key" value="_name"></string>
+                <unicode value="Free Text"></unicode>
+                <string role="key" value="anchor_names"></string>
+                <list></list>
+                <string role="key" value="anchors_linked_from_fields"></string>
+                <dictionary></dictionary>
+                <string role="key" value="content_w_resourcePaths"></string>
+                <unicode content="true" value="&lt;h2&gt;Comparació d'Objectes&lt;/h2&gt;
+&lt;p&gt;En utilitzar l'operador de comparació (==), es comparen d'una manera senzilla les variables de cada objecte, és a dir: dues instàncies d'un objecte són iguals si tenen els mateixos atributs i valors (els valors es comparen amb ==), i són instàncies de la mateixa classe.&lt;/p&gt;
+&lt;p&gt;Quan s'utilitza l'operador identitat (===), les variables d'un objecte són idèntiques si i només sí fan referència a la mateixa instància de la mateixa classe.&lt;/p&gt;"></unicode>
+                <string role="key" value="exe.engine.field.Field.persistenceVersion"></string>
+                <int value="4"></int>
+                <string role="key" value="exe.engine.field.FieldWithResources.persistenceVersion"></string>
+                <int value="2"></int>
+                <string role="key" value="exe.engine.field.TextAreaField.persistenceVersion"></string>
+                <int value="3"></int>
+                <string role="key" value="htmlTag"></string>
+                <string value="div"></string>
+                <string role="key" value="images"></string>
+                <instance class="exe.engine.galleryidevice.GalleryImages">
+                 <dictionary>
+                  <string role="key" value=".listitems"></string>
+                  <list></list>
+                  <string role="key" value="idevice"></string>
+                  <reference key="21"></reference>
+                 </dictionary>
+                </instance>
+                <string role="key" value="intlinks_to_anchors"></string>
+                <dictionary></dictionary>
+                <string role="key" value="nextImageId"></string>
+                <int value="0"></int>
+                <string role="key" value="parentNode"></string>
+                <none></none>
+               </dictionary>
+              </instance>
+              <string role="key" value="edit"></string>
+              <bool value="0"></bool>
+              <string role="key" value="emphasis"></string>
+              <int value="0"></int>
+              <string role="key" value="exe.engine.freetextidevice.FreeTextIdevice.persistenceVersion"></string>
+              <int value="7"></int>
+              <string role="key" value="icon"></string>
+              <string value=""></string>
+              <string role="key" value="id"></string>
+              <unicode value="11"></unicode>
+              <string role="key" value="lastIdevice"></string>
+              <bool value="0"></bool>
+              <string role="key" value="originalicon"></string>
+              <string value=""></string>
+              <string role="key" value="parent"></string>
+              <none></none>
+              <string role="key" value="parentNode"></string>
+              <reference key="19"></reference>
+              <string role="key" value="systemResources"></string>
+              <list></list>
+              <string role="key" value="type"></string>
+              <none></none>
+              <string role="key" value="undo"></string>
+              <bool value="1"></bool>
+              <string role="key" value="userResources"></string>
+              <list></list>
+              <string role="key" value="version"></string>
+              <int value="0"></int>
+             </dictionary>
+            </instance>
+            <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="22">
+             <dictionary>
+              <string role="key" value="_title"></string>
+              <unicode value="Free Text"></unicode>
+              <string role="key" value="_author"></string>
+              <unicode value="University of Auckland"></unicode>
+              <string role="key" value="_purpose"></string>
+              <unicode value="The majority of a learning resource will be 
+establishing context, delivering instructions and providing general information.
+This provides the framework within which the learning activities are built and 
+delivered."></unicode>
+              <string role="key" value="_tip"></string>
+              <string value=""></string>
+              <string role="key" value="childs"></string>
+              <list></list>
+              <string role="key" value="content"></string>
+              <instance class="exe.engine.field.TextAreaField" reference="23">
+               <dictionary>
+                <string role="key" value="_id"></string>
+                <int value="85"></int>
+                <string role="key" value="_idevice"></string>
+                <reference key="22"></reference>
+                <string role="key" value="_instruc"></string>
+                <unicode value="Use this field to enter text. This 
+iDevice has no emphasis applied although limited formatting can be applied to 
+text through the text editing buttons associated with the field."></unicode>
+                <string role="key" value="_name"></string>
+                <unicode value="Free Text"></unicode>
+                <string role="key" value="anchor_names"></string>
+                <list></list>
+                <string role="key" value="anchors_linked_from_fields"></string>
+                <dictionary></dictionary>
+                <string role="key" value="content_w_resourcePaths"></string>
+                <unicode content="true" value="&lt;h2&gt;Clonació d'Objectes&lt;/h2&gt;
+&lt;p&gt;Per crear una còpia d'un objecte s'utilitza la paraula clau &lt;code&gt;clone&lt;/code&gt; (que invoca, si fos possible, al mètode __clone () de l'objecte). No es pot cridar el mètode __clone () d'un objecte directament.&lt;/p&gt;
+&lt;p&gt;$ Copia_objecte = clone $objecte;&lt;/p&gt;
+&lt;p&gt;Quan es clona un objecte, PHP5 durà a terme una còpia superficial de les propietats de l'objecte. Les propietats que siguin referències a altres variables, mantindran les referències.&lt;/p&gt;
+&lt;p&gt;Si els atributs són objectes no es clonaran.&lt;/p&gt;"></unicode>
+                <string role="key" value="exe.engine.field.Field.persistenceVersion"></string>
+                <int value="4"></int>
+                <string role="key" value="exe.engine.field.FieldWithResources.persistenceVersion"></string>
+                <int value="2"></int>
+                <string role="key" value="exe.engine.field.TextAreaField.persistenceVersion"></string>
+                <int value="3"></int>
+                <string role="key" value="htmlTag"></string>
+                <string value="div"></string>
+                <string role="key" value="images"></string>
+                <instance class="exe.engine.galleryidevice.GalleryImages">
+                 <dictionary>
+                  <string role="key" value=".listitems"></string>
+                  <list></list>
+                  <string role="key" value="idevice"></string>
+                  <reference key="23"></reference>
+                 </dictionary>
+                </instance>
+                <string role="key" value="intlinks_to_anchors"></string>
+                <dictionary></dictionary>
+                <string role="key" value="nextImageId"></string>
+                <int value="0"></int>
+                <string role="key" value="parentNode"></string>
+                <none></none>
+               </dictionary>
+              </instance>
+              <string role="key" value="edit"></string>
+              <bool value="0"></bool>
+              <string role="key" value="emphasis"></string>
+              <int value="0"></int>
+              <string role="key" value="exe.engine.freetextidevice.FreeTextIdevice.persistenceVersion"></string>
+              <int value="7"></int>
+              <string role="key" value="icon"></string>
+              <string value=""></string>
+              <string role="key" value="id"></string>
+              <unicode value="12"></unicode>
+              <string role="key" value="lastIdevice"></string>
+              <bool value="0"></bool>
+              <string role="key" value="originalicon"></string>
+              <string value=""></string>
+              <string role="key" value="parent"></string>
+              <none></none>
+              <string role="key" value="parentNode"></string>
+              <reference key="19"></reference>
+              <string role="key" value="systemResources"></string>
+              <list></list>
+              <string role="key" value="type"></string>
+              <none></none>
+              <string role="key" value="undo"></string>
+              <bool value="1"></bool>
+              <string role="key" value="userResources"></string>
+              <list></list>
+              <string role="key" value="version"></string>
+              <int value="0"></int>
+             </dictionary>
+            </instance>
+            <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="24">
+             <dictionary>
+              <string role="key" value="_title"></string>
+              <unicode value="Free Text"></unicode>
+              <string role="key" value="_author"></string>
+              <unicode value="University of Auckland"></unicode>
+              <string role="key" value="_purpose"></string>
+              <unicode value="The majority of a learning resource will be 
+establishing context, delivering instructions and providing general information.
+This provides the framework within which the learning activities are built and 
+delivered."></unicode>
+              <string role="key" value="_tip"></string>
+              <string value=""></string>
+              <string role="key" value="childs"></string>
+              <list></list>
+              <string role="key" value="content"></string>
+              <instance class="exe.engine.field.TextAreaField" reference="25">
+               <dictionary>
+                <string role="key" value="_id"></string>
+                <int value="85"></int>
+                <string role="key" value="_idevice"></string>
+                <reference key="24"></reference>
+                <string role="key" value="_instruc"></string>
+                <unicode value="Use this field to enter text. This 
+iDevice has no emphasis applied although limited formatting can be applied to 
+text through the text editing buttons associated with the field."></unicode>
+                <string role="key" value="_name"></string>
+                <unicode value="Free Text"></unicode>
+                <string role="key" value="anchor_names"></string>
+                <list></list>
+                <string role="key" value="anchors_linked_from_fields"></string>
+                <dictionary></dictionary>
+                <string role="key" value="content_w_resourcePaths"></string>
+                <unicode content="true" value="&lt;h2&gt;Iteració d'objectes&lt;/h2&gt;
+&lt;p&gt;PHP 5 ofereix una manera per definir objectes, de manera que és possible recórrer una llista d'elements amb, per exemple, una sentència foreach. Per defecte, s'utilitzaran totes les propietats visibles per a la iteració.&lt;/p&gt;"></unicode>
+                <string role="key" value="exe.engine.field.Field.persistenceVersion"></string>
+                <int value="4"></int>
+                <string role="key" value="exe.engine.field.FieldWithResources.persistenceVersion"></string>
+                <int value="2"></int>
+                <string role="key" value="exe.engine.field.TextAreaField.persistenceVersion"></string>
+                <int value="3"></int>
+                <string role="key" value="htmlTag"></string>
+                <string value="div"></string>
+                <string role="key" value="images"></string>
+                <instance class="exe.engine.galleryidevice.GalleryImages">
+                 <dictionary>
+                  <string role="key" value=".listitems"></string>
+                  <list></list>
+                  <string role="key" value="idevice"></string>
+                  <reference key="25"></reference>
+                 </dictionary>
+                </instance>
+                <string role="key" value="intlinks_to_anchors"></string>
+                <dictionary></dictionary>
+                <string role="key" value="nextImageId"></string>
+                <int value="0"></int>
+                <string role="key" value="parentNode"></string>
+                <none></none>
+               </dictionary>
+              </instance>
+              <string role="key" value="edit"></string>
+              <bool value="0"></bool>
+              <string role="key" value="emphasis"></string>
+              <int value="0"></int>
+              <string role="key" value="exe.engine.freetextidevice.FreeTextIdevice.persistenceVersion"></string>
+              <int value="7"></int>
+              <string role="key" value="icon"></string>
+              <string value=""></string>
+              <string role="key" value="id"></string>
+              <unicode value="13"></unicode>
+              <string role="key" value="lastIdevice"></string>
+              <bool value="0"></bool>
+              <string role="key" value="originalicon"></string>
+              <string value=""></string>
+              <string role="key" value="parent"></string>
+              <none></none>
+              <string role="key" value="parentNode"></string>
+              <reference key="19"></reference>
+              <string role="key" value="systemResources"></string>
+              <list></list>
+              <string role="key" value="type"></string>
+              <none></none>
+              <string role="key" value="undo"></string>
+              <bool value="1"></bool>
+              <string role="key" value="userResources"></string>
+              <list></list>
+              <string role="key" value="version"></string>
+              <int value="0"></int>
+             </dictionary>
+            </instance>
            </list>
            <string role="key" value="_id"></string>
            <unicode value="7"></unicode>
@@ -1129,13 +1425,13 @@ text through the text editing buttons associated with the field."></unicode>
         </list>
        </dictionary>
       </instance>
-      <instance class="exe.engine.node.Node" reference="22">
+      <instance class="exe.engine.node.Node" reference="28">
        <dictionary>
         <string role="key" value="_title"></string>
         <unicode value="3. Herència"></unicode>
         <string role="key" value="idevices"></string>
         <list>
-         <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="20">
+         <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="26">
           <dictionary>
            <string role="key" value="_title"></string>
            <unicode value="Free Text"></unicode>
@@ -1151,12 +1447,12 @@ delivered."></unicode>
            <string role="key" value="childs"></string>
            <list></list>
            <string role="key" value="content"></string>
-           <instance class="exe.engine.field.TextAreaField" reference="21">
+           <instance class="exe.engine.field.TextAreaField" reference="27">
             <dictionary>
              <string role="key" value="_id"></string>
              <int value="85"></int>
              <string role="key" value="_idevice"></string>
-             <reference key="20"></reference>
+             <reference key="26"></reference>
              <string role="key" value="_instruc"></string>
              <unicode value="Use this field to enter text. This 
 iDevice has no emphasis applied although limited formatting can be applied to 
@@ -1319,7 +1615,7 @@ if ($t instanceof Producte) {
                <string role="key" value=".listitems"></string>
                <list></list>
                <string role="key" value="idevice"></string>
-               <reference key="21"></reference>
+               <reference key="27"></reference>
               </dictionary>
              </instance>
              <string role="key" value="intlinks_to_anchors"></string>
@@ -1327,7 +1623,7 @@ if ($t instanceof Producte) {
              <string role="key" value="nextImageId"></string>
              <int value="0"></int>
              <string role="key" value="parentNode"></string>
-             <reference key="22"></reference>
+             <reference key="28"></reference>
             </dictionary>
            </instance>
            <string role="key" value="edit"></string>
@@ -1347,7 +1643,7 @@ if ($t instanceof Producte) {
            <string role="key" value="parent"></string>
            <none></none>
            <string role="key" value="parentNode"></string>
-           <reference key="22"></reference>
+           <reference key="28"></reference>
            <string role="key" value="systemResources"></string>
            <list></list>
            <string role="key" value="type"></string>
@@ -1379,13 +1675,13 @@ if ($t instanceof Producte) {
         <list></list>
         <string role="key" value="children"></string>
         <list>
-         <instance class="exe.engine.node.Node" reference="25">
+         <instance class="exe.engine.node.Node" reference="31">
           <dictionary>
            <string role="key" value="_title"></string>
            <unicode value="Exercicis pràctics"></unicode>
            <string role="key" value="idevices"></string>
            <list>
-            <instance class="exe.engine.genericidevice.GenericIdevice" reference="23">
+            <instance class="exe.engine.genericidevice.GenericIdevice" reference="29">
              <dictionary>
               <string role="key" value="_title"></string>
               <unicode value="Activitat: Bloc I"></unicode>
@@ -1407,12 +1703,12 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <int value="11"></int>
               <string role="key" value="fields"></string>
               <list>
-               <instance class="exe.engine.field.TextAreaField" reference="24">
+               <instance class="exe.engine.field.TextAreaField" reference="30">
                 <dictionary>
                  <string role="key" value="_id"></string>
                  <unicode value="48_2"></unicode>
                  <string role="key" value="_idevice"></string>
-                 <reference key="23"></reference>
+                 <reference key="29"></reference>
                  <string role="key" value="_instruc"></string>
                  <unicode value="Describe the tasks the learners should complete."></unicode>
                  <string role="key" value="_name"></string>
@@ -1447,7 +1743,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
                    <string role="key" value=".listitems"></string>
                    <list></list>
                    <string role="key" value="idevice"></string>
-                   <reference key="24"></reference>
+                   <reference key="30"></reference>
                   </dictionary>
                  </instance>
                  <string role="key" value="intlinks_to_anchors"></string>
@@ -1455,7 +1751,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
                  <string role="key" value="nextImageId"></string>
                  <int value="0"></int>
                  <string role="key" value="parentNode"></string>
-                 <none></none>
+                 <reference key="31"></reference>
                 </dictionary>
                </instance>
               </list>
@@ -1470,7 +1766,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <string role="key" value="originalicon"></string>
               <unicode value="activity"></unicode>
               <string role="key" value="parentNode"></string>
-              <reference key="25"></reference>
+              <reference key="31"></reference>
               <string role="key" value="systemResources"></string>
               <list>
                <string value="common.js"></string>
@@ -1483,7 +1779,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <int value="0"></int>
              </dictionary>
             </instance>
-            <instance class="exe.engine.genericidevice.GenericIdevice" reference="26">
+            <instance class="exe.engine.genericidevice.GenericIdevice" reference="32">
              <dictionary>
               <string role="key" value="_title"></string>
               <unicode value="Activitat: Bloc II"></unicode>
@@ -1505,12 +1801,12 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <int value="11"></int>
               <string role="key" value="fields"></string>
               <list>
-               <instance class="exe.engine.field.TextAreaField" reference="27">
+               <instance class="exe.engine.field.TextAreaField" reference="33">
                 <dictionary>
                  <string role="key" value="_id"></string>
                  <unicode value="49_2"></unicode>
                  <string role="key" value="_idevice"></string>
-                 <reference key="26"></reference>
+                 <reference key="32"></reference>
                  <string role="key" value="_instruc"></string>
                  <unicode value="Describe the tasks the learners should complete."></unicode>
                  <string role="key" value="_name"></string>
@@ -1537,7 +1833,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
                    <string role="key" value=".listitems"></string>
                    <list></list>
                    <string role="key" value="idevice"></string>
-                   <reference key="27"></reference>
+                   <reference key="33"></reference>
                   </dictionary>
                  </instance>
                  <string role="key" value="intlinks_to_anchors"></string>
@@ -1545,7 +1841,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
                  <string role="key" value="nextImageId"></string>
                  <int value="0"></int>
                  <string role="key" value="parentNode"></string>
-                 <none></none>
+                 <reference key="31"></reference>
                 </dictionary>
                </instance>
               </list>
@@ -1560,7 +1856,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <string role="key" value="originalicon"></string>
               <unicode value="activity"></unicode>
               <string role="key" value="parentNode"></string>
-              <reference key="25"></reference>
+              <reference key="31"></reference>
               <string role="key" value="systemResources"></string>
               <list>
                <string value="common.js"></string>
@@ -1573,7 +1869,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <int value="0"></int>
              </dictionary>
             </instance>
-            <instance class="exe.engine.genericidevice.GenericIdevice" reference="28">
+            <instance class="exe.engine.genericidevice.GenericIdevice" reference="34">
              <dictionary>
               <string role="key" value="_title"></string>
               <unicode value="Activitat: Bloc III"></unicode>
@@ -1595,12 +1891,12 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <int value="11"></int>
               <string role="key" value="fields"></string>
               <list>
-               <instance class="exe.engine.field.TextAreaField" reference="29">
+               <instance class="exe.engine.field.TextAreaField" reference="35">
                 <dictionary>
                  <string role="key" value="_id"></string>
                  <unicode value="50_2"></unicode>
                  <string role="key" value="_idevice"></string>
-                 <reference key="28"></reference>
+                 <reference key="34"></reference>
                  <string role="key" value="_instruc"></string>
                  <unicode value="Describe the tasks the learners should complete."></unicode>
                  <string role="key" value="_name"></string>
@@ -1627,7 +1923,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
                    <string role="key" value=".listitems"></string>
                    <list></list>
                    <string role="key" value="idevice"></string>
-                   <reference key="29"></reference>
+                   <reference key="35"></reference>
                   </dictionary>
                  </instance>
                  <string role="key" value="intlinks_to_anchors"></string>
@@ -1635,7 +1931,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
                  <string role="key" value="nextImageId"></string>
                  <int value="0"></int>
                  <string role="key" value="parentNode"></string>
-                 <none></none>
+                 <reference key="31"></reference>
                 </dictionary>
                </instance>
               </list>
@@ -1650,7 +1946,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <string role="key" value="originalicon"></string>
               <unicode value="activity"></unicode>
               <string role="key" value="parentNode"></string>
-              <reference key="25"></reference>
+              <reference key="31"></reference>
               <string role="key" value="systemResources"></string>
               <list>
                <string value="common.js"></string>
@@ -1677,7 +1973,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
            <string role="key" value="last_full_node_path"></string>
            <string value="exe-node:4.%20PHP%20-%20Classes%20i%20objectes:3.%20Her%C3%A8ncia:Exercicis%20pr%C3%A0ctics"></string>
            <string role="key" value="parent"></string>
-           <reference key="22"></reference>
+           <reference key="28"></reference>
            <string role="key" value="top_anchors_linked_from_fields"></string>
            <list></list>
            <string role="key" value="children"></string>
@@ -1687,12 +1983,199 @@ that may help or hinder the learner in the performance of the task."></unicode>
         </list>
        </dictionary>
       </instance>
-      <instance class="exe.engine.node.Node" reference="30">
+      <instance class="exe.engine.node.Node" reference="38">
        <dictionary>
         <string role="key" value="_title"></string>
         <unicode value="4. Interfícies"></unicode>
         <string role="key" value="idevices"></string>
-        <list></list>
+        <list>
+         <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="36">
+          <dictionary>
+           <string role="key" value="_title"></string>
+           <unicode value="Free Text"></unicode>
+           <string role="key" value="_author"></string>
+           <unicode value="University of Auckland"></unicode>
+           <string role="key" value="_purpose"></string>
+           <unicode value="The majority of a learning resource will be 
+establishing context, delivering instructions and providing general information.
+This provides the framework within which the learning activities are built and 
+delivered."></unicode>
+           <string role="key" value="_tip"></string>
+           <string value=""></string>
+           <string role="key" value="childs"></string>
+           <list></list>
+           <string role="key" value="content"></string>
+           <instance class="exe.engine.field.TextAreaField" reference="37">
+            <dictionary>
+             <string role="key" value="_id"></string>
+             <int value="85"></int>
+             <string role="key" value="_idevice"></string>
+             <reference key="36"></reference>
+             <string role="key" value="_instruc"></string>
+             <unicode value="Use this field to enter text. This 
+iDevice has no emphasis applied although limited formatting can be applied to 
+text through the text editing buttons associated with the field."></unicode>
+             <string role="key" value="_name"></string>
+             <unicode value="Free Text"></unicode>
+             <string role="key" value="anchor_names"></string>
+             <list></list>
+             <string role="key" value="anchors_linked_from_fields"></string>
+             <dictionary></dictionary>
+             <string role="key" value="content_w_resourcePaths"></string>
+             <unicode content="true" value="&lt;p&gt;Un interfície (&lt;em&gt;interface&lt;/em&gt;) és com una classe buida que solament conté declaracions de mètodes. Es defineixen utilitzant la paraula interface.  Per exemple, abans vas veure que podies crear noves classes heretades de Producte, com TV o Ordinador. També vas veure que en les subclasses podies redefinir el comportament del mètode perquè generara una eixida en HTML diferent per a cada tipus de producte.&lt;/p&gt;
+&lt;p&gt;Si vols assegurar-te que tots els tipus de productes tinguen un mètode &lt;code&gt;mostra&lt;/code&gt;, pots crear un interface com el següent.&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;interface IMostra {
+    public function mostra();
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;I quan crees les subclasses hauràs d'indicar amb la paraula &lt;code&gt;implements&lt;/code&gt; que han de implementar els mètodes declarats en aquest interface. &lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;class TV extends Producte implements IMostra {
+        …
+        public function mostra() {
+            print &quot;&amp;lt;p&amp;gt;&quot; . $this-&amp;gt;polzades . &quot; polzades&amp;lt;/p&amp;gt;&quot;;
+        }
+        …
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Tots els mètodes que es declaren en un &lt;code&gt;interface&lt;/code&gt; han de ser públics. A més de mètodes, els interfícies podran contenir constants però no atributs.&lt;/p&gt;
+&lt;p&gt;Un interface és com un contracte que la classe ha de complir. En implementar tots els mètodes declarats en la interfície s'assegura la interoperabilitat entre classes. Si saps que una classe implementa un interfície determinada saps quins noms tenen els seus mètodes, quins paràmetres els has de passar i, probablement, podràs esbrinar fàcilment amb quins objectiu han sigut escrits.&lt;/p&gt;
+&lt;p&gt;Per exemple, en la llibreria de PHP està definit la interfície &lt;code&gt;countable&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;Countable {
+    abstract public int count ( void )
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Si crees una classe per a la cistella de la compra en la tenda web, podries implementar aquesta interfície per a contar els productes que figuren en la mateixa.&lt;/p&gt;
+&lt;p&gt;Abans vas aprendre que en PHP5 una classe només pot heretar d'una altra. En PHP5 no existeix l'herència múltiple. No obstant açò, sí és possible crear classes que implementen diverses interfícies, simplement separant la llista d'interfícies per comes després de la paraula &lt;code&gt;implements&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;class TV extends Producte implements IMostra, Countable {
+     …
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;L'única restricció és que els noms dels mètodes que s'hagen d'implementar en els diferents interfícies no coincidisquen. És a dir, en el nostre exemple, la interfície &lt;code&gt;IMostra&lt;/code&gt; no podria contenir el mètode &lt;code&gt;count&lt;/code&gt;, doncs aquest ja està declarat en &lt;code&gt;Countable&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;En PHP5 també es poden crear nous interfícies heretant d'uns altres ja existents. Es fa de la mateixa forma que amb les classes, utilitzant la paraula &lt;code&gt;extends&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Una dels dubtes més comuns en POO, és quina solució adoptar en algunes situacions: interfícies o classes abstractes. Ambdues permeten definir regles per a les classes que els implementen o hereten respectivament. I cap permet instanciar objectes. Les diferències principals entre ambdues opcions són:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;En les classes abstractes, els mètodes poden contenir codi. Si van a existir diverses subclasses amb un comportament comú, es podria programar en els mètodes de la classe abstracta. Si s'opta per un interface, caldria repetir el codi en totes les classes que ho implemente.&lt;/li&gt;
+&lt;li&gt;Les classes abstractes poden contenir atributs, i els interfícies no.&lt;/li&gt;
+&lt;li&gt;No es pot crear una classe que herete de dues classes abstractes, però sí es pot crear una classe que implemente diverses interfícies.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Per exemple, en la botiga &lt;em&gt;online&lt;/em&gt; va a haver-hi dos tipus d'usuaris: clients i empleats. Si necessites crear en la teua aplicació objectes de tipus Usuari  (per exemple, per a manejar de forma conjunta a els clients i a els empleats), hauries de crear una classe no abstracta amb aqueix nom, de la qual heretarien Client i Empleat.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;class Usuari {
+    ...
+}
+class Client extends Usuari {
+    ...
+}
+class Empleat extends Usuari {
+    ...
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Però si no fóra així, hauries de decidir si crees o no Usuari, i si ho faries com una classe abstracta o com una interfície.&lt;/p&gt;
+&lt;p&gt;Si per exemple, volgueres definir en un únic lloc els atributs comuns a Client i a Empleat, hauries de crear una classe abstracta Usuari de la qual hereten.&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;abstract class Usuari {
+    public $dni;
+
+    protected $nom;
+    ...
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Però açò no podries fer-ho si ja tens planificada alguna relació d'herència per a una d'aquestes dues classes.&lt;/p&gt;
+&lt;p&gt;Per a finalitzar amb els interfícies, a la llista de funcions de PHP relacionades amb la POO pots afegir les següents.&lt;/p&gt;
+&lt;table class=&quot;exe-table&quot;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Funció&lt;/th&gt;
+&lt;th&gt;Exemple&lt;/th&gt;
+&lt;th&gt;Significat&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;get_declared_interfícies&lt;/td&gt;
+&lt;td&gt;print_r (get_declared_interfícies());&lt;/td&gt;
+&lt;td&gt;Retorna un array amb els noms dels interfícies declarats.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;interface_exists&lt;/td&gt;
+&lt;td&gt;if (interface_exists('iMuestra') { … }&lt;/td&gt;
+&lt;td&gt;Retorna true si existeix l'interface que s'indica, o false en cas contrari.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;"></unicode>
+             <string role="key" value="exe.engine.field.Field.persistenceVersion"></string>
+             <int value="4"></int>
+             <string role="key" value="exe.engine.field.FieldWithResources.persistenceVersion"></string>
+             <int value="2"></int>
+             <string role="key" value="exe.engine.field.TextAreaField.persistenceVersion"></string>
+             <int value="3"></int>
+             <string role="key" value="htmlTag"></string>
+             <string value="div"></string>
+             <string role="key" value="images"></string>
+             <instance class="exe.engine.galleryidevice.GalleryImages">
+              <dictionary>
+               <string role="key" value=".listitems"></string>
+               <list></list>
+               <string role="key" value="idevice"></string>
+               <reference key="37"></reference>
+              </dictionary>
+             </instance>
+             <string role="key" value="intlinks_to_anchors"></string>
+             <dictionary></dictionary>
+             <string role="key" value="nextImageId"></string>
+             <int value="0"></int>
+             <string role="key" value="parentNode"></string>
+             <none></none>
+            </dictionary>
+           </instance>
+           <string role="key" value="edit"></string>
+           <bool value="0"></bool>
+           <string role="key" value="emphasis"></string>
+           <int value="0"></int>
+           <string role="key" value="exe.engine.freetextidevice.FreeTextIdevice.persistenceVersion"></string>
+           <int value="7"></int>
+           <string role="key" value="icon"></string>
+           <string value=""></string>
+           <string role="key" value="id"></string>
+           <unicode value="10"></unicode>
+           <string role="key" value="lastIdevice"></string>
+           <bool value="0"></bool>
+           <string role="key" value="originalicon"></string>
+           <string value=""></string>
+           <string role="key" value="parent"></string>
+           <none></none>
+           <string role="key" value="parentNode"></string>
+           <reference key="38"></reference>
+           <string role="key" value="systemResources"></string>
+           <list></list>
+           <string role="key" value="type"></string>
+           <none></none>
+           <string role="key" value="undo"></string>
+           <bool value="1"></bool>
+           <string role="key" value="userResources"></string>
+           <list></list>
+           <string role="key" value="version"></string>
+           <int value="0"></int>
+          </dictionary>
+         </instance>
+        </list>
         <string role="key" value="_id"></string>
         <unicode value="3"></unicode>
         <string role="key" value="_package"></string>
@@ -1713,10 +2196,10 @@ that may help or hinder the learner in the performance of the task."></unicode>
         <list></list>
        </dictionary>
       </instance>
-      <instance class="exe.engine.node.Node" reference="31">
+      <instance class="exe.engine.node.Node" reference="39">
        <dictionary>
         <string role="key" value="_title"></string>
-        <unicode value="4. Traits"></unicode>
+        <unicode value="5. Traits"></unicode>
         <string role="key" value="idevices"></string>
         <list></list>
         <string role="key" value="_id"></string>
@@ -1730,7 +2213,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
         <string role="key" value="exportType"></string>
         <string value="website"></string>
         <string role="key" value="last_full_node_path"></string>
-        <string value="exe-node:4.%20PHP%20-%20Classes%20i%20objectes:4.%20Traits"></string>
+        <string value="exe-node:4.%20PHP%20-%20Classes%20i%20objectes:5.%20Traits"></string>
         <string role="key" value="parent"></string>
         <reference key="3"></reference>
         <string role="key" value="top_anchors_linked_from_fields"></string>
@@ -1739,10 +2222,10 @@ that may help or hinder the learner in the performance of the task."></unicode>
         <list></list>
        </dictionary>
       </instance>
-      <instance class="exe.engine.node.Node" reference="32">
+      <instance class="exe.engine.node.Node" reference="40">
        <dictionary>
         <string role="key" value="_title"></string>
-        <unicode value="5. Treball amb objectes"></unicode>
+        <unicode value="6. Treball amb objectes"></unicode>
         <string role="key" value="idevices"></string>
         <list></list>
         <string role="key" value="_id"></string>
@@ -1756,7 +2239,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
         <string role="key" value="exportType"></string>
         <string value="website"></string>
         <string role="key" value="last_full_node_path"></string>
-        <string value="exe-node:4.%20PHP%20-%20Classes%20i%20objectes:5.%20Treball%20amb%20objectes"></string>
+        <string value="exe-node:4.%20PHP%20-%20Classes%20i%20objectes:6.%20Treball%20amb%20objectes"></string>
         <string role="key" value="parent"></string>
         <reference key="3"></reference>
         <string role="key" value="top_anchors_linked_from_fields"></string>
@@ -1773,21 +2256,21 @@ that may help or hinder the learner in the performance of the task."></unicode>
    <unicode role="key" value="10"></unicode>
    <reference key="16"></reference>
    <unicode role="key" value="11"></unicode>
-   <reference key="25"></reference>
+   <reference key="31"></reference>
    <unicode role="key" value="2"></unicode>
    <reference key="10"></reference>
    <unicode role="key" value="3"></unicode>
-   <reference key="30"></reference>
+   <reference key="38"></reference>
    <unicode role="key" value="4"></unicode>
-   <reference key="31"></reference>
+   <reference key="39"></reference>
    <unicode role="key" value="5"></unicode>
-   <reference key="32"></reference>
+   <reference key="40"></reference>
    <unicode role="key" value="6"></unicode>
    <reference key="13"></reference>
    <unicode role="key" value="7"></unicode>
    <reference key="19"></reference>
    <unicode role="key" value="9"></unicode>
-   <reference key="22"></reference>
+   <reference key="28"></reference>
   </dictionary>
   <string role="key" value="_objectives"></string>
   <unicode value=""></unicode>
@@ -1798,7 +2281,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
   <string role="key" value="backgroundImgTile"></string>
   <bool value="0"></bool>
   <string role="key" value="currentNode"></string>
-  <reference key="25"></reference>
+  <reference key="19"></reference>
   <string role="key" value="dublinCore"></string>
   <instance class="exe.engine.package.DublinCore">
    <dictionary>
