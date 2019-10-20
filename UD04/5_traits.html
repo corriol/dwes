@@ -2,6 +2,7 @@
 <html lang="ca">
 <head>
 <link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
 <link rel="stylesheet" type="text/css" href="content.css" />
 <link rel="stylesheet" type="text/css" href="nav.css" />
 <meta http-equiv="content-type" content="text/html;  charset=utf-8" />
@@ -11,6 +12,7 @@
 <meta name="generator" content="eXeLearning  - exelearning.net" />
 <!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
 <script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
 <script type="text/javascript" src="common_i18n.js"></script>
 <script type="text/javascript" src="common.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,19 +40,62 @@
       <li><a href="exercicis_prctics.html" class="no-ch">Exercicis pràctics</a></li>
    </ul>
    </li>
-   <li><a href="4_interfcies.html" class="no-ch">4. Interfícies</a></li>
+   <li><a href="4_interfcies.html" class="daddy">4. Interfícies</a>
+   <ul class="other-section">
+      <li><a href="exercicis_prctics0.html" class="no-ch">Exercicis pràctics</a></li>
+   </ul>
+   </li>
    <li id="active"><a href="5_traits.html" class="active no-ch">5. Traits</a></li>
-   <li><a href="6_treball_amb_objectes.html" class="no-ch">6. Treball amb objectes</a></li>
+   <li><a href="6_gesti_derrors_i_excepcions.html" class="daddy">6. Gestió d'errors i excepcions</a>
+   <ul class="other-section">
+      <li><a href="61_excepcions.html" class="no-ch">6.1. Excepcions</a></li>
+   </ul>
+   </li>
+   <li><a href="crdits_fonts_i_bibliografia.html" class="no-ch">Crèdits, fonts i bibliografia</a></li>
 </ul>
 </nav>
 <div id='topPagination'>
 <nav class="pagination noprt">
-<a href="4_interfcies.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="6_treball_amb_objectes.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+<a href="exercicis_prctics0.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="6_gesti_derrors_i_excepcions.html" class="next"><span>Següent<span> &raquo;</span></span></a>
 </nav>
 </div>
 <div id="main-wrapper">
 <section id="main">
 <header id="nodeDecoration"><h1 id="nodeTitle">5. Traits</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id14">
+<div class="iDevice emphasis0">
+<div id="ta14_85" class="block iDevice_content">
+<p>Des de la seva versió 5.4.0, PHP implementa una metodologia de reutilització de codi anomenada Traits.</p>
+<p>Els trets ( «traits» en anglès) són un mecanisme de reutilització de codi en llenguatges d'herència simple, com PHP. L'objectiu d'un tret és el de reduir les limitacions pròpies de l'herència simple permetent que els desenvolupadors reutilitzen a voluntat conjunts de mètodes sobre diverses classes independents i pertanyents a classes jeràrquiques diferents. La semàntica a l'hora combinar Traits i classes es defineix de tal manera que redueixe la seva complexitat i s'eviten els problemes típics associats a l'herència múltiple i als <a href="https://es.wikipedia.org/wiki/Mixin" target="_blank" rel="noopener">mixins</a>.</p>
+<p>Un Trait és similar a una classe, però amb l'únic objectiu d'agrupar funcionalitats molt específiques i d'una manera coherent. No es pot instanciar directament un Trait. És per tant un afegit a l'herència tradicional, i habilita la composició horitzontal de comportaments; és a dir, permet combinar membres de classes sense haver d'usar herència.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>&lt;?php
+class Base {
+    public function decirHola() {
+        echo '¡Hola ';
+    }
+}
+
+trait DecirMundo {
+    public function decirHola() {
+        parent::decirHola();
+        echo 'Mundo!';
+    }
+}
+
+class MiHolaMundo extends Base {
+    use DecirMundo;
+}
+
+$o = new MiHolaMundo();
+$o-&gt;decirHola(); // Hola Mundo
+?&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</article>
 <div id="packageLicense" class="cc cc-by-sa">
 <p><span>Llicenciat sota la </span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Llicència Creative Commons Reconeixement CompartirIgual 4.0</a></p>
 </div>
@@ -58,7 +103,7 @@
 </div>
 <div id='bottomPagination'>
 <nav class="pagination noprt">
-<a href="4_interfcies.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="6_treball_amb_objectes.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+<a href="exercicis_prctics0.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="6_gesti_derrors_i_excepcions.html" class="next"><span>Següent<span> &raquo;</span></span></a>
 </nav>
 </div>
 </div>

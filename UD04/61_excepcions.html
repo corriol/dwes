@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>6.1. Excepcions </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning  - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-13"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
+<section id="emptyHeader"></section>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">4. PHP - Classes i objectes</a></li>
+   <li><a href="1_introducci.html" class="no-ch">1. Introducció</a></li>
+   <li><a href="2_caracterstiques_bsiques_de_la_utilitzaci_dobjectes_en_php.html" class="daddy">2. Característiques bàsiques de la utilització d'objectes en PHP</a>
+   <ul class="other-section">
+      <li><a href="1_definici_de_classes.html" class="daddy">1. Definició de classes</a>
+      <ul class="other-section">
+         <li><a href="constructor_i_destructor.html" class="no-ch">Constructor i destructor</a></li>
+      </ul>
+      </li>
+      <li><a href="2_utilitzaci_dobjectes.html" class="no-ch">2. Utilització d'objectes</a></li>
+   </ul>
+   </li>
+   <li><a href="3_herncia.html" class="daddy">3. Herència</a>
+   <ul class="other-section">
+      <li><a href="exercicis_prctics.html" class="no-ch">Exercicis pràctics</a></li>
+   </ul>
+   </li>
+   <li><a href="4_interfcies.html" class="daddy">4. Interfícies</a>
+   <ul class="other-section">
+      <li><a href="exercicis_prctics0.html" class="no-ch">Exercicis pràctics</a></li>
+   </ul>
+   </li>
+   <li><a href="5_traits.html" class="no-ch">5. Traits</a></li>
+   <li class="current-page-parent"><a href="6_gesti_derrors_i_excepcions.html" class="current-page-parent daddy">6. Gestió d'errors i excepcions</a>
+   <ul>
+      <li id="active"><a href="61_excepcions.html" class="active no-ch">6.1. Excepcions</a></li>
+   </ul>
+   </li>
+   <li><a href="crdits_fonts_i_bibliografia.html" class="no-ch">Crèdits, fonts i bibliografia</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="6_gesti_derrors_i_excepcions.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="crdits_fonts_i_bibliografia.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">6.1. Excepcions</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id16">
+<div class="iDevice emphasis0">
+<div id="ta16_85" class="block iDevice_content">
+<p>A partir de la versió 5 es va introduir en PHP un model d'excepcions similar a l'existent en altres llenguatges de programació:</p>
+<ul>
+<li>El codi susceptible de produir algun error s'introdueix en un bloc <code>try</code>.</li>
+<li>Quan es produeix algun error, es llança una excepció utilitzant la instrucció <code>throw</code>.</li>
+<li>Després del bloc <code>try</code> ha d'haver com a mínim un bloc <code>catch</code> encarregat de processar el error.</li>
+<li>Si un cop acabat el bloc <code>try</code> no s'ha llançat cap excepció, es continua amb la execució en la línia següent al bloc o blocs <code>catch</code>.</li>
+</ul>
+<p>Per exemple, per llançar una excepció quan es produeix una divisió per zero podries fer:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>try {
+    if ($divisor == 0)
+        throw new Exception ( "Divisió per zero.");
+    $resultat = $dividend/$divisor;
+}
+catch (Exception $e) {
+    echo "S'ha produït el següent error:". $ e-&gt; getMessage ();
+}</code></pre>
+</div>
+</div>
+<p>PHP ofereix una classe base <code>Exception</code> per utilitzar com a gestor d'excepcions. Per llançar una excepció no cal indicar cap paràmetre, encara que de forma opcional es pot passar un missatge d'error (com en l'exemple anterior) i també un codi d'error.</p>
+<p>Entre els mètodes que podeu utilitzar amb els objectes de la classe <code>Exception</code> estan:</p>
+<ul>
+<li>getMessage. Retorna el missatge, en cas que s'hagi posat algun.</li>
+<li>getCode. Retorna el codi d'error si existeix.</li>
+</ul>
+<p>Les funcions internes de PHP i moltes extensions com MySQLi usen el sistema d'errors vist anteriorment. Només les extensions més modernes orientades a objectes, com és el cas de PDO, utilitzen aquest model d'excepcions. En aquest cas, el més comú és que l'extensió defineixi les seves propis controladors d'errors heretant de la classe <code>Exception</code> (veurem com utilitzar l'herència en una unitat posterior).</p>
+<div class=" exe-block-info">
+<p>Utilitzant la classe <code>ErrorException</code> és possible traduir els errors a excepcions.<a href="http://es.php.net/manual/es/class.errorexception.php"></a></p>
+<p><a href="http://es.php.net/manual/es/class.errorexception.php">http://es.php.net/manual/es/class.errorexception.php</a></p>
+</div>
+<p>Concretament, la classe PDO permet definir la fórmula que farà servir quan es produeixi un error,  utilitzant l'atribut <code>PDO :: ATTR_ERRMODE</code>. Les possibilitats són:</p>
+<ul>
+<li>PDO :: ERRMODE_SILENT. No es fa res quan ocorre un error. És el comportament per defecte.</li>
+<li>PDO :: ERRMODE_WARNING. Genera un error de tipus E_WARNING quan es produeix un error.</li>
+<li>PDO :: ERRMODE_EXCEPTION. Quan es produeix un error llança una excepció utilitzant el gestor propi PDOException.</li>
+</ul>
+<p>És a dir, que si vols utilitzar excepcions amb l'extensió PDO, has de configurar la connexió fent:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>$dwes-&gt; setAttribute (PDO :: ATTR_ERRMODE, PDO :: ERRMODE_EXCEPTION);</code></pre>
+</div>
+</div>
+<p>Per exemple, el següent codi:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>$dwes = new PDO ( "mysql: host = localhost; dbname = dwes", "dwes", "abc123.");
+$dwes-&gt; setAttribute (PDO :: ATTR_ERRMODE, PDO :: ERRMODE_EXCEPTION);
+try {
+    $sql ​​= "SELECT * FROM stox";
+    $result = $dwes-&gt;query ($sql);
+    ...
+}
+catch (PDOException $ p) {
+    echo "Error". $ p-&gt; getMessage (). "&lt;br /&gt;";
+}</code></pre>
+</div>
+</div>
+<p>Captura l'excepció que llança PDO a causa de que la taula no existeix. El bloc catch mostra el següent missatge: </p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>Error SQLSTATE [42S02]: Base table or view not found: 1146 Table 'dwes.stox' does not exist</code></pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Llicenciat sota la </span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Llicència Creative Commons Reconeixement CompartirIgual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="6_gesti_derrors_i_excepcions.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="crdits_fonts_i_bibliografia.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<script type="text/javascript" src="_intef_js.js"></script></body></html>

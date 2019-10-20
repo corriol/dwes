@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>6. Gestió d'errors i excepcions </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning  - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-5"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
+<section id="emptyHeader"></section>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">4. PHP - Classes i objectes</a></li>
+   <li><a href="1_introducci.html" class="no-ch">1. Introducció</a></li>
+   <li><a href="2_caracterstiques_bsiques_de_la_utilitzaci_dobjectes_en_php.html" class="daddy">2. Característiques bàsiques de la utilització d'objectes en PHP</a>
+   <ul class="other-section">
+      <li><a href="1_definici_de_classes.html" class="daddy">1. Definició de classes</a>
+      <ul class="other-section">
+         <li><a href="constructor_i_destructor.html" class="no-ch">Constructor i destructor</a></li>
+      </ul>
+      </li>
+      <li><a href="2_utilitzaci_dobjectes.html" class="no-ch">2. Utilització d'objectes</a></li>
+   </ul>
+   </li>
+   <li><a href="3_herncia.html" class="daddy">3. Herència</a>
+   <ul class="other-section">
+      <li><a href="exercicis_prctics.html" class="no-ch">Exercicis pràctics</a></li>
+   </ul>
+   </li>
+   <li><a href="4_interfcies.html" class="daddy">4. Interfícies</a>
+   <ul class="other-section">
+      <li><a href="exercicis_prctics0.html" class="no-ch">Exercicis pràctics</a></li>
+   </ul>
+   </li>
+   <li><a href="5_traits.html" class="no-ch">5. Traits</a></li>
+   <li id="active"><a href="6_gesti_derrors_i_excepcions.html" class="active daddy">6. Gestió d'errors i excepcions</a>
+   <ul>
+      <li><a href="61_excepcions.html" class="no-ch">6.1. Excepcions</a></li>
+   </ul>
+   </li>
+   <li><a href="crdits_fonts_i_bibliografia.html" class="no-ch">Crèdits, fonts i bibliografia</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="5_traits.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="61_excepcions.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">6. Gestió d'errors i excepcions</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id15">
+<div class="iDevice emphasis0">
+<div id="ta15_85" class="block iDevice_content">
+<p>De ben segur que, d'acord has anat resolent exercicis o simplement provant codi, t'has trobat amb errors de programació. Alguns són reconeguts per l'entorn de desenvolupament i pots corregir-los abans d'executar. Altres apareixen al navegador en forma de missatge d'error a l'executar el guió.</p>
+<p>PHP defineix una classificació dels errors que es poden produir en l'execució d'un programa i ofereix mètodes per ajustar el tractament dels mateixos. Per fer referència a cada un dels nivells d'error, PHP defineix una sèrie de constants. Cada nivell s'identifica per una constant. per exemple, la constant <code>E_NOTICE</code> fa referència a avisos que poden indicar un error en executar el programa, i la constant <code>E_ERROR</code> engloba errors fatals que provoquen que s'interrompa forçosament l'execució.</p>
+<p>La llista completa de constants la pots consultar al manual de PHP, on també es descriu el tipus d'errors que representa : <a href="http://es.php.net/manual/es/errorfunc.constants.php">http://es.php.net/manual/es/errorfunc.constants.php</a></p>
+<p>La configuració inicial de com va a tractar-se cada error segons el seu nivell es realitza en <code>php.ini</code> el fitxer de configuració de PHP. Entre els principals paràmetres que pots ajustar estan:</p>
+<ul>
+<li><code>error_reporting</code>. Indica quins tipus d'errors es notificaran. El seu valor es forma utilitzant els operadors a nivell de bit per combinar les constants anteriors. El seu valor per defecte és <code>E_ALL &amp; ~ E_NOTICE</code> que indica que es notifiquin tots els errors (<code>E_ALL</code>) excepte els avisos a temps d'execució (<code>E_NOTICE</code>).</li>
+<li><code>display_errors</code>. En el seu valor per defecte (<code>On</code>), fa que els missatges s'enviïn a la sortida estàndard (I per tant es mostrin al navegador). S'ha de desactivar (<code>Off</code>) en els servidors que no<br />s'usen per a desenvolupament sinó per a producció.</li>
+</ul>
+<p>Hi ha altres paràmetres que podem utilitzar en <code>php.ini</code> per ajustar el comportament de PHP quan es produeix un error. <a href="http://es.php.net/manual/es/errorfunc.configuration.php">http://es.php.net/manual/es/errorfunc.configuration.php</a></p>
+<p>Des codi, pots fer servir la funció <code>error_reporting</code> amb les constants anteriors per establir el nivell de notificació en un moment determinat. Per exemple, si en algun lloc del teu codi figura una divisió en la qual hi haja la possibilitat que el divisor siga zero, quan això passe obtindràs un missatge d'error al navegador. Per evitar-ho, pots desactivar la notificació de errors de nivell <code>E_WARNING</code> abans de la divisió i restaurar al seu valor normal a continuació:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>error_reporting (E_ALL &amp; ~ E_NOTICE &amp; ~ E_WARNING);
+$ Resultat = $ dividend / $ divisor;
+error_reporting (E_ALL &amp; ~ E_NOTICE);</code></pre>
+</div>
+</div>
+<p>En utilitzar la funció <code>error_reporting</code> només controles quin tipus d'errors va notificar PHP. A vegades pot ser suficient, però per obtenir més control sobre el procés existeix també la possibilitat de reemplaçar la gestió dels mateixos per la qual tu defineixis. És a dir, pots programar una funció perquè sigui la que executa PHP cada vegada que es produeix un error. El nom d'aquesta funció es indica utilitzant <code>set_error_handler</code> i ha de tenir com a mínim dos paràmetres obligatoris (el nivell de l'error i el missatge descriptiu) i fins tres opcionals amb informació addicional sobre el error (el nom del fitxer en què es produeix, el nombre de línia, i un bolcat de l'estat de les<br />variables en aquest moment).</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>set_error_handler ( "miGestorDeErrores");
+$resultat = $dividend / $divisor;
+restore_error_handler ();
+function miGestorDeErrores ($nivell, $missatge)
+{
+    switch ($nivell) {
+        case E_WARNING:
+            echo "Error de tipus WARNING: $missatge. &lt;br /&gt;";
+            break;
+        default:
+            echo "Error de tipus no especificat: $ missatge. &lt;br /&gt;";
+    }
+}</code></pre>
+</div>
+</div>
+<p>La funció <code>restore_error_handler</code> restaura el gestor d'errors original de PHP (més concretament, el que s'estava fent servir abans de la crida a <code>set_error_handler</code>).</p>
+<p></p>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Llicenciat sota la </span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Llicència Creative Commons Reconeixement CompartirIgual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="5_traits.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="61_excepcions.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<script type="text/javascript" src="_intef_js.js"></script></body></html>

@@ -38,9 +38,18 @@
       <li id="active"><a href="exercicis_prctics.html" class="active no-ch">Exercicis pràctics</a></li>
    </ul>
    </li>
-   <li><a href="4_interfcies.html" class="no-ch">4. Interfícies</a></li>
+   <li><a href="4_interfcies.html" class="daddy">4. Interfícies</a>
+   <ul class="other-section">
+      <li><a href="exercicis_prctics0.html" class="no-ch">Exercicis pràctics</a></li>
+   </ul>
+   </li>
    <li><a href="5_traits.html" class="no-ch">5. Traits</a></li>
-   <li><a href="6_treball_amb_objectes.html" class="no-ch">6. Treball amb objectes</a></li>
+   <li><a href="6_gesti_derrors_i_excepcions.html" class="daddy">6. Gestió d'errors i excepcions</a>
+   <ul class="other-section">
+      <li><a href="61_excepcions.html" class="no-ch">6.1. Excepcions</a></li>
+   </ul>
+   </li>
+   <li><a href="crdits_fonts_i_bibliografia.html" class="no-ch">Crèdits, fonts i bibliografia</a></li>
 </ul>
 </nav>
 <div id='topPagination'>
@@ -58,15 +67,15 @@
 <div class="iDevice_content_wrapper">
 <div id="ta7_48_2" class="block iDevice_content">
 <ol>
-<li>Crea una classe anomenada Post que continga els següents camps: id, titol, contingut, data de publicació i autor.</li>
+<li>Crea una classe anomenada <code>Post</code> que continga els següents camps: id, titol, contingut, data de publicació i autor.</li>
 <li>Has d'implementar el constructor, els getters, els setters i els mètodes de còpia i conversió a cadena corresponents.</li>
 <li>Guarda-la en un fitxer anomenat Post.php</li>
-<li>Fent ús de la classe Post, crea una classe anomenada Blog que continga un array d'objectes Post.</li>
+<li>Crea una classe anomenada Blog que continga un array d'objectes Post.</li>
 <li>Has de crear un mètode per a afegir un post al Blog i un altre per a eliminar-lo.</li>
 <li>També has de crear un mètode per a convertir l'objecte Blog a string, de manera que en HTML es mostre un post en cada línia (hauràs de posar &lt;br /&gt; per als salts de línia)</li>
 <li>Guarda aquesta classe en un fitxer anomenat Blog.php.</li>
-<li>Finalment, crea una pàgina PHP anomenada index.php que creu un objecte Blog, afegisca tres posts a la mateixa i la mostre en la pàgina.</li>
-<li>Després, elimina el primer Post, fes una còpia del segon, i afegeix-lo al blog i torna a mostrar el Blog en la pàgina.</li>
+<li>Finalment, crea una pàgina PHP anomenada index.php que creu un objecte Bloc, afegisca tres posts a la mateixa i la mostre en la pàgina.</li>
+<li>Després, elimina el primer Post, fes una còpia del segon, i afegeix-lo al bloc i torna a mostrar el Bloc en la pàgina.</li>
 </ol>
 </div>
 </div>
@@ -79,9 +88,11 @@
 <div class="iDevice_inner">
 <div class="iDevice_content_wrapper">
 <div id="ta8_49_2" class="block iDevice_content">
-<p>A partir d'una còpia de l'exercici anterior canvia la classe Blog i afig un mètode de còpia.</p>
-<p>Després modifica index.php perquè afegisca tres post en el Blog, faça una còpia del Blog, elimine el primer post i modifique el títol del segon post.</p>
-<p>Finalment, mostra els dos Blogs un a continuació de l'altre.</p>
+<ol>
+<li>A partir d'una còpia de l'exercici anterior canvia la classe Blog i afig un mètode de còpia.</li>
+<li>Després modifica index.php perquè afegisca tres post en el Blog, faça una còpia del Blog, elimine el primer post i modifique el títol del segon post.</li>
+<li>Finalment, mostra els dos blocs un a continuació de l'altre.</li>
+</ol>
 </div>
 </div>
 </div>
@@ -93,9 +104,11 @@
 <div class="iDevice_inner">
 <div class="iDevice_content_wrapper">
 <div id="ta9_50_2" class="block iDevice_content">
-<p>A partir d'una còpia de l'exercici anterior canvia la classe Blog de manera que continga inicialment tres objectes Post.</p>
-<p>El fitxer index.php mostrarà la llista de posts del blog i al costat de cada titol, mostrarà un enllaç que diga “Veure entrada”.</p>
-<p>En prémer l'enllaç anirem a un document anomenat post.php que mostrarà la informació del post seleccionat.</p>
+<ol>
+<li>A partir d'una còpia de l'exercici anterior canvia la classe Blog de manera que continga inicialment tres objectes Post.</li>
+<li>El fitxer index.php mostrarà la llista de posts del bloc i al costat de cada títol, mostrarà un enllaç que diga “Veure entrada”.</li>
+<li>En prémer l'enllaç anirem a un document anomenat post.php que mostrarà la informació del post seleccionat.</li>
+</ol>
 </div>
 </div>
 </div>
