@@ -2,26 +2,28 @@
 <html lang="ca">
 <head>
 <link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
 <link rel="stylesheet" type="text/css" href="content.css" />
 <link rel="stylesheet" type="text/css" href="nav.css" />
 <meta http-equiv="content-type" content="text/html;  charset=utf-8" />
-<title>4. PHP - Classes i objectes </title>
+<title>Ampliant les excepcions </title>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
 <meta name="generator" content="eXeLearning  - exelearning.net" />
 <!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
 <script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
 <script type="text/javascript" src="common_i18n.js"></script>
 <script type="text/javascript" src="common.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
-<body class="exe-web-site" id="exe-node-0"><script type="text/javascript">document.body.className+=" js"</script>
+<body class="exe-web-site" id="exe-node-16"><script type="text/javascript">document.body.className+=" js"</script>
 <div id="content">
 <p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
 <section id="emptyHeader"></section>
 <nav id="siteNav">
 <ul>
-   <li id="active"><a href="index.html" class="active daddy main-node">4. PHP - Classes i objectes</a></li>
+   <li><a href="index.html" class="daddy main-node">4. PHP - Classes i objectes</a></li>
    <li><a href="1_introducci.html" class="no-ch">1. Introducció</a></li>
    <li><a href="2_caracterstiques_bsiques_de_la_utilitzaci_dobjectes_en_php.html" class="daddy">2. Característiques bàsiques de la utilització d'objectes en PHP</a>
    <ul class="other-section">
@@ -44,11 +46,11 @@
    </ul>
    </li>
    <li><a href="5_traits.html" class="no-ch">5. Traits</a></li>
-   <li><a href="6_gesti_derrors_i_excepcions.html" class="daddy">6. Gestió d'errors i excepcions</a>
-   <ul class="other-section">
-      <li><a href="61_excepcions.html" class="daddy">6.1. Excepcions</a>
-      <ul class="other-section">
-         <li><a href="ampliant_les_excepcions.html" class="no-ch">Ampliant les excepcions</a></li>
+   <li class="current-page-parent"><a href="6_gesti_derrors_i_excepcions.html" class="current-page-parent daddy">6. Gestió d'errors i excepcions</a>
+   <ul>
+      <li class="current-page-parent"><a href="61_excepcions.html" class="current-page-parent daddy">6.1. Excepcions</a>
+      <ul>
+         <li id="active"><a href="ampliant_les_excepcions.html" class="active no-ch">Ampliant les excepcions</a></li>
       </ul>
       </li>
       <li><a href="exercicis_prctics1.html" class="no-ch">Exercicis pràctics</a></li>
@@ -59,52 +61,38 @@
 </nav>
 <div id='topPagination'>
 <nav class="pagination noprt">
-<a href="1_introducci.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+<a href="61_excepcions.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="exercicis_prctics1.html" class="next"><span>Següent<span> &raquo;</span></span></a>
 </nav>
 </div>
 <div id="main-wrapper">
 <section id="main">
-<header id="nodeDecoration"><h1 id="nodeTitle">4. PHP - Classes i objectes</h1></header>
-<article class="iDevice_wrapper FreeTextIdevice" id="id0">
+<header id="nodeDecoration"><h1 id="nodeTitle">Ampliant les excepcions</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id23">
 <div class="iDevice emphasis0">
-<div id="ta0_85" class="block iDevice_content">
-<ol>
-<li>Introducció</li>
-<li>Característiques bàsiques de la utilització d'objectes en PHP
-<ol>
-<li>Definició de classes
-<ol>
-<li>Encapsulació</li>
-<li>Constructor i destructor</li>
-<li>Creació d'instàncies</li>
-<li>Accés a atributs i mètodes</li>
-<li>Referència implícita $this</li>
-<li>Mètodes i atributs</li>
-<li>Definició de getters i setters</li>
-<li>Sobrecàrrega de mètodes</li>
-</ol>
-</li>
-<li> Herència
-<ol>
-<li>Conceptes bàsics</li>
-<li>Sintaxi i definició en PHP</li>
-</ol>
-</li>
-<li>Classes abstractes</li>
-<li>Interfícies</li>
-<li>Traits</li>
-<li>Treball amb objectes
-<ol>
-<li>Clonat d'objectes</li>
-<li>Comparació d'objectes</li>
-<li>Iteració d'objectes</li>
-<li>Convertir un objecte a String</li>
-</ol>
-</li>
-<li>Gestió d'errors i excepcions.</li>
-</ol>
-</li>
-</ol>
+<div id="ta23_85" class="block iDevice_content">
+<p>És possible crear excepcions personalitzades heretant de la classe Exception.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>class NegativeIdException extends Exception {
+    public function __construct($message = null) {
+        $this-&gt;message = $message ?: 'ID Negatiu.';
+        parent::__construct($message);
+    }
+}</code></pre>
+</div>
+</div>
+<p>Després l'utilitzarem així:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>try {
+    $post = new Post(-1, "Hola món", "Aquest és el primer post del blog", new DateTime(), "Vicent");
+} catch (NegativeIdException $e) {
+     echo "No es pot posar un ID negatiu\n";
+} catch (Exception $e) {
+    echo "Excepció desconeguda".  $e-&gt;getMessage();
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 </article>
@@ -115,7 +103,7 @@
 </div>
 <div id='bottomPagination'>
 <nav class="pagination noprt">
-<a href="1_introducci.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+<a href="61_excepcions.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="exercicis_prctics1.html" class="next"><span>Següent<span> &raquo;</span></span></a>
 </nav>
 </div>
 </div>

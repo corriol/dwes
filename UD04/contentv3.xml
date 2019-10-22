@@ -69,7 +69,7 @@
   <string role="key" value="_intendedEndUserRoleType"></string>
   <unicode value=""></unicode>
   <string role="key" value="_isChanged"></string>
-  <bool value="0"></bool>
+  <bool value="1"></bool>
   <string role="key" value="_isTemplate"></string>
   <bool value="0"></bool>
   <string role="key" value="_lang"></string>
@@ -85,9 +85,9 @@
   <string role="key" value="_name"></string>
   <unicode value="04._PHP_Classes_i_objectes"></unicode>
   <string role="key" value="_nextIdeviceId"></string>
-  <int value="21"></int>
+  <int value="25"></int>
   <string role="key" value="_nextNodeId"></string>
-  <int value="16"></int>
+  <int value="18"></int>
   <string role="key" value="_nodeIdDict"></string>
   <dictionary>
    <unicode role="key" value="0"></unicode>
@@ -2271,7 +2271,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
                  <string role="key" value="nextImageId"></string>
                  <int value="0"></int>
                  <string role="key" value="parentNode"></string>
-                 <none></none>
+                 <reference key="41"></reference>
                 </dictionary>
                </instance>
               </list>
@@ -2505,7 +2505,7 @@ text through the text editing buttons associated with the field."></unicode>
              <string role="key" value="anchors_linked_from_fields"></string>
              <dictionary></dictionary>
              <string role="key" value="content_w_resourcePaths"></string>
-             <unicode content="true" value="&lt;p&gt;De ben segur que, d'acord has anat resolent exercicis o simplement provant codi, t'has trobat amb errors de programació. Alguns són reconeguts per l'entorn de desenvolupament i pots corregir-los abans d'executar. Altres apareixen al navegador en forma de missatge d'error a l'executar el guió.&lt;/p&gt;
+             <unicode content="true" value="&lt;p&gt;De ben segur que a mesura que has anat resolent exercicis o simplement provant codi, t'has trobat amb errors de programació. Alguns són reconeguts per l'entorn de desenvolupament i pots corregir-los abans d'executar. Altres apareixen al navegador en forma de missatge d'error a l'executar l'&lt;em&gt;script&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;PHP defineix una classificació dels errors que es poden produir en l'execució d'un programa i ofereix mètodes per ajustar el tractament dels mateixos. Per fer referència a cada un dels nivells d'error, PHP defineix una sèrie de constants. Cada nivell s'identifica per una constant. per exemple, la constant &lt;code&gt;E_NOTICE&lt;/code&gt; fa referència a avisos que poden indicar un error en executar el programa, i la constant &lt;code&gt;E_ERROR&lt;/code&gt; engloba errors fatals que provoquen que s'interrompa forçosament l'execució.&lt;/p&gt;
 &lt;p&gt;La llista completa de constants la pots consultar al manual de PHP, on també es descriu el tipus d'errors que representa : &lt;a href=&quot;http://es.php.net/manual/es/errorfunc.constants.php&quot;&gt;http://es.php.net/manual/es/errorfunc.constants.php&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;La configuració inicial de com va a tractar-se cada error segons el seu nivell es realitza en &lt;code&gt;php.ini&lt;/code&gt; el fitxer de configuració de PHP. Entre els principals paràmetres que pots ajustar estan:&lt;/p&gt;
@@ -2517,15 +2517,15 @@ text through the text editing buttons associated with the field."></unicode>
 &lt;p&gt;Des codi, pots fer servir la funció &lt;code&gt;error_reporting&lt;/code&gt; amb les constants anteriors per establir el nivell de notificació en un moment determinat. Per exemple, si en algun lloc del teu codi figura una divisió en la qual hi haja la possibilitat que el divisor siga zero, quan això passe obtindràs un missatge d'error al navegador. Per evitar-ho, pots desactivar la notificació de errors de nivell &lt;code&gt;E_WARNING&lt;/code&gt; abans de la divisió i restaurar al seu valor normal a continuació:&lt;/p&gt;
 &lt;div class=&quot;highlighted-code language-php&quot;&gt;
 &lt;div&gt;
-&lt;pre&gt;&lt;code&gt;error_reporting (E_ALL &amp;amp; ~ E_NOTICE &amp;amp; ~ E_WARNING);
-$ Resultat = $ dividend / $ divisor;
+&lt;pre&gt;&lt;code&gt;error_reporting(E_ALL &amp;amp; ~ E_NOTICE &amp;amp; ~ E_WARNING);
+$resultat = $dividend/$divisor;
 error_reporting (E_ALL &amp;amp; ~ E_NOTICE);&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;En utilitzar la funció &lt;code&gt;error_reporting&lt;/code&gt; només controles quin tipus d'errors va notificar PHP. A vegades pot ser suficient, però per obtenir més control sobre el procés existeix també la possibilitat de reemplaçar la gestió dels mateixos per la qual tu defineixis. És a dir, pots programar una funció perquè sigui la que executa PHP cada vegada que es produeix un error. El nom d'aquesta funció es indica utilitzant &lt;code&gt;set_error_handler&lt;/code&gt; i ha de tenir com a mínim dos paràmetres obligatoris (el nivell de l'error i el missatge descriptiu) i fins tres opcionals amb informació addicional sobre el error (el nom del fitxer en què es produeix, el nombre de línia, i un bolcat de l'estat de les&lt;br /&gt;variables en aquest moment).&lt;/p&gt;
+&lt;p&gt;En utilitzar la funció &lt;code&gt;error_reporting&lt;/code&gt; només controles quin tipus d'errors va a notificar PHP. A vegades pot ser suficient, però per obtenir més control sobre el procés existeix també la possibilitat de gesstionar de forma personalitzada els errors. És a dir, pots programar una funció perquè siga la que executa PHP cada vegada que es produeix un error. El nom d'aquesta funció s'indica utilitzant &lt;code&gt;set_error_handler&lt;/code&gt; i ha de tenir com a mínim dos paràmetres obligatoris (el nivell de l'error i el missatge descriptiu) i fins tres opcionals amb informació addicional sobre el error (el nom del fitxer en què es produeix, el nombre de línia, i un bolcat de l'estat de les&lt;br /&gt;variables en aquest moment).&lt;/p&gt;
 &lt;div class=&quot;highlighted-code language-php&quot;&gt;
 &lt;div&gt;
-&lt;pre&gt;&lt;code&gt;set_error_handler ( &quot;miGestorDeErrores&quot;);
+&lt;pre&gt;&lt;code&gt;set_error_handler (&quot;miGestorDeErrores&quot;);
 $resultat = $dividend / $divisor;
 restore_error_handler ();
 function miGestorDeErrores ($nivell, $missatge)
@@ -2678,24 +2678,24 @@ catch (Exception $e) {
 &lt;p&gt;PHP ofereix una classe base &lt;code&gt;Exception&lt;/code&gt; per utilitzar com a gestor d'excepcions. Per llançar una excepció no cal indicar cap paràmetre, encara que de forma opcional es pot passar un missatge d'error (com en l'exemple anterior) i també un codi d'error.&lt;/p&gt;
 &lt;p&gt;Entre els mètodes que podeu utilitzar amb els objectes de la classe &lt;code&gt;Exception&lt;/code&gt; estan:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;getMessage. Retorna el missatge, en cas que s'hagi posat algun.&lt;/li&gt;
-&lt;li&gt;getCode. Retorna el codi d'error si existeix.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getMessage&lt;/code&gt;. Retorna el missatge, en cas que s'hagi posat algun.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getCode&lt;/code&gt;. Retorna el codi d'error si existeix.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Les funcions internes de PHP i moltes extensions com MySQLi usen el sistema d'errors vist anteriorment. Només les extensions més modernes orientades a objectes, com és el cas de PDO, utilitzen aquest model d'excepcions. En aquest cas, el més comú és que l'extensió defineixi les seves propis controladors d'errors heretant de la classe &lt;code&gt;Exception&lt;/code&gt; (veurem com utilitzar l'herència en una unitat posterior).&lt;/p&gt;
 &lt;div class=&quot; exe-block-info&quot;&gt;
 &lt;p&gt;Utilitzant la classe &lt;code&gt;ErrorException&lt;/code&gt; és possible traduir els errors a excepcions.&lt;a href=&quot;http://es.php.net/manual/es/class.errorexception.php&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://es.php.net/manual/es/class.errorexception.php&quot;&gt;http://es.php.net/manual/es/class.errorexception.php&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;Concretament, la classe PDO permet definir la fórmula que farà servir quan es produeixi un error,  utilitzant l'atribut &lt;code&gt;PDO :: ATTR_ERRMODE&lt;/code&gt;. Les possibilitats són:&lt;/p&gt;
+&lt;p&gt;Concretament, la classe PDO permet definir la fórmula que farà servir quan es produeixi un error,  utilitzant l'atribut &lt;code&gt;PDO::ATTR_ERRMODE&lt;/code&gt;. Les possibilitats són:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;PDO :: ERRMODE_SILENT. No es fa res quan ocorre un error. És el comportament per defecte.&lt;/li&gt;
-&lt;li&gt;PDO :: ERRMODE_WARNING. Genera un error de tipus E_WARNING quan es produeix un error.&lt;/li&gt;
-&lt;li&gt;PDO :: ERRMODE_EXCEPTION. Quan es produeix un error llança una excepció utilitzant el gestor propi PDOException.&lt;/li&gt;
+&lt;li&gt;PDO::ERRMODE_SILENT. No es fa res quan ocorre un error. És el comportament per defecte.&lt;/li&gt;
+&lt;li&gt;PDO::ERRMODE_WARNING. Genera un error de tipus E_WARNING quan es produeix un error.&lt;/li&gt;
+&lt;li&gt;PDO::ERRMODE_EXCEPTION. Quan es produeix un error llança una excepció utilitzant el gestor propi PDOException.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;És a dir, que si vols utilitzar excepcions amb l'extensió PDO, has de configurar la connexió fent:&lt;/p&gt;
 &lt;div class=&quot;highlighted-code language-php&quot;&gt;
 &lt;div&gt;
-&lt;pre&gt;&lt;code&gt;$dwes-&amp;gt; setAttribute (PDO :: ATTR_ERRMODE, PDO :: ERRMODE_EXCEPTION);&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$dwes-&amp;gt; setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Per exemple, el següent codi:&lt;/p&gt;
@@ -2774,6 +2774,186 @@ catch (PDOException $ p) {
               <int value="0"></int>
              </dictionary>
             </instance>
+            <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="51">
+             <dictionary>
+              <string role="key" value="_title"></string>
+              <unicode value="Free Text"></unicode>
+              <string role="key" value="_author"></string>
+              <unicode value="University of Auckland"></unicode>
+              <string role="key" value="_purpose"></string>
+              <unicode value="The majority of a learning resource will be 
+establishing context, delivering instructions and providing general information.
+This provides the framework within which the learning activities are built and 
+delivered."></unicode>
+              <string role="key" value="_tip"></string>
+              <string value=""></string>
+              <string role="key" value="childs"></string>
+              <list></list>
+              <string role="key" value="content"></string>
+              <instance class="exe.engine.field.TextAreaField" reference="52">
+               <dictionary>
+                <string role="key" value="_id"></string>
+                <int value="85"></int>
+                <string role="key" value="_idevice"></string>
+                <reference key="51"></reference>
+                <string role="key" value="_instruc"></string>
+                <unicode value="Use this field to enter text. This 
+iDevice has no emphasis applied although limited formatting can be applied to 
+text through the text editing buttons associated with the field."></unicode>
+                <string role="key" value="_name"></string>
+                <unicode value="Free Text"></unicode>
+                <string role="key" value="anchor_names"></string>
+                <list></list>
+                <string role="key" value="anchors_linked_from_fields"></string>
+                <dictionary></dictionary>
+                <string role="key" value="content_w_resourcePaths"></string>
+                <unicode content="true" value=""></unicode>
+                <string role="key" value="exe.engine.field.Field.persistenceVersion"></string>
+                <int value="4"></int>
+                <string role="key" value="exe.engine.field.FieldWithResources.persistenceVersion"></string>
+                <int value="2"></int>
+                <string role="key" value="exe.engine.field.TextAreaField.persistenceVersion"></string>
+                <int value="3"></int>
+                <string role="key" value="htmlTag"></string>
+                <string value="div"></string>
+                <string role="key" value="images"></string>
+                <instance class="exe.engine.galleryidevice.GalleryImages">
+                 <dictionary>
+                  <string role="key" value=".listitems"></string>
+                  <list></list>
+                  <string role="key" value="idevice"></string>
+                  <reference key="52"></reference>
+                 </dictionary>
+                </instance>
+                <string role="key" value="intlinks_to_anchors"></string>
+                <dictionary></dictionary>
+                <string role="key" value="nextImageId"></string>
+                <int value="0"></int>
+                <string role="key" value="parentNode"></string>
+                <reference key="50"></reference>
+               </dictionary>
+              </instance>
+              <string role="key" value="edit"></string>
+              <bool value="0"></bool>
+              <string role="key" value="emphasis"></string>
+              <int value="0"></int>
+              <string role="key" value="exe.engine.freetextidevice.FreeTextIdevice.persistenceVersion"></string>
+              <int value="7"></int>
+              <string role="key" value="icon"></string>
+              <string value=""></string>
+              <string role="key" value="id"></string>
+              <unicode value="21"></unicode>
+              <string role="key" value="lastIdevice"></string>
+              <bool value="0"></bool>
+              <string role="key" value="originalicon"></string>
+              <string value=""></string>
+              <string role="key" value="parent"></string>
+              <none></none>
+              <string role="key" value="parentNode"></string>
+              <reference key="50"></reference>
+              <string role="key" value="systemResources"></string>
+              <list></list>
+              <string role="key" value="type"></string>
+              <none></none>
+              <string role="key" value="undo"></string>
+              <bool value="1"></bool>
+              <string role="key" value="userResources"></string>
+              <list></list>
+              <string role="key" value="version"></string>
+              <int value="0"></int>
+             </dictionary>
+            </instance>
+            <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="53">
+             <dictionary>
+              <string role="key" value="_title"></string>
+              <unicode value="Free Text"></unicode>
+              <string role="key" value="_author"></string>
+              <unicode value="University of Auckland"></unicode>
+              <string role="key" value="_purpose"></string>
+              <unicode value="The majority of a learning resource will be 
+establishing context, delivering instructions and providing general information.
+This provides the framework within which the learning activities are built and 
+delivered."></unicode>
+              <string role="key" value="_tip"></string>
+              <string value=""></string>
+              <string role="key" value="childs"></string>
+              <list></list>
+              <string role="key" value="content"></string>
+              <instance class="exe.engine.field.TextAreaField" reference="54">
+               <dictionary>
+                <string role="key" value="_id"></string>
+                <int value="85"></int>
+                <string role="key" value="_idevice"></string>
+                <reference key="53"></reference>
+                <string role="key" value="_instruc"></string>
+                <unicode value="Use this field to enter text. This 
+iDevice has no emphasis applied although limited formatting can be applied to 
+text through the text editing buttons associated with the field."></unicode>
+                <string role="key" value="_name"></string>
+                <unicode value="Free Text"></unicode>
+                <string role="key" value="anchor_names"></string>
+                <list></list>
+                <string role="key" value="anchors_linked_from_fields"></string>
+                <dictionary></dictionary>
+                <string role="key" value="content_w_resourcePaths"></string>
+                <unicode content="true" value="&lt;h2&gt;El bloc &lt;code&gt;finally&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;En PHP 5.5 i posterior, es pot utilitzar un bloc &lt;code&gt;finally&lt;/code&gt; després o en lloc dels blocs &lt;code&gt;catch&lt;/code&gt;. El codi de dins el bloc &lt;code&gt;finally&lt;/code&gt; sempre s'executarà després dels blocs &lt;code&gt;try&lt;/code&gt; i &lt;code&gt;catch&lt;/code&gt;, independentment que s'haja llançat una excepció o no, i abans que l'execució normal continue.&lt;/p&gt;
+&lt;p&gt;Com que el contingut del bloc &lt;code&gt;finally&lt;/code&gt; sempre s'executa és ideal per a alliberar recursos en cas d'error, com una connexió a base de dades o a la connexió a un servei proporcionats per tercers.&lt;code&gt;&lt;/code&gt;&lt;/p&gt;"></unicode>
+                <string role="key" value="exe.engine.field.Field.persistenceVersion"></string>
+                <int value="4"></int>
+                <string role="key" value="exe.engine.field.FieldWithResources.persistenceVersion"></string>
+                <int value="2"></int>
+                <string role="key" value="exe.engine.field.TextAreaField.persistenceVersion"></string>
+                <int value="3"></int>
+                <string role="key" value="htmlTag"></string>
+                <string value="div"></string>
+                <string role="key" value="images"></string>
+                <instance class="exe.engine.galleryidevice.GalleryImages">
+                 <dictionary>
+                  <string role="key" value=".listitems"></string>
+                  <list></list>
+                  <string role="key" value="idevice"></string>
+                  <reference key="54"></reference>
+                 </dictionary>
+                </instance>
+                <string role="key" value="intlinks_to_anchors"></string>
+                <dictionary></dictionary>
+                <string role="key" value="nextImageId"></string>
+                <int value="0"></int>
+                <string role="key" value="parentNode"></string>
+                <reference key="50"></reference>
+               </dictionary>
+              </instance>
+              <string role="key" value="edit"></string>
+              <bool value="0"></bool>
+              <string role="key" value="emphasis"></string>
+              <int value="0"></int>
+              <string role="key" value="exe.engine.freetextidevice.FreeTextIdevice.persistenceVersion"></string>
+              <int value="7"></int>
+              <string role="key" value="icon"></string>
+              <string value=""></string>
+              <string role="key" value="id"></string>
+              <unicode value="22"></unicode>
+              <string role="key" value="lastIdevice"></string>
+              <bool value="0"></bool>
+              <string role="key" value="originalicon"></string>
+              <string value=""></string>
+              <string role="key" value="parent"></string>
+              <none></none>
+              <string role="key" value="parentNode"></string>
+              <reference key="50"></reference>
+              <string role="key" value="systemResources"></string>
+              <list></list>
+              <string role="key" value="type"></string>
+              <none></none>
+              <string role="key" value="undo"></string>
+              <bool value="1"></bool>
+              <string role="key" value="userResources"></string>
+              <list></list>
+              <string role="key" value="version"></string>
+              <int value="0"></int>
+             </dictionary>
+            </instance>
            </list>
            <string role="key" value="_id"></string>
            <unicode value="13"></unicode>
@@ -2792,19 +2972,280 @@ catch (PDOException $ p) {
            <string role="key" value="top_anchors_linked_from_fields"></string>
            <list></list>
            <string role="key" value="children"></string>
+           <list>
+            <instance class="exe.engine.node.Node" reference="57">
+             <dictionary>
+              <string role="key" value="_title"></string>
+              <unicode value="Ampliant les excepcions"></unicode>
+              <string role="key" value="idevices"></string>
+              <list>
+               <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="55">
+                <dictionary>
+                 <string role="key" value="_title"></string>
+                 <unicode value="Free Text"></unicode>
+                 <string role="key" value="_author"></string>
+                 <unicode value="University of Auckland"></unicode>
+                 <string role="key" value="_purpose"></string>
+                 <unicode value="The majority of a learning resource will be 
+establishing context, delivering instructions and providing general information.
+This provides the framework within which the learning activities are built and 
+delivered."></unicode>
+                 <string role="key" value="_tip"></string>
+                 <string value=""></string>
+                 <string role="key" value="childs"></string>
+                 <list></list>
+                 <string role="key" value="content"></string>
+                 <instance class="exe.engine.field.TextAreaField" reference="56">
+                  <dictionary>
+                   <string role="key" value="_id"></string>
+                   <int value="85"></int>
+                   <string role="key" value="_idevice"></string>
+                   <reference key="55"></reference>
+                   <string role="key" value="_instruc"></string>
+                   <unicode value="Use this field to enter text. This 
+iDevice has no emphasis applied although limited formatting can be applied to 
+text through the text editing buttons associated with the field."></unicode>
+                   <string role="key" value="_name"></string>
+                   <unicode value="Free Text"></unicode>
+                   <string role="key" value="anchor_names"></string>
+                   <list></list>
+                   <string role="key" value="anchors_linked_from_fields"></string>
+                   <dictionary></dictionary>
+                   <string role="key" value="content_w_resourcePaths"></string>
+                   <unicode content="true" value="&lt;p&gt;És possible crear excepcions personalitzades heretant de la classe Exception.&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;class NegativeIdException extends Exception {
+    public function __construct($message = null) {
+        $this-&amp;gt;message = $message ?: 'ID Negatiu.';
+        parent::__construct($message);
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Després l'utilitzarem així:&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;try {
+    $post = new Post(-1, &quot;Hola món&quot;, &quot;Aquest és el primer post del blog&quot;, new DateTime(), &quot;Vicent&quot;);
+} catch (NegativeIdException $e) {
+     echo &quot;No es pot posar un ID negatiu\n&quot;;
+} catch (Exception $e) {
+    echo &quot;Excepció desconeguda&quot;.  $e-&amp;gt;getMessage();
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;"></unicode>
+                   <string role="key" value="exe.engine.field.Field.persistenceVersion"></string>
+                   <int value="4"></int>
+                   <string role="key" value="exe.engine.field.FieldWithResources.persistenceVersion"></string>
+                   <int value="2"></int>
+                   <string role="key" value="exe.engine.field.TextAreaField.persistenceVersion"></string>
+                   <int value="3"></int>
+                   <string role="key" value="htmlTag"></string>
+                   <string value="div"></string>
+                   <string role="key" value="images"></string>
+                   <instance class="exe.engine.galleryidevice.GalleryImages">
+                    <dictionary>
+                     <string role="key" value=".listitems"></string>
+                     <list></list>
+                     <string role="key" value="idevice"></string>
+                     <reference key="56"></reference>
+                    </dictionary>
+                   </instance>
+                   <string role="key" value="intlinks_to_anchors"></string>
+                   <dictionary></dictionary>
+                   <string role="key" value="nextImageId"></string>
+                   <int value="0"></int>
+                   <string role="key" value="parentNode"></string>
+                   <reference key="57"></reference>
+                  </dictionary>
+                 </instance>
+                 <string role="key" value="edit"></string>
+                 <bool value="0"></bool>
+                 <string role="key" value="emphasis"></string>
+                 <int value="0"></int>
+                 <string role="key" value="exe.engine.freetextidevice.FreeTextIdevice.persistenceVersion"></string>
+                 <int value="7"></int>
+                 <string role="key" value="icon"></string>
+                 <string value=""></string>
+                 <string role="key" value="id"></string>
+                 <unicode value="23"></unicode>
+                 <string role="key" value="lastIdevice"></string>
+                 <bool value="0"></bool>
+                 <string role="key" value="originalicon"></string>
+                 <string value=""></string>
+                 <string role="key" value="parent"></string>
+                 <none></none>
+                 <string role="key" value="parentNode"></string>
+                 <reference key="57"></reference>
+                 <string role="key" value="systemResources"></string>
+                 <list></list>
+                 <string role="key" value="type"></string>
+                 <none></none>
+                 <string role="key" value="undo"></string>
+                 <bool value="1"></bool>
+                 <string role="key" value="userResources"></string>
+                 <list></list>
+                 <string role="key" value="version"></string>
+                 <int value="0"></int>
+                </dictionary>
+               </instance>
+              </list>
+              <string role="key" value="_id"></string>
+              <unicode value="16"></unicode>
+              <string role="key" value="_package"></string>
+              <reference key="4"></reference>
+              <string role="key" value="anchor_fields"></string>
+              <list></list>
+              <string role="key" value="exe.engine.node.Node.persistenceVersion"></string>
+              <int value="2"></int>
+              <string role="key" value="exportType"></string>
+              <string value="website"></string>
+              <string role="key" value="last_full_node_path"></string>
+              <string value="exe-node:4.%20PHP%20-%20Classes%20i%20objectes:6.%20Gesti%C3%B3%20d%27errors%20i%20excepcions:6.1.%20Excepcions:Ampliant%20les%20excepcions"></string>
+              <string role="key" value="parent"></string>
+              <reference key="50"></reference>
+              <string role="key" value="top_anchors_linked_from_fields"></string>
+              <list></list>
+              <string role="key" value="children"></string>
+              <list></list>
+             </dictionary>
+            </instance>
+           </list>
+          </dictionary>
+         </instance>
+         <instance class="exe.engine.node.Node" reference="60">
+          <dictionary>
+           <string role="key" value="_title"></string>
+           <unicode value="Exercicis pràctics"></unicode>
+           <string role="key" value="idevices"></string>
+           <list>
+            <instance class="exe.engine.genericidevice.GenericIdevice" reference="58">
+             <dictionary>
+              <string role="key" value="_title"></string>
+              <unicode value="Activitat: gestió d'errors i excepcions"></unicode>
+              <string role="key" value="_author"></string>
+              <unicode value="University of Auckland"></unicode>
+              <string role="key" value="_purpose"></string>
+              <unicode value="An activity can be defined as a task or set of tasks a learner must
+complete. Provide a clear statement of the task and consider any conditions
+that may help or hinder the learner in the performance of the task."></unicode>
+              <string role="key" value="_tip"></string>
+              <unicode value=""></unicode>
+              <string role="key" value="class_"></string>
+              <unicode value="activity"></unicode>
+              <string role="key" value="edit"></string>
+              <bool value="0"></bool>
+              <string role="key" value="emphasis"></string>
+              <int value="1"></int>
+              <string role="key" value="exe.engine.genericidevice.GenericIdevice.persistenceVersion"></string>
+              <int value="11"></int>
+              <string role="key" value="fields"></string>
+              <list>
+               <instance class="exe.engine.field.TextAreaField" reference="59">
+                <dictionary>
+                 <string role="key" value="_id"></string>
+                 <unicode value="48_2"></unicode>
+                 <string role="key" value="_idevice"></string>
+                 <reference key="58"></reference>
+                 <string role="key" value="_instruc"></string>
+                 <unicode value="Describe the tasks the learners should complete."></unicode>
+                 <string role="key" value="_name"></string>
+                 <unicode value="Activity"></unicode>
+                 <string role="key" value="anchor_names"></string>
+                 <list></list>
+                 <string role="key" value="anchors_linked_from_fields"></string>
+                 <dictionary></dictionary>
+                 <string role="key" value="content_w_resourcePaths"></string>
+                 <unicode content="true" value="&lt;ol&gt;
+&lt;li&gt;Modifica les classes de l'aplicació del formulari perquè en cas que el atribut $name no tinga valor llance una excepció amb el missatge &quot;L'atribut name no pot estar buit&quot;.&lt;/li&gt;
+&lt;li&gt;Captura l'excepció.&lt;/li&gt;
+&lt;li&gt;Crea una excepció personalitzada &lt;code&gt;OptionsNotFoundException&lt;/code&gt; en cas que el paràmetre $options del control Select estiga buit.&lt;/li&gt;
+&lt;li&gt;Captura l'excepció.&lt;/li&gt;
+&lt;li&gt;Crea una excepció personalitzada InvalidFormatOptionsException en cas que el paràmetre $options del control Selecte tinga un array però les claus no siguen name i value.&lt;/li&gt;
+&lt;li&gt;Captura l'excepció.&lt;/li&gt;
+&lt;/ol&gt;"></unicode>
+                 <string role="key" value="exe.engine.field.Field.persistenceVersion"></string>
+                 <int value="4"></int>
+                 <string role="key" value="exe.engine.field.FieldWithResources.persistenceVersion"></string>
+                 <int value="2"></int>
+                 <string role="key" value="exe.engine.field.TextAreaField.persistenceVersion"></string>
+                 <int value="3"></int>
+                 <string role="key" value="htmlTag"></string>
+                 <string value="div"></string>
+                 <string role="key" value="images"></string>
+                 <instance class="exe.engine.galleryidevice.GalleryImages">
+                  <dictionary>
+                   <string role="key" value=".listitems"></string>
+                   <list></list>
+                   <string role="key" value="idevice"></string>
+                   <reference key="59"></reference>
+                  </dictionary>
+                 </instance>
+                 <string role="key" value="intlinks_to_anchors"></string>
+                 <dictionary></dictionary>
+                 <string role="key" value="nextImageId"></string>
+                 <int value="0"></int>
+                 <string role="key" value="parentNode"></string>
+                 <reference key="60"></reference>
+                </dictionary>
+               </instance>
+              </list>
+              <string role="key" value="icon"></string>
+              <unicode value="activity"></unicode>
+              <string role="key" value="id"></string>
+              <unicode value="24"></unicode>
+              <string role="key" value="lastIdevice"></string>
+              <bool value="0"></bool>
+              <string role="key" value="nextFieldId"></string>
+              <int value="3"></int>
+              <string role="key" value="originalicon"></string>
+              <unicode value="activity"></unicode>
+              <string role="key" value="parentNode"></string>
+              <reference key="60"></reference>
+              <string role="key" value="systemResources"></string>
+              <list>
+               <string value="common.js"></string>
+              </list>
+              <string role="key" value="undo"></string>
+              <bool value="1"></bool>
+              <string role="key" value="userResources"></string>
+              <list></list>
+              <string role="key" value="version"></string>
+              <int value="0"></int>
+             </dictionary>
+            </instance>
+           </list>
+           <string role="key" value="_id"></string>
+           <unicode value="17"></unicode>
+           <string role="key" value="_package"></string>
+           <reference key="4"></reference>
+           <string role="key" value="anchor_fields"></string>
+           <list></list>
+           <string role="key" value="exe.engine.node.Node.persistenceVersion"></string>
+           <int value="2"></int>
+           <string role="key" value="exportType"></string>
+           <string value="website"></string>
+           <string role="key" value="last_full_node_path"></string>
+           <string value="exe-node:4.%20PHP%20-%20Classes%20i%20objectes:6.%20Gesti%C3%B3%20d%27errors%20i%20excepcions:Exercicis%20pr%C3%A0ctics"></string>
+           <string role="key" value="parent"></string>
+           <reference key="47"></reference>
+           <string role="key" value="top_anchors_linked_from_fields"></string>
+           <list></list>
+           <string role="key" value="children"></string>
            <list></list>
           </dictionary>
          </instance>
         </list>
        </dictionary>
       </instance>
-      <instance class="exe.engine.node.Node" reference="53">
+      <instance class="exe.engine.node.Node" reference="63">
        <dictionary>
         <string role="key" value="_title"></string>
         <unicode value="Crèdits, fonts i bibliografia"></unicode>
         <string role="key" value="idevices"></string>
         <list>
-         <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="51">
+         <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="61">
           <dictionary>
            <string role="key" value="_title"></string>
            <unicode value="Free Text"></unicode>
@@ -2820,12 +3261,12 @@ delivered."></unicode>
            <string role="key" value="childs"></string>
            <list></list>
            <string role="key" value="content"></string>
-           <instance class="exe.engine.field.TextAreaField" reference="52">
+           <instance class="exe.engine.field.TextAreaField" reference="62">
             <dictionary>
              <string role="key" value="_id"></string>
              <int value="85"></int>
              <string role="key" value="_idevice"></string>
-             <reference key="51"></reference>
+             <reference key="61"></reference>
              <string role="key" value="_instruc"></string>
              <unicode value="Use this field to enter text. This 
 iDevice has no emphasis applied although limited formatting can be applied to 
@@ -2855,7 +3296,7 @@ text through the text editing buttons associated with the field."></unicode>
                <string role="key" value=".listitems"></string>
                <list></list>
                <string role="key" value="idevice"></string>
-               <reference key="52"></reference>
+               <reference key="62"></reference>
               </dictionary>
              </instance>
              <string role="key" value="intlinks_to_anchors"></string>
@@ -2863,7 +3304,7 @@ text through the text editing buttons associated with the field."></unicode>
              <string role="key" value="nextImageId"></string>
              <int value="0"></int>
              <string role="key" value="parentNode"></string>
-             <reference key="53"></reference>
+             <reference key="63"></reference>
             </dictionary>
            </instance>
            <string role="key" value="edit"></string>
@@ -2883,7 +3324,7 @@ text through the text editing buttons associated with the field."></unicode>
            <string role="key" value="parent"></string>
            <none></none>
            <string role="key" value="parentNode"></string>
-           <reference key="53"></reference>
+           <reference key="63"></reference>
            <string role="key" value="systemResources"></string>
            <list></list>
            <string role="key" value="type"></string>
@@ -2929,9 +3370,13 @@ text through the text editing buttons associated with the field."></unicode>
    <unicode role="key" value="13"></unicode>
    <reference key="50"></reference>
    <unicode role="key" value="14"></unicode>
-   <reference key="53"></reference>
+   <reference key="63"></reference>
    <unicode role="key" value="15"></unicode>
    <reference key="41"></reference>
+   <unicode role="key" value="16"></unicode>
+   <reference key="57"></reference>
+   <unicode role="key" value="17"></unicode>
+   <reference key="60"></reference>
    <unicode role="key" value="2"></unicode>
    <reference key="10"></reference>
    <unicode role="key" value="3"></unicode>
@@ -2956,7 +3401,7 @@ text through the text editing buttons associated with the field."></unicode>
   <string role="key" value="backgroundImgTile"></string>
   <bool value="0"></bool>
   <string role="key" value="currentNode"></string>
-  <reference key="3"></reference>
+  <reference key="57"></reference>
   <string role="key" value="dublinCore"></string>
   <instance class="exe.engine.package.DublinCore">
    <dictionary>
