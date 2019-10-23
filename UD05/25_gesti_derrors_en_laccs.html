@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>2.5. Gestió d'errors en l'accés </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning  - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-9"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
+<section id="emptyHeader"></section>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">Inici</a></li>
+   <li><a href="1_maneig_de_phpmyadmin.html" class="no-ch">1. Maneig de PHPMyAdmin</a></li>
+   <li class="current-page-parent"><a href="2_accs_a_la_base_de_dades_mitjanant_php_amb_la_llibreria_pdoema.html" class="current-page-parent daddy">2. Accés a la base de dades mitjançant PHP amb la llibreria PDOema</a>
+   <ul>
+      <li><a href="21_connexi_a_la_base_de_dades.html" class="no-ch">2.1. Connexió a la base de dades</a></li>
+      <li><a href="22_execuci_de_consultes.html" class="no-ch">2.2. Execució de consultes</a></li>
+      <li><a href="23_mostrar_dades_dinmiques.html" class="no-ch">2.3. Mostrar dades dinàmiques</a></li>
+      <li><a href="24_inserci_modificaci_i_eliminaci_de_dades_de_la_bbdd.html" class="no-ch">2.4. Inserció, modificació i eliminació de dades de la BBDD</a></li>
+      <li id="active"><a href="25_gesti_derrors_en_laccs.html" class="active no-ch">2.5. Gestió d'errors en l'accés</a></li>
+   </ul>
+   </li>
+   <li><a href="3_simplificant_laccs_a_la_base_de_dades.html" class="no-ch">3. Simplificant l'accés a la base de dades</a></li>
+   <li><a href="4_transaccions.html" class="no-ch">4. Transaccions</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="24_inserci_modificaci_i_eliminaci_de_dades_de_la_bbdd.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="3_simplificant_laccs_a_la_base_de_dades.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">2.5. Gestió d'errors en l'accés</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id3">
+<div class="iDevice emphasis0">
+<div id="ta3_85" class="block iDevice_content">
+<p>PDO pot utilitzar les excepcions per gestionar els errors, el que significa que qualsevol cosa que fem amb PDO podríem encapsular en un bloc try / catch per gestionar si produeix algun error.</p>
+<p>Podem forçar PDO perquè treballi en qualsevol de les tres maneres següents:</p>
+<ul>
+<li>PDO :: ERRMODE_SILENT -&gt; És el mode per defecte. Aquí haurem de revisar els errors usant -&gt; errorCode () i -&gt; errorInfo ().</li>
+<li>PDO :: ERRMODE_WARNING -&gt; Genera errors de revisió de resultats PHP però permetria l'execució normal de l'aplicació.</li>
+<li>PDO :: ERRMODE_EXCEPTION -&gt; Serà la forma més utilitzada en PDO. Dispara una excepció permetent-nos gestionar l'error de forma amigable.</li>
+</ul>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>//Activació de la manera de treball de PDO
+$pdo-&gt; setAttribute (PDO :: ATTR_ERRMODE, PDO :: ERRMODE_SILENT);
+$pdo-&gt; setAttribute (PDO :: ATTR_ERRMODE, PDO :: ERRMODE_WARNING);
+
+// Es recomana activar aquesta opció per gestionar els errors amb PDOException
+$pdo-&gt; setAttribute (PDO :: ATTR_ERRMODE, PDO :: ERRMODE_EXCEPTION);</code></pre>
+</div>
+</div>
+<p><strong>Exemple d'ús:</strong></p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>&lt;? php
+# Connectem a la base de dades
+$host = 'www.local';
+$dbname = 'cxbasex';
+$user = 'cxbasex';
+$pass = 'xxxxxx';
+
+try {
+    $pdo = new PDO ( "mysql: host = $ host; dbname = $ dbname; charset = utf8", $ user, $ pass);
+    $pdo-&gt; setAttribute (PDO :: ATTR_ERRMODE, PDO :: ERRMODE_EXCEPTION);
+}
+catch (PDOException $e) {
+    echo "S'ha produït un error en intentar connectar al servidor MySQL:". $e-&gt; getMessage ();
+}
+
+try {
+    # Un altre Exemple d'error! DELECT en lloc de SELECT!
+    $pdo-&gt; exec ( 'DELECT name FROM people');
+}
+catch (PDOException $e) {
+    echo "S'ha produït un error en l'ejecucion de la consulta:". $ e-&gt; getMessage ();
+
+    # En aquest cas hem mostrat el missatge d'error i, a més emmagatzemem en un fitxer els errors generats.
+    file_put_contents ( 'PDOErrors.txt', $ e-&gt; getMessage (), FILE_APPEND);
+}
+
+
+?&gt;</code></pre>
+</div>
+</div>
+<p></p>
+<p></p>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Llicenciat sota la </span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Llicència Creative Commons Reconeixement CompartirIgual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="24_inserci_modificaci_i_eliminaci_de_dades_de_la_bbdd.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="3_simplificant_laccs_a_la_base_de_dades.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<script type="text/javascript" src="_intef_js.js"></script></body></html>

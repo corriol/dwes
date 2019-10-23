@@ -4,7 +4,7 @@
 * [UD2. PHP - Característiques bàsiques del llenguatge](UD02/index.html)
 * UD3. Preparant el projecte
 * [UD4. PHP - Classes i objectes](UD04/index.html)
-* UD5. PHP - accés a bases de dades amb PDO
+* [UD5. PHP - accés a bases de dades amb PDO](UD05/index.html)
 * UD6. Cap a un miniframework MVC
 * UD7. Composer	
 * UD8: Seguretat i control d'errors

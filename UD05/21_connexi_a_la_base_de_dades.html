@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>2.1. Connexió a la base de dades </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning  - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-5"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
+<section id="emptyHeader"></section>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">Inici</a></li>
+   <li><a href="1_maneig_de_phpmyadmin.html" class="no-ch">1. Maneig de PHPMyAdmin</a></li>
+   <li class="current-page-parent"><a href="2_accs_a_la_base_de_dades_mitjanant_php_amb_la_llibreria_pdoema.html" class="current-page-parent daddy">2. Accés a la base de dades mitjançant PHP amb la llibreria PDOema</a>
+   <ul>
+      <li id="active"><a href="21_connexi_a_la_base_de_dades.html" class="active no-ch">2.1. Connexió a la base de dades</a></li>
+      <li><a href="22_execuci_de_consultes.html" class="no-ch">2.2. Execució de consultes</a></li>
+      <li><a href="23_mostrar_dades_dinmiques.html" class="no-ch">2.3. Mostrar dades dinàmiques</a></li>
+      <li><a href="24_inserci_modificaci_i_eliminaci_de_dades_de_la_bbdd.html" class="no-ch">2.4. Inserció, modificació i eliminació de dades de la BBDD</a></li>
+      <li><a href="25_gesti_derrors_en_laccs.html" class="no-ch">2.5. Gestió d'errors en l'accés</a></li>
+   </ul>
+   </li>
+   <li><a href="3_simplificant_laccs_a_la_base_de_dades.html" class="no-ch">3. Simplificant l'accés a la base de dades</a></li>
+   <li><a href="4_transaccions.html" class="no-ch">4. Transaccions</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="2_accs_a_la_base_de_dades_mitjanant_php_amb_la_llibreria_pdoema.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="22_execuci_de_consultes.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">2.1. Connexió a la base de dades</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id2">
+<div class="iDevice emphasis0">
+<div id="ta2_85" class="block iDevice_content">
+<p><code>$pdo = new PDO("<strong>mysql</strong>: host = $host; dbname = $dbname", $usuari, $password);</code></p>
+<p><strong>mysql</strong>: tipus de base de dades. Podria ser: MSSQL, Sybase, sqlite, etc ..</p>
+<div class="highlighted-code language-php line-numbers">
+<div>
+<pre><code>// Exemple de connexió a diferents tipus de bases de dades.
+# Connectem a la base de dades
+$host = 'www.local';
+$hbname = 'cxbasex';
+$user = 'cxbasex';
+$pass = 'xxxxxx';
+
+try {
+    # MS SQL Server y Sybase amb PDO_DBLIB
+    $pdo = new PDO( "MSSQL: host = $ host; dbname = $ dbname, $ user, $ pass");
+    $pdo = new PDO( "Sybase: host = $ host; dbname = $ dbname, $ user, $ pass");
+
+    #MySQL amb PDO_MYSQL
+    #Perquè la connexió a mysql utilitzi les collation UTF-8 afegir charset = utf8 a string de la connexió.
+    $pdo = new PDO ( "mysql: host = $ host; dbname = $ dbname; charset = utf8", $ user, $pass);
+
+    #Perquè generi excepcions a l'hora de reportar errors.
+    $pdo-&gt;setAttribute (PDO :: ATTR_ERRMODE, PDO :: ERRMODE_EXCEPTION);
+
+    # SQLite Database
+    $pdo = new PDO ( "sqlite: mi / database / path / database.db");
+}
+catch (PDOException $e) {
+    echo $e-&gt; getMessage ();
+}
+
+// Si tot va bé en $ pdo tindrem el objecte que gestionarà la connexió amb la base de dades.</code></pre>
+</div>
+</div>
+<p><strong>Tancar la connexió a la base de dades</strong></p>
+<p>Es recomana tancar sempre la connexió a la base de dades quan no es vaja a utilitzar més durant el nostre procés.</p>
+<p>Cal recordar que els recursos són limitats i quan hi ha pocs usuaris no hi ha cap problema, però si tenim molts usuaris simultanis llavors és quan sorgeixen problemes en haver assolit el nombre màxim de connexions amb el servidor, per exemple.</p>
+<p>En tancar la connexió de forma explícita accelerem l'alliberament de recursos perquè estiguin disponibles per a altres usuaris.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>// Si volguéssim tancar la connexió amb la base de dades simplement podríem fer al final del fitxer.
+$pdo = null;</code></pre>
+</div>
+</div>
+<p><br /><br /></p>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Llicenciat sota la </span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Llicència Creative Commons Reconeixement CompartirIgual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="2_accs_a_la_base_de_dades_mitjanant_php_amb_la_llibreria_pdoema.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="22_execuci_de_consultes.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<script type="text/javascript" src="_intef_js.js"></script></body></html>
