@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>2.3. Consultes preparades </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning  - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-7"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
+<section id="emptyHeader"></section>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">Inici</a></li>
+   <li><a href="1_maneig_de_phpmyadmin.html" class="no-ch">1. Maneig de PHPMyAdmin</a></li>
+   <li class="current-page-parent"><a href="2_accs_a_la_base_de_dades_mitjanant_php_amb_la_llibreria_pdoema.html" class="current-page-parent daddy">2. Accés a la base de dades mitjançant PHP amb la llibreria PDOema</a>
+   <ul>
+      <li><a href="21_connexi_a_la_base_de_dades.html" class="no-ch">2.1. Connexió a la base de dades</a></li>
+      <li><a href="22_execuci_de_consultes.html" class="no-ch">2.2. Execució de consultes</a></li>
+      <li id="active"><a href="23_consultes_preparades.html" class="active no-ch">2.3. Consultes preparades</a></li>
+      <li><a href="24_inserci_modificaci_i_eliminaci_de_dades_de_la_bbdd.html" class="no-ch">2.4. Inserció, modificació i eliminació de dades de la BBDD</a></li>
+      <li><a href="25_gesti_derrors_en_laccs.html" class="no-ch">2.5. Gestió d'errors en l'accés</a></li>
+      <li><a href="exercicis_prctics.html" class="no-ch">Exercicis pràctics</a></li>
+   </ul>
+   </li>
+   <li><a href="3_simplificant_laccs_a_la_base_de_dades.html" class="daddy">3. Simplificant l'accés a la base de dades</a>
+   <ul class="other-section">
+      <li><a href="exercicis_prctics0.html" class="no-ch">Exercicis pràctics</a></li>
+   </ul>
+   </li>
+   <li><a href="4_transaccions.html" class="no-ch">4. Transaccions</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="22_execuci_de_consultes.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="24_inserci_modificaci_i_eliminaci_de_dades_de_la_bbdd.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">2.3. Consultes preparades</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id5">
+<div class="iDevice emphasis0">
+<div id="ta5_85" class="block iDevice_content">
+<p>Com hem vist en l'apartat anterior les consultes poden acceptar paràmetres. La millor forma de realitzar aquestes consultes és mitjançant les consultes preparades.</p>
+<p>Les consultes preparades ens aporten dues avantatges importants:</p>
+<ul>
+<li>Per a sentències que seran executades en múltiples ocasions amb diferents paràmetres optimitza el rendiment de la aplicació.</li>
+<li>Ajuda a prevenir injeccions SQL eliminant la necessitat de posar entre cometes manualment els paràmetres.</li>
+</ul>
+<p>Per a construir una sentència preparada cal incloure uns marcadors en la sentència SQL.</p>
+<p>Hi ha tres formes de fer-ho:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code># Marcadores anónimos
+$stmt = $pdo-&gt;prepare("INSERT INTO colegas (name, addr, city) values (?, ?, ?)");
+
+# Marcadores conocidos
+$stmt = $pdo-&gt;prepare("INSERT INTO colegas (name, addr, city) values (:name, :addr, :city)");
+
+# Aquí no lleva marcadores - ideal para una inyección SQL! ('''no usar este método'''). !! Hay que usar los marcadores !!
+$stmt = $pdo-&gt;prepare("INSERT INTO colegas (name, addr, city) values ($name, $addr, $city)");</code></pre>
+</div>
+</div>
+<p>Hauràs d'usar el primer o el segon mètode dels que es mostren anteriorment. El tipus de marcadors que utilitzem afectaran a la forma d'assignar eixos marcadors.</p>
+<h3>Assignació amb marcadors anònims</h3>
+<p>Per enllaçar els marcadors anònims amb el seu corresponent valor es pot utilitzar <code>bindParam</code> o <code>bindValue</code>:</p>
+<p>ATENCIÓ:<code> $pdo-&gt;prepare()</code> usant marcadors anònims ?, tracta totes les variables com si fossin cadenes, per la qual cosa farà servir cometes per delimitar els seus valors per defecte.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code># Assignem variables a cada marcador, indexats l'1 al 3
+
+$stmt-&gt;bindParam(1, $name);
+$stmt-&gt;bindParam(2, $addr);
+$stmt-&gt;bindParam(3, $city);
+
+# Insertamos una fila.
+$name = "Daniel"
+$addr = "1 Wicked Way";
+$city = "Arlington Heights";
+$stmt-&gt;execute();
+
+# Insertamos otra fila con valores diferentes.
+$name = "Steve"
+$addr = "5 Circle Drive";
+$city = "Schaumburg";
+$stmt-&gt;execute();</code></pre>
+</div>
+</div>
+<p>Un altra forma d'assignació amb marcadors anònims és mitjançant un array associatiu:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code># Los datos que queremos insertar
+$datos = array('Cathy', '9 Dark and Twisty Road', 'Cardiff');
+
+$stmt = $pdo-&gt;prepare("INSERT INTO colegas (name, addr, city) values (?, ?, ?)");
+$stmt-&gt;execute($datos);</code></pre>
+</div>
+</div>
+<h3>Diferència entre l'ús de bindParam i bindValue</h3>
+<p>Amb <code>bindParam</code> es vincula la variable al paràmetre i en el moment de fer l'<em>execute</em> és quan s'assigna realment el valor de la variable a aquest paràmetre.</p>
+<p>Amb <code>bindValue</code> s'assigna el valor de la variable a aquest paràmetre just en el moment d'executar la instrucció sentència.</p>
+<p>Exemple de diferència entre <code>bindParam</code> i <code>bindValue</code>:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>// Ejemplo con bindParam:
+$sex = 'hombre';
+$s = $dbh-&gt;prepare('SELECT name FROM studiantes WHERE sexo = :sexo');
+$s-&gt;bindParam(':sexo', $sex);
+$sex = 'mujer';
+$s-&gt;execute(); // se ejecutó con el valor WHERE sexo = 'mujer'
+
+// El mismo ejemplo con bindValue:
+$sex = 'hombre';
+$s = $dbh-&gt;prepare('SELECT name FROM students WHERE sexo = :sexo');
+$s-&gt;bindValue(':sexo', $sex);
+$sex = 'mujer';
+$s-&gt;execute(); // se ejecutó con el valor WHERE sexo = 'hombre'</code></pre>
+</div>
+</div>
+<h3>Assignació amb marcadors coneguts</h3>
+<p>Los marcadores conocidos es la forma más recomendable de trabajar con PDO, ya que a la hora de hacer el bindParam o el bindValue se puede especificar el tipo de datos y la longitud máxima de los mismos.</p>
+<ul>
+<li>Información sobre bindParam</li>
+<li>Información sobre bindValue</li>
+<li>Constantes y Tipos de Datos utilizados en bindParam y bindValue</li>
+</ul>
+<p>Formato de bindParam con marcadores conocidos:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>bindParam(':marcador', $variableVincular, TIPO DATOS PDO)</code></pre>
+</div>
+</div>
+<p>Ejemplo de uso de bindParam:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>$stmt-&gt;bindParam(':calorias', $misCalorias, PDO::PARAM_INT);
+$stmt-&gt;bindParam(':apellidos', $misApellidos, PDO::PARAM_STR, 35); // 35 caracteres como máximo.</code></pre>
+</div>
+</div>
+<p>Con marcadores conocidos quedaría de la siguiente forma:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code># El primer argumento de bindParam es el nombre del marcador y el segundo la variable que contendrá los datos.
+# Los marcadores conocidos siempre comienzan con :
+$stmt-&gt;bindParam(':name', $name);
+$name='Pepito';
+$stmt-&gt;execute();
+
+# Otra forma es creando un array asociativo con los marcadores y sus valores:
+# Los datos a insertar en forma de array asociativo
+$datos = array( 'name' =&gt; 'Cathy', 'addr' =&gt; '9 Dark and Twisty', 'city' =&gt; 'Cardiff' );
+
+# Fijarse que se pasa el array de datos en execute().
+$stmt = $pdo-&gt;prepare("INSERT INTO colegas (name, addr, city) value (:name, :addr, :city)");
+$stmt-&gt;execute($datos);
+
+# La última instrucción se podría poner también así:
+$stmt-&gt;execute(array(
+'name' =&gt; 'Cathy',
+'addr' =&gt; '9 Dark and Twisty',
+'city' =&gt; 'Cardiff'
+));</code></pre>
+</div>
+</div>
+<p>Otra característica de los marcadores conocidos es que nos permitirán trabajar con objetos directamente en la base de datos, asumiendo que las propiedades de ese objeto coinciden con los nombres de los campos de la tabla en la base de datos.</p>
+<p>Ejemplo de uso de marcadores conocidos y objetos:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code># Un objeto sencillo
+
+class person {
+public $name;
+public $addr;
+public $city;
+
+function __construct($n,$a,$c) {
+$this-&gt;name = $n;
+$this-&gt;addr = $a;
+$this-&gt;city = $c;
+}
+# etc ...
+}
+
+$cathy = new person('Cathy','9 Dark and Twisty','Cardiff');
+
+# Preparación de la consulta
+$stmt = $pdo-&gt;prepare("INSERT INTO colegas (name, addr, city) value (:name, :addr, :city)");
+
+# Inserción del objeto
+$stmt-&gt;execute((array)$cathy);</code></pre>
+</div>
+</div>
+<p></p>
+<p></p>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Llicenciat sota la </span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Llicència Creative Commons Reconeixement CompartirIgual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="22_execuci_de_consultes.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="24_inserci_modificaci_i_eliminaci_de_dades_de_la_bbdd.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<script type="text/javascript" src="_intef_js.js"></script></body></html>

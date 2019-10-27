@@ -2,6 +2,7 @@
 <html lang="ca">
 <head>
 <link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
 <link rel="stylesheet" type="text/css" href="content.css" />
 <link rel="stylesheet" type="text/css" href="nav.css" />
 <meta http-equiv="content-type" content="text/html;  charset=utf-8" />
@@ -11,6 +12,7 @@
 <meta name="generator" content="eXeLearning  - exelearning.net" />
 <!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
 <script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
 <script type="text/javascript" src="common_i18n.js"></script>
 <script type="text/javascript" src="common.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,23 +29,127 @@
    <ul>
       <li><a href="21_connexi_a_la_base_de_dades.html" class="no-ch">2.1. Connexió a la base de dades</a></li>
       <li><a href="22_execuci_de_consultes.html" class="no-ch">2.2. Execució de consultes</a></li>
-      <li><a href="23_mostrar_dades_dinmiques.html" class="no-ch">2.3. Mostrar dades dinàmiques</a></li>
+      <li><a href="23_consultes_preparades.html" class="no-ch">2.3. Consultes preparades</a></li>
       <li id="active"><a href="24_inserci_modificaci_i_eliminaci_de_dades_de_la_bbdd.html" class="active no-ch">2.4. Inserció, modificació i eliminació de dades de la BBDD</a></li>
       <li><a href="25_gesti_derrors_en_laccs.html" class="no-ch">2.5. Gestió d'errors en l'accés</a></li>
+      <li><a href="exercicis_prctics.html" class="no-ch">Exercicis pràctics</a></li>
    </ul>
    </li>
-   <li><a href="3_simplificant_laccs_a_la_base_de_dades.html" class="no-ch">3. Simplificant l'accés a la base de dades</a></li>
+   <li><a href="3_simplificant_laccs_a_la_base_de_dades.html" class="daddy">3. Simplificant l'accés a la base de dades</a>
+   <ul class="other-section">
+      <li><a href="exercicis_prctics0.html" class="no-ch">Exercicis pràctics</a></li>
+   </ul>
+   </li>
    <li><a href="4_transaccions.html" class="no-ch">4. Transaccions</a></li>
 </ul>
 </nav>
 <div id='topPagination'>
 <nav class="pagination noprt">
-<a href="23_mostrar_dades_dinmiques.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="25_gesti_derrors_en_laccs.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+<a href="23_consultes_preparades.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="25_gesti_derrors_en_laccs.html" class="next"><span>Següent<span> &raquo;</span></span></a>
 </nav>
 </div>
 <div id="main-wrapper">
 <section id="main">
 <header id="nodeDecoration"><h1 id="nodeTitle">2.4. Inserció, modificació i eliminació de dades de la BBDD</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id6">
+<div class="iDevice emphasis0">
+<div id="ta6_85" class="block iDevice_content">
+<p>Insertar nuevos datos, actualizarlos o borrarlos son algunas de las operaciones más comunes en una base de datos. Con PDO, se suele hacer en un proceso de 2 pasos.</p>
+<p><img src="Prepare-bind-execute.png" alt="Prepare Bind Execute" title="Prepare &gt; Bind &gt; Execute" style="display: block; margin-left: auto; margin-right: auto;" width="600" height="125" /></p>
+<p>Ejemplo de uso:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code># $stmt sería un objeto de tipo PDOStatement (consulta preparada)
+$stmt = $pdo-&gt;prepare("INSERT INTO alumnos( nombre, apellidos) values ( 'Taylor','Swift' )");
+# Ejecutamos la consulta con -&gt;execute() método del objeto PDOStatement
+# Este método devuelve true o false.
+$stmt-&gt;execute();
+
+// Como resultado de la ejecución tendríamos en $stmt un valor true o false indicado si la instrucción se ha ejecutado correctamente.
+
+// Se podría realizar lo anterior también con la sentencia query o exec del objeto PDO ahorrándonos una instrucción:
+// Es útil cuando son sentencias SQL que no reciben parámetros.
+
+// $pdo-&gt;query("consulta SQL") -&gt; Devolverá un objeto de tipo PDOStatement. (recomendable para SELECT)
+// $pdo-&gt;exec("consulta SQL") -&gt; Devolverá el número de registros afectados por la consulta (recomendable para INSERT, UPDATE o DELETE).
+
+// Como resultado de la ejecución tendríamos en $numregistros el número de filas afectadas por la instrucción.
+$numregistros= $pdo-&gt;query("INSERT INTO alumnos( nombre, apellidos) values ( 'Taylor','Swift' )");
+
+# Si queremos borrar registros se podría hacer con:
+$pdo-&gt;exec("DELETE FROM colegas WHERE apellidos='Swift'");</code></pre>
+</div>
+</div>
+<p></p>
+<p></p>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper FreeTextIdevice" id="id7">
+<div class="iDevice emphasis0">
+<div id="ta7_85" class="block iDevice_content">
+<h2>Ejemplos CRUD: INSERT, UPDATE y DELETE</h2>
+<h3>INSERT</h3>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>try {
+$pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+$pdo-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$stmt = $pdo-&gt;prepare('INSERT INTO someTable VALUES(:name)');
+$stmt-&gt;execute(array(
+':name' =&gt; 'Justin Bieber'
+));
+
+# Affected Rows?
+echo $stmt-&gt;rowCount(); // 1
+} catch(PDOException $e) {
+echo 'Error: ' . $e-&gt;getMessage();</code></pre>
+</div>
+</div>
+<h3>UPDATE</h3>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>$id = 5;
+$name = "Joe the Plumber";
+
+try {
+$pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+$pdo-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$stmt = $pdo-&gt;prepare('UPDATE someTable SET name = :name WHERE id = :id');
+$stmt-&gt;execute(array(
+':id' =&gt; $id,
+':name' =&gt; $name
+));
+
+echo $stmt-&gt;rowCount(); // 1
+} catch(PDOException $e) {
+echo 'Error: ' . $e-&gt;getMessage();</code></pre>
+</div>
+</div>
+<h3>DELETE</h3>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>$id = 5; // From a form or something similar
+
+try {
+$pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+$pdo-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$stmt = $pdo-&gt;prepare('DELETE FROM someTable WHERE id = :id');
+$stmt-&gt;bindParam(':id', $id); // this time, we'll use the bindParam method
+$stmt-&gt;execute();
+
+echo $stmt-&gt;rowCount(); // 1
+} catch(PDOException $e) {
+echo 'Error: ' . $e-&gt;getMessage();
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</article>
 <div id="packageLicense" class="cc cc-by-sa">
 <p><span>Llicenciat sota la </span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Llicència Creative Commons Reconeixement CompartirIgual 4.0</a></p>
 </div>
@@ -51,7 +157,7 @@
 </div>
 <div id='bottomPagination'>
 <nav class="pagination noprt">
-<a href="23_mostrar_dades_dinmiques.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="25_gesti_derrors_en_laccs.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+<a href="23_consultes_preparades.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="25_gesti_derrors_en_laccs.html" class="next"><span>Següent<span> &raquo;</span></span></a>
 </nav>
 </div>
 </div>

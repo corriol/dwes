@@ -2,6 +2,7 @@
 <html lang="ca">
 <head>
 <link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
 <link rel="stylesheet" type="text/css" href="content.css" />
 <link rel="stylesheet" type="text/css" href="nav.css" />
 <meta http-equiv="content-type" content="text/html;  charset=utf-8" />
@@ -11,6 +12,7 @@
 <meta name="generator" content="eXeLearning  - exelearning.net" />
 <!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
 <script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
 <script type="text/javascript" src="common_i18n.js"></script>
 <script type="text/javascript" src="common.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,23 +29,52 @@
    <ul class="other-section">
       <li><a href="21_connexi_a_la_base_de_dades.html" class="no-ch">2.1. Connexió a la base de dades</a></li>
       <li><a href="22_execuci_de_consultes.html" class="no-ch">2.2. Execució de consultes</a></li>
-      <li><a href="23_mostrar_dades_dinmiques.html" class="no-ch">2.3. Mostrar dades dinàmiques</a></li>
+      <li><a href="23_consultes_preparades.html" class="no-ch">2.3. Consultes preparades</a></li>
       <li><a href="24_inserci_modificaci_i_eliminaci_de_dades_de_la_bbdd.html" class="no-ch">2.4. Inserció, modificació i eliminació de dades de la BBDD</a></li>
       <li><a href="25_gesti_derrors_en_laccs.html" class="no-ch">2.5. Gestió d'errors en l'accés</a></li>
+      <li><a href="exercicis_prctics.html" class="no-ch">Exercicis pràctics</a></li>
    </ul>
    </li>
-   <li id="active"><a href="3_simplificant_laccs_a_la_base_de_dades.html" class="active no-ch">3. Simplificant l'accés a la base de dades</a></li>
+   <li id="active"><a href="3_simplificant_laccs_a_la_base_de_dades.html" class="active daddy">3. Simplificant l'accés a la base de dades</a>
+   <ul>
+      <li><a href="exercicis_prctics0.html" class="no-ch">Exercicis pràctics</a></li>
+   </ul>
+   </li>
    <li><a href="4_transaccions.html" class="no-ch">4. Transaccions</a></li>
 </ul>
 </nav>
 <div id='topPagination'>
 <nav class="pagination noprt">
-<a href="25_gesti_derrors_en_laccs.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="4_transaccions.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+<a href="exercicis_prctics.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="exercicis_prctics0.html" class="next"><span>Següent<span> &raquo;</span></span></a>
 </nav>
 </div>
 <div id="main-wrapper">
 <section id="main">
 <header id="nodeDecoration"><h1 id="nodeTitle">3. Simplificant l'accés a la base de dades</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id8">
+<div class="iDevice emphasis0">
+<div id="ta8_85" class="block iDevice_content">
+<h2>Arxiu de configuració</h2>
+<p>Crear una fitxer de configuració amb les dades bàsiques de la connexió.</p>
+<h2>Creació de les entitats i la interfície a la base de dades</h2>
+<p>Definir entitats.</p>
+<h2>Contenidors de serveis</h2>
+<p>Un contenidor de serveis (o contenidor d'injecció de dependències) simplement és un objecte PHP que gestiona la creació d'instàncies dels serveis (és a dir, dels objectes).</p>
+<p>Suposem per exemple que tens una classe PHP senzilla que envia missatges de correu electrònic. Sense un contenidor de serveis, has de crear manualment l'objecte cada vegada que ho necessitis:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>use Acme\HelloBundle\Mailer;
+
+$mailer = new Mailer ( 'sendmail');
+$mailer-&gt; send ('ryan@foobar.net ', ...);</code></pre>
+</div>
+</div>
+<p>Aquest codi és bastant fàcil, ja que la classe imaginària Mailer s'encarrega de configurar el mètode utilitzat per enviar missatges de correu electrònic (per exemple, sendmail, smtp, etc.). Què passa si has d'utilitzar la classe Mailer en un altre punt de l'aplicació? Has de copiar i enganxar el mateix codi en tots els llocs? I si has de canviar la forma en què s'envien els correus electrònics? Has de buscar en el codi de tota l'aplicació i canviar la mateixa configuració desenes de vegades?</p>
+<h2>Repositori d'entitats o models.</h2>
+<h2>Gestió de les relacions.</h2>
+</div>
+</div>
+</article>
 <div id="packageLicense" class="cc cc-by-sa">
 <p><span>Llicenciat sota la </span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Llicència Creative Commons Reconeixement CompartirIgual 4.0</a></p>
 </div>
@@ -51,7 +82,7 @@
 </div>
 <div id='bottomPagination'>
 <nav class="pagination noprt">
-<a href="25_gesti_derrors_en_laccs.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="4_transaccions.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+<a href="exercicis_prctics.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="exercicis_prctics0.html" class="next"><span>Següent<span> &raquo;</span></span></a>
 </nav>
 </div>
 </div>
