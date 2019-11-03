@@ -58,14 +58,26 @@
 </article>
 <article class="iDevice_wrapper activityIdevice em_iDevice" id="id13">
 <div class="iDevice emphasis1" >
-<header class="iDevice_header"><h1 class="iDeviceTitle">Activitat</h1></header>
+<header class="iDevice_header"><h1 class="iDeviceTitle">Activitat: DBConnection</h1></header>
 <div class="iDevice_inner">
 <div class="iDevice_content_wrapper">
 <div id="ta13_52_2" class="block iDevice_content">
-<p>Per a unificar el procés de creació de connexió a la BBDD de la nostra aplicació crearem una classe Connection responsable d'aquesta tasca.</p>
-<p>La classe contindrà una funció estàtica anomenada <em>getConnection</em> que tornarà la connexió establerta.</p>
-<p>En aquesta funció controlarem l'excepció PDOException i farem servir la funció die de PHP per mostrar el missatge de l'excepció</p>
+<p>Per a unificar el procés de creació de connexió a la BBDD de la nostra aplicació crearem una classe DBConnection responsable d'aquesta tasca.</p>
+<p>La classe contindrà una funció anomenada <em>getConnection</em> que tornarà la connexió establerta.</p>
+<p>En aquesta funció controlarem l'excepció PDOException i farem servir la funció <code>die</code> de PHP per mostrar el missatge de l'excepció</p>
 <p>Aquesta classe la guardarem en un directori anomenat src.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper activityIdevice em_iDevice" id="id14">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Activitat: Separar les dades de connexió </h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta14_48_2" class="block iDevice_content">
+<p>Modificarem la classe DBConnection perquè les dades de la connexió les agafe d'un altre arxiu anomenat <code>app.json</code> que estarà en en la carpeta <code>config</code>.</p>
 </div>
 </div>
 </div>

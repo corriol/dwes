@@ -69,7 +69,7 @@
   <string role="key" value="_intendedEndUserRoleType"></string>
   <unicode value=""></unicode>
   <string role="key" value="_isChanged"></string>
-  <bool value="1"></bool>
+  <bool value="0"></bool>
   <string role="key" value="_isTemplate"></string>
   <bool value="0"></bool>
   <string role="key" value="_lang"></string>
@@ -85,7 +85,7 @@
   <string role="key" value="_name"></string>
   <unicode value="05._PHP_Accs_a_bases_de_dades_amb_PDO"></unicode>
   <string role="key" value="_nextIdeviceId"></string>
-  <int value="14"></int>
+  <int value="15"></int>
   <string role="key" value="_nextNodeId"></string>
   <int value="12"></int>
   <string role="key" value="_nodeIdDict"></string>
@@ -234,7 +234,7 @@ text through the text editing buttons associated with the field."></unicode>
      <none></none>
      <string role="key" value="children"></string>
      <list>
-      <instance class="exe.engine.node.Node" reference="42">
+      <instance class="exe.engine.node.Node" reference="45">
        <dictionary>
         <string role="key" value="_title"></string>
         <unicode value="1. Maneig de PHPMyAdmin"></unicode>
@@ -336,7 +336,7 @@ text through the text editing buttons associated with the field."></unicode>
                   <instance class="exe.engine.field.TextField">
                    <dictionary>
                     <string role="key" value="_id"></string>
-                    <int value="170"></int>
+                    <int value="180"></int>
                     <string role="key" value="_idevice"></string>
                     <none></none>
                     <string role="key" value="_instruc"></string>
@@ -350,7 +350,7 @@ text through the text editing buttons associated with the field."></unicode>
                    </dictionary>
                   </instance>
                   <string role="key" value="_id"></string>
-                  <unicode value="1_85.4"></unicode>
+                  <unicode value="1_85.8"></unicode>
                   <string role="key" value="_imageResource"></string>
                   <instance class="exe.engine.resource.Resource" reference="8">
                    <dictionary>
@@ -361,7 +361,7 @@ text through the text editing buttons associated with the field."></unicode>
                     <string role="key" value="_storageName"></string>
                     <string value="Pdo.png"></string>
                     <string role="key" value="_userName"></string>
-                    <string value="/tmp/tmpOSRr4U/Pdo.png"></string>
+                    <string value="/tmp/tmpKb9kZA/Pdo.png"></string>
                     <string role="key" value="checksum"></string>
                     <string value="3f5b4ea96da4cec473d5f458b47d4e10"></string>
                     <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
@@ -390,7 +390,7 @@ text through the text editing buttons associated with the field."></unicode>
              <string role="key" value="intlinks_to_anchors"></string>
              <dictionary></dictionary>
              <string role="key" value="nextImageId"></string>
-             <int value="5"></int>
+             <int value="9"></int>
              <string role="key" value="parentNode"></string>
              <reference key="7"></reference>
             </dictionary>
@@ -422,66 +422,6 @@ text through the text editing buttons associated with the field."></unicode>
            <string role="key" value="userResources"></string>
            <list>
             <reference key="8"></reference>
-            <instance class="exe.engine.resource.Resource" reference="44">
-             <dictionary>
-              <string role="key" value="_idevice"></string>
-              <reference key="5"></reference>
-              <string role="key" value="_package"></string>
-              <reference key="4"></reference>
-              <string role="key" value="_storageName"></string>
-              <string value="Pdo.png"></string>
-              <string role="key" value="_userName"></string>
-              <string value="/tmp/tmpOSRr4U/Pdo.png"></string>
-              <string role="key" value="checksum"></string>
-              <string value="3f5b4ea96da4cec473d5f458b47d4e10"></string>
-              <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
-              <int value="2"></int>
-              <string role="key" value="exe.engine.resource._Resource.persistenceVersion"></string>
-              <int value="2"></int>
-              <string role="key" value="warningMsg"></string>
-              <string value=""></string>
-             </dictionary>
-            </instance>
-            <instance class="exe.engine.resource.Resource" reference="45">
-             <dictionary>
-              <string role="key" value="_idevice"></string>
-              <reference key="5"></reference>
-              <string role="key" value="_package"></string>
-              <reference key="4"></reference>
-              <string role="key" value="_storageName"></string>
-              <string value="Pdo.png"></string>
-              <string role="key" value="_userName"></string>
-              <string value="/tmp/tmpOSRr4U/Pdo.png"></string>
-              <string role="key" value="checksum"></string>
-              <string value="3f5b4ea96da4cec473d5f458b47d4e10"></string>
-              <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
-              <int value="2"></int>
-              <string role="key" value="exe.engine.resource._Resource.persistenceVersion"></string>
-              <int value="2"></int>
-              <string role="key" value="warningMsg"></string>
-              <string value=""></string>
-             </dictionary>
-            </instance>
-            <instance class="exe.engine.resource.Resource" reference="46">
-             <dictionary>
-              <string role="key" value="_idevice"></string>
-              <reference key="5"></reference>
-              <string role="key" value="_package"></string>
-              <reference key="4"></reference>
-              <string role="key" value="_storageName"></string>
-              <string value="Pdo.png"></string>
-              <string role="key" value="_userName"></string>
-              <string value="/tmp/tmpOSRr4U/Pdo.png"></string>
-              <string role="key" value="checksum"></string>
-              <string value="3f5b4ea96da4cec473d5f458b47d4e10"></string>
-              <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
-              <int value="2"></int>
-              <string role="key" value="exe.engine.resource._Resource.persistenceVersion"></string>
-              <int value="2"></int>
-              <string role="key" value="warningMsg"></string>
-              <string value=""></string>
-             </dictionary>
-            </instance>
             <instance class="exe.engine.resource.Resource" reference="47">
              <dictionary>
               <string role="key" value="_idevice"></string>
@@ -491,7 +431,147 @@ text through the text editing buttons associated with the field."></unicode>
               <string role="key" value="_storageName"></string>
               <string value="Pdo.png"></string>
               <string role="key" value="_userName"></string>
-              <string value="/tmp/tmpOSRr4U/Pdo.png"></string>
+              <string value="/tmp/tmpKb9kZA/Pdo.png"></string>
+              <string role="key" value="checksum"></string>
+              <string value="3f5b4ea96da4cec473d5f458b47d4e10"></string>
+              <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
+              <int value="2"></int>
+              <string role="key" value="exe.engine.resource._Resource.persistenceVersion"></string>
+              <int value="2"></int>
+              <string role="key" value="warningMsg"></string>
+              <string value=""></string>
+             </dictionary>
+            </instance>
+            <instance class="exe.engine.resource.Resource" reference="48">
+             <dictionary>
+              <string role="key" value="_idevice"></string>
+              <reference key="5"></reference>
+              <string role="key" value="_package"></string>
+              <reference key="4"></reference>
+              <string role="key" value="_storageName"></string>
+              <string value="Pdo.png"></string>
+              <string role="key" value="_userName"></string>
+              <string value="/tmp/tmpKb9kZA/Pdo.png"></string>
+              <string role="key" value="checksum"></string>
+              <string value="3f5b4ea96da4cec473d5f458b47d4e10"></string>
+              <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
+              <int value="2"></int>
+              <string role="key" value="exe.engine.resource._Resource.persistenceVersion"></string>
+              <int value="2"></int>
+              <string role="key" value="warningMsg"></string>
+              <string value=""></string>
+             </dictionary>
+            </instance>
+            <instance class="exe.engine.resource.Resource" reference="49">
+             <dictionary>
+              <string role="key" value="_idevice"></string>
+              <reference key="5"></reference>
+              <string role="key" value="_package"></string>
+              <reference key="4"></reference>
+              <string role="key" value="_storageName"></string>
+              <string value="Pdo.png"></string>
+              <string role="key" value="_userName"></string>
+              <string value="/tmp/tmpKb9kZA/Pdo.png"></string>
+              <string role="key" value="checksum"></string>
+              <string value="3f5b4ea96da4cec473d5f458b47d4e10"></string>
+              <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
+              <int value="2"></int>
+              <string role="key" value="exe.engine.resource._Resource.persistenceVersion"></string>
+              <int value="2"></int>
+              <string role="key" value="warningMsg"></string>
+              <string value=""></string>
+             </dictionary>
+            </instance>
+            <instance class="exe.engine.resource.Resource" reference="50">
+             <dictionary>
+              <string role="key" value="_idevice"></string>
+              <reference key="5"></reference>
+              <string role="key" value="_package"></string>
+              <reference key="4"></reference>
+              <string role="key" value="_storageName"></string>
+              <string value="Pdo.png"></string>
+              <string role="key" value="_userName"></string>
+              <string value="/tmp/tmpKb9kZA/Pdo.png"></string>
+              <string role="key" value="checksum"></string>
+              <string value="3f5b4ea96da4cec473d5f458b47d4e10"></string>
+              <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
+              <int value="2"></int>
+              <string role="key" value="exe.engine.resource._Resource.persistenceVersion"></string>
+              <int value="2"></int>
+              <string role="key" value="warningMsg"></string>
+              <string value=""></string>
+             </dictionary>
+            </instance>
+            <instance class="exe.engine.resource.Resource" reference="51">
+             <dictionary>
+              <string role="key" value="_idevice"></string>
+              <reference key="5"></reference>
+              <string role="key" value="_package"></string>
+              <reference key="4"></reference>
+              <string role="key" value="_storageName"></string>
+              <string value="Pdo.png"></string>
+              <string role="key" value="_userName"></string>
+              <string value="/tmp/tmpKb9kZA/Pdo.png"></string>
+              <string role="key" value="checksum"></string>
+              <string value="3f5b4ea96da4cec473d5f458b47d4e10"></string>
+              <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
+              <int value="2"></int>
+              <string role="key" value="exe.engine.resource._Resource.persistenceVersion"></string>
+              <int value="2"></int>
+              <string role="key" value="warningMsg"></string>
+              <string value=""></string>
+             </dictionary>
+            </instance>
+            <instance class="exe.engine.resource.Resource" reference="52">
+             <dictionary>
+              <string role="key" value="_idevice"></string>
+              <reference key="5"></reference>
+              <string role="key" value="_package"></string>
+              <reference key="4"></reference>
+              <string role="key" value="_storageName"></string>
+              <string value="Pdo.png"></string>
+              <string role="key" value="_userName"></string>
+              <string value="/tmp/tmpKb9kZA/Pdo.png"></string>
+              <string role="key" value="checksum"></string>
+              <string value="3f5b4ea96da4cec473d5f458b47d4e10"></string>
+              <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
+              <int value="2"></int>
+              <string role="key" value="exe.engine.resource._Resource.persistenceVersion"></string>
+              <int value="2"></int>
+              <string role="key" value="warningMsg"></string>
+              <string value=""></string>
+             </dictionary>
+            </instance>
+            <instance class="exe.engine.resource.Resource" reference="53">
+             <dictionary>
+              <string role="key" value="_idevice"></string>
+              <reference key="5"></reference>
+              <string role="key" value="_package"></string>
+              <reference key="4"></reference>
+              <string role="key" value="_storageName"></string>
+              <string value="Pdo.png"></string>
+              <string role="key" value="_userName"></string>
+              <string value="/tmp/tmpKb9kZA/Pdo.png"></string>
+              <string role="key" value="checksum"></string>
+              <string value="3f5b4ea96da4cec473d5f458b47d4e10"></string>
+              <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
+              <int value="2"></int>
+              <string role="key" value="exe.engine.resource._Resource.persistenceVersion"></string>
+              <int value="2"></int>
+              <string role="key" value="warningMsg"></string>
+              <string value=""></string>
+             </dictionary>
+            </instance>
+            <instance class="exe.engine.resource.Resource" reference="54">
+             <dictionary>
+              <string role="key" value="_idevice"></string>
+              <reference key="5"></reference>
+              <string role="key" value="_package"></string>
+              <reference key="4"></reference>
+              <string role="key" value="_storageName"></string>
+              <string value="Pdo.png"></string>
+              <string role="key" value="_userName"></string>
+              <string value="/tmp/tmpKb9kZA/Pdo.png"></string>
               <string role="key" value="checksum"></string>
               <string value="3f5b4ea96da4cec473d5f458b47d4e10"></string>
               <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
@@ -971,8 +1051,8 @@ $stmt = $pdo-&amp;gt;prepare(&quot;INSERT INTO colegas (name, addr, city) values
 &lt;p&gt;ATENCIÓ:&lt;code&gt; $pdo-&amp;gt;prepare()&lt;/code&gt; usant marcadors anònims ?, tracta totes les variables com si fossin cadenes, per la qual cosa farà servir cometes per delimitar els seus valors per defecte.&lt;/p&gt;
 &lt;div class=&quot;highlighted-code language-php&quot;&gt;
 &lt;div&gt;
-&lt;pre&gt;&lt;code&gt;# Assignem variables a cada marcador, indexats l'1 al 3
-
+&lt;pre&gt;&lt;code&gt;# Marcadores anónimos
+$stmt = $pdo-&amp;gt;prepare(&quot;INSERT INTO friend (name, addr, city) values (?, ?, ?)&quot;);&lt;br /&gt;&lt;br /&gt;# Assignem variables a cada marcador, indexats l'1 al 3
 $stmt-&amp;gt;bindParam(1, $name);
 $stmt-&amp;gt;bindParam(2, $addr);
 $stmt-&amp;gt;bindParam(3, $city);
@@ -1002,7 +1082,7 @@ $stmt-&amp;gt;execute($datos);&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;h3&gt;Diferència entre l'ús de bindParam i bindValue&lt;/h3&gt;
 &lt;p&gt;Amb &lt;code&gt;bindParam&lt;/code&gt; es vincula la variable al paràmetre i en el moment de fer l'&lt;em&gt;execute&lt;/em&gt; és quan s'assigna realment el valor de la variable a aquest paràmetre.&lt;/p&gt;
-&lt;p&gt;Amb &lt;code&gt;bindValue&lt;/code&gt; s'assigna el valor de la variable a aquest paràmetre just en el moment d'executar la instrucció sentència.&lt;/p&gt;
+&lt;p&gt;Amb &lt;code&gt;bindValue&lt;/code&gt; s'assigna el valor de la variable a aquest paràmetre just en el moment d'executar la instrucció &lt;code&gt;bindValue&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Exemple de diferència entre &lt;code&gt;bindParam&lt;/code&gt; i &lt;code&gt;bindValue&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlighted-code language-php&quot;&gt;
 &lt;div&gt;
@@ -1044,10 +1124,9 @@ $stmt-&amp;gt;bindParam(':apellidos', $misApellidos, PDO::PARAM_STR, 35); // 35 
 &lt;p&gt;Con marcadores conocidos quedaría de la siguiente forma:&lt;/p&gt;
 &lt;div class=&quot;highlighted-code language-php&quot;&gt;
 &lt;div&gt;
-&lt;pre&gt;&lt;code&gt;# El primer argumento de bindParam es el nombre del marcador y el segundo la variable que contendrá los datos.
-# Los marcadores conocidos siempre comienzan con :
-$stmt-&amp;gt;bindParam(':name', $name);
-$name='Pepito';
+&lt;pre&gt;&lt;code&gt;$stmt = $pdo-&amp;gt;prepare(&quot;INSERT INTO colegas (name, addr, city) value (:name, :addr, :city)&quot;);&lt;br /&gt;&lt;br /&gt;# El primer argumento de bindParam es el nombre del marcador y el segundo la variable que contendrá los datos.
+&lt;br /&gt;# Los marcadores conocidos siempre comienzan con :
+$stmt-&amp;gt;bindParam(':name', $name);&lt;br /&gt;$name='Pepito';&lt;br /&gt;&lt;br /&gt;$stmt-&amp;gt;bindParam(':addr', $addr);&lt;br /&gt;$addr='Duanes, 17';&lt;br /&gt;&lt;br /&gt;$stmt-&amp;gt;bindParam(':city', $city);&lt;br /&gt;$city = 'Pego';&lt;br /&gt;
 $stmt-&amp;gt;execute();
 
 # Otra forma es creando un array asociativo con los marcadores y sus valores:
@@ -1094,8 +1173,35 @@ $stmt = $pdo-&amp;gt;prepare(&quot;INSERT INTO colegas (name, addr, city) value 
 $stmt-&amp;gt;execute((array)$cathy);&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;"></unicode>
+&lt;h2&gt;Exemple d'ús&lt;/h2&gt;
+&lt;p&gt;Per a utilitzar les consultes preparades seguirem sempre aquest esquema:&lt;/p&gt;
+&lt;p style=&quot;text-align: center;&quot;&gt;&lt;img src=&quot;resources/consultes-preparades.png&quot; alt=&quot;&quot; width=&quot;600&quot; height=&quot;125&quot; /&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+
+$pdo = new PDO('sqlite:/path/db/users.db');
+# 1. Preparem la connexió
+$stmt = $pdo-&amp;gt;prepare('SELECT name FROM users WHERE id = :id');
+
+$id = 5;
+
+# 2. Vinculem els paràmetres
+$stmt-&amp;gt;bindParam(':id', $id, PDO::PARAM_INT); 
+
+# 3. Executem la consulta
+$stmt-&amp;gt;execute();&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;
+
+# 4. Obtenim els registres&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;
+
+# Un a un
+$row = $stmt-&amp;gt;fetch()
+
+# Tots
+$rows = $stmt-&amp;gt;fetchAll()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;"></unicode>
                 <string role="key" value="exe.engine.field.Field.persistenceVersion"></string>
                 <int value="4"></int>
                 <string role="key" value="exe.engine.field.FieldWithResources.persistenceVersion"></string>
@@ -1108,7 +1214,60 @@ $stmt-&amp;gt;execute((array)$cathy);&lt;/code&gt;&lt;/pre&gt;
                 <instance class="exe.engine.galleryidevice.GalleryImages">
                  <dictionary>
                   <string role="key" value=".listitems"></string>
-                  <list></list>
+                  <list>
+                   <instance class="exe.engine.galleryidevice.GalleryImage">
+                    <dictionary>
+                     <string role="key" value="_caption"></string>
+                     <instance class="exe.engine.field.TextField">
+                      <dictionary>
+                       <string role="key" value="_id"></string>
+                       <int value="181"></int>
+                       <string role="key" value="_idevice"></string>
+                       <none></none>
+                       <string role="key" value="_instruc"></string>
+                       <string value=""></string>
+                       <string role="key" value="_name"></string>
+                       <string value=""></string>
+                       <string role="key" value="content"></string>
+                       <string value=""></string>
+                       <string role="key" value="exe.engine.field.Field.persistenceVersion"></string>
+                       <int value="4"></int>
+                      </dictionary>
+                     </instance>
+                     <string role="key" value="_id"></string>
+                     <unicode value="5_85.2"></unicode>
+                     <string role="key" value="_imageResource"></string>
+                     <instance class="exe.engine.resource.Resource" reference="18">
+                      <dictionary>
+                       <string role="key" value="_idevice"></string>
+                       <reference key="15"></reference>
+                       <string role="key" value="_package"></string>
+                       <reference key="4"></reference>
+                       <string role="key" value="_storageName"></string>
+                       <string value="consultes-preparades.png"></string>
+                       <string role="key" value="_userName"></string>
+                       <string value="/tmp/tmpKb9kZA/consultes-preparades.png"></string>
+                       <string role="key" value="checksum"></string>
+                       <string value="c99b2d70e6ba06c9817f555327a8dbd3"></string>
+                       <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
+                       <int value="2"></int>
+                       <string role="key" value="exe.engine.resource._Resource.persistenceVersion"></string>
+                       <int value="2"></int>
+                       <string role="key" value="warningMsg"></string>
+                       <string value=""></string>
+                      </dictionary>
+                     </instance>
+                     <string role="key" value="_parent"></string>
+                     <reference key="16"></reference>
+                     <string role="key" value="_thumbnailResource"></string>
+                     <none></none>
+                     <string role="key" value="exe.engine.galleryidevice.GalleryImage.persistenceVersion"></string>
+                     <int value="3"></int>
+                     <string role="key" value="makeThumbnail"></string>
+                     <bool value="0"></bool>
+                    </dictionary>
+                   </instance>
+                  </list>
                   <string role="key" value="idevice"></string>
                   <reference key="16"></reference>
                  </dictionary>
@@ -1116,7 +1275,7 @@ $stmt-&amp;gt;execute((array)$cathy);&lt;/code&gt;&lt;/pre&gt;
                 <string role="key" value="intlinks_to_anchors"></string>
                 <dictionary></dictionary>
                 <string role="key" value="nextImageId"></string>
-                <int value="0"></int>
+                <int value="3"></int>
                 <string role="key" value="parentNode"></string>
                 <reference key="17"></reference>
                </dictionary>
@@ -1146,7 +1305,49 @@ $stmt-&amp;gt;execute((array)$cathy);&lt;/code&gt;&lt;/pre&gt;
               <string role="key" value="undo"></string>
               <bool value="1"></bool>
               <string role="key" value="userResources"></string>
-              <list></list>
+              <list>
+               <reference key="18"></reference>
+               <instance class="exe.engine.resource.Resource" reference="55">
+                <dictionary>
+                 <string role="key" value="_idevice"></string>
+                 <reference key="15"></reference>
+                 <string role="key" value="_package"></string>
+                 <reference key="4"></reference>
+                 <string role="key" value="_storageName"></string>
+                 <string value="consultes-preparades.png"></string>
+                 <string role="key" value="_userName"></string>
+                 <string value="/tmp/tmpKb9kZA/consultes-preparades.png"></string>
+                 <string role="key" value="checksum"></string>
+                 <string value="c99b2d70e6ba06c9817f555327a8dbd3"></string>
+                 <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
+                 <int value="2"></int>
+                 <string role="key" value="exe.engine.resource._Resource.persistenceVersion"></string>
+                 <int value="2"></int>
+                 <string role="key" value="warningMsg"></string>
+                 <string value=""></string>
+                </dictionary>
+               </instance>
+               <instance class="exe.engine.resource.Resource" reference="56">
+                <dictionary>
+                 <string role="key" value="_idevice"></string>
+                 <reference key="15"></reference>
+                 <string role="key" value="_package"></string>
+                 <reference key="4"></reference>
+                 <string role="key" value="_storageName"></string>
+                 <string value="consultes-preparades.png"></string>
+                 <string role="key" value="_userName"></string>
+                 <string value="/tmp/tmpKb9kZA/consultes-preparades.png"></string>
+                 <string role="key" value="checksum"></string>
+                 <string value="c99b2d70e6ba06c9817f555327a8dbd3"></string>
+                 <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
+                 <int value="2"></int>
+                 <string role="key" value="exe.engine.resource._Resource.persistenceVersion"></string>
+                 <int value="2"></int>
+                 <string role="key" value="warningMsg"></string>
+                 <string value=""></string>
+                </dictionary>
+               </instance>
+              </list>
               <string role="key" value="version"></string>
               <int value="0"></int>
              </dictionary>
@@ -1172,13 +1373,13 @@ $stmt-&amp;gt;execute((array)$cathy);&lt;/code&gt;&lt;/pre&gt;
            <list></list>
           </dictionary>
          </instance>
-         <instance class="exe.engine.node.Node" reference="20">
+         <instance class="exe.engine.node.Node" reference="21">
           <dictionary>
            <string role="key" value="_title"></string>
            <unicode value="2.4. Inserció, modificació i eliminació de dades de la BBDD"></unicode>
            <string role="key" value="idevices"></string>
            <list>
-            <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="18">
+            <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="19">
              <dictionary>
               <string role="key" value="_title"></string>
               <unicode value="Free Text"></unicode>
@@ -1194,12 +1395,12 @@ delivered."></unicode>
               <string role="key" value="childs"></string>
               <list></list>
               <string role="key" value="content"></string>
-              <instance class="exe.engine.field.TextAreaField" reference="19">
+              <instance class="exe.engine.field.TextAreaField" reference="20">
                <dictionary>
                 <string role="key" value="_id"></string>
                 <int value="85"></int>
                 <string role="key" value="_idevice"></string>
-                <reference key="18"></reference>
+                <reference key="19"></reference>
                 <string role="key" value="_instruc"></string>
                 <unicode value="Use this field to enter text. This 
 iDevice has no emphasis applied although limited formatting can be applied to 
@@ -1258,7 +1459,7 @@ $pdo-&amp;gt;exec(&quot;DELETE FROM colegas WHERE apellidos='Swift'&quot;);&lt;/
                      <instance class="exe.engine.field.TextField">
                       <dictionary>
                        <string role="key" value="_id"></string>
-                       <int value="169"></int>
+                       <int value="179"></int>
                        <string role="key" value="_idevice"></string>
                        <none></none>
                        <string role="key" value="_instruc"></string>
@@ -1272,18 +1473,18 @@ $pdo-&amp;gt;exec(&quot;DELETE FROM colegas WHERE apellidos='Swift'&quot;);&lt;/
                       </dictionary>
                      </instance>
                      <string role="key" value="_id"></string>
-                     <unicode value="6_85.3"></unicode>
+                     <unicode value="6_85.7"></unicode>
                      <string role="key" value="_imageResource"></string>
-                     <instance class="exe.engine.resource.Resource" reference="21">
+                     <instance class="exe.engine.resource.Resource" reference="22">
                       <dictionary>
                        <string role="key" value="_idevice"></string>
-                       <reference key="18"></reference>
+                       <reference key="19"></reference>
                        <string role="key" value="_package"></string>
                        <reference key="4"></reference>
                        <string role="key" value="_storageName"></string>
                        <string value="Prepare-bind-execute.png"></string>
                        <string role="key" value="_userName"></string>
-                       <string value="/tmp/tmpOSRr4U/Prepare-bind-execute.png"></string>
+                       <string value="/tmp/tmpKb9kZA/Prepare-bind-execute.png"></string>
                        <string role="key" value="checksum"></string>
                        <string value="d5373a825bf535abbbb29007fa3194cf"></string>
                        <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
@@ -1295,7 +1496,7 @@ $pdo-&amp;gt;exec(&quot;DELETE FROM colegas WHERE apellidos='Swift'&quot;);&lt;/
                       </dictionary>
                      </instance>
                      <string role="key" value="_parent"></string>
-                     <reference key="19"></reference>
+                     <reference key="20"></reference>
                      <string role="key" value="_thumbnailResource"></string>
                      <none></none>
                      <string role="key" value="exe.engine.galleryidevice.GalleryImage.persistenceVersion"></string>
@@ -1306,15 +1507,15 @@ $pdo-&amp;gt;exec(&quot;DELETE FROM colegas WHERE apellidos='Swift'&quot;);&lt;/
                    </instance>
                   </list>
                   <string role="key" value="idevice"></string>
-                  <reference key="19"></reference>
+                  <reference key="20"></reference>
                  </dictionary>
                 </instance>
                 <string role="key" value="intlinks_to_anchors"></string>
                 <dictionary></dictionary>
                 <string role="key" value="nextImageId"></string>
-                <int value="4"></int>
+                <int value="8"></int>
                 <string role="key" value="parentNode"></string>
-                <reference key="20"></reference>
+                <reference key="21"></reference>
                </dictionary>
               </instance>
               <string role="key" value="edit"></string>
@@ -1334,7 +1535,7 @@ $pdo-&amp;gt;exec(&quot;DELETE FROM colegas WHERE apellidos='Swift'&quot;);&lt;/
               <string role="key" value="parent"></string>
               <none></none>
               <string role="key" value="parentNode"></string>
-              <reference key="20"></reference>
+              <reference key="21"></reference>
               <string role="key" value="systemResources"></string>
               <list></list>
               <string role="key" value="type"></string>
@@ -1343,17 +1544,17 @@ $pdo-&amp;gt;exec(&quot;DELETE FROM colegas WHERE apellidos='Swift'&quot;);&lt;/
               <bool value="1"></bool>
               <string role="key" value="userResources"></string>
               <list>
-               <reference key="21"></reference>
-               <instance class="exe.engine.resource.Resource" reference="48">
+               <reference key="22"></reference>
+               <instance class="exe.engine.resource.Resource" reference="57">
                 <dictionary>
                  <string role="key" value="_idevice"></string>
-                 <reference key="18"></reference>
+                 <reference key="19"></reference>
                  <string role="key" value="_package"></string>
                  <reference key="4"></reference>
                  <string role="key" value="_storageName"></string>
                  <string value="Prepare-bind-execute.png"></string>
                  <string role="key" value="_userName"></string>
-                 <string value="/tmp/tmpOSRr4U/Prepare-bind-execute.png"></string>
+                 <string value="/tmp/tmpKb9kZA/Prepare-bind-execute.png"></string>
                  <string role="key" value="checksum"></string>
                  <string value="d5373a825bf535abbbb29007fa3194cf"></string>
                  <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
@@ -1364,16 +1565,16 @@ $pdo-&amp;gt;exec(&quot;DELETE FROM colegas WHERE apellidos='Swift'&quot;);&lt;/
                  <string value=""></string>
                 </dictionary>
                </instance>
-               <instance class="exe.engine.resource.Resource" reference="49">
+               <instance class="exe.engine.resource.Resource" reference="58">
                 <dictionary>
                  <string role="key" value="_idevice"></string>
-                 <reference key="18"></reference>
+                 <reference key="19"></reference>
                  <string role="key" value="_package"></string>
                  <reference key="4"></reference>
                  <string role="key" value="_storageName"></string>
                  <string value="Prepare-bind-execute.png"></string>
                  <string role="key" value="_userName"></string>
-                 <string value="/tmp/tmpOSRr4U/Prepare-bind-execute.png"></string>
+                 <string value="/tmp/tmpKb9kZA/Prepare-bind-execute.png"></string>
                  <string role="key" value="checksum"></string>
                  <string value="d5373a825bf535abbbb29007fa3194cf"></string>
                  <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
@@ -1384,16 +1585,96 @@ $pdo-&amp;gt;exec(&quot;DELETE FROM colegas WHERE apellidos='Swift'&quot;);&lt;/
                  <string value=""></string>
                 </dictionary>
                </instance>
-               <instance class="exe.engine.resource.Resource" reference="50">
+               <instance class="exe.engine.resource.Resource" reference="59">
                 <dictionary>
                  <string role="key" value="_idevice"></string>
-                 <reference key="18"></reference>
+                 <reference key="19"></reference>
                  <string role="key" value="_package"></string>
                  <reference key="4"></reference>
                  <string role="key" value="_storageName"></string>
                  <string value="Prepare-bind-execute.png"></string>
                  <string role="key" value="_userName"></string>
-                 <string value="/tmp/tmpOSRr4U/Prepare-bind-execute.png"></string>
+                 <string value="/tmp/tmpKb9kZA/Prepare-bind-execute.png"></string>
+                 <string role="key" value="checksum"></string>
+                 <string value="d5373a825bf535abbbb29007fa3194cf"></string>
+                 <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
+                 <int value="2"></int>
+                 <string role="key" value="exe.engine.resource._Resource.persistenceVersion"></string>
+                 <int value="2"></int>
+                 <string role="key" value="warningMsg"></string>
+                 <string value=""></string>
+                </dictionary>
+               </instance>
+               <instance class="exe.engine.resource.Resource" reference="60">
+                <dictionary>
+                 <string role="key" value="_idevice"></string>
+                 <reference key="19"></reference>
+                 <string role="key" value="_package"></string>
+                 <reference key="4"></reference>
+                 <string role="key" value="_storageName"></string>
+                 <string value="Prepare-bind-execute.png"></string>
+                 <string role="key" value="_userName"></string>
+                 <string value="/tmp/tmpKb9kZA/Prepare-bind-execute.png"></string>
+                 <string role="key" value="checksum"></string>
+                 <string value="d5373a825bf535abbbb29007fa3194cf"></string>
+                 <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
+                 <int value="2"></int>
+                 <string role="key" value="exe.engine.resource._Resource.persistenceVersion"></string>
+                 <int value="2"></int>
+                 <string role="key" value="warningMsg"></string>
+                 <string value=""></string>
+                </dictionary>
+               </instance>
+               <instance class="exe.engine.resource.Resource" reference="61">
+                <dictionary>
+                 <string role="key" value="_idevice"></string>
+                 <reference key="19"></reference>
+                 <string role="key" value="_package"></string>
+                 <reference key="4"></reference>
+                 <string role="key" value="_storageName"></string>
+                 <string value="Prepare-bind-execute.png"></string>
+                 <string role="key" value="_userName"></string>
+                 <string value="/tmp/tmpKb9kZA/Prepare-bind-execute.png"></string>
+                 <string role="key" value="checksum"></string>
+                 <string value="d5373a825bf535abbbb29007fa3194cf"></string>
+                 <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
+                 <int value="2"></int>
+                 <string role="key" value="exe.engine.resource._Resource.persistenceVersion"></string>
+                 <int value="2"></int>
+                 <string role="key" value="warningMsg"></string>
+                 <string value=""></string>
+                </dictionary>
+               </instance>
+               <instance class="exe.engine.resource.Resource" reference="62">
+                <dictionary>
+                 <string role="key" value="_idevice"></string>
+                 <reference key="19"></reference>
+                 <string role="key" value="_package"></string>
+                 <reference key="4"></reference>
+                 <string role="key" value="_storageName"></string>
+                 <string value="Prepare-bind-execute.png"></string>
+                 <string role="key" value="_userName"></string>
+                 <string value="/tmp/tmpKb9kZA/Prepare-bind-execute.png"></string>
+                 <string role="key" value="checksum"></string>
+                 <string value="d5373a825bf535abbbb29007fa3194cf"></string>
+                 <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
+                 <int value="2"></int>
+                 <string role="key" value="exe.engine.resource._Resource.persistenceVersion"></string>
+                 <int value="2"></int>
+                 <string role="key" value="warningMsg"></string>
+                 <string value=""></string>
+                </dictionary>
+               </instance>
+               <instance class="exe.engine.resource.Resource" reference="63">
+                <dictionary>
+                 <string role="key" value="_idevice"></string>
+                 <reference key="19"></reference>
+                 <string role="key" value="_package"></string>
+                 <reference key="4"></reference>
+                 <string role="key" value="_storageName"></string>
+                 <string value="Prepare-bind-execute.png"></string>
+                 <string role="key" value="_userName"></string>
+                 <string value="/tmp/tmpKb9kZA/Prepare-bind-execute.png"></string>
                  <string role="key" value="checksum"></string>
                  <string value="d5373a825bf535abbbb29007fa3194cf"></string>
                  <string role="key" value="exe.engine.resource.Resource.persistenceVersion"></string>
@@ -1409,7 +1690,7 @@ $pdo-&amp;gt;exec(&quot;DELETE FROM colegas WHERE apellidos='Swift'&quot;);&lt;/
               <int value="0"></int>
              </dictionary>
             </instance>
-            <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="22">
+            <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="23">
              <dictionary>
               <string role="key" value="_title"></string>
               <unicode value="Free Text"></unicode>
@@ -1425,12 +1706,12 @@ delivered."></unicode>
               <string role="key" value="childs"></string>
               <list></list>
               <string role="key" value="content"></string>
-              <instance class="exe.engine.field.TextAreaField" reference="23">
+              <instance class="exe.engine.field.TextAreaField" reference="24">
                <dictionary>
                 <string role="key" value="_id"></string>
                 <int value="85"></int>
                 <string role="key" value="_idevice"></string>
-                <reference key="22"></reference>
+                <reference key="23"></reference>
                 <string role="key" value="_instruc"></string>
                 <unicode value="Use this field to enter text. This 
 iDevice has no emphasis applied although limited formatting can be applied to 
@@ -1515,7 +1796,7 @@ echo 'Error: ' . $e-&amp;gt;getMessage();
                   <string role="key" value=".listitems"></string>
                   <list></list>
                   <string role="key" value="idevice"></string>
-                  <reference key="23"></reference>
+                  <reference key="24"></reference>
                  </dictionary>
                 </instance>
                 <string role="key" value="intlinks_to_anchors"></string>
@@ -1523,7 +1804,7 @@ echo 'Error: ' . $e-&amp;gt;getMessage();
                 <string role="key" value="nextImageId"></string>
                 <int value="0"></int>
                 <string role="key" value="parentNode"></string>
-                <reference key="20"></reference>
+                <reference key="21"></reference>
                </dictionary>
               </instance>
               <string role="key" value="edit"></string>
@@ -1543,7 +1824,7 @@ echo 'Error: ' . $e-&amp;gt;getMessage();
               <string role="key" value="parent"></string>
               <none></none>
               <string role="key" value="parentNode"></string>
-              <reference key="20"></reference>
+              <reference key="21"></reference>
               <string role="key" value="systemResources"></string>
               <list></list>
               <string role="key" value="type"></string>
@@ -1577,13 +1858,13 @@ echo 'Error: ' . $e-&amp;gt;getMessage();
            <list></list>
           </dictionary>
          </instance>
-         <instance class="exe.engine.node.Node" reference="26">
+         <instance class="exe.engine.node.Node" reference="27">
           <dictionary>
            <string role="key" value="_title"></string>
            <unicode value="2.5. Gestió d'errors en l'accés"></unicode>
            <string role="key" value="idevices"></string>
            <list>
-            <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="24">
+            <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="25">
              <dictionary>
               <string role="key" value="_title"></string>
               <unicode value="Free Text"></unicode>
@@ -1599,12 +1880,12 @@ delivered."></unicode>
               <string role="key" value="childs"></string>
               <list></list>
               <string role="key" value="content"></string>
-              <instance class="exe.engine.field.TextAreaField" reference="25">
+              <instance class="exe.engine.field.TextAreaField" reference="26">
                <dictionary>
                 <string role="key" value="_id"></string>
                 <int value="85"></int>
                 <string role="key" value="_idevice"></string>
-                <reference key="24"></reference>
+                <reference key="25"></reference>
                 <string role="key" value="_instruc"></string>
                 <unicode value="Use this field to enter text. This 
 iDevice has no emphasis applied although limited formatting can be applied to 
@@ -1682,7 +1963,7 @@ catch (PDOException $e) {
                   <string role="key" value=".listitems"></string>
                   <list></list>
                   <string role="key" value="idevice"></string>
-                  <reference key="25"></reference>
+                  <reference key="26"></reference>
                  </dictionary>
                 </instance>
                 <string role="key" value="intlinks_to_anchors"></string>
@@ -1690,7 +1971,7 @@ catch (PDOException $e) {
                 <string role="key" value="nextImageId"></string>
                 <int value="0"></int>
                 <string role="key" value="parentNode"></string>
-                <reference key="26"></reference>
+                <reference key="27"></reference>
                </dictionary>
               </instance>
               <string role="key" value="edit"></string>
@@ -1710,7 +1991,7 @@ catch (PDOException $e) {
               <string role="key" value="parent"></string>
               <none></none>
               <string role="key" value="parentNode"></string>
-              <reference key="26"></reference>
+              <reference key="27"></reference>
               <string role="key" value="systemResources"></string>
               <list></list>
               <string role="key" value="type"></string>
@@ -1744,13 +2025,13 @@ catch (PDOException $e) {
            <list></list>
           </dictionary>
          </instance>
-         <instance class="exe.engine.node.Node" reference="29">
+         <instance class="exe.engine.node.Node" reference="30">
           <dictionary>
            <string role="key" value="_title"></string>
            <unicode value="Exercicis pràctics"></unicode>
            <string role="key" value="idevices"></string>
            <list>
-            <instance class="exe.engine.genericidevice.GenericIdevice" reference="27">
+            <instance class="exe.engine.genericidevice.GenericIdevice" reference="28">
              <dictionary>
               <string role="key" value="_title"></string>
               <unicode value="Activitat: Accés a la base de dades Blog"></unicode>
@@ -1772,12 +2053,12 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <int value="11"></int>
               <string role="key" value="fields"></string>
               <list>
-               <instance class="exe.engine.field.TextAreaField" reference="28">
+               <instance class="exe.engine.field.TextAreaField" reference="29">
                 <dictionary>
                  <string role="key" value="_id"></string>
                  <unicode value="48_2"></unicode>
                  <string role="key" value="_idevice"></string>
-                 <reference key="27"></reference>
+                 <reference key="28"></reference>
                  <string role="key" value="_instruc"></string>
                  <unicode value="Describe the tasks the learners should complete."></unicode>
                  <string role="key" value="_name"></string>
@@ -1804,7 +2085,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
                    <string role="key" value=".listitems"></string>
                    <list></list>
                    <string role="key" value="idevice"></string>
-                   <reference key="28"></reference>
+                   <reference key="29"></reference>
                   </dictionary>
                  </instance>
                  <string role="key" value="intlinks_to_anchors"></string>
@@ -1812,7 +2093,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
                  <string role="key" value="nextImageId"></string>
                  <int value="0"></int>
                  <string role="key" value="parentNode"></string>
-                 <reference key="29"></reference>
+                 <reference key="30"></reference>
                 </dictionary>
                </instance>
               </list>
@@ -1827,7 +2108,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <string role="key" value="originalicon"></string>
               <unicode value="activity"></unicode>
               <string role="key" value="parentNode"></string>
-              <reference key="29"></reference>
+              <reference key="30"></reference>
               <string role="key" value="systemResources"></string>
               <list>
                <string value="common.js"></string>
@@ -1840,7 +2121,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <int value="0"></int>
              </dictionary>
             </instance>
-            <instance class="exe.engine.genericidevice.GenericIdevice" reference="30">
+            <instance class="exe.engine.genericidevice.GenericIdevice" reference="31">
              <dictionary>
               <string role="key" value="_title"></string>
               <unicode value="Activitat: Inserint nous posts"></unicode>
@@ -1862,12 +2143,12 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <int value="11"></int>
               <string role="key" value="fields"></string>
               <list>
-               <instance class="exe.engine.field.TextAreaField" reference="31">
+               <instance class="exe.engine.field.TextAreaField" reference="32">
                 <dictionary>
                  <string role="key" value="_id"></string>
                  <unicode value="49_2"></unicode>
                  <string role="key" value="_idevice"></string>
-                 <reference key="30"></reference>
+                 <reference key="31"></reference>
                  <string role="key" value="_instruc"></string>
                  <unicode value="Describe the tasks the learners should complete."></unicode>
                  <string role="key" value="_name"></string>
@@ -1895,7 +2176,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
                    <string role="key" value=".listitems"></string>
                    <list></list>
                    <string role="key" value="idevice"></string>
-                   <reference key="31"></reference>
+                   <reference key="32"></reference>
                   </dictionary>
                  </instance>
                  <string role="key" value="intlinks_to_anchors"></string>
@@ -1903,7 +2184,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
                  <string role="key" value="nextImageId"></string>
                  <int value="0"></int>
                  <string role="key" value="parentNode"></string>
-                 <reference key="29"></reference>
+                 <reference key="30"></reference>
                 </dictionary>
                </instance>
               </list>
@@ -1918,7 +2199,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <string role="key" value="originalicon"></string>
               <unicode value="activity"></unicode>
               <string role="key" value="parentNode"></string>
-              <reference key="29"></reference>
+              <reference key="30"></reference>
               <string role="key" value="systemResources"></string>
               <list>
                <string value="common.js"></string>
@@ -1931,7 +2212,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <int value="0"></int>
              </dictionary>
             </instance>
-            <instance class="exe.engine.genericidevice.GenericIdevice" reference="32">
+            <instance class="exe.engine.genericidevice.GenericIdevice" reference="33">
              <dictionary>
               <string role="key" value="_title"></string>
               <unicode value="Activitat: Modificant i esborrants post"></unicode>
@@ -1953,12 +2234,12 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <int value="11"></int>
               <string role="key" value="fields"></string>
               <list>
-               <instance class="exe.engine.field.TextAreaField" reference="33">
+               <instance class="exe.engine.field.TextAreaField" reference="34">
                 <dictionary>
                  <string role="key" value="_id"></string>
                  <unicode value="50_2"></unicode>
                  <string role="key" value="_idevice"></string>
-                 <reference key="32"></reference>
+                 <reference key="33"></reference>
                  <string role="key" value="_instruc"></string>
                  <unicode value="Describe the tasks the learners should complete."></unicode>
                  <string role="key" value="_name"></string>
@@ -1983,7 +2264,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
                    <string role="key" value=".listitems"></string>
                    <list></list>
                    <string role="key" value="idevice"></string>
-                   <reference key="33"></reference>
+                   <reference key="34"></reference>
                   </dictionary>
                  </instance>
                  <string role="key" value="intlinks_to_anchors"></string>
@@ -1991,7 +2272,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
                  <string role="key" value="nextImageId"></string>
                  <int value="0"></int>
                  <string role="key" value="parentNode"></string>
-                 <reference key="29"></reference>
+                 <reference key="30"></reference>
                 </dictionary>
                </instance>
               </list>
@@ -2006,7 +2287,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <string role="key" value="originalicon"></string>
               <unicode value="activity"></unicode>
               <string role="key" value="parentNode"></string>
-              <reference key="29"></reference>
+              <reference key="30"></reference>
               <string role="key" value="systemResources"></string>
               <list>
                <string value="common.js"></string>
@@ -2043,13 +2324,13 @@ that may help or hinder the learner in the performance of the task."></unicode>
         </list>
        </dictionary>
       </instance>
-      <instance class="exe.engine.node.Node" reference="36">
+      <instance class="exe.engine.node.Node" reference="37">
        <dictionary>
         <string role="key" value="_title"></string>
         <unicode value="3. Simplificant l'accés a la base de dades"></unicode>
         <string role="key" value="idevices"></string>
         <list>
-         <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="34">
+         <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="35">
           <dictionary>
            <string role="key" value="_title"></string>
            <unicode value="Free Text"></unicode>
@@ -2065,12 +2346,12 @@ delivered."></unicode>
            <string role="key" value="childs"></string>
            <list></list>
            <string role="key" value="content"></string>
-           <instance class="exe.engine.field.TextAreaField" reference="35">
+           <instance class="exe.engine.field.TextAreaField" reference="36">
             <dictionary>
              <string role="key" value="_id"></string>
              <int value="85"></int>
              <string role="key" value="_idevice"></string>
-             <reference key="34"></reference>
+             <reference key="35"></reference>
              <string role="key" value="_instruc"></string>
              <unicode value="Use this field to enter text. This 
 iDevice has no emphasis applied although limited formatting can be applied to 
@@ -2083,9 +2364,158 @@ text through the text editing buttons associated with the field."></unicode>
              <dictionary></dictionary>
              <string role="key" value="content_w_resourcePaths"></string>
              <unicode content="true" value="&lt;h2&gt;Arxiu de configuració&lt;/h2&gt;
-&lt;p&gt;Crear una fitxer de configuració amb les dades bàsiques de la connexió.&lt;/p&gt;
+&lt;p&gt;És important que totes les dades de configuració que siguin susceptibles de canviar en els diferents entorns (desenvolupament, producció, test, etc.) es separen en un o diversos fitxers de configuració.&lt;/p&gt;
+&lt;p&gt;Aquests fitxers es poden codificar en PHP o utilitzar un altre format que després pugui ser llegit per PHP (Per exemple, ara s'utilitza molt YAML)&lt;/p&gt;
+&lt;p&gt;Per exemple&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;#config.php
+$config = array (
+    'database' =&amp;gt; array (
+        'name' =&amp;gt; 'blog',
+        'username' =&amp;gt; 'blog',
+        'password' =&amp;gt; 'blog',
+        'connection' =&amp;gt; 'mysql: host=blog.local, dbname=blog',
+        'options' =&amp;gt; array ()
+        )
+    )
+);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;En format JSON:&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-json&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;{
+  &quot;database&quot;: {
+    &quot;username&quot;: &quot;blog&quot;,
+    &quot;password&quot;: &quot;blog&quot;,
+    &quot;connection&quot;: &quot;mysql: host=blog.local; dbname=blog&quot;,
+    &quot;options&quot;: {
+    }
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h2&gt;Creació de les entitats i la interfície a la base de dades&lt;/h2&gt;
-&lt;p&gt;Definir entitats.&lt;/p&gt;
+&lt;p&gt;Anomenarem entitats a les classes que mapejaran les taules de la base de dades, tindran un atribut per cada camp de la taula que mapegen.&lt;/p&gt;
+&lt;p&gt;En la majoria dels casos només contindran:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;getters i setters per accedir als atributs.&lt;/li&gt;
+&lt;li&gt;Constructor si cal.&lt;/li&gt;
+&lt;li&gt;__toString per convertir l'objecte a cadena.&lt;/li&gt;
+&lt;li&gt;Etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;No implementarem lògica de negoci en les entitats.&lt;/p&gt;
+&lt;p&gt;Les querys que obtindran dades de la BBDD tornaran un array d'entitats&lt;/p&gt;
+&lt;p&gt;Per exemple:&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;class Book
+{
+    private $id;
+    private $isbn;
+    private $title;
+    private $author;
+    private $stock;
+    private $price;
+
+    public function getId(): int
+    {
+        return $this-&amp;gt;id;
+    }
+
+    public function getIsbn(): string
+    {
+        return $this-&amp;gt;isbn;
+    }
+
+    public function getTitle(): string
+    {
+        return $this-&amp;gt;title;
+    }
+
+    public function getAuthor(): string
+    {
+        return $this-&amp;gt;author;
+    }
+
+    public function getStock(): int
+    {
+        return $this-&amp;gt;stock;
+    }
+
+    public function getCopy(): bool
+    {
+        if ($this-&amp;gt;stock &amp;lt; 1) {
+            return false;
+        } else {
+            $this-&amp;gt;stock--;
+            return true;
+        }
+    }
+
+    public function addCopy()
+    {
+        $this-&amp;gt;stock++;
+    }
+
+    public function getPrice(): float
+    {
+        return $this-&amp;gt;price;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Tant el mètode fetch com el mètode fetchAll de la classe PDOStatement tenen la possibilitat de retornar les dades de la BBDD com a objectes de la classe que li indiquem.&lt;/p&gt;
+&lt;p&gt;Utilitzarem el paràmetre PDO::FETCH_CLASS passant el nom de l'entitat com a segon paràmetre.&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;$classEntity = 'Post';
+$posts= $stmt-&amp;gt; fetchAll (PDO::FETCH_CLASS, $classEntity);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;En aquest cas, obtindríem un array que conté totes les files del conjunt de resultats com a objectes de l'entitat Post&lt;/p&gt;
+&lt;p&gt;Veure documentació del mètode:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.php.net/manual/es/pdostatement.fetchall.php&quot;&gt;https://www.php.net/manual/es/pdostatement.fetchall.php&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Cal tenir en compte que si la classe té constructor caldrà emprar el 3 paràmetre del mètode i afegir-los mitjançant un &lt;code&gt;array&lt;/code&gt; i en el primer paràmetre afegir &lt;em&gt;PDO::FETCH_PROPS_LATE.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&lt;em&gt;&lt;/em&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighted-code language-php&quot;&gt;
+&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;class Persona
+{
+    private $name;
+
+    public function __construct(string $name)
+    {
+        $this-&amp;gt;name = $name;
+        $this-&amp;gt;decir();
+    }
+
+    public function decir()
+    {
+        if (isset($this-&amp;gt;name)) {
+            echo &quot;Soy {$this-&amp;gt;name}.\n&quot;;
+        } else {
+            echo &quot;Aún no tengo nombre.\n&quot;;
+        }
+    }
+}
+
+$sth = $dbh-&amp;gt;query(&quot;SELECT * FROM people&quot;); // El name del primer és Paco.
+$sth-&amp;gt;setFetchMode(PDO::FETCH_CLASS, 'Persona', ['Alicia']); // Soy Paco
+$persona = $sth-&amp;gt;fetch(); 
+$persona-&amp;gt;decir();
+
+$sth-&amp;gt;setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Persona', ['Alicia']); // Soy Alícia
+$persona = $sth-&amp;gt;fetch(); 
+$persona-&amp;gt;decir();&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h2&gt;Contenidors de serveis&lt;/h2&gt;
 &lt;p&gt;Un contenidor de serveis (o contenidor d'injecció de dependències) simplement és un objecte PHP que gestiona la creació d'instàncies dels serveis (és a dir, dels objectes).&lt;/p&gt;
 &lt;p&gt;Suposem per exemple que tens una classe PHP senzilla que envia missatges de correu electrònic. Sense un contenidor de serveis, has de crear manualment l'objecte cada vegada que ho necessitis:&lt;/p&gt;
@@ -2114,7 +2544,7 @@ $mailer-&amp;gt; send ('ryan@foobar.net ', ...);&lt;/code&gt;&lt;/pre&gt;
                <string role="key" value=".listitems"></string>
                <list></list>
                <string role="key" value="idevice"></string>
-               <reference key="35"></reference>
+               <reference key="36"></reference>
               </dictionary>
              </instance>
              <string role="key" value="intlinks_to_anchors"></string>
@@ -2122,7 +2552,7 @@ $mailer-&amp;gt; send ('ryan@foobar.net ', ...);&lt;/code&gt;&lt;/pre&gt;
              <string role="key" value="nextImageId"></string>
              <int value="0"></int>
              <string role="key" value="parentNode"></string>
-             <reference key="36"></reference>
+             <reference key="37"></reference>
             </dictionary>
            </instance>
            <string role="key" value="edit"></string>
@@ -2142,7 +2572,7 @@ $mailer-&amp;gt; send ('ryan@foobar.net ', ...);&lt;/code&gt;&lt;/pre&gt;
            <string role="key" value="parent"></string>
            <none></none>
            <string role="key" value="parentNode"></string>
-           <reference key="36"></reference>
+           <reference key="37"></reference>
            <string role="key" value="systemResources"></string>
            <list></list>
            <string role="key" value="type"></string>
@@ -2174,13 +2604,13 @@ $mailer-&amp;gt; send ('ryan@foobar.net ', ...);&lt;/code&gt;&lt;/pre&gt;
         <list></list>
         <string role="key" value="children"></string>
         <list>
-         <instance class="exe.engine.node.Node" reference="39">
+         <instance class="exe.engine.node.Node" reference="40">
           <dictionary>
            <string role="key" value="_title"></string>
            <unicode value="Exercicis pràctics"></unicode>
            <string role="key" value="idevices"></string>
            <list>
-            <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="37">
+            <instance class="exe.engine.freetextidevice.FreeTextIdevice" reference="38">
              <dictionary>
               <string role="key" value="_title"></string>
               <unicode value="Free Text"></unicode>
@@ -2196,12 +2626,12 @@ delivered."></unicode>
               <string role="key" value="childs"></string>
               <list></list>
               <string role="key" value="content"></string>
-              <instance class="exe.engine.field.TextAreaField" reference="38">
+              <instance class="exe.engine.field.TextAreaField" reference="39">
                <dictionary>
                 <string role="key" value="_id"></string>
                 <int value="85"></int>
                 <string role="key" value="_idevice"></string>
-                <reference key="37"></reference>
+                <reference key="38"></reference>
                 <string role="key" value="_instruc"></string>
                 <unicode value="Use this field to enter text. This 
 iDevice has no emphasis applied although limited formatting can be applied to 
@@ -2228,7 +2658,7 @@ text through the text editing buttons associated with the field."></unicode>
                   <string role="key" value=".listitems"></string>
                   <list></list>
                   <string role="key" value="idevice"></string>
-                  <reference key="38"></reference>
+                  <reference key="39"></reference>
                  </dictionary>
                 </instance>
                 <string role="key" value="intlinks_to_anchors"></string>
@@ -2236,7 +2666,7 @@ text through the text editing buttons associated with the field."></unicode>
                 <string role="key" value="nextImageId"></string>
                 <int value="0"></int>
                 <string role="key" value="parentNode"></string>
-                <reference key="39"></reference>
+                <reference key="40"></reference>
                </dictionary>
               </instance>
               <string role="key" value="edit"></string>
@@ -2256,7 +2686,7 @@ text through the text editing buttons associated with the field."></unicode>
               <string role="key" value="parent"></string>
               <none></none>
               <string role="key" value="parentNode"></string>
-              <reference key="39"></reference>
+              <reference key="40"></reference>
               <string role="key" value="systemResources"></string>
               <list></list>
               <string role="key" value="type"></string>
@@ -2269,10 +2699,10 @@ text through the text editing buttons associated with the field."></unicode>
               <int value="0"></int>
              </dictionary>
             </instance>
-            <instance class="exe.engine.genericidevice.GenericIdevice" reference="40">
+            <instance class="exe.engine.genericidevice.GenericIdevice" reference="41">
              <dictionary>
               <string role="key" value="_title"></string>
-              <unicode value="Activity"></unicode>
+              <unicode value="Activitat: DBConnection"></unicode>
               <string role="key" value="_author"></string>
               <unicode value="University of Auckland"></unicode>
               <string role="key" value="_purpose"></string>
@@ -2291,12 +2721,12 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <int value="11"></int>
               <string role="key" value="fields"></string>
               <list>
-               <instance class="exe.engine.field.TextAreaField" reference="41">
+               <instance class="exe.engine.field.TextAreaField" reference="42">
                 <dictionary>
                  <string role="key" value="_id"></string>
                  <unicode value="52_2"></unicode>
                  <string role="key" value="_idevice"></string>
-                 <reference key="40"></reference>
+                 <reference key="41"></reference>
                  <string role="key" value="_instruc"></string>
                  <unicode value="Describe the tasks the learners should complete."></unicode>
                  <string role="key" value="_name"></string>
@@ -2306,9 +2736,9 @@ that may help or hinder the learner in the performance of the task."></unicode>
                  <string role="key" value="anchors_linked_from_fields"></string>
                  <dictionary></dictionary>
                  <string role="key" value="content_w_resourcePaths"></string>
-                 <unicode content="true" value="&lt;p&gt;Per a unificar el procés de creació de connexió a la BBDD de la nostra aplicació crearem una classe Connection responsable d'aquesta tasca.&lt;/p&gt;
-&lt;p&gt;La classe contindrà una funció estàtica anomenada &lt;em&gt;getConnection&lt;/em&gt; que tornarà la connexió establerta.&lt;/p&gt;
-&lt;p&gt;En aquesta funció controlarem l'excepció PDOException i farem servir la funció die de PHP per mostrar el missatge de l'excepció&lt;/p&gt;
+                 <unicode content="true" value="&lt;p&gt;Per a unificar el procés de creació de connexió a la BBDD de la nostra aplicació crearem una classe DBConnection responsable d'aquesta tasca.&lt;/p&gt;
+&lt;p&gt;La classe contindrà una funció anomenada &lt;em&gt;getConnection&lt;/em&gt; que tornarà la connexió establerta.&lt;/p&gt;
+&lt;p&gt;En aquesta funció controlarem l'excepció PDOException i farem servir la funció &lt;code&gt;die&lt;/code&gt; de PHP per mostrar el missatge de l'excepció&lt;/p&gt;
 &lt;p&gt;Aquesta classe la guardarem en un directori anomenat src.&lt;/p&gt;"></unicode>
                  <string role="key" value="exe.engine.field.Field.persistenceVersion"></string>
                  <int value="4"></int>
@@ -2324,7 +2754,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
                    <string role="key" value=".listitems"></string>
                    <list></list>
                    <string role="key" value="idevice"></string>
-                   <reference key="41"></reference>
+                   <reference key="42"></reference>
                   </dictionary>
                  </instance>
                  <string role="key" value="intlinks_to_anchors"></string>
@@ -2332,7 +2762,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
                  <string role="key" value="nextImageId"></string>
                  <int value="0"></int>
                  <string role="key" value="parentNode"></string>
-                 <reference key="39"></reference>
+                 <reference key="40"></reference>
                 </dictionary>
                </instance>
               </list>
@@ -2347,7 +2777,95 @@ that may help or hinder the learner in the performance of the task."></unicode>
               <string role="key" value="originalicon"></string>
               <unicode value="activity"></unicode>
               <string role="key" value="parentNode"></string>
-              <reference key="39"></reference>
+              <reference key="40"></reference>
+              <string role="key" value="systemResources"></string>
+              <list>
+               <string value="common.js"></string>
+              </list>
+              <string role="key" value="undo"></string>
+              <bool value="1"></bool>
+              <string role="key" value="userResources"></string>
+              <list></list>
+              <string role="key" value="version"></string>
+              <int value="0"></int>
+             </dictionary>
+            </instance>
+            <instance class="exe.engine.genericidevice.GenericIdevice" reference="43">
+             <dictionary>
+              <string role="key" value="_title"></string>
+              <unicode value="Activitat: Separar les dades de connexió "></unicode>
+              <string role="key" value="_author"></string>
+              <unicode value="University of Auckland"></unicode>
+              <string role="key" value="_purpose"></string>
+              <unicode value="An activity can be defined as a task or set of tasks a learner must
+complete. Provide a clear statement of the task and consider any conditions
+that may help or hinder the learner in the performance of the task."></unicode>
+              <string role="key" value="_tip"></string>
+              <unicode value=""></unicode>
+              <string role="key" value="class_"></string>
+              <unicode value="activity"></unicode>
+              <string role="key" value="edit"></string>
+              <bool value="0"></bool>
+              <string role="key" value="emphasis"></string>
+              <int value="1"></int>
+              <string role="key" value="exe.engine.genericidevice.GenericIdevice.persistenceVersion"></string>
+              <int value="11"></int>
+              <string role="key" value="fields"></string>
+              <list>
+               <instance class="exe.engine.field.TextAreaField" reference="44">
+                <dictionary>
+                 <string role="key" value="_id"></string>
+                 <unicode value="48_2"></unicode>
+                 <string role="key" value="_idevice"></string>
+                 <reference key="43"></reference>
+                 <string role="key" value="_instruc"></string>
+                 <unicode value="Describe the tasks the learners should complete."></unicode>
+                 <string role="key" value="_name"></string>
+                 <unicode value="Activity"></unicode>
+                 <string role="key" value="anchor_names"></string>
+                 <list></list>
+                 <string role="key" value="anchors_linked_from_fields"></string>
+                 <dictionary></dictionary>
+                 <string role="key" value="content_w_resourcePaths"></string>
+                 <unicode content="true" value="&lt;p&gt;Modificarem la classe DBConnection perquè les dades de la connexió les agafe d'un altre arxiu anomenat &lt;code&gt;app.json&lt;/code&gt; que estarà en en la carpeta &lt;code&gt;config&lt;/code&gt;.&lt;/p&gt;"></unicode>
+                 <string role="key" value="exe.engine.field.Field.persistenceVersion"></string>
+                 <int value="4"></int>
+                 <string role="key" value="exe.engine.field.FieldWithResources.persistenceVersion"></string>
+                 <int value="2"></int>
+                 <string role="key" value="exe.engine.field.TextAreaField.persistenceVersion"></string>
+                 <int value="3"></int>
+                 <string role="key" value="htmlTag"></string>
+                 <string value="div"></string>
+                 <string role="key" value="images"></string>
+                 <instance class="exe.engine.galleryidevice.GalleryImages">
+                  <dictionary>
+                   <string role="key" value=".listitems"></string>
+                   <list></list>
+                   <string role="key" value="idevice"></string>
+                   <reference key="44"></reference>
+                  </dictionary>
+                 </instance>
+                 <string role="key" value="intlinks_to_anchors"></string>
+                 <dictionary></dictionary>
+                 <string role="key" value="nextImageId"></string>
+                 <int value="0"></int>
+                 <string role="key" value="parentNode"></string>
+                 <reference key="40"></reference>
+                </dictionary>
+               </instance>
+              </list>
+              <string role="key" value="icon"></string>
+              <unicode value="activity"></unicode>
+              <string role="key" value="id"></string>
+              <unicode value="14"></unicode>
+              <string role="key" value="lastIdevice"></string>
+              <bool value="0"></bool>
+              <string role="key" value="nextFieldId"></string>
+              <int value="3"></int>
+              <string role="key" value="originalicon"></string>
+              <unicode value="activity"></unicode>
+              <string role="key" value="parentNode"></string>
+              <reference key="40"></reference>
               <string role="key" value="systemResources"></string>
               <list>
                <string value="common.js"></string>
@@ -2374,7 +2892,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
            <string role="key" value="last_full_node_path"></string>
            <string value="exe-node:Inici:3.%20Simplificant%20l%27acc%C3%A9s%20a%20la%20base%20de%20dades:Exercicis%20pr%C3%A0ctics"></string>
            <string role="key" value="parent"></string>
-           <reference key="36"></reference>
+           <reference key="37"></reference>
            <string role="key" value="top_anchors_linked_from_fields"></string>
            <list></list>
            <string role="key" value="children"></string>
@@ -2384,7 +2902,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
         </list>
        </dictionary>
       </instance>
-      <instance class="exe.engine.node.Node" reference="43">
+      <instance class="exe.engine.node.Node" reference="46">
        <dictionary>
         <string role="key" value="_title"></string>
         <unicode value="4. Transaccions"></unicode>
@@ -2414,17 +2932,17 @@ that may help or hinder the learner in the performance of the task."></unicode>
     </dictionary>
    </instance>
    <unicode role="key" value="1"></unicode>
-   <reference key="42"></reference>
+   <reference key="45"></reference>
    <unicode role="key" value="10"></unicode>
-   <reference key="29"></reference>
+   <reference key="30"></reference>
    <unicode role="key" value="11"></unicode>
-   <reference key="39"></reference>
+   <reference key="40"></reference>
    <unicode role="key" value="2"></unicode>
    <reference key="7"></reference>
    <unicode role="key" value="3"></unicode>
-   <reference key="36"></reference>
+   <reference key="37"></reference>
    <unicode role="key" value="4"></unicode>
-   <reference key="43"></reference>
+   <reference key="46"></reference>
    <unicode role="key" value="5"></unicode>
    <reference key="11"></reference>
    <unicode role="key" value="6"></unicode>
@@ -2432,9 +2950,9 @@ that may help or hinder the learner in the performance of the task."></unicode>
    <unicode role="key" value="7"></unicode>
    <reference key="17"></reference>
    <unicode role="key" value="8"></unicode>
-   <reference key="20"></reference>
+   <reference key="21"></reference>
    <unicode role="key" value="9"></unicode>
-   <reference key="26"></reference>
+   <reference key="27"></reference>
   </dictionary>
   <string role="key" value="_objectives"></string>
   <unicode value=""></unicode>
@@ -2445,7 +2963,7 @@ that may help or hinder the learner in the performance of the task."></unicode>
   <string role="key" value="backgroundImgTile"></string>
   <bool value="0"></bool>
   <string role="key" value="currentNode"></string>
-  <reference key="17"></reference>
+  <reference key="37"></reference>
   <string role="key" value="dublinCore"></string>
   <instance class="exe.engine.package.DublinCore">
    <dictionary>
@@ -3206,17 +3724,31 @@ that may help or hinder the learner in the performance of the task."></unicode>
    <string role="key" value="3f5b4ea96da4cec473d5f458b47d4e10"></string>
    <list>
     <reference key="8"></reference>
-    <reference key="44"></reference>
-    <reference key="45"></reference>
-    <reference key="46"></reference>
     <reference key="47"></reference>
-   </list>
-   <string role="key" value="d5373a825bf535abbbb29007fa3194cf"></string>
-   <list>
-    <reference key="21"></reference>
     <reference key="48"></reference>
     <reference key="49"></reference>
     <reference key="50"></reference>
+    <reference key="51"></reference>
+    <reference key="52"></reference>
+    <reference key="53"></reference>
+    <reference key="54"></reference>
+   </list>
+   <string role="key" value="c99b2d70e6ba06c9817f555327a8dbd3"></string>
+   <list>
+    <reference key="18"></reference>
+    <reference key="55"></reference>
+    <reference key="56"></reference>
+   </list>
+   <string role="key" value="d5373a825bf535abbbb29007fa3194cf"></string>
+   <list>
+    <reference key="22"></reference>
+    <reference key="57"></reference>
+    <reference key="58"></reference>
+    <reference key="59"></reference>
+    <reference key="60"></reference>
+    <reference key="61"></reference>
+    <reference key="62"></reference>
+    <reference key="63"></reference>
    </list>
   </dictionary>
   <string role="key" value="root"></string>

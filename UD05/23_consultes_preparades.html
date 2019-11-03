@@ -80,8 +80,8 @@ $stmt = $pdo-&gt;prepare("INSERT INTO colegas (name, addr, city) values ($name, 
 <p>ATENCIÓ:<code> $pdo-&gt;prepare()</code> usant marcadors anònims ?, tracta totes les variables com si fossin cadenes, per la qual cosa farà servir cometes per delimitar els seus valors per defecte.</p>
 <div class="highlighted-code language-php">
 <div>
-<pre><code># Assignem variables a cada marcador, indexats l'1 al 3
-
+<pre><code># Marcadores anónimos
+$stmt = $pdo-&gt;prepare("INSERT INTO friend (name, addr, city) values (?, ?, ?)");<br /><br /># Assignem variables a cada marcador, indexats l'1 al 3
 $stmt-&gt;bindParam(1, $name);
 $stmt-&gt;bindParam(2, $addr);
 $stmt-&gt;bindParam(3, $city);
@@ -111,7 +111,7 @@ $stmt-&gt;execute($datos);</code></pre>
 </div>
 <h3>Diferència entre l'ús de bindParam i bindValue</h3>
 <p>Amb <code>bindParam</code> es vincula la variable al paràmetre i en el moment de fer l'<em>execute</em> és quan s'assigna realment el valor de la variable a aquest paràmetre.</p>
-<p>Amb <code>bindValue</code> s'assigna el valor de la variable a aquest paràmetre just en el moment d'executar la instrucció sentència.</p>
+<p>Amb <code>bindValue</code> s'assigna el valor de la variable a aquest paràmetre just en el moment d'executar la instrucció <code>bindValue</code>.</p>
 <p>Exemple de diferència entre <code>bindParam</code> i <code>bindValue</code>:</p>
 <div class="highlighted-code language-php">
 <div>
@@ -153,10 +153,9 @@ $stmt-&gt;bindParam(':apellidos', $misApellidos, PDO::PARAM_STR, 35); // 35 cara
 <p>Con marcadores conocidos quedaría de la siguiente forma:</p>
 <div class="highlighted-code language-php">
 <div>
-<pre><code># El primer argumento de bindParam es el nombre del marcador y el segundo la variable que contendrá los datos.
-# Los marcadores conocidos siempre comienzan con :
-$stmt-&gt;bindParam(':name', $name);
-$name='Pepito';
+<pre><code>$stmt = $pdo-&gt;prepare("INSERT INTO colegas (name, addr, city) value (:name, :addr, :city)");<br /><br /># El primer argumento de bindParam es el nombre del marcador y el segundo la variable que contendrá los datos.
+<br /># Los marcadores conocidos siempre comienzan con :
+$stmt-&gt;bindParam(':name', $name);<br />$name='Pepito';<br /><br />$stmt-&gt;bindParam(':addr', $addr);<br />$addr='Duanes, 17';<br /><br />$stmt-&gt;bindParam(':city', $city);<br />$city = 'Pego';<br />
 $stmt-&gt;execute();
 
 # Otra forma es creando un array asociativo con los marcadores y sus valores:
@@ -203,8 +202,35 @@ $stmt = $pdo-&gt;prepare("INSERT INTO colegas (name, addr, city) value (:name, :
 $stmt-&gt;execute((array)$cathy);</code></pre>
 </div>
 </div>
-<p></p>
-<p></p>
+<h2>Exemple d'ús</h2>
+<p>Per a utilitzar les consultes preparades seguirem sempre aquest esquema:</p>
+<p style="text-align: center;"><img src="consultes-preparades.png" alt="" width="600" height="125" /></p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>&lt;?php
+
+$pdo = new PDO('sqlite:/path/db/users.db');
+# 1. Preparem la connexió
+$stmt = $pdo-&gt;prepare('SELECT name FROM users WHERE id = :id');
+
+$id = 5;
+
+# 2. Vinculem els paràmetres
+$stmt-&gt;bindParam(':id', $id, PDO::PARAM_INT); 
+
+# 3. Executem la consulta
+$stmt-&gt;execute();&lt;br&gt;&lt;br&gt;
+
+# 4. Obtenim els registres&lt;br&gt;&lt;br&gt;
+
+# Un a un
+$row = $stmt-&gt;fetch()
+
+# Tots
+$rows = $stmt-&gt;fetchAll()</code></pre>
+</div>
+</div>
+<p><br /><br /></p>
 </div>
 </div>
 </article>

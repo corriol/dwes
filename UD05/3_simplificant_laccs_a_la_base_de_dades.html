@@ -55,9 +55,158 @@
 <div class="iDevice emphasis0">
 <div id="ta8_85" class="block iDevice_content">
 <h2>Arxiu de configuració</h2>
-<p>Crear una fitxer de configuració amb les dades bàsiques de la connexió.</p>
+<p>És important que totes les dades de configuració que siguin susceptibles de canviar en els diferents entorns (desenvolupament, producció, test, etc.) es separen en un o diversos fitxers de configuració.</p>
+<p>Aquests fitxers es poden codificar en PHP o utilitzar un altre format que després pugui ser llegit per PHP (Per exemple, ara s'utilitza molt YAML)</p>
+<p>Per exemple</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>#config.php
+$config = array (
+    'database' =&gt; array (
+        'name' =&gt; 'blog',
+        'username' =&gt; 'blog',
+        'password' =&gt; 'blog',
+        'connection' =&gt; 'mysql: host=blog.local, dbname=blog',
+        'options' =&gt; array ()
+        )
+    )
+);</code></pre>
+</div>
+</div>
+<p>En format JSON:</p>
+<div class="highlighted-code language-json">
+<div>
+<pre><code>{
+  "database": {
+    "username": "blog",
+    "password": "blog",
+    "connection": "mysql: host=blog.local; dbname=blog",
+    "options": {
+    }
+  }
+}</code></pre>
+</div>
+</div>
 <h2>Creació de les entitats i la interfície a la base de dades</h2>
-<p>Definir entitats.</p>
+<p>Anomenarem entitats a les classes que mapejaran les taules de la base de dades, tindran un atribut per cada camp de la taula que mapegen.</p>
+<p>En la majoria dels casos només contindran:</p>
+<ul>
+<li>getters i setters per accedir als atributs.</li>
+<li>Constructor si cal.</li>
+<li>__toString per convertir l'objecte a cadena.</li>
+<li>Etc.</li>
+</ul>
+<p>No implementarem lògica de negoci en les entitats.</p>
+<p>Les querys que obtindran dades de la BBDD tornaran un array d'entitats</p>
+<p>Per exemple:</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>class Book
+{
+    private $id;
+    private $isbn;
+    private $title;
+    private $author;
+    private $stock;
+    private $price;
+
+    public function getId(): int
+    {
+        return $this-&gt;id;
+    }
+
+    public function getIsbn(): string
+    {
+        return $this-&gt;isbn;
+    }
+
+    public function getTitle(): string
+    {
+        return $this-&gt;title;
+    }
+
+    public function getAuthor(): string
+    {
+        return $this-&gt;author;
+    }
+
+    public function getStock(): int
+    {
+        return $this-&gt;stock;
+    }
+
+    public function getCopy(): bool
+    {
+        if ($this-&gt;stock &lt; 1) {
+            return false;
+        } else {
+            $this-&gt;stock--;
+            return true;
+        }
+    }
+
+    public function addCopy()
+    {
+        $this-&gt;stock++;
+    }
+
+    public function getPrice(): float
+    {
+        return $this-&gt;price;
+    }
+}
+</code></pre>
+</div>
+</div>
+<p>Tant el mètode fetch com el mètode fetchAll de la classe PDOStatement tenen la possibilitat de retornar les dades de la BBDD com a objectes de la classe que li indiquem.</p>
+<p>Utilitzarem el paràmetre PDO::FETCH_CLASS passant el nom de l'entitat com a segon paràmetre.</p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>$classEntity = 'Post';
+$posts= $stmt-&gt; fetchAll (PDO::FETCH_CLASS, $classEntity);</code></pre>
+</div>
+</div>
+<p>En aquest cas, obtindríem un array que conté totes les files del conjunt de resultats com a objectes de l'entitat Post</p>
+<p>Veure documentació del mètode:</p>
+<ul>
+<li><a href="https://www.php.net/manual/es/pdostatement.fetchall.php">https://www.php.net/manual/es/pdostatement.fetchall.php</a></li>
+</ul>
+<p>Cal tenir en compte que si la classe té constructor caldrà emprar el 3 paràmetre del mètode i afegir-los mitjançant un <code>array</code> i en el primer paràmetre afegir <em>PDO::FETCH_PROPS_LATE.</em></p>
+<p><code><em></em></code></p>
+<p></p>
+<div class="highlighted-code language-php">
+<div>
+<pre><code>class Persona
+{
+    private $name;
+
+    public function __construct(string $name)
+    {
+        $this-&gt;name = $name;
+        $this-&gt;decir();
+    }
+
+    public function decir()
+    {
+        if (isset($this-&gt;name)) {
+            echo "Soy {$this-&gt;name}.\n";
+        } else {
+            echo "Aún no tengo nombre.\n";
+        }
+    }
+}
+
+$sth = $dbh-&gt;query("SELECT * FROM people"); // El name del primer és Paco.
+$sth-&gt;setFetchMode(PDO::FETCH_CLASS, 'Persona', ['Alicia']); // Soy Paco
+$persona = $sth-&gt;fetch(); 
+$persona-&gt;decir();
+
+$sth-&gt;setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Persona', ['Alicia']); // Soy Alícia
+$persona = $sth-&gt;fetch(); 
+$persona-&gt;decir();</code></pre>
+</div>
+</div>
+<p><br /><br /></p>
 <h2>Contenidors de serveis</h2>
 <p>Un contenidor de serveis (o contenidor d'injecció de dependències) simplement és un objecte PHP que gestiona la creació d'instàncies dels serveis (és a dir, dels objectes).</p>
 <p>Suposem per exemple que tens una classe PHP senzilla que envia missatges de correu electrònic. Sense un contenidor de serveis, has de crear manualment l'objecte cada vegada que ho necessitis:</p>
