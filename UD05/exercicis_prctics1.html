@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="content.css" />
 <link rel="stylesheet" type="text/css" href="nav.css" />
 <meta http-equiv="content-type" content="text/html;  charset=utf-8" />
-<title>Inici </title>
+<title>Exercicis pràctics </title>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
 <meta name="generator" content="eXeLearning  - exelearning.net" />
@@ -15,13 +15,13 @@
 <script type="text/javascript" src="common.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
-<body class="exe-web-site" id="exe-node-0"><script type="text/javascript">document.body.className+=" js"</script>
+<body class="exe-web-site" id="exe-node-12"><script type="text/javascript">document.body.className+=" js"</script>
 <div id="content">
 <p id="skipNav"><a href="#main" class="sr-av">Omet navegació</a></p>
 <section id="emptyHeader"></section>
 <nav id="siteNav">
 <ul>
-   <li id="active"><a href="index.html" class="active daddy main-node">Inici</a></li>
+   <li><a href="index.html" class="daddy main-node">Inici</a></li>
    <li><a href="1_maneig_de_phpmyadmin.html" class="no-ch">1. Maneig de PHPMyAdmin</a></li>
    <li><a href="2_accs_a_la_base_de_dades_mitjanant_php_amb_la_llibreria_pdo.html" class="daddy">2. Accés a la base de dades mitjançant PHP amb la llibreria PDO</a>
    <ul class="other-section">
@@ -38,58 +38,52 @@
       <li><a href="exercicis_prctics0.html" class="no-ch">Exercicis pràctics</a></li>
    </ul>
    </li>
-   <li><a href="4_transaccions.html" class="daddy">4. Transaccions</a>
-   <ul class="other-section">
-      <li><a href="exercicis_prctics1.html" class="no-ch">Exercicis pràctics</a></li>
+   <li class="current-page-parent"><a href="4_transaccions.html" class="current-page-parent daddy">4. Transaccions</a>
+   <ul>
+      <li id="active"><a href="exercicis_prctics1.html" class="active no-ch">Exercicis pràctics</a></li>
    </ul>
    </li>
 </ul>
 </nav>
 <div id='topPagination'>
 <nav class="pagination noprt">
-<a href="1_maneig_de_phpmyadmin.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+<a href="4_transaccions.html" class="prev"><span><span>&laquo; </span>Anterior</span></a>
 </nav>
 </div>
 <div id="main-wrapper">
 <section id="main">
-<header id="nodeDecoration"><h1 id="nodeTitle">Inici</h1></header>
-<article class="iDevice_wrapper FreeTextIdevice" id="id0">
-<div class="iDevice emphasis0">
-<div id="ta0_85" class="block iDevice_content">
+<header id="nodeDecoration"><h1 id="nodeTitle">Exercicis pràctics</h1></header>
+<article class="iDevice_wrapper activityIdevice em_iDevice" id="id18">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Activitat: Emprar transaccions.</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta18_49_2" class="block iDevice_content">
+<p>Com que l'esborrat de registres de la taula Post depén de la relació amb la taula Tag implementa:</p>
 <ol>
-<li>Maneig de PhpMyAdmin
+<li>Comprova si l'entrada (post) té alguna etiqueta (tag) vinculada.</li>
+<li>En cas de tenir-la:
 <ol>
-<li>Creació de Bases de dades</li>
-<li>Creació de taules i relaciones</li>
-<li>Manipulació de dades</li>
-<li>Importació i exportació de dades</li>
-<li>Gestió d'usuaris</li>
+<li>Inicia una transacció.</li>
+<li>Esborra les etiquetes relacionades.</li>
+<li>Esborra l'entrada.</li>
+<li>Si no hi ha cap error:
+<ol>
+<li>Accepta (commit) la transacció.</li>
 </ol>
 </li>
-<li>Accés a la base de dades mitjançant PHP amb la llibreria PDO
+<li>Si hi ha errors:
 <ol>
-<li>Connexió a la base de dades</li>
-<li>Execució de consultes</li>
-<li>Mostrar dades dinàmiques</li>
-<li>Inserció, modificació i eliminació de dades de la BBDD</li>
-<li>Gestió d'errors en l'accés</li>
-</ol>
-</li>
-<li>Simplificant l'accés a la base de dades
-<ol>
-<li>Arxiu de configuració.</li>
-<li>Creació de les entitats i la interfície a la base de dades</li>
-<li>Contenidors de serveis</li>
-<li>Respositori d'entitats.</li>
-<li>Gestió de les relacions.</li>
-</ol>
-</li>
-<li>Transaccions
-<ol>
-<li>Commit i Rollback</li>
+<li>Aborta (rollback) els canvis.</li>
 </ol>
 </li>
 </ol>
+</li>
+</ol>
+<p></p>
+<p></p>
+</div>
+</div>
 </div>
 </div>
 </article>
@@ -100,7 +94,7 @@
 </div>
 <div id='bottomPagination'>
 <nav class="pagination noprt">
-<a href="1_maneig_de_phpmyadmin.html" class="next"><span>Següent<span> &raquo;</span></span></a>
+<a href="4_transaccions.html" class="prev"><span><span>&laquo; </span>Anterior</span></a>
 </nav>
 </div>
 </div>
