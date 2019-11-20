@@ -2,6 +2,7 @@
 <html lang="ca">
 <head>
 <link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
 <link rel="stylesheet" type="text/css" href="content.css" />
 <link rel="stylesheet" type="text/css" href="nav.css" />
 <meta http-equiv="content-type" content="text/html;  charset=utf-8" />
@@ -12,6 +13,7 @@
 <meta name="generator" content="eXeLearning  - exelearning.net" />
 <!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
 <script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
 <script type="text/javascript" src="common_i18n.js"></script>
 <script type="text/javascript" src="common.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -104,10 +106,45 @@
 <div class="iDevice_content_wrapper">
 <div id="ta19_50_2" class="block iDevice_content">
 <div class="exe-text"><p>El llenguatge Python va ser dissenyat per Guido van Rossum i ara es manté gràcies a una comunitat de desenvolupadors, i és codi obert.</p>
+<p><img src="django_apache.png" alt="Python" style="display: block; margin-left: auto; margin-right: auto;" width="600" height="368" /></p>
+<p></p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper FreeTextIdevice" id="id31">
+<div class="iDevice emphasis0">
+<div id="ta31_85" class="block iDevice_content">
 <p>Exemple de codi escrit amb Python. En aquest cas utilitzant el framework Django per al desenvolupament d'aplicacions web:</p>
-<p>En aquest cas, al tractar-se d'un framework MVC, tindrem la vista:</p></div>
+<div class="highlighted-code language-python">
+<div>
+<pre><code>&lt;h1&gt;Mis películas&lt;/h1&gt; &lt;a href="#"&gt;+&lt;/a&gt;
+{% if lista_peliculas %}
+&lt;ul&gt;
+{% for pelicula in lista_peliculas %}
+&lt;li&gt;&lt;a href="{% url 'pelicula' pelicula.id %}"&gt;{{ pelicula.titulo }}&lt;/a&gt;&lt;/li&gt;
+{% endfor %}
+&lt;/ul&gt;
+{% else %}
+&lt;p&gt;No hay películas disponibles&lt;/p&gt;
+{% endif %}</code></pre>
 </div>
 </div>
+<p>Separada del controlador:</p>
+<div class="highlighted-code language-python">
+<div>
+<pre><code>from django.shortcuts import render
+
+. . .
+
+def index(request):
+lista_peliculas = Pelicula.objects.all()
+context = {'lista_peliculas': lista_peliculas}
+return render(request, 'mispeliculas/index.html', context)</code></pre>
+</div>
+</div>
+<p><br /><br /></p>
 </div>
 </div>
 </article>
@@ -120,9 +157,65 @@
 <div class="exe-text"><p>ASP.NET és una tecnologia, creada per Microsoft, per al desenvolupament de lloc web dinàmics, aplicacions i serveis web. És la tecnologia successora del que abans es coneixia com ASP, l'antiga tecnologia de Microsoft per a la creació de pàgines web dinàmiques.</p>
 <p>Com que funciona sobre la plataforma .NET de Microsoft, permet que es pugui desenvolupar en qualsevol dels llenguatges de programació d'aquesta plataforma, Visual Basic .NET o C#.</p>
 <p>El més habitual és veure-ho funcionar juntament amb el lloc web de Microsoft, IIS (Internet Information Server).</p>
-<p>A continuació, un exemple de pàgina web dinàmica amb ASP.NET (desenvolupada en llenguatge C #) programant l'acció que passa en prémer un botó (apareix el text d'un formulari a la part final del web):</p></div>
+<p><img src="asp_iis.png" alt="ASP.NET" style="display: block; margin-left: auto; margin-right: auto;" width="600" height="296" /></p>
+<p></p></div>
 </div>
 </div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper FreeTextIdevice" id="id33">
+<div class="iDevice emphasis0">
+<div id="ta33_85" class="block iDevice_content">
+<p>A continuació, un exemple de pàgina web dinàmica amb ASP.NET (desenvolupada en llenguatge C #) programant l'acció que passa en prémer un botó (apareix el text d'un formulari a la part final del web):</p>
+<div class="highlighted-code language-clike">
+<div>
+<pre><code>protected void Button1_Click(object sender, EventArgs e)
+{
+    string buf = TextBox1.Text;
+    changed_text.InnerHtml = buf.ToUpper();
+}</code></pre>
+</div>
+</div>
+<div class="highlighted-code language-markup">
+<div>
+<pre><code>&lt;%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs"
+Inherits="firstexample._Default" %&gt;
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+
+&lt;html xmlns="http://www.w3.org/1999/xhtml" &gt;
+
+&lt;head runat="server"&gt;
+&lt;title&gt;
+Untitled Page
+&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;form id="form1" runat="server"&gt;
+&lt;div&gt;
+
+&lt;asp:TextBox ID="TextBox1" runat="server" style="width:224px"&gt;
+&lt;/asp:TextBox&gt;
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+&lt;asp:Button ID="Button1" runat="server" Text="Enter..." style="width:85px" onclick="Button1_Click" /&gt;
+&lt;hr /&gt;
+
+&lt;h3&gt; Results: &lt;/h3&gt;
+&lt;span runat="server" id="changed_text" /&gt;
+
+&lt;/div&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</div>
+<p><br /><br /></p>
 </div>
 </div>
 </article>
