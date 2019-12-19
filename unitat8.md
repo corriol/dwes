@@ -1,31 +1,23 @@
 # 1.- Autentificació d'usuaris i control d'accés #
 
-## cas pràctic ##
-
-Tal com Esteban els ha explicat, l'objectiu principal del projecte no és crear una pàgina web pública, amb informació sobre l'empresa. Necessiten una aplicació web amb un objectiu més específic: permetre a clients i empleats conèixer informació sobre els productes de la empresa.
-
-Joan sap que amb aquestes condicions, un dels punts fonamentals amb els que haurà de tractar en el nou projecte és el control d'accés a l'aplicació web. Tots els usuaris que accedeixin hauran d'identificar-se per poder accedir a les pàgines del lloc web. A més, en funció de si el usuari és un client o un empleat, caldrà donar-li accés a una o una altra informació.
-
-Joan mai ha programat llocs web amb autenticació dels usuaris. A més, es troba acabant un altre projecte, i no disposa de massa temps. Per aquest motiu, li demana a Carlos que es documenti sobre el tema per poder decidir el camí a prendre.
-
 Moltes vegades és important verificar la identitat dels dos extrems d'una comunicació. al cas d'una comunicació web, hi ha mètodes per identificar tant a servidor en el qual s'allotja
 el lloc web, com a l'usuari de el navegador que es troba en l'altre extrem.
 
-Els llocs web que necessiten emprar identificació de servidor, com les botigues o els bancs, utilitzen el protocol HTTPS. Aquest protocol requereix d'un certificat vàlid, signat per una autoritat fiable, que és verificat pel navegador quan s'accedeix a la pàgina web.
+Els llocs web que necessiten emprar identificació de servidor, com les botigues o els bancs, utilitzen el protocol HTTPS. Aquest protocol requereix d'un certificat vàlid, signat per una autoritat fiable, que és verificat pel navegador quan s'accedeix a la pàgina web. A més, HTTPS utilitza mètodes de xifrat per crear un canal segur entre el navegador i el servidor, de tal manera que no es pugui interceptar la informació que es transmet pel mateix.
 
-A més, HTTPS utilitza mètodes de xifrat per crear un canal segur entre el navegador i el servidor, de tal manera que no es pugui interceptar la informació que es transmet pel mateix.
-Per identificar els usuaris que visiten un lloc web, es poden utilitzar diferents mètodes com el DNI digital o certificats digitals d'usuari (document digital que conté informació sobre l'usuari com el nom o l'adreça. Aquesta informació està signada per una altra entitat, anomenada entitat certificadora, que ha de ser de confiança i garanteix
-que la informació que conté és certa), però el més estès és sol·licitar a l'usuari certa informació que només ell coneix: la combinació d'un nom d'usuari i una contrasenya.
+Per identificar els usuaris que visiten un lloc web, es poden utilitzar diferents mètodes com el DNI digital o certificats digitals d'usuari (document digital que conté informació sobre l'usuari com el nom o l'adreça. Aquesta informació està signada per una altra entitat, anomenada entitat certificadora, que ha de ser de confiança i garanteix que la informació que conté és certa), però el més estès és sol·licitar a l'usuari certa informació que només ell coneix: la combinació d'un nom d'usuari i una contrasenya.
 
-En la unitat anterior vas aprendre a utilitzar aplicacions web per gestionar informació emmagatzemada en bases de dades. En la majoria dels casos és important implantar en aquest tipus de aplicacions web, les que accedeixen a bases de dades, algun mecanisme de control d'accés que obligui a l'usuari a identificar-se. Un cop identificat, es pot limitar l'ús que pot fer de la informació.
+En les unitats anteriors vas aprendre a utilitzar aplicacions web per gestionar informació emmagatzemada en bases de dades. En la majoria dels casos és important implantar en aquest tipus de aplicacions web, les que accedeixen a bases de dades, algun mecanisme de control d'accés que obligui a l'usuari a identificar-se. Un cop identificat, es pot limitar l'ús que pot fer de la informació.
 
 Així, pot haver llocs web en els quals els usuaris autenticats poden utilitzar només una part de la informació (com els bancs, que permeten als seus clients accedir únicament a la informació relativa als seus comptes). Altres llocs web necessiten separar en grups als usuaris autentificats, de tal manera que la informació a la qual accedeix un usuari depèn de el grup en què aquest es trobi. Per exemple, una aplicació de gestió d'una empresa pot tenir un grup d'usuaris a què permet visualitzar la informació, i un altre grup d'usuaris que, a més de visualitzar la informació, també la poden modificar.
 
-Has distingir l'autenticació dels usuaris i el control d'accés, de la utilització de mecanismes per assegurar les comunicacions entre l'usuari de el navegador i el servidor web. Encara que tots dos aspectes solen anar units, són independents.
 
-En els exemples d'aquesta unitat, la informació d'autenticació (nom i contrasenya de els usuaris) s'envia en text pla des del navegador fins al servidor web. aquesta pràctica és altament insegura i mai s'ha d'usar sense un protocol com HTTPS que permeti xifrar les comunicacions amb el lloc web. No obstant això, la configuració de servidors web que permetin fer servir el protocol HTTPS per xifrar la informació que reben i transmeten no forma part dels continguts d'aquest mòdul. Per aquest motiu, durant aquesta unitat utilitzarem únicament el protocol no segur HTTP.
 
-## 1.1.- Mecanismes d'autenticació (I). ##
+> Has distingir l'autenticació dels usuaris i el control d'accés, de la utilització de mecanismes per assegurar les comunicacions entre l'usuari de el navegador i el servidor web. Encara que tots dos aspectes solen anar units, són independents.
+
+> En els exemples d'aquesta unitat, la informació d'autenticació (nom i contrasenya de els usuaris) s'envia en text pla des del navegador fins al servidor web. aquesta pràctica és altament insegura i mai s'ha d'usar sense un protocol com HTTPS que permeti xifrar les comunicacions amb el lloc web. No obstant això, la configuració de servidors web que permetin fer servir el protocol HTTPS per xifrar la informació que reben i transmeten no forma part dels continguts d'aquest mòdul. Per aquest motiu, durant aquesta unitat utilitzarem únicament el protocol no segur HTTP.
+
+## 1.1.- Mecanismes d'autenticació (I) ##
 
 El protocol HTTP ofereix un mètode senzill per autenticar els usuaris. El procés és el següent:
 
@@ -34,17 +26,22 @@ El protocol HTTP ofereix un mètode senzill per autenticar els usuaris. El proc�
 * El navegador rep l'error i obre una finestra per sol·licitar a l'usuari que es autentifiqui mitjançant el seu nom i contrasenya.
 * La informació d'autenticació de l'usuari s'envia a servidor, que la verifica i decideix si permet o no l'accés a el recurs sol·licitat. Aquesta informació es manté en el navegador per utilitzar-se en posteriors peticions a aquest servidor.
 
-Al servidor web Apache, el que has estat utilitzant en anteriors unitats, hi ha una utilitat en línia d'ordres, htpasswd, que permet emmagatzemar en un fitxer una llista d'usuaris i els seus respectives contrasenyes. La informació relativa a les contrasenyes s'emmagatzema xifrada; tot i així, és convenient crear aquest fitxer en un lloc no accessible pels usuaris de servidor web.
+Al servidor web Apache, el que has estat utilitzant en anteriors unitats, hi ha una utilitat en línia d'ordres, `htpasswd`, que permet emmagatzemar en un fitxer una llista d'usuaris i els seus respectives contrasenyes. La informació relativa a les contrasenyes s'emmagatzema xifrada; tot i així, és convenient crear aquest fitxer en un lloc no accessible pels usuaris de servidor web.
 
 http://httpd.apache.org/docs/2.0/es/howto/auth.html
 
-Per exemple, per crear el fitxer d'usuari i afegir-li el usuari "dwes", pots fer: 
-`sudo htpasswd -c users dwes` i introduir la contrasenya corresponent a aquest usuari.
+Per exemple, per crear el fitxer d'usuari i afegir-li el usuari "dwes", pots fer:
 
-L'opció -c indica que s'ha de crear el fitxer, per la qual que només hauràs de fer-la servir quan introdueixis el primer usuari i contrasenya. Fixa't que en l'exemple anterior, el
+```
+sudo htpasswd -c users dwes
+```
+
+i introduir la contrasenya corresponent a aquest usuari.
+
+L'opció `-c` indica que s'ha de crear el fitxer, per la qual cosa només hauràs de fer-la servir quan introdueixis el primer usuari i contrasenya. Fixa't que en l'exemple anterior, el
 fitxer es crea a la ruta /etc/apache2/users, que en principi no és accessible via web.
 
-Per indicar-li a l'servidor Apache quins recursos tenen accés restringit, una opció és crear un fitxer .htaccess en el directori en què es trobin, amb les següents directives:
+Per indicar-li a l'servidor Apache quins recursos tenen accés restringit, una opció és crear un fitxer `.htaccess` en el directori en què es trobin, amb les següents directives:
 
 ```c
 AuthName "Contingut restringit"
@@ -104,20 +101,23 @@ Des PHP pots accedir a la informació d'autenticació HTTP que ha introduït l'u
 </body>
 </html>
 ```
-Si no introdueixes un usuari / contrasenya vàlids, el navegador et mostrarà l'error 401.
+
+Si no introdueixes un usuari/contrasenya vàlids, el navegador et mostrarà l'error 401.
 
 A més, en PHP pots utilitzar la funció header per forçar que el servidor enviï un error de "Accés no autoritzat" (codi 401). D'aquesta manera no cal utilitzar fitxers .htaccess per indicar-li a Apache quins recursos estan restringits. En el seu lloc, pots afegir les següents línies en les teves pàgines PHP:
+
 ```php
-<? Php
-if (! isset ($_ SERVER [ 'PHP_AUTH_USER'])) {
-header ( 'WWW-Authenticate: Basic Realm = "Contingut restringit"');
-header ( 'HTTP / 1.0 401 Unauthorized');
-echo "Usuari no reconegut!";
-exit;
+<?php
+if (!isset($_ SERVER['PHP_AUTH_USER'])) {
+    header ('WWW-Authenticate: Basic Realm = "Contingut restringit"');
+    header ( 'HTTP / 1.0 401 Unauthorized');
+    echo "Usuari no reconegut!";
+    exit;
 }
 ?>
 ```
-La funció header envia capçaleres HTTP (bloc de dades que forma part de l'protocol HTTP i s'envia abans de la informació pròpia que es transmet. Permet especificar codis d'estat, accions requerides a servidor, o el tipus d'informació que es transmet), però s'ha d'utilitzar abans que es mostri res per pantalla. En cas contrari, obtindràs un error.
+
+La funció `header` envia capçaleres HTTP (bloc de dades que forma part de l'protocol HTTP i s'envia abans de la informació pròpia que es transmet. Permet especificar codis d'estat, accions requerides a servidor, o el tipus d'informació que es transmet), però s'ha d'utilitzar abans que es mostre res per pantalla. En cas contrari, obtindràs un error.
 
 http://es.php.net/manual/es/function.header.php
 
@@ -126,33 +126,35 @@ Amb el codi anterior, la pàgina envia un error 401, el que força a el navegado
 Hauràs de crear una pàgina similar a l'anterior, i afegir el codi per forçar l'error 401 abans de qualsevol altre.
 
 ```html
-<! DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" "
-http://www.w3.org/TR/html4/loose.dtd ">
-<! - Desenvolupament Web a Entorn Servidor ->
-<! - Tema 4: Desenvolupament d'aplicacions web amb PHP ->
-<! - Exemple: Funció header per autenticació HTTP ->
-<? php
-    if (! isset ($_ SERVER [ 'PHP_AUTH_USER'])) {
-header ( 'WWW-Authenticate: Basic Realm = "Contingut restringit"');
-header ( 'HTTP / 1.0 401 Unauthorized');
-echo "Usuari no reconegut!";
-exit;
-}
+<!-- DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" " http://www.w3.org/TR/html4/loose.dtd ">
+<!-- Desenvolupament Web a Entorn Servidor -->
+<!-- Tema 4: Desenvolupament d'aplicacions web amb PHP -->
+<!-- Exemple: Funció header per autenticació HTTP -->
+<?php
+    if (!isset($_ SERVER [ 'PHP_AUTH_USER'])) {
+        header('WWW-Authenticate: Basic Realm = "Contingut restringit"');
+        header('HTTP / 1.0 401 Unauthorized');
+        echo "Usuari no reconegut!";
+        exit;
+    }
 ?>
-<Html>
-<Head>
-<Meta http-equiv = "content-type" content = "text / html; charset = UTF-8">
-<Title> Exercici: Funció header per autenticació HTTP </ title>
-<Link href = "dwes.css" rel = "stylesheet" type = "text / css">
-</ Head>
-<Body>
-<? Php
-echo "Nom d'usuari:". $_ SERVER [ 'PHP_AUTH_USER']. "<br />";
-echo "Contrasenya:". $_ SERVER [ 'PHP_AUTH_PW']. "<br />";
+<html>
+<head>
+<meta http-equiv = "content-type" content = "text / html; charset = UTF-8">
+<title> Exercici: Funció header per autenticació HTTP </ title>
+<link href = "dwes.css" rel = "stylesheet" type = "text / css">
+</head>
+<body>
+```php
+<?php
+    echo "Nom d'usuari:". $_ SERVER [ 'PHP_AUTH_USER']. "<br />";
+    echo "Contrasenya:". $_ SERVER [ 'PHP_AUTH_PW']. "<br />";
 ?>
-</ Body>
-</ Html>
 ```
+</body>
+</html>
+```
+
 ##1.2.- Incorporació de mètodes d'autenticació a una aplicació web.##
 Si utilitzes la funció header per forçar el navegador a sol·licitar credencials HTTP, l'usuari introduirà un nom i una contrasenya. Però el servidor no ha de verificar aquesta informació; hauràs de ser
 tu qui proveeixi un mètode per comprovar que les credencials que ha introduït l'usuari són correctes.
