@@ -1,4 +1,4 @@
-#1.- Autentificació d'usuaris i control d'accés #
+# 1.- Autentificació d'usuaris i control d'accés #
 ## cas pràctic ##
 
 Tal com Esteban els ha explicat, l'objectiu principal del projecte no és crear una pàgina web pública, amb informació sobre l'empresa. Necessiten una aplicació web amb un objectiu
@@ -27,9 +27,10 @@ Has distingir l'autenticació dels usuaris i el control d'accés, de la utilitza
 En els exemples d'aquesta unitat, la informació d'autenticació (nom i contrasenya de els usuaris) s'envia en text pla des del navegador fins al servidor web. aquesta pràctica és altament insegura i mai s'ha d'usar sense un protocol com HTTPS que permeti xifrar les comunicacions amb el lloc web. No obstant això, la configuració de servidors web que permetin fer servir el protocol HTTPS per xifrar la informació que reben i transmeten no forma part dels continguts d'aquest mòdul. Per aquest motiu, durant aquesta unitat utilitzarem únicament el protocol no segur HTTP.
 
 ## 1.1.- Mecanismes d'autenticació (I). ##
+
 El protocol HTTP ofereix un mètode senzill per autenticar els usuaris. El procés és el següent:
 
-*El servidor web ha de proveir algun mètode per definir els usuaris que s'utilitzaran i com es poden autentificar. A més, s'hauran de definir els recursos als quals es restringeix l'accés i quina llista de control d'accés (ACL - llista de permisos sobre un objecte (fitxer, directori, etc.), que indica quins usuaris poden utilitzar l'objecte i les accions concretes que poden realitzar amb el mateix (lectura, escriptura, esborrat, etc.)) s'aplica a cada un.
+* El servidor web ha de proveir algun mètode per definir els usuaris que s'utilitzaran i com es poden autentificar. A més, s'hauran de definir els recursos als quals es restringeix l'accés i quina llista de control d'accés (ACL - llista de permisos sobre un objecte (fitxer, directori, etc.), que indica quins usuaris poden utilitzar l'objecte i les accions concretes que poden realitzar amb el mateix (lectura, escriptura, esborrat, etc.)) s'aplica a cada un.
 * Quan un usuari no autenticat intenta accedir a un recurs restringit, el servidor web respon amb un error de "Accés no autoritzat" (codi 401).
 * El navegador rep l'error i obre una finestra per sol·licitar a l'usuari que es autentifiqui mitjançant el seu nom i contrasenya.
 * La informació d'autenticació de l'usuari s'envia a servidor, que la verifica i decideix si permet o no l'accés a el recurs sol·licitat. Aquesta informació es manté en el navegador per utilitzar-se en posteriors peticions a aquest servidor.
@@ -72,35 +73,38 @@ fals
 A l'incloure l'opció -c el que fem és crear un nou fitxer, amb la qual cosa eliminem el contingut anterior del mateix.
 
 ### 1.1.1.- Mecanismes d'autenticació (II). ###
-Des PHP pots accedir a la informació d'autenticació HTTP que ha introduït l'usuari utilitzant l'array superglobal $_SERVER. 
-valor contingut
-$_SERVER [ 'PHP_AUTH_USER'] Nom d'usuari que s'ha introduït.
-$_SERVER [ 'PHP_AUTH_PW'] Clau introduïda.
-$_SERVER [ 'AUTH_TYPE']
-Mètode HTTP usat per autentificar. Pot ser Basic o Digest.
+
+Des PHP pots accedir a la informació d'autenticació HTTP que ha introduït l'usuari utilitzant l'array superglobal `$_SERVER. `
+| valor | contingut |
+|:-------:|:-----------:|
+|$_SERVER['PHP_AUTH_USER'] | Nom d'usuari que s'ha introduït.|
+|$_SERVER[ 'PHP_AUTH_PW'] | Clau introduïda.|
+|$_SERVER[ 'AUTH_TYPE']  | Mètode HTTP usat per autentificar. Pot ser Basic o Digest.|
+
 És a dir, que si crees una pàgina web que mostri els valors d'aquestes variables, i prepares el
 servidor web per utilitzar autenticació HTTP, quan accedeixis a aquesta pàgina amb l'usuari "dwes"
 obtindràs alguna cosa com el següent:
+
 ```html
 <! DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" "
 http://www.w3.org/TR/html4/loose.dtd ">
 <! - Desenvolupament Web a Entorn Servidor ->
 <! - Tema 4: Desenvolupament d'aplicacions web amb PHP ->
 <! - Exemple: Autenticació HTTP ->
-<Html>
+<html>
 <Head>
 <Meta http-equiv = "content-type" content = "text / html; charset = UTF-8">
 <Title> Exemple Tema 4: Autenticació HTTP </ title>
 <Link href = "dwes.css" rel = "stylesheet" type = "text / css">
 </ Head>
-<Body>
-<? Php
-echo "Nom d'usuari:". $_ SERVER [ 'PHP_AUTH_USER']. "<br />";
-echo "Contrasenya:". $_ SERVER [ 'PHP_AUTH_PW']. "<br />";
-echo "Mètode d'autenticació:". $_ SERVER [ 'AUTH_TYPE']. "<br />";
+<body>
+<?php
+    echo "Nom d'usuari:". $_ SERVER [ 'PHP_AUTH_USER']. "<br />";
+    echo "Contrasenya:". $_ SERVER [ 'PHP_AUTH_PW']. "<br />";
+    echo "Mètode d'autenticació:". $_ SERVER [ 'AUTH_TYPE']. "<br />";
 ?>
-</ Body>
-</ Html>
+</body>
+</html>
 ```
 Si no introdueixes un usuari / contrasenya vàlids, el navegador et mostrarà l'error 401.
 
