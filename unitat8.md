@@ -82,38 +82,38 @@ Mètode HTTP usat per autentificar. Pot ser Basic o Digest.
 servidor web per utilitzar autenticació HTTP, quan accedeixis a aquesta pàgina amb l'usuari "dwes"
 obtindràs alguna cosa com el següent:
 ```html
-&lt;! DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" "
-http://www.w3.org/TR/html4/loose.dtd "&gt;
-&lt;! - Desenvolupament Web a Entorn Servidor -&gt;
-&lt;! - Tema 4: Desenvolupament d'aplicacions web amb PHP -&gt;
-&lt;! - Exemple: Autenticació HTTP -&gt;
-&lt;Html&gt;
-&lt;Head&gt;
-&lt;Meta http-equiv = "content-type" content = "text / html; charset = UTF-8"&gt;
-&lt;Title&gt; Exemple Tema 4: Autenticació HTTP &lt;/ title&gt;
-&lt;Link href = "dwes.css" rel = "stylesheet" type = "text / css"&gt;
-&lt;/ Head&gt;
-&lt;Body&gt;
-&lt;? Php
-echo "Nom d'usuari:". $ _ SERVER [ 'PHP_AUTH_USER']. "&lt;br /&gt;";
-echo "Contrasenya:". $ _ SERVER [ 'PHP_AUTH_PW']. "&lt;br /&gt;";
-echo "Mètode d'autenticació:". $ _ SERVER [ 'AUTH_TYPE']. "&lt;br /&gt;";
-?&gt;
-&lt;/ Body&gt;
-&lt;/ Html&gt;
+<! DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" "
+http://www.w3.org/TR/html4/loose.dtd ">
+<! - Desenvolupament Web a Entorn Servidor ->
+<! - Tema 4: Desenvolupament d'aplicacions web amb PHP ->
+<! - Exemple: Autenticació HTTP ->
+<Html>
+<Head>
+<Meta http-equiv = "content-type" content = "text / html; charset = UTF-8">
+<Title> Exemple Tema 4: Autenticació HTTP </ title>
+<Link href = "dwes.css" rel = "stylesheet" type = "text / css">
+</ Head>
+<Body>
+<? Php
+echo "Nom d'usuari:". $ _ SERVER [ 'PHP_AUTH_USER']. "<br />";
+echo "Contrasenya:". $ _ SERVER [ 'PHP_AUTH_PW']. "<br />";
+echo "Mètode d'autenticació:". $ _ SERVER [ 'AUTH_TYPE']. "<br />";
+?>
+</ Body>
+</ Html>
 ```
 Si no introdueixes un usuari / contrasenya vàlids, el navegador et mostrarà l'error 401.
 
 A més, en PHP pots utilitzar la funció header per forçar que el servidor enviï un error de "Accés no autoritzat" (codi 401). D'aquesta manera no cal utilitzar fitxers .htaccess per indicar-li a Apache quins recursos estan restringits. En el seu lloc, pots afegir les següents línies en les teves pàgines PHP:
 ```php
-&lt;? Php
+<? Php
 if (! isset ($ _ SERVER [ 'PHP_AUTH_USER'])) {
 header ( 'WWW-Authenticate: Basic Realm = "Contingut restringit"');
 header ( 'HTTP / 1.0 401 Unauthorized');
 echo "Usuari no reconegut!";
 exit;
 }
-?&gt;
+?>
 ```
 La funció header envia capçaleres HTTP (bloc de dades que forma part de l'protocol HTTP i s'envia abans de la informació pròpia que es transmet. Permet especificar codis d'estat, accions requerides a servidor, o el tipus d'informació que es transmet), però s'ha d'utilitzar abans que es mostri res per pantalla. En cas contrari, obtindràs un error.
 
@@ -124,32 +124,32 @@ Amb el codi anterior, la pàgina envia un error 401, el que força a el navegado
 Hauràs de crear una pàgina similar a l'anterior, i afegir el codi per forçar l'error 401 abans de qualsevol altre.
 
 ```html
-&lt;! DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" "
-http://www.w3.org/TR/html4/loose.dtd "&gt;
-&lt;! - Desenvolupament Web a Entorn Servidor -&gt;
-&lt;! - Tema 4: Desenvolupament d'aplicacions web amb PHP -&gt;
-&lt;! - Exemple: Funció header per autenticació HTTP -&gt;
-&lt;? Php
+<! DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" "
+http://www.w3.org/TR/html4/loose.dtd ">
+<! - Desenvolupament Web a Entorn Servidor ->
+<! - Tema 4: Desenvolupament d'aplicacions web amb PHP ->
+<! - Exemple: Funció header per autenticació HTTP ->
+<? Php
 if (! isset ($ _ SERVER [ 'PHP_AUTH_USER'])) {
 header ( 'WWW-Authenticate: Basic Realm = "Contingut restringit"');
 header ( 'HTTP / 1.0 401 Unauthorized');
 echo "Usuari no reconegut!";
 exit;
 }
-?&gt;
-&lt;Html&gt;
-&lt;Head&gt;
-&lt;Meta http-equiv = "content-type" content = "text / html; charset = UTF-8"&gt;
-&lt;Title&gt; Exercici: Funció header per autenticació HTTP &lt;/ title&gt;
-&lt;Link href = "dwes.css" rel = "stylesheet" type = "text / css"&gt;
-&lt;/ Head&gt;
-&lt;Body&gt;
-&lt;? Php
-echo "Nom d'usuari:". $ _ SERVER [ 'PHP_AUTH_USER']. "&lt;br /&gt;";
-echo "Contrasenya:". $ _ SERVER [ 'PHP_AUTH_PW']. "&lt;br /&gt;";
-?&gt;
-&lt;/ Body&gt;
-&lt;/ Html&gt;
+?>
+<Html>
+<Head>
+<Meta http-equiv = "content-type" content = "text / html; charset = UTF-8">
+<Title> Exercici: Funció header per autenticació HTTP </ title>
+<Link href = "dwes.css" rel = "stylesheet" type = "text / css">
+</ Head>
+<Body>
+<? Php
+echo "Nom d'usuari:". $ _ SERVER [ 'PHP_AUTH_USER']. "<br />";
+echo "Contrasenya:". $ _ SERVER [ 'PHP_AUTH_PW']. "<br />";
+?>
+</ Body>
+</ Html>
 ```
 ##1.2.- Incorporació de mètodes d'autenticació a una aplicació web.##
 Si utilitzes la funció header per forçar el navegador a sol·licitar credencials HTTP, l'usuari introduirà un nom i una contrasenya. Però el servidor no ha de verificar aquesta informació; hauràs de ser
@@ -158,14 +158,14 @@ tu qui proveeixi un mètode per comprovar que les credencials que ha introduït 
 El mètode més simple és incloure en el codi PHP de la teva pàgina les sentències necessàries per comparar les dades introduïdes amb altres dades fixos. Per exemple, per a permetre l'accés a un
 usuari "dwes" amb contrasenya "abc123.", pots fer:
 ```php
-&lt;? Php
+<? Php
 if ($ _SERVER [ 'PHP_AUTH_USER']! = 'dwes' || $ _SERVER [ 'PHP_AUTH_PW']! = 'abc123.') {
 header ( 'WWW-Authenticate: Basic Realm = "Contingut restringit"');
 header ( 'HTTP / 1.0 401 Unauthorized');
 echo "Usuari no reconegut!";
 exit;
 }
-?&gt;
+?>
 ```
 Recorda que el codi PHP no s'envia a el navegador, de manera que la informació d'autenticació que introdueixis en el codi no serà visible per l'usuari. No obstant això, això farà el teu codi menys
 portable. Si necessites modificar el nom d'usuari o la contrasenya, hauràs de fer modificacions en el codi. A més, no podràs permetre a l'usuari introduir la seva pròpia contrasenya.
@@ -202,7 +202,7 @@ Utilitza l'extensió MySQLi per modificar l'exercici anterior, de tal manera que
 
 Revisa la solució proposada. Fixa't que s'ha d'usar la funció md5 per comprovar la contrasenya. Si introdueixes un usuari o contrasenya incorrectes, el comportament depèn de el navegador que utilitzis; alguns et demanaran les credencials de forma indefinida, i altres un nombre limitat de vegades.
 ```php
-&lt;? Php
+<? Php
 // Si l'usuari encara no s'ha entrat, demanem les credencials
 if (! isset ($ _ SERVER [ 'PHP_AUTH_USER'])) {
 header ( 'WWW-Authenticate: Basic realm = "Contingut restringit"');
@@ -213,7 +213,7 @@ exit;
 else {
 // Connectem a la base de dades
 @ $ Dwes = new mysqli ( "localhost", "dwes", "abc123.", "Dwes");
-$ Error = $ dwes-&gt; connect_errno;
+$ Error = $ dwes-> connect_errno;
 // Si es va establir la connexió
 if ($ error == null) {
 // Executem la consulta per comprovar si existeix
@@ -221,36 +221,36 @@ if ($ error == null) {
 $ Sql ​​= "SELECT usuari FROM usuaris
 WHERE usuari = '$ _ SERVER [PHP_AUTH_USER]' AND
 contrasenya = md5 ( '$ _ SERVER [PHP_AUTH_PW]') ";
-$ Resultat = $ dwes-&gt; query ($ sql);
+$ Resultat = $ dwes-> query ($ sql);
 // Si no existeix, es tornen a demanar les credencials
-if ($ resultat-&gt; num_rows == 0) {
+if ($ resultat-> num_rows == 0) {
 header ( 'WWW-Authenticate: Basic realm = "Contingut restringit"');
 header ( "HTTP / 1.0 401 Unauthorized");
 exit;
 }
-$ Resultat-&gt; close ();
-$ Dwes-&gt; close ();
+$ Resultat-> close ();
+$ Dwes-> close ();
 }
 }
-?&gt;
-&lt;! DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" "
-http://www.w3.org/TR/html4/loose.dtd "&gt;
-&lt;! - Desenvolupament Web a Entorn Servidor -&gt;
-&lt;! - Tema 4: Desenvolupament d'aplicacions web amb PHP -&gt;
-&lt;! - Exemple: Utilització de MySQL per autenticació HTTP -&gt;
-&lt;Html&gt;
-&lt;Head&gt;
-&lt;Meta http-equiv = "content-type" content = "text / html; charset = UTF-8"&gt;
-&lt;Title&gt; Exemple Tema 4: Utilització de MySQL per autenticació HTTP &lt;/ title&gt;
-&lt;Link href = "dwes.css" rel = "stylesheet" type = "text / css"&gt;
-&lt;/ Head&gt;
-&lt;Body&gt;
-&lt;? Php
-echo "Nom d'usuari:". $ _ SERVER [ 'PHP_AUTH_USER']. "&lt;br /&gt;";
-echo "Hash de la contrasenya:" .md5 ($ _ SERVER [ 'PHP_AUTH_PW']). "&lt;br /&gt;";
-?&gt;
-&lt;/ Body&gt;
-&lt;/ Html&gt;
+?>
+<! DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" "
+http://www.w3.org/TR/html4/loose.dtd ">
+<! - Desenvolupament Web a Entorn Servidor ->
+<! - Tema 4: Desenvolupament d'aplicacions web amb PHP ->
+<! - Exemple: Utilització de MySQL per autenticació HTTP ->
+<Html>
+<Head>
+<Meta http-equiv = "content-type" content = "text / html; charset = UTF-8">
+<Title> Exemple Tema 4: Utilització de MySQL per autenticació HTTP </ title>
+<Link href = "dwes.css" rel = "stylesheet" type = "text / css">
+</ Head>
+<Body>
+<? Php
+echo "Nom d'usuari:". $ _ SERVER [ 'PHP_AUTH_USER']. "<br />";
+echo "Hash de la contrasenya:" .md5 ($ _ SERVER [ 'PHP_AUTH_PW']). "<br />";
+?>
+</ Body>
+</ Html>
 ```
 Les dues possibilitats que hem vist per sol·licitar a l'usuari que s'autentiqui
 via HTTP són la creació de el fitxer .htaccess, i la utilització de la
@@ -316,7 +316,7 @@ Revisa la solució proposada. Hauràs utilitzar la funció setcookie per guardar
 de la seva anterior visita i mostrar el seu contingut utilitzant l'array $ _COOKIE.
 
 ```php
-&lt;? Php
+<? Php
 // Si l'usuari encara no s'ha entrat, demanem les credencials
 if (
 ! Isset ($ _ SERVER [ 'PHP_AUTH_USER'])) {
@@ -328,7 +328,7 @@ exit;
 else {
 // Connectem a la base de dades
 @ $ Dwes = new mysqli ( "localhost", "dwes", "abc123.", "Dwes");
-$ Error = $ dwes-&gt; connect_errno;
+$ Error = $ dwes-> connect_errno;
 // Si es va establir la connexió
 if ($ error == null) {
 date_default_timezone_set ( 'Europe / Madrid');
@@ -337,9 +337,9 @@ date_default_timezone_set ( 'Europe / Madrid');
 $ Sql ​​= "SELECT usuari FROM usuaris
 WHERE usuari = '$ {_ SERVER [' PHP_AUTH_USER ']}' AND
 contrasenya = md5 ( '$ {_ SERVER [' PHP_AUTH_PW ']}') ";
-$ Resultat = $ dwes-&gt; query ($ sql);
+$ Resultat = $ dwes-> query ($ sql);
 // Si no existeix, es tornen a demanar les credencials
-if ($ resultat-&gt; num_rows == 0) {
+if ($ resultat-> num_rows == 0) {
 header ( 'WWW-Authenticate: Basic realm = "Contingut restringit"');
 header ( "HTTP / 1.0 401 Unauthorized");
 exit;
@@ -349,37 +349,37 @@ $ Ultimo_login = $ _COOKIE [ 'ultimo_login'];
 }
 setcookie ( "ultimo_login", time (), time () + 3600);
 }
-$ Resultat-&gt; close ();
-$ Dwes-&gt; close ();
+$ Resultat-> close ();
+$ Dwes-> close ();
 }
 }
-?&gt;
-&lt;! DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" "
-http://www.w3.org/TR/html4/loose.dtd "&gt;
-&lt;! - Desenvolupament Web a Entorn Servidor -&gt;
-&lt;! - Tema 4: Desenvolupament d'aplicacions web amb PHP -&gt;
-&lt;! - Exemple: Galetes al autenticació HTTP -&gt;
-&lt;Html&gt;
-&lt;Head&gt;
-&lt;Meta http-equiv = "content-type" content = "text / html; charset = UTF-8"&gt;
-&lt;Title&gt; Exemple Tema 4: Galetes al autenticació HTTP &lt;/ title&gt;
-&lt;Link href = "dwes.css" rel = "stylesheet" type = "text / css"&gt;
-&lt;/ Head&gt;
-&lt;Body&gt;
-&lt;? Php
+?>
+<! DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" "
+http://www.w3.org/TR/html4/loose.dtd ">
+<! - Desenvolupament Web a Entorn Servidor ->
+<! - Tema 4: Desenvolupament d'aplicacions web amb PHP ->
+<! - Exemple: Galetes al autenticació HTTP ->
+<Html>
+<Head>
+<Meta http-equiv = "content-type" content = "text / html; charset = UTF-8">
+<Title> Exemple Tema 4: Galetes al autenticació HTTP </ title>
+<Link href = "dwes.css" rel = "stylesheet" type = "text / css">
+</ Head>
+<Body>
+<? Php
 if ($ error == null) {
-echo "Nom d'usuari:". $ _ SERVER [ 'PHP_AUTH_USER']. "&lt;br /&gt;";
-echo "Hash de la contrasenya:" .md5 ($ _ SERVER [ 'PHP_AUTH_PW']). "&lt;br /&gt;";
+echo "Nom d'usuari:". $ _ SERVER [ 'PHP_AUTH_USER']. "<br />";
+echo "Hash de la contrasenya:" .md5 ($ _ SERVER [ 'PHP_AUTH_PW']). "<br />";
 if (isset ($ ultimo_login))
 echo "Darrer login:". date ( "d / m / i \ a \ l \ a \ s H: i", $ ultimo_login);
 else
 echo "Benvingut. Aquesta és la seva primera visita.";
 }
 else
-echo "S'ha produït l'error $ error. &lt;br /&gt;";
-?&gt;
-&lt;/ Body&gt;
-&lt;/ Html&gt;
+echo "S'ha produït l'error $ error. <br />";
+?>
+</ Body>
+</ Html>
 ```
 
 Quina és la durada per defecte d'una galeta si no s'indica la data de caducitat,
@@ -522,7 +522,7 @@ Mientras la sesión permanece abierta, puedes utilizar la variable superglobal $
 información a la sesión del usuario, o para acceder a la información almacenada en la sesión. Por
 ejemplo, para contar el número de veces que el usuario visita la página, puedes hacer:
 ```php
-&lt;?php
+<?php
 // Iniciamos la sesión o recuperamos la anterior sesión existente
 session_start();
 // Comprobamos si la variable ya existe
@@ -530,16 +530,16 @@ if (isset($_SESSION['visitas']))
 $_SESSION['visitas']++;
 else
 $_SESSION['visitas'] = 0;
-?&gt;
+?>
 Si en lugar del número de visitas, quisieras almacenar el instante en que se produce cada una, la
 variable de sesión "visitas" deberá ser un array y por tanto tendrás que cambiar el código anterior
 por:
-&lt;?php
+<?php
 // Iniciamos la sesión o recuperamos la anterior sesión existente
 session_start();
 // En cada visita añadimos un valor al array "visitas"
 $_SESSION['visitas'][] = mktime();
-?&gt;
+?>
 ```
 
 Aunque como ya viste, puedes configurar PHP para que elimine de forma automática los datos de
@@ -565,7 +565,7 @@ función session_start() antes de utilizar la variable superglobal $_SESSION par
 información de la sesión.
 
 ```php
-&lt;?php
+<?php
 // Si el usuario aún no se ha autentificado, pedimos las credenciales
 if (!isset($_SERVER['PHP_AUTH_USER'])) {
 header('WWW-Authenticate: Basic realm="Contenido restringido"');
@@ -578,7 +578,7 @@ session_start();
 if (!isset($_SESSION['usuario'])) {
 // Conectamos a la base de datos
 @ $dwes = new mysqli("localhost", "dwes", "abc123.", "dwes");
-$error = $dwes-&gt;connect_errno;
+$error = $dwes->connect_errno;
 // Si se estableció la conexión
 if ($error == null) {
 // Ejecutamos la consulta para comprobar si existe
@@ -586,16 +586,16 @@ if ($error == null) {
 $sql = "SELECT usuario FROM usuarios
 WHERE usuario='${_SERVER['PHP_AUTH_USER']}' AND
 contrasena=md5('${_SERVER['PHP_AUTH_PW']}')";
-$resultado = $dwes-&gt;query($sql);
+$resultado = $dwes->query($sql);
 // Si no existe, se vuelven a pedir las credenciales
-if($resultado-&gt;num_rows == 0) {
+if($resultado->num_rows == 0) {
 header('WWW-Authenticate: Basic realm="Contenido restringido"');
 header("HTTP/1.0 401 Unauthorized");
 exit;
 }else
 $_SESSION['usuario'] = $_SERVER['PHP_AUTH_USER'];
-$resultado-&gt;close();
-$dwes-&gt;close();
+$resultado->close();
+$dwes->close();
 }
 }
 // Si ya está autentificado
@@ -606,49 +606,47 @@ unset($_SESSION['visita']);
 else
 $_SESSION['visita'][] = time();
 }
-?&gt;
-&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "
-http://www.w3.org/TR/html4/loose.dtd"&gt;
-&lt;!-- Desarrollo Web en Entorno Servidor --&gt;
-&lt;!-- Tema 4 : Desarrollo de aplicaciones web con PHP --&gt;
-&lt;!-- Ejemplo: Cookies en autentificación HTTP --&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;
-&lt;title&gt;Ejemplo Tema 4: Cookies en autentificación HTTP&lt;/title&gt;&lt;link
-rel="stylesheet" type="text/css"&gt;
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "
+http://www.w3.org/TR/html4/loose.dtd">
+<!-- Desarrollo Web en Entorno Servidor -->
+<!-- Tema 4 : Desarrollo de aplicaciones web con PHP -->
+<!-- Ejemplo: Cookies en autentificación HTTP -->
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Ejemplo Tema 4: Cookies en autentificación HTTP</title><link
+rel="stylesheet" type="text/css">
 href="dwes.css"
-- 13 -Diseño Web Entorno Servidor
-José Luis Comesaña
-DAW
-&lt;/head&gt;
-&lt;body&gt;
-&lt;?php
+</head>
+<body>
+<?php
 if ($error == null) {
-echo "Nombre de usuario: ".$_SERVER['PHP_AUTH_USER']."&lt;br /&gt;";
-echo "Hash de la contraseña: ".md5($_SERVER['PHP_AUTH_PW'])."&lt;br /&gt;";
+echo "Nombre de usuario: ".$_SERVER['PHP_AUTH_USER']."<br />";
+echo "Hash de la contraseña: ".md5($_SERVER['PHP_AUTH_PW'])."<br />";
 if (count($_SESSION['visita']) == 0)
 echo "Bienvenido. Esta es su primera visita.";
 else {
 date_default_timezone_set('Europe/Madrid');
 foreach($_SESSION['visita'] as $v)
-echo date("d/m/y \a \l\a\s H:i", $v) . "&lt;br /&gt;";
-?&gt;
-&lt;form id='vaciar' action='&lt;?php echo $_SERVER['PHP_SELF'];?&gt;' method='post'&gt;
-&lt;input type='submit' name='limpiar' value='Limpiar registro'/&gt;
-&lt;/form&gt;
-&lt;?php
+echo date("d/m/y \a \l\a\s H:i", $v) . "<br />";
+?>
+<form id='vaciar' action='<?php echo $_SERVER['PHP_SELF'];?>' method='post'>
+<input type='submit' name='limpiar' value='Limpiar registro'/>
+</form>
+<?php
 }
 }else
-echo "Se ha producido el error $error.&lt;br /&gt;";
-?&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+echo "Se ha producido el error $error.<br />";
+?>
+</body>
+</html>
 ```
 
 Si usamos el inicio de sesión automático, la sesión de un usuario se inicia en cuanto se autentifica correctamente en el servidor web.
 Verdadero
 Falso
+
 Con el inicio de sesión automático, la sesión del usuario se inicia en cuanto se conecta al sitio web, esté o no autentificado. No tiene nada
 que ver una cosa con otra. Un usuario no autentificado puede tener una sesión de la misma forma que otro que sí se haya autentificado
 correctamente
@@ -658,41 +656,26 @@ En este punto vas a ver paso a paso un ejemplo de utilización de sesiones para 
 información del usuario. Utilizarás la base de datos " dwes ", creada anteriormente, para crear un
 prototipo de una tienda web dedicada a la venta de productos de informática.
 Las páginas de que constará tu tienda online son las siguientes:
- Login ( login.php ). Su función es autentificar al usuario de la aplicación web. Todos los usuarios
-de la aplicación deberán autentificarse utilizando esta página antes de poder acceder al resto de
-páginas.
+
+* Login ( login.php ). Su función es autentificar al usuario de la aplicación web. Todos los usuarios de la aplicación deberán autentificarse utilizando esta página antes de poder acceder al resto de páginas.
+
 DIAGRAMA CESTA COMPRA
- Listado
-de productos ( productos.php ).
-Presenta un listado de los productos de la
-Login
-tienda, y permite al usuario seleccionar
-aquellos que va a comprar.
-Listado de productos
-Logoff
- Cesta de compra ( cesta.php ). Muestra un
+
+* Listado de productos ( productos.php ). Presenta un listado de los productos de la Login tienda, y permite al usuario seleccionar aquellos que va a comprar. Listado de productos Logoff
+* Cesta de compra ( cesta.php ). Muestra un
 resumen de los productos escogidos por el
 usuario para su compra y da acceso a la página
 Cesta de compra
 de pago.
- Pagar ( pagar.php ). Una vez confirmada la
-Pagar
-compra, la última página debería ser la que
-permitiera al usuario escoger el método de
-pago y la forma de envío. En este ejemplo no la vas a implementar como tal. Simplemente
-mostrará un mensaje de tipo "Gracias por su compra" y ofrecerá un enlace para comenzar una
-nueva compra.
- Logoff ( logoff.php ). Esta página desconecta al usuario de la aplicación y redirige al usuario de
-forma automática a la pantalla de autentificación. No muestra ninguna información en pantalla,
-por lo que no es visible para el usuario.
-- 14 -Desarrollo de aplicaciones web con PHP
-Tema 4
-Recuerda poner a las páginas los nombres que aquí figuran, almacenando todas en la misma
-carpeta. Si cambias algún nombre o mueves alguna página de lugar, los enlaces internos no
-funcionarán.
-Aunque el aspecto de la aplicación no es importante para nuestro objetivo, utilizaremos una hoja de
-estilos, tienda.css , común a todas las páginas y una imagen, cesta.png , para ofrecer un interface
-más amigable.
+*  Pagar ( pagar.php ). Una vez confirmada la Pagar
+compra, la última página debería ser la que permitiera al usuario escoger el método de pago y la forma de envío. En este ejemplo no la vas a implementar como tal. Simplemente mostrará un mensaje de tipo "Gracias por su compra" y ofrecerá un enlace para comenzar una nueva compra.
+* Logoff ( logoff.php ). Esta página desconecta al usuario de la aplicación y redirige al usuario de forma automática a la pantalla de autentificación. No muestra ninguna información en pantalla, por lo que no es visible para el usuario.
+
+Recuerda poner a las páginas los nombres que aquí figuran, almacenando todas en la misma carpeta. Si cambias algún nombre o mueves alguna página de lugar, los enlaces internos no funcionarán.
+
+Aunque el aspecto de la aplicación no es importante para nuestro objetivo, utilizaremos una hoja de estilos, tienda.css , común a todas las páginas y una imagen, cesta.png , para ofrecer un interface más amigable.
+
+```css
 .error {
 font-family: Verdana, Arial, sans-serif;
 font-size: 0.7em;
@@ -841,21 +824,22 @@ border-bottom-style: solid;
 border-left-style: solid;
 }
 cesta.png
-Antes de comenzar ten en cuenta que la aplicación que vas a desarrollar no es completamente
-funcional. Además de no desarrollar la página con la información de pago, habrá algunas opciones
-que no tendrás en cuenta para simplificar el código. Por ejemplo:
- No tendrás en cuenta la posibilidad de que el usuario compre varias unidades de un mismo
+```
+
+Antes de comenzar ten en cuenta que la aplicación que vas a desarrollar no es completamente funcional. Además de no desarrollar la página con la información de pago, habrá algunas opciones
+que no tendrás en cuenta para simplificar el código. Por ejemplo: 
+* No tendrás en cuenta la posibilidad de que el usuario compre varias unidades de un mismo
 producto.
- Una vez añadido un producto a la cesta de compra, no se podrá retirar de la misma. La única
+* Una vez añadido un producto a la cesta de compra, no se podrá retirar de la misma. La única
 posibilidad será vaciar toda la cesta y comenzar de nuevo añadiendo productos.
- No se mostrarán imágenes de los productos, ni será posible ver el total de la compra hasta que
+* No se mostrarán imágenes de los productos, ni será posible ver el total de la compra hasta que
 ésta haya finalizado.
- Se muestran todos los productos en una única página. Sería preferible filtrarlos por familia y
-mostrarlos en varias páginas, limitando a 10 o 20 productos el número máximo de cada página.
-Aunque reduzcamos en este ejemplo la funcionalidad de la tienda, te animamos a que una
-vez finalizado el mismo, añadas por tu cuenta todas aquellas opciones que quieras. recorda
-que la mejor forma de aprender programación es... ¡programando!
-3.3.1.- Gestión de la información de la sesión (II).
+* Se muestran todos los productos en una única página. Sería preferible filtrarlos por familia y mostrarlos en varias páginas, limitando a 10 o 20 productos el número máximo de cada página.
+
+Aunque reduzcamos en este ejemplo la funcionalidad de la tienda, te animamos a que una vez finalizado el mismo, añadas por tu cuenta todas aquellas opciones que quieras. recorda que la mejor forma de aprender
+ programación es... ¡programando!
+
+### 3.3.1.- Gestión de la información de la sesión (II). ###
 La primera página que vas a programar es la de autentificación del
 usuario ( login.php ). Para variar, utilizarás las capacidades de manejo de
 sesiones de PHP para almacenar la identificación de los usuarios.
@@ -867,28 +851,29 @@ página, donde se compararán las credenciales proporcionadas por el usuario con
 la base de datos. Si los datos son correctos, se iniciará una nueva sesión y se almacenará en ella el
 nombre del usuario que se acaba de conectar.
 Vamos por pasos. El código HTML para crear el formulario, que irá dentro del cuerpo de la página
-(entre las etiquetas &lt;body&gt; ) será el siguiente:
-&lt;div id='login'&gt;
-&lt;form action='login.php' method='post'&gt;
-&lt;fieldset &gt;
-&lt;legend&gt;Login&lt;/legend&gt;
+(entre las etiquetas <body> ) será el siguiente:
+```php
+<div id='login'>
+<form action='login.php' method='post'>
+<fieldset >
+<legend>Login</legend>
 - 16 -Desarrollo de aplicaciones web con PHP
 Tema 4
-&lt;div&gt;&lt;span class='error'&gt;&lt;?php echo $error; ?&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class='campo'&gt;
-&lt;label for='usuario' &gt;Usuario:&lt;/label&gt;&lt;br/&gt;
-&lt;input type='text' name='usuario' id='usuario' maxlength="50" /&gt;&lt;br/&gt;
-&lt;/div&gt;
-&lt;div class='campo'&gt;
-&lt;label for='password' &gt;Contraseña:&lt;/label&gt;&lt;br/&gt;
-&lt;input type='password' name='password' id='password' maxlength="50" /&gt;&lt;br/&gt;
-&lt;/div&gt;
-&lt;div class='campo'&gt;
-&lt;input type='submit' name='enviar' value='Enviar' /&gt;
-&lt;/div&gt;
-&lt;/fieldset&gt;
-&lt;/form&gt;
-&lt;/div&gt;
+<div><span class='error'><?php echo $error; ?></span></div>
+<div class='campo'>
+<label for='usuario' >Usuario:</label><br/>
+<input type='text' name='usuario' id='usuario' maxlength="50" /><br/>
+</div>
+<div class='campo'>
+<label for='password' >Contraseña:</label><br/>
+<input type='password' name='password' id='password' maxlength="50" /><br/>
+</div>
+<div class='campo'>
+<input type='submit' name='enviar' value='Enviar' />
+</div>
+</fieldset>
+</form>
+</div>
 Fíjate que existe un espacio para poner los posibles mensajes de error que se produzcan, como la
 falta de algún dato necesario, o un error de credenciales erróneas.
 El código PHP que debe figurar al comienzo de esta misma página (antes de que se muestre cualquier
@@ -902,18 +887,18 @@ $error = "Debes introducir un nombre de usuario y una contraseña";
 else {
 Conectarse a la base de datos.
 try {
-$opc = array(PDO::MYSQL_ATTR_INIT_COMMAND =&gt; "SET NAMES utf8");
+$opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
 $dsn = "mysql:host=localhost;dbname=dwes";
 $dwes = new PDO($dsn, "dwes", "abc123.", $opc);
 }
 catch (PDOException $e) {
-die("Error: " . $e-&gt;getMessage());
+die("Error: " . $e->getMessage());
 }
 Comprobar las credenciales.
 $sql = "SELECT usuario FROM usuarios WHERE usuario='$usuario' " .
 "AND contrasena='" . md5($password) . "'";
-if($resultado = $dwes-&gt;query($sql)) {
-$fila = $resultado-&gt;fetch();
+if($resultado = $dwes->query($sql)) {
+$fila = $resultado->fetch();
 if ($fila != null) {
 Iniciar la sesión y almacenar en la variable de sesión $_SESSION['usuario'] el nombre de usuario.
 session_start();
@@ -922,7 +907,7 @@ Redirigir a la página del listado de productos.
 header("Location: productos.php");
 Revisa el código completo de la página login.php y comprueba su funcionamiento antes de seguir con
 las demás.
-&lt;?php
+<?php
 // Comprobamos si ya se ha enviado el formulario
 if (isset($_POST['enviar'])) {
 $usuario = $_POST['usuario'];
@@ -936,19 +921,19 @@ try {
 - 17 -Diseño Web Entorno Servidor
 José Luis Comesaña
 DAW
-$opc = array(PDO::MYSQL_ATTR_INIT_COMMAND =&gt; "SET NAMES utf8");
+$opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
 $dsn = "mysql:host=localhost;dbname=dwes";
 $dwes = new PDO($dsn, "dwes", "abc123.", $opc);
 }
 catch (PDOException $e) {
-die("Error: " . $e-&gt;getMessage());
+die("Error: " . $e->getMessage());
 }
 // Ejecutamos la consulta para comprobar las credenciales
 $sql = "SELECT usuario FROM usuarios " .
 "WHERE usuario='$usuario' " .
 "AND contrasena='" . md5($password) . "'";
-if($resultado = $dwes-&gt;query($sql)) {
-$fila = $resultado-&gt;fetch();
+if($resultado = $dwes->query($sql)) {
+$fila = $resultado->fetch();
 if ($fila != null) {
 session_start();
 $_SESSION['usuario']=$usuario;
@@ -963,46 +948,47 @@ unset($resultado);
 unset($dwes);
 }
 }
-?&gt;
-&lt;!DOCTYPE
+?>
+<!DOCTYPE
 html
 PUBLIC
 "-//W3C//DTD
 HTML
 4.01
-"http://www.w3.org/TR/html4/loose.dtd"&gt;
-&lt;!-- Desarrollo Web en Entorno Servidor --&gt;
-&lt;!-- Tema 4 : Desarrollo de aplicaciones web con PHP --&gt;
-&lt;!-- Ejemplo Tienda Web: login.php --&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;
-&lt;title&gt;Ejemplo Tema 4: Login Tienda Web&lt;/title&gt;
-&lt;link href="tienda.css" rel="stylesheet" type="text/css"&gt;
-&lt;/head&gt;
+"http://www.w3.org/TR/html4/loose.dtd">
+<!-- Desarrollo Web en Entorno Servidor -->
+<!-- Tema 4 : Desarrollo de aplicaciones web con PHP -->
+<!-- Ejemplo Tienda Web: login.php -->
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Ejemplo Tema 4: Login Tienda Web</title>
+<link href="tienda.css" rel="stylesheet" type="text/css">
+</head>
 Transitional//EN"
-&lt;body&gt;
-&lt;div id='login'&gt;
-&lt;form action='login.php' method='post'&gt;
-&lt;fieldset &gt;
-&lt;legend&gt;Login&lt;/legend&gt;
-&lt;div&gt;&lt;span class='error'&gt;&lt;?php echo $error; ?&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class='campo'&gt;
-&lt;label for='usuario' &gt;Usuario:&lt;/label&gt;&lt;br/&gt;
-&lt;input type='text' name='usuario' id='usuario' maxlength="50" /&gt;&lt;br/&gt;
-&lt;/div&gt;
-&lt;div class='campo'&gt;
-&lt;label for='password' &gt;Contraseña:&lt;/label&gt;&lt;br/&gt;
-&lt;input type='password' name='password' id='password' maxlength="50" /&gt;&lt;br/&gt;
-&lt;/div&gt;
-&lt;div class='campo'&gt;
-&lt;input type='submit' name='enviar' value='Enviar' /&gt;
-&lt;/div&gt;
-&lt;/fieldset&gt;
-&lt;/form&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+<body>
+<div id='login'>
+<form action='login.php' method='post'>
+<fieldset >
+<legend>Login</legend>
+<div><span class='error'><?php echo $error; ?></span></div>
+<div class='campo'>
+<label for='usuario' >Usuario:</label><br/>
+<input type='text' name='usuario' id='usuario' maxlength="50" /><br/>
+</div>
+<div class='campo'>
+<label for='password' >Contraseña:</label><br/>
+<input type='password' name='password' id='password' maxlength="50" /><br/>
+</div>
+<div class='campo'>
+<input type='submit' name='enviar' value='Enviar' />
+</div>
+</fieldset>
+</form>
+</div>
+</body>
+</html>
+```
 En el código anterior, la sesión del usuario se inicia solo si proporciona un nombre de
 usuario y contraseña correctos. ¿Se podría haber iniciado la sesión al principio del
 código, aunque el usuario no proporcione credenciales?
@@ -1010,9 +996,8 @@ Sí
 No
 Sí, se puede iniciar la sesión de igual forma, aunque si el usuario no se autentifica no tendríamos ninguna información que incluir dentro
 de la misma.
-- 18 -Desarrollo de aplicaciones web con PHP
-Tema 4
-3.3.2.- Gestión de la información de la sesión (III).
+
+### 3.3.2.- Gestión de la información de la sesión (III). ###
 Cuando un usuario proporciona unas credenciales
 de inicio de sesión correctas (recuerda que tú ya
 habías añadido el usuario "dwes" con contraseña
@@ -1020,40 +1005,40 @@ habías añadido el usuario "dwes" con contraseña
 página del listado de productos ( productos.php )
 para que pueda empezar a hacer la compra. Esa es
 la página que vas a programar a continuación.
-&lt;?php
+<?php
 // Recuperamos la información de la sesión
 session_start();
 // Y comprobamos que el usuario se haya autentificado
 if (!isset($_SESSION['usuario'])) {
-die("Error - debe &lt;a href='login.php'&gt;identificarse&lt;/a&gt;.&lt;br /&gt;");
+die("Error - debe <a href='login.php'>identificarse</a>.<br />");
 }
-?&gt;
-&lt;!DOCTYPE
+?>
+<!DOCTYPE
 html
 PUBLIC
 "-//W3C//DTD
 HTML
 4.01
-"http://www.w3.org/TR/html4/loose.dtd"&gt;
-&lt;!-- Desarrollo Web en Entorno Servidor --&gt;
-&lt;!-- Tema 4 : Desarrollo de aplicaciones web con PHP --&gt;
-&lt;!-- Ejemplo Tienda Web: productos.php --&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;
-&lt;title&gt;Ejemplo Tema 4: Listado de Productos&lt;/title&gt;
-&lt;link href="tienda.css" rel="stylesheet" type="text/css"&gt;
-&lt;/head&gt;
+"http://www.w3.org/TR/html4/loose.dtd">
+<!-- Desarrollo Web en Entorno Servidor -->
+<!-- Tema 4 : Desarrollo de aplicaciones web con PHP -->
+<!-- Ejemplo Tienda Web: productos.php -->
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Ejemplo Tema 4: Listado de Productos</title>
+<link href="tienda.css" rel="stylesheet" type="text/css">
+</head>
 Transitional//EN"
-&lt;body class="pagproductos"&gt;
-&lt;div id="contenedor"&gt;
-&lt;div id="encabezado"&gt;
-&lt;h1&gt;Listado de productos&lt;/h1&gt;
-&lt;/div&gt;
-&lt;div id="cesta"&gt;
-&lt;h3&gt;&lt;img src="cesta.png" alt="Cesta" width="24" height="21"&gt; Cesta&lt;/h3&gt;
-&lt;hr /&gt;
-&lt;?php
+<body class="pagproductos">
+<div id="contenedor">
+<div id="encabezado">
+<h1>Listado de productos</h1>
+</div>
+<div id="cesta">
+<h3><img src="cesta.png" alt="Cesta" width="24" height="21"> Cesta</h3>
+<hr />
+<?php
 // Comprobamos si se ha enviado el formulario de vaciar la cesta
 if (isset($_POST['vaciar'])) {
 unset($_SESSION['cesta']);
@@ -1069,88 +1054,88 @@ $_SESSION['cesta'][$_POST['producto']] = $producto;
 // Si la cesta está vacía, mostramos un mensaje
 $cesta_vacia = true;
 if (count($_SESSION['cesta'])==0) {
-print "&lt;p&gt;Cesta vacía&lt;/p&gt;";
+print "<p>Cesta vacía</p>";
 }
 // Si no está vacía, mostrar su contenido
 else {
-foreach ($_SESSION['cesta'] as $codigo =&gt; $producto)
-print "&lt;p&gt;$codigo&lt;/p&gt;";
+foreach ($_SESSION['cesta'] as $codigo => $producto)
+print "<p>$codigo</p>";
 $cesta_vacia = false;
 - 19 -Diseño Web Entorno Servidor
 José Luis Comesaña
 DAW
 }
-?&gt;
-&lt;form id='vaciar' action='productos.php' method='post'&gt;
-&lt;input type='submit' name='vaciar' value='Vaciar Cesta'
-&lt;?php if ($cesta_vacia) print "disabled='true'"; ?&gt;
-/&gt;
-&lt;/form&gt;
-&lt;form id='comprar' action='cesta.php' method='post'&gt;
-&lt;input type='submit' name='comprar' value='Comprar'
-&lt;?php if ($cesta_vacia) print "disabled='true'"; ?&gt;
-/&gt;
-&lt;/form&gt;
-&lt;/div&gt;
-&lt;div id="productos"&gt;
-&lt;?php
+?>
+<form id='vaciar' action='productos.php' method='post'>
+<input type='submit' name='vaciar' value='Vaciar Cesta'
+<?php if ($cesta_vacia) print "disabled='true'"; ?>
+/>
+</form>
+<form id='comprar' action='cesta.php' method='post'>
+<input type='submit' name='comprar' value='Comprar'
+<?php if ($cesta_vacia) print "disabled='true'"; ?>
+/>
+</form>
+</div>
+<div id="productos">
+<?php
 try {
-$opc = array(PDO::MYSQL_ATTR_INIT_COMMAND =&gt; "SET NAMES utf8");
+$opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
 $dsn = "mysql:host=localhost;dbname=dwes";
 $dwes = new PDO($dsn, "dwes", "abc123.", $opc);
 }
 catch (PDOException $e) {
-$error = $e-&gt;getCode();
-$mensaje = $e-&gt;getMessage();
+$error = $e->getCode();
+$mensaje = $e->getMessage();
 }
 if (!isset($error)) {
-$sql = &lt;&lt;&lt;SQL
+$sql = <<<SQL
 SELECT cod, nombre_corto, PVP
 FROM producto
 SQL;
-$resultado = $dwes-&gt;query($sql);
+$resultado = $dwes->query($sql);
 if($resultado) {
 // Creamos un formulario por cada producto obtenido
-$row = $resultado-&gt;fetch();
+$row = $resultado->fetch();
 while ($row != null) {
-echo "&lt;p&gt;&lt;form id='${row['cod']}' action='productos.php' method='post'&gt;";
+echo "<p><form id='${row['cod']}' action='productos.php' method='post'>";
 // Metemos ocultos los datos de los productos
-echo "&lt;input type='hidden' name='producto' value='".$row['cod']."'/&gt;";
-echo "&lt;input type='hidden' name='nombre' value='".$row['nombre_corto']."'/&gt;";
-echo "&lt;input type='hidden' name='precio' value='".$row['PVP']."'/&gt;";
-echo "&lt;input type='submit' name='enviar' value='Añadir'/&gt;";
+echo "<input type='hidden' name='producto' value='".$row['cod']."'/>";
+echo "<input type='hidden' name='nombre' value='".$row['nombre_corto']."'/>";
+echo "<input type='hidden' name='precio' value='".$row['PVP']."'/>";
+echo "<input type='submit' name='enviar' value='Añadir'/>";
 echo " ${row['nombre_corto']}: ";
 echo $row['PVP']." euros.";
-echo "&lt;/form&gt;";
-echo "&lt;/p&gt;";
-$row = $resultado-&gt;fetch();
+echo "</form>";
+echo "</p>";
+$row = $resultado->fetch();
 }
 }
 }
-?&gt;
-&lt;/div&gt;
-&lt;br class="divisor" /&gt;
-&lt;div id="pie"&gt;
-&lt;form action='logoff.php' method='post'&gt;
-&lt;input
+?>
+</div>
+<br class="divisor" />
+<div id="pie">
+<form action='logoff.php' method='post'>
+<input
 type='submit'
 name='desconectar'
 value='Desconectar
-$_SESSION['usuario']; ?&gt;'/&gt;
-&lt;/form&gt;
-&lt;?php
+$_SESSION['usuario']; ?>'/>
+</form>
+<?php
 if (isset($error)) {
-print "&lt;p class='error'&gt;Error $error: $mensaje&lt;/p&gt;";
+print "<p class='error'>Error $error: $mensaje</p>";
 }
-?&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+?>
+</div>
+</div>
+</body>
+</html>
 usuario
-&lt;?php
+<?php
 echo
-La página se divide en varias zonas, cada una definida por una etiqueta &lt; div&gt; en el código HTML:
+La página se divide en varias zonas, cada una definida por una etiqueta < div> en el código HTML:
  encabezado. Contiene únicamente el título de la página.
  productos. Contiene el listado de todos los productos tal y como figuran en la base de datos.
 Cada producto figura en una línea (nombre y precio).
@@ -1175,12 +1160,12 @@ su vez como un array con dos elementos, el precio y el nombre.
 // Si la cesta está vacía, mostramos un mensaje
 $cesta_vacia = true;
 if (count($_SESSION['cesta'])==0) {
-print "&lt;p&gt;Cesta vacía&lt;/p&gt;";
+print "<p>Cesta vacía</p>";
 }
 // Si no está vacía, mostrar su contenido
 else {
-foreach ($_SESSION['cesta'] as $codigo =&gt; $producto)
-print "&lt;p&gt;$codigo&lt;/p&gt;";
+foreach ($_SESSION['cesta'] as $codigo => $producto)
+print "<p>$codigo</p>";
 $cesta_vacia = false;
 }
 Contiene dos formularios. Uno para vaciar la cesta (botón "Vaciar Cesta"), dirigido a esta misma
@@ -1196,130 +1181,127 @@ borra la sesión actual.
 Además, tanto en esta página como en todas las demás, es necesario comprobar la variable de
 sesión $_SESSION['usuario'] para verificar que el usuario se ha autentificado correctamente.
 Para ello, debes incluir el siguiente código al inicio de la página.
-&lt;?php
+
+```php
+<?php
 // Recuperamos la información de la sesión
 session_start();
 // Y comprobamos que el usuario se haya autentificado
 if (!isset($_SESSION['usuario'])) {
-die("Error - debe &lt;a href='login.php'&gt;identificarse&lt;/a&gt;.&lt;br /&gt;");
+die("Error - debe <a href='login.php'>identificarse</a>.<br />");
 }
-?&gt;
-Si el usuario no se ha autentificado, se muestra un mensaje de error junto con un enlace a la
-página login.php .
-3.3.3.- Gestión de la información de la sesión (IV).
-Si desde la página del listado de productos, el
-usuario pulsa sobre el botón "Comprar", se le
-dirige a la página de la Cesta de la compra
-( cesta.php ), en la que se le muestra un
-resumen de los productos que ha
-- 21 -Diseño Web Entorno Servidor
-José Luis Comesaña
-DAW
-seleccionado junto al importe total de los mismos.
-&lt;?php
+?>
+```
+
+Si el usuario no se ha autentificado, se muestra un mensaje de error junto con un enlace a la página login.php .
+### 3.3.3.- Gestión de la información de la sesión (IV). ###
+
+Si desde la página del listado de productos, el usuario pulsa sobre el botón "Comprar", se le dirige a la página de la Cesta de la compra ( cesta.php ), en la que se le muestra unresumen de los productos que ha seleccionado junto al importe total de los mismos.
+
+```php
+<?php
 // Recuperamos la información de la sesión
 session_start();
 // Y comprobamos que el usuario se haya autentificado
 if (!isset($_SESSION['usuario'])) {
-die("Error - debe &lt;a href='login.php'&gt;identificarse&lt;/a&gt;.&lt;br /&gt;");
+die("Error - debe <a href='login.php'>identificarse</a>.<br />");
 }
-?&gt;
-&lt;!DOCTYPE
+?>
+<!DOCTYPE
 html
 PUBLIC
 "-//W3C//DTD
 HTML
 4.01
-"http://www.w3.org/TR/html4/loose.dtd"&gt;
-&lt;!-- Desarrollo Web en Entorno Servidor --&gt;
-&lt;!-- Tema 4 : Desarrollo de aplicaciones web con PHP --&gt;
-&lt;!-- Ejemplo Tienda Web: cesta.php --&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;
-&lt;title&gt;Ejemplo Tema 4: Cesta de la Compra&lt;/title&gt;
-&lt;link href="tienda.css" rel="stylesheet" type="text/css"&gt;
-&lt;/head&gt;
+"http://www.w3.org/TR/html4/loose.dtd">
+<!-- Desarrollo Web en Entorno Servidor -->
+<!-- Tema 4 : Desarrollo de aplicaciones web con PHP -->
+<!-- Ejemplo Tienda Web: cesta.php -->
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Ejemplo Tema 4: Cesta de la Compra</title>
+<link href="tienda.css" rel="stylesheet" type="text/css">
+</head>
 Transitional//EN"
-&lt;body class="pagcesta"&gt;
-&lt;div id="contenedor"&gt;
-&lt;div id="encabezado"&gt;
-&lt;h1&gt;Cesta de la compra&lt;/h1&gt;
-&lt;/div&gt;
-&lt;div id="productos"&gt;
-&lt;?php
+<body class="pagcesta">
+<div id="contenedor">
+<div id="encabezado">
+<h1>Cesta de la compra</h1>
+</div>
+<div id="productos">
+<?php
 $total = 0;
-foreach($_SESSION['cesta'] as $codigo =&gt; $producto) {
-echo "&lt;p&gt;&lt;span class='codigo'&gt;$codigo&lt;/span&gt;";
-echo "&lt;span class='nombre'&gt;${producto['nombre']}&lt;/span&gt;";
-echo "&lt;span class='precio'&gt;${producto['precio']}&lt;/span&gt;&lt;/p&gt;";
+foreach($_SESSION['cesta'] as $codigo => $producto) {
+echo "<p><span class='codigo'>$codigo</span>";
+echo "<span class='nombre'>${producto['nombre']}</span>";
+echo "<span class='precio'>${producto['precio']}</span></p>";
 $total += $producto['precio'];
 }
-?&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;span class='pagar'&gt;Precio total: &lt;?php print $total; ?&gt; €&lt;/span&gt;&lt;/p&gt;
-&lt;form action='pagar.php' method='post'&gt;
-&lt;p&gt;
-&lt;span class='pagar'&gt;
-&lt;input type='submit' name='pagar' value='Pagar'/&gt;
-&lt;/span&gt;
-&lt;/p&gt;
-&lt;/form&gt;
-&lt;/div&gt;
-&lt;br class="divisor" /&gt;
-&lt;div id="pie"&gt;
-&lt;form action='logoff.php' method='post'&gt;
-&lt;input
+?>
+<hr />
+<p><span class='pagar'>Precio total: <?php print $total; ?> €</span></p>
+<form action='pagar.php' method='post'>
+<p>
+<span class='pagar'>
+<input type='submit' name='pagar' value='Pagar'/>
+</span>
+</p>
+</form>
+</div>
+<br class="divisor" />
+<div id="pie">
+<form action='logoff.php' method='post'>
+<input
 type='submit'
 name='desconectar'
 value='Desconectar
 usuario
-$_SESSION['usuario']; ?&gt;'/&gt;
-&lt;/form&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-&lt;?php
+$_SESSION['usuario']; ?>'/>
+</form>
+</div>
+</div>
+</body>
+</html>
+<?php
 echo
 En la página figuran dos formularios que simplemente redirigen a otras páginas. El que contiene el
 botón "Pagar", que redirige a la página pagar.php , que en nuestro caso lo único que debe hacer es
 eliminar la sesión del usuario. Y el que contiene el botón de desconexión, que es similar al que
 figuraba en la página productos.php , y dirige a la página logoff.php, que cierra la sesión del usuario.
-&lt;?php
+<?php
 // Recuperamos la información de la sesión
 session_start();
 unset($_SESSION['cesta']);
-die("Gracias por su compra.&lt;br /&gt;Quiere &lt;a href='productos.php'&gt;comenzar de nuevo&lt;/a&gt;?");
-?&gt;
-- 22 -Desarrollo de aplicaciones web con PHP
-Tema 4
+die("Gracias por su compra.<br />Quiere <a href='productos.php'>comenzar de nuevo</a>?");
+?>
 Los datos que figuran en la página se obtienen todos de la información almacenada en la sesión del
 usuario. No es necesario establecer conexiones con la base de datos. El código que sirve para
 mostrar el listado de los productos seleccionados es el siguiente:
-&lt;?php
+<?php
 $total = 0;
-foreach($_SESSION['cesta'] as $codigo =&gt; $producto) {
-echo "&lt;p&gt;&lt;span class='codigo'&gt;$codigo&lt;/span&gt;";
-echo "&lt;span class='nombre'&gt;${producto['nombre']}&lt;/span&gt;";
-echo "&lt;span class='precio'&gt;${producto['precio']}&lt;/span&gt;&lt;/p&gt;";
+foreach($_SESSION['cesta'] as $codigo => $producto) {
+echo "<p><span class='codigo'>$codigo</span>";
+echo "<span class='nombre'>${producto['nombre']}</span>";
+echo "<span class='precio'>${producto['precio']}</span></p>";
 $total += $producto['precio'];
 }
-?&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;span class='pagar'&gt;Precio total: &lt;?php print $total; ?&gt; €&lt;/span&gt;&lt;/p&gt;
+?>
+<hr />
+<p><span class='pagar'>Precio total: <?php print $total; ?> €</span></p>
 Recuerda que al principio de esta página, también será necesario verificar la variable de
 sesión $_SESSION['usuario'] para comprobar que el usuario se ha autentificado correctamente.
 Tanto desde esta página como desde la página del listado de productos, se le ofrece al usuario la
 posibilidad de cerrar la sesión. Para ello se le dirige a la página logoff.php, que no muestra nada en
 pantalla. Su código es el siguiente:
-&lt;?php
+<?php
 // Recuperamos la información de la sesión
 session_start();
 // Y la eliminamos
 session_unset();
 header("Location: login.php");
-?&gt;
+?>
+```
 Tras eliminar la sesión, redirige al usuario a la página de autentificación donde puede iniciar una
 nueva sesión con el mismo o con otro usuario distinto.
 En las páginas anteriores, productos.php y cesta.php, se ha incluido un botón para
