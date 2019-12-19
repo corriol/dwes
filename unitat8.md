@@ -1,13 +1,12 @@
 # 1.- Autentificació d'usuaris i control d'accés #
+
 ## cas pràctic ##
 
-Tal com Esteban els ha explicat, l'objectiu principal del projecte no és crear una pàgina web pública, amb informació sobre l'empresa. Necessiten una aplicació web amb un objectiu
-més específic: permetre a clients i empleats conèixer informació sobre els productes de la empresa.
+Tal com Esteban els ha explicat, l'objectiu principal del projecte no és crear una pàgina web pública, amb informació sobre l'empresa. Necessiten una aplicació web amb un objectiu més específic: permetre a clients i empleats conèixer informació sobre els productes de la empresa.
 
-Joan sap que amb aquestes condicions, un dels punts fonamentals amb els que haurà de tractar en el nou projecte és el control d'accés a l'aplicació web. Tots els usuaris que accedeixin
-hauran d'identificar-se per poder accedir a les pàgines del lloc web. A més, en funció de si el usuari és un client o un empleat, caldrà donar-li accés a una o una altra informació.
-Joan mai ha programat llocs web amb autenticació dels usuaris. A més, es troba acabant un altre projecte, i no disposa de massa temps. Per aquest motiu, li demana a Carlos que
-es documenti sobre el tema per poder decidir el camí a prendre.
+Joan sap que amb aquestes condicions, un dels punts fonamentals amb els que haurà de tractar en el nou projecte és el control d'accés a l'aplicació web. Tots els usuaris que accedeixin hauran d'identificar-se per poder accedir a les pàgines del lloc web. A més, en funció de si el usuari és un client o un empleat, caldrà donar-li accés a una o una altra informació.
+
+Joan mai ha programat llocs web amb autenticació dels usuaris. A més, es troba acabant un altre projecte, i no disposa de massa temps. Per aquest motiu, li demana a Carlos que es documenti sobre el tema per poder decidir el camí a prendre.
 
 Moltes vegades és important verificar la identitat dels dos extrems d'una comunicació. al cas d'una comunicació web, hi ha mètodes per identificar tant a servidor en el qual s'allotja
 el lloc web, com a l'usuari de el navegador que es troba en l'altre extrem.
@@ -55,8 +54,9 @@ requereix valid-user
 ```
 
 El significat de cadascuna de les directives anteriors és el següent:
+
 | Directiva | significat |
-| ----------| -----------|
+| --- | --- |
 | AuthName | Nom de domini que es farà servir en l'autenticació. Si el client s'autentica correctament, aquesta mateixa informació d'autenticació s'utilitzarà automàticament en la resta de les pàgines de el mateix domini. |
 | AuthType | Mètode d'autenticació que es farà servir. A més de l'mètode Basic, Apache també permet utilitzar el mètode Digest. |
 | AuthUserFile | Camí de l'arxiu de credencials que has creat amb htpasswd. |
