@@ -402,28 +402,24 @@ php.ini segons correspongui:
 | -------- | ---------- |
 | session.use_cookies | Indica si s'han d'usar cookies (1) o propagació a la URL (0) per emmagatzemar el SID. |
 | session.use_only_cookies | S'ha d'activar (1) quan fas servir cookies per emmagatzemar els SID, i a més no vols que es reconeguin els SID que es puguin passar com part de la URL (aquest mètode es pot usar per usurpar l'identificador d'un altre usuari).|
-| session.save_handler | S'utilitza per indicar a PHP com ha de emmagatzemar les dades de la sessió de l'usuari. Hi ha quatre opcions: en fitxers (files), en memòria (Mm), en una base de dades SQLite (sqlite) o utilitzant per a això funcions que ha de definir el programador (user). El valor per defecte (Files) funcionarà sense problemes en la majoria dels casos.| session.name Determina el nom de la galeta que s'utilitzarà per guardar el SID. La seva valor per defecte és PHPSESSID.|
+| session.save_handler | S'utilitza per indicar a PHP com ha de emmagatzemar les dades de la sessió de l'usuari. Hi ha quatre opcions: en fitxers (files), en memòria (Mm), en una base de dades SQLite (sqlite) o utilitzant per a això funcions que ha de definir el programador (user). El valor per defecte (Files) funcionarà sense problemes en la majoria dels casos.| 
+| session.name | Determina el nom de la galeta que s'utilitzarà per guardar el SID. La seva valor per defecte és PHPSESSID.|
 | session.auto_start | El seu valor per defecte és 0, i en aquest cas hauràs de fer servir la funció session_start per gestionar l'inici de les sessions. Si fas servir sessions al lloc web, pot ser bona idea canviar el seu valor a 1 per que PHP activi de forma automàtica el maneig de sessions.|
 | session.cookie_lifetime | Si utilitzes l'URL per propagar el SID, aquest es perdrà quan tanqui el navegador. No obstant això, si utilitzes galetes, el SID es mantindrà mentre no es destrueixi la galeta. En el seu valor per defecte (0), les galetes es destrueixen quan es tanca el navegador. Si vols que es mantingui el SID durant més temps, has d'indicar en aquesta directiva aquest temps en segons. |
 | session.gc_maxlifetime| Indica el temps en segons que s'ha de mantenir activa la sessió, encara que no hi hagi cap activitat per part de l'usuari. El seu valor per defecte és 1440. És a dir, passats 24 minuts des de l'última activitat per part de l'usuari, es tanca la sessió automàticament. |
 
-La funció phpinfo, de la qual ja vam parlar amb
-anterioritat, t'ofereix informació sobre la
-configuració actual de les directives de sessió.
-En la documentació de PHP tens informació
-sobre aquestes i altres directives que permeten
-configurar el maneig de sessions.
+La funció phpinfo, de la qual ja vam parlar amb anterioritat, t'ofereix informació sobre la configuració actual de les directives de sessió.
+
+En la documentació de PHP tens informació sobre aquestes i altres directives que permeten configurar el maneig de sessions.
 
 http://es.php.net/manual/es/session.configuration.php
 
-Si la informació de l'usuari que vols emmagatzemar inclou contingut privat com
-una contrasenya, ¿què utilitzaries, galetes o la sessió de l'usuari?
+Si la informació de l'usuari que vols emmagatzemar inclou contingut privat com una contrasenya, ¿què utilitzaries, galetes o la sessió de l'usuari?
 La sessió de l'usuari.
 Galetes.
-La sessió de l'usuari s'emmagatzema i es processa a la web, de manera que no cal transmetre-fins a l'ordinador de l'usuari,
-el que augmenta la seva seguretat.
+La sessió de l'usuari s'emmagatzema i es processa a la web, de manera que no cal transmetre-fins a l'ordinador de l'usuari, el que augmenta la seva seguretat.
 
-##3.2.- Inici i fi d'una sessió.##
+## 3.2. Inici i fi d'una sessió ##
 
 L'inici d'una sessió pot tenir lloc de dues maneres. Si has activado la directiva
 session.auto_start en la configuración de PHP, la sesión comenzará automáticamente en cuanto un
@@ -531,8 +527,7 @@ else
 $_SESSION['visita'][] = time();
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "
-http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 4 : Desarrollo de aplicaciones web con PHP -->
 <!-- Ejemplo: Cookies en autentificación HTTP -->
@@ -575,7 +570,7 @@ Con el inicio de sesión automático, la sesión del usuario se inicia en cuanto
 que ver una cosa con otra. Un usuario no autentificado puede tener una sesión de la misma forma que otro que sí se haya autentificado
 correctamente
 
-## 3.3.- Gestión de la información de la sesión (I). ##
+## 3.3. Gestión de la información de la sesión (I) ##
 En este punto vas a ver paso a paso un ejemplo de utilización de sesiones para almacenar la
 información del usuario. Utilizarás la base de datos " dwes ", creada anteriormente, para crear un
 prototipo de una tienda web dedicada a la venta de productos de informática.
@@ -751,24 +746,20 @@ cesta.png
 ```
 
 Antes de comenzar ten en cuenta que la aplicación que vas a desarrollar no es completamente funcional. Además de no desarrollar la página con la información de pago, habrá algunas opciones
-que no tendrás en cuenta para simplificar el código. Por ejemplo: 
-* No tendrás en cuenta la posibilidad de que el usuario compre varias unidades de un mismo
-producto.
-* Una vez añadido un producto a la cesta de compra, no se podrá retirar de la misma. La única
-posibilidad será vaciar toda la cesta y comenzar de nuevo añadiendo productos.
-* No se mostrarán imágenes de los productos, ni será posible ver el total de la compra hasta que
-ésta haya finalizado.
+que no tendrás en cuenta para simplificar el código. Por ejemplo:
+* No tendrás en cuenta la posibilidad de que el usuario compre varias unidades de un mismo producto.
+* Una vez añadido un producto a la cesta de compra, no se podrá retirar de la misma. La única posibilidad será vaciar toda la cesta y comenzar de nuevo añadiendo productos.
+* No se mostrarán imágenes de los productos, ni será posible ver el total de la compra hasta que ésta haya finalizado.
 * Se muestran todos los productos en una única página. Sería preferible filtrarlos por familia y mostrarlos en varias páginas, limitando a 10 o 20 productos el número máximo de cada página.
 
-Aunque reduzcamos en este ejemplo la funcionalidad de la tienda, te animamos a que una vez finalizado el mismo, añadas por tu cuenta todas aquellas opciones que quieras. recorda que la mejor forma de aprender
- programación es... ¡programando!
+Aunque reduzcamos en este ejemplo la funcionalidad de la tienda, te animamos a que una vez finalizado el mismo, añadas por tu cuenta todas aquellas opciones que quieras. recorda que la mejor forma de aprender programación es... ¡programando!
 
-### 3.3.1.- Gestión de la información de la sesión (II). ###
-La primera página que vas a programar es la de autentificación del
-usuario ( login.php ). Para variar, utilizarás las capacidades de manejo de
-sesiones de PHP para almacenar la identificación de los usuarios.
-Además, utilizaremos la información de la tabla " usuarios " en la base
-de datos " dwes ", accediendo mediante PDO en lugar de MySQLi.
+### 3.3.1. Gestión de la información de la sesión (II) ###
+
+La primera página que vas a programar es la de autentificación del usuario ( login.php ). Para variar, utilizarás las capacidades de manejo de sesiones de PHP para almacenar la identificación de los usuarios.
+
+Además, utilizaremos la información de la tabla " usuarios " en la base de datos " dwes ", accediendo mediante PDO en lugar de MySQLi.
+
 Vas a crear en la página un formulario con dos campos, uno de tipo text para el usuario, y otro de
 tipo password para la contraseña. Al pulsar el botón Enviar, el formulario se enviará a esta misma
 página, donde se compararán las credenciales proporcionadas por el usuario con las almacenadas en
@@ -781,8 +772,6 @@ Vamos por pasos. El código HTML para crear el formulario, que irá dentro del c
 <form action='login.php' method='post'>
 <fieldset >
 <legend>Login</legend>
-- 16 -Desarrollo de aplicaciones web con PHP
-Tema 4
 <div><span class='error'><?php echo $error; ?></span></div>
 <div class='campo'>
 <label for='usuario' >Usuario:</label><br/>
@@ -798,39 +787,59 @@ Tema 4
 </fieldset>
 </form>
 </div>
-Fíjate que existe un espacio para poner los posibles mensajes de error que se produzcan, como la
-falta de algún dato necesario, o un error de credenciales erróneas.
-El código PHP que debe figurar al comienzo de esta misma página (antes de que se muestre cualquier
-texto), se encargará de:
+```
+
+Fíjate que existe un espacio para poner los posibles mensajes de error que se produzcan, como la falta de algún dato necesario, o un error de credenciales erróneas.
+El código PHP que debe figurar al comienzo de esta misma página (antes de que se muestre cualquier texto), se encargará de:
+
 Comprobar que se han introducido tanto el nombre de usuario como la contraseña.
+
+```php
 if (isset($_POST['enviar'])) {
-$usuario = $_POST['usuario'];
-$password = $_POST['password'];
-if (empty($usuario) || empty($password))
-$error = "Debes introducir un nombre de usuario y una contraseña";
-else {
+    $usuario = $_POST['usuario'];
+    $password = $_POST['password'];
+    if (empty($usuario) || empty($password))
+        $error = "Debes introducir un nombre de usuario y una contraseña";
+    else {
+```
+
 Conectarse a la base de datos.
+
+```php
 try {
-$opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
-$dsn = "mysql:host=localhost;dbname=dwes";
-$dwes = new PDO($dsn, "dwes", "abc123.", $opc);
+    $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
+    $dsn = "mysql:host=localhost;dbname=dwes";
+    $dwes = new PDO($dsn, "dwes", "abc123.", $opc);
 }
-catch (PDOException $e) {
-die("Error: " . $e->getMessage());
+    catch (PDOException $e) {
+        die("Error: " . $e->getMessage());
 }
+```
+
 Comprobar las credenciales.
+
+```php
 $sql = "SELECT usuario FROM usuarios WHERE usuario='$usuario' " .
 "AND contrasena='" . md5($password) . "'";
 if($resultado = $dwes->query($sql)) {
 $fila = $resultado->fetch();
 if ($fila != null) {
+```
+
 Iniciar la sesión y almacenar en la variable de sesión $_SESSION['usuario'] el nombre de usuario.
+```php
 session_start();
 $_SESSION['usuario']=$usuario;
+```
+
 Redirigir a la página del listado de productos.
+
+```php
 header("Location: productos.php");
-Revisa el código completo de la página login.php y comprueba su funcionamiento antes de seguir con
-las demás.
+```
+Revisa el código completo de la página login.php y comprueba su funcionamiento antes de seguir con las demás.
+
+```
 <?php
 // Comprobamos si ya se ha enviado el formulario
 if (isset($_POST['enviar'])) {
@@ -842,9 +851,6 @@ else {
 // Comprobamos las credenciales con la base de datos
 // Conectamos a la base de datos
 try {
-- 17 -Diseño Web Entorno Servidor
-José Luis Comesaña
-DAW
 $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
 $dsn = "mysql:host=localhost;dbname=dwes";
 $dwes = new PDO($dsn, "dwes", "abc123.", $opc);
@@ -913,22 +919,15 @@ Transitional//EN"
 </body>
 </html>
 ```
-En el código anterior, la sesión del usuario se inicia solo si proporciona un nombre de
-usuario y contraseña correctos. ¿Se podría haber iniciado la sesión al principio del
-código, aunque el usuario no proporcione credenciales?
+En el código anterior, la sesión del usuario se inicia solo si proporciona un nombre de usuario y contraseña correctos. ¿Se podría haber iniciado la sesión al principio del código, aunque el usuario no proporcione credenciales?
 Sí
 No
-Sí, se puede iniciar la sesión de igual forma, aunque si el usuario no se autentifica no tendríamos ninguna información que incluir dentro
-de la misma.
+Sí, se puede iniciar la sesión de igual forma, aunque si el usuario no se autentifica no tendríamos ninguna información que incluir dentro de la misma.
 
 ### 3.3.2.- Gestión de la información de la sesión (III). ###
-Cuando un usuario proporciona unas credenciales
-de inicio de sesión correctas (recuerda que tú ya
-habías añadido el usuario "dwes" con contraseña
-"abc123."), se le redirige de forma automática a la
-página del listado de productos ( productos.php )
-para que pueda empezar a hacer la compra. Esa es
-la página que vas a programar a continuación.
+Cuando un usuario proporciona unas credenciales de inicio de sesión correctas (recuerda que tú ya habías añadido el usuario "dwes" con contraseña "abc123."), se le redirige de forma automática a la página del listado de productos ( productos.php ) para que pueda empezar a hacer la compra. Esa es la página que vas a programar a continuación.
+
+```php
 <?php
 // Recuperamos la información de la sesión
 session_start();
@@ -985,9 +984,6 @@ else {
 foreach ($_SESSION['cesta'] as $codigo => $producto)
 print "<p>$codigo</p>";
 $cesta_vacia = false;
-- 19 -Diseño Web Entorno Servidor
-José Luis Comesaña
-DAW
 }
 ?>
 <form id='vaciar' action='productos.php' method='post'>
@@ -1056,19 +1052,15 @@ print "<p class='error'>Error $error: $mensaje</p>";
 </div>
 </body>
 </html>
+```
 usuario
 <?php
 echo
 La página se divide en varias zonas, cada una definida por una etiqueta < div> en el código HTML:
  encabezado. Contiene únicamente el título de la página.
- productos. Contiene el listado de todos los productos tal y como figuran en la base de datos.
-Cada producto figura en una línea (nombre y precio).
-Se crea un formulario por cada producto, con un botón "Añadir" que envía a esta misma página
-los datos código, nombre y precio del producto. Cuando se abre la página, se comprueba si se ha
-- 20 -Desarrollo de aplicaciones web con PHP
-Tema 4
-enviado este formulario, y si fuera así se añade un elemento al array asociativo
-$_SESSION['cesta'] con los datos del nuevo producto.
+ productos. Contiene el listado de todos los productos tal y como figuran en la base de datos. Cada producto figura en una línea (nombre y precio).
+Se crea un formulario por cada producto, con un botón "Añadir" que envía a esta misma página los datos código, nombre y precio del producto. Cuando se abre la página, se comprueba si se ha enviado este formulario, y si fuera así se añade un elemento al array asociativo $_SESSION['cesta'] con los datos del nuevo producto.
+
 // Comprobamos si se ha enviado el formulario de añadir
 if (isset($_POST['enviar'])) {
 // Creamos un array con los datos del nuevo producto
@@ -1077,9 +1069,9 @@ $producto['precio'] = $_POST['precio'];
 // y lo añadimos
 $_SESSION['cesta'][$_POST['producto']] = $producto;
 }
-El array $_SESSION['cesta'] es la variable de sesión en la que guardaremos los datos de todos
-los productos que va a comprar el usuario. Fíjate que los datos del nuevo producto se incluyen a
+El array $_SESSION['cesta'] es la variable de sesión en la que guardaremos los datos de todos los productos que va a comprar el usuario. Fíjate que los datos del nuevo producto se incluyen a
 su vez como un array con dos elementos, el precio y el nombre.
+
  cesta. Muestra el código de los productos que se van añadiendo a la cesta.
 // Si la cesta está vacía, mostramos un mensaje
 $cesta_vacia = true;
@@ -1092,14 +1084,15 @@ foreach ($_SESSION['cesta'] as $codigo => $producto)
 print "<p>$codigo</p>";
 $cesta_vacia = false;
 }
-Contiene dos formularios. Uno para vaciar la cesta (botón "Vaciar Cesta"), dirigido a esta misma
-página, y otro para realizar la compra (botón "Comprar"), que dirige a la página cesta.php . Para
+
+Contiene dos formularios. Uno para vaciar la cesta (botón "Vaciar Cesta"), dirigido a esta misma página, y otro para realizar la compra (botón "Comprar"), que dirige a la página cesta.php . Para
 vaciar la cesta, se incluye en la página el siguiente código:
+```php
 // Comprobamos si se ha enviado el formulario de vaciar la cesta
 if (isset($_POST['vaciar'])) {
 unset($_SESSION['cesta']);
 }
-
+```
 pie. Contiene un botón para desconectar al usuario actual. Llama a la página logoff.php , que
 borra la sesión actual.
 Además, tanto en esta página como en todas las demás, es necesario comprobar la variable de
@@ -1124,20 +1117,15 @@ Si desde la página del listado de productos, el usuario pulsa sobre el botón "
 
 ```php
 <?php
-// Recuperamos la información de la sesión
-session_start();
-// Y comprobamos que el usuario se haya autentificado
-if (!isset($_SESSION['usuario'])) {
-die("Error - debe <a href='login.php'>identificarse</a>.<br />");
-}
+    // Recuperamos la información de la sesión
+    session_start();
+    // Y comprobamos que el usuario se haya autentificado
+    if (!isset($_SESSION['usuario'])) {
+        die("Error - debe <a href='login.php'>identificarse</a>.<br />");
+    }
 ?>
-<!DOCTYPE
-html
-PUBLIC
-"-//W3C//DTD
-HTML
-4.01
-"http://www.w3.org/TR/html4/loose.dtd">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 4 : Desarrollo de aplicaciones web con PHP -->
 <!-- Ejemplo Tienda Web: cesta.php -->
@@ -1147,7 +1135,7 @@ HTML
 <title>Ejemplo Tema 4: Cesta de la Compra</title>
 <link href="tienda.css" rel="stylesheet" type="text/css">
 </head>
-Transitional//EN"
+
 <body class="pagcesta">
 <div id="contenedor">
 <div id="encabezado">
@@ -1187,21 +1175,28 @@ $_SESSION['usuario']; ?>'/>
 </div>
 </body>
 </html>
-<?php
-echo
-En la página figuran dos formularios que simplemente redirigen a otras páginas. El que contiene el
-botón "Pagar", que redirige a la página pagar.php , que en nuestro caso lo único que debe hacer es
-eliminar la sesión del usuario. Y el que contiene el botón de desconexión, que es similar al que
-figuraba en la página productos.php , y dirige a la página logoff.php, que cierra la sesión del usuario.
+<?php echo $_SESSION['usuario']; ?>'/>
+</form>
+</div>
+</div>
+</body>
+</html>
+```
+En la página figuran dos formularios que simplemente redirigen a otras páginas. El que contiene el botón "Pagar", que redirige a la página pagar.php , que en nuestro caso lo único que debe hacer es eliminar la sesión del usuario. Y el que contiene el botón de desconexión, que es similar al que figuraba en la página productos.php , y dirige a la página logoff.php, que cierra la sesión del usuario.
+
+```php
 <?php
 // Recuperamos la información de la sesión
 session_start();
 unset($_SESSION['cesta']);
 die("Gracias por su compra.<br />Quiere <a href='productos.php'>comenzar de nuevo</a>?");
 ?>
+```
 Los datos que figuran en la página se obtienen todos de la información almacenada en la sesión del
 usuario. No es necesario establecer conexiones con la base de datos. El código que sirve para
 mostrar el listado de los productos seleccionados es el siguiente:
+
+```php
 <?php
 $total = 0;
 foreach($_SESSION['cesta'] as $codigo => $producto) {
@@ -1213,11 +1208,11 @@ $total += $producto['precio'];
 ?>
 <hr />
 <p><span class='pagar'>Precio total: <?php print $total; ?> €</span></p>
-Recuerda que al principio de esta página, también será necesario verificar la variable de
-sesión $_SESSION['usuario'] para comprobar que el usuario se ha autentificado correctamente.
-Tanto desde esta página como desde la página del listado de productos, se le ofrece al usuario la
-posibilidad de cerrar la sesión. Para ello se le dirige a la página logoff.php, que no muestra nada en
-pantalla. Su código es el siguiente:
+```
+
+Recuerda que al principio de esta página, también será necesario verificar la variable de sesión $_SESSION['usuario'] para comprobar que el usuario se ha autentificado correctamente. Tanto desde esta página como desde la página del listado de productos, se le ofrece al usuario la posibilidad de cerrar la sesión. Para ello se le dirige a la página logoff.php, que no muestra nada en pantalla. Su código es el siguiente:
+
+```
 <?php
 // Recuperamos la información de la sesión
 session_start();
@@ -1226,12 +1221,7 @@ session_unset();
 header("Location: login.php");
 ?>
 ```
-Tras eliminar la sesión, redirige al usuario a la página de autentificación donde puede iniciar una
-nueva sesión con el mismo o con otro usuario distinto.
-En las páginas anteriores, productos.php y cesta.php, se ha incluido un botón para
-desconectar al usuario cerrando su sesión. ¿Se podría utilizar un enlace a la página
-logoff.php en lugar de crear un botón dentro de un formulario?
-Sí
-No
-La única función del botón es abrir la página logoff.php. No necesitamos enviar nada a ésta página, por lo que se podría haber logrado lo
-mismo con un simple enlace.</pre></body></html>
+
+Tras eliminar la sesión, redirige al usuario a la página de autentificación donde puede iniciar una nueva sesión con el mismo o con otro usuario distinto. En las páginas anteriores, productos.php y cesta.php, se ha incluido un botón para desconectar al usuario cerrando su sesión. ¿Se podría utilizar un enlace a la página logoff.php en lugar de crear un botón dentro de un formulario?
+Sí No
+La única función del botón es abrir la página logoff.php. No necesitamos enviar nada a ésta página, por lo que se podría haber logrado lo mismo con un simple enlace.
