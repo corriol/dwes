@@ -76,33 +76,32 @@ A l'incloure l'opció -c el que fem és crear un nou fitxer, amb la qual cosa el
 
 Des PHP pots accedir a la informació d'autenticació HTTP que ha introduït l'usuari utilitzant l'array superglobal `$_SERVER. `
 | valor | contingut |
-|:-------:|:-----------:|
-|$_SERVER['PHP_AUTH_USER'] | Nom d'usuari que s'ha introduït.|
-|$_SERVER[ 'PHP_AUTH_PW'] | Clau introduïda.|
-|$_SERVER[ 'AUTH_TYPE']  | Mètode HTTP usat per autentificar. Pot ser Basic o Digest.|
+| --- | --- |
+|`$_SERVER['PHP_AUTH_USER']` | Nom d'usuari que s'ha introduït.|
+|`$_SERVER[ 'PHP_AUTH_PW']` | Clau introduïda.|
+| `$_SERVER[ 'AUTH_TYPE']`  | Mètode HTTP usat per autentificar. Pot ser Basic o Digest.|
 
 És a dir, que si crees una pàgina web que mostri els valors d'aquestes variables, i prepares el
 servidor web per utilitzar autenticació HTTP, quan accedeixis a aquesta pàgina amb l'usuari "dwes"
 obtindràs alguna cosa com el següent:
 
 ```html
-<! DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" "
-http://www.w3.org/TR/html4/loose.dtd ">
-<! - Desenvolupament Web a Entorn Servidor ->
-<! - Tema 4: Desenvolupament d'aplicacions web amb PHP ->
-<! - Exemple: Autenticació HTTP ->
+<! DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" "http://www.w3.org/TR/html4/loose.dtd ">
+<!-- Desenvolupament Web a Entorn Servidor -->
+<!-- Tema 4: Desenvolupament d'aplicacions web amb PHP -->
+<!-- Exemple: Autenticació HTTP -->
 <html>
-<Head>
-<Meta http-equiv = "content-type" content = "text / html; charset = UTF-8">
-<Title> Exemple Tema 4: Autenticació HTTP </ title>
-<Link href = "dwes.css" rel = "stylesheet" type = "text / css">
-</ Head>
+<head>
+    <meta http-equiv = "content-type" content = "text / html; charset = UTF-8">
+    <title> Exemple Tema 4: Autenticació HTTP </ title>
+    <link href = "dwes.css" rel = "stylesheet" type = "text / css">
+</head>
 <body>
-<?php
+    <?php
     echo "Nom d'usuari:". $_ SERVER [ 'PHP_AUTH_USER']. "<br />";
     echo "Contrasenya:". $_ SERVER [ 'PHP_AUTH_PW']. "<br />";
     echo "Mètode d'autenticació:". $_ SERVER [ 'AUTH_TYPE']. "<br />";
-?>
+    ?>
 </body>
 </html>
 ```
