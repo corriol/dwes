@@ -125,7 +125,7 @@ Amb el codi anterior, la pàgina envia un error 401, el que força a el navegado
 
 Hauràs de crear una pàgina similar a l'anterior, i afegir el codi per forçar l'error 401 abans de qualsevol altre.
 
-```html
+```php
 <!-- DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" " http://www.w3.org/TR/html4/loose.dtd ">
 <!-- Desenvolupament Web a Entorn Servidor -->
 <!-- Tema 4: Desenvolupament d'aplicacions web amb PHP -->
@@ -145,12 +145,10 @@ Hauràs de crear una pàgina similar a l'anterior, i afegir el codi per forçar 
 <link href = "dwes.css" rel = "stylesheet" type = "text / css">
 </head>
 <body>
-```php
 <?php
-    echo "Nom d'usuari:". $_ SERVER [ 'PHP_AUTH_USER']. "<br />";
-    echo "Contrasenya:". $_ SERVER [ 'PHP_AUTH_PW']. "<br />";
+    echo "Nom d'usuari:". $_ SERVER['PHP_AUTH_USER']. "<br />";
+    echo "Contrasenya:". $_ SERVER['PHP_AUTH_PW']. "<br />";
 ?>
-```
 </body>
 </html>
 ```
