@@ -72,11 +72,11 @@ fals
 A l'incloure l'opció -c el que fem és crear un nou fitxer, amb la qual cosa eliminem el contingut anterior del mateix.
 
 ### 1.1.1.- Mecanismes d'autenticació (II). ###
-Des PHP pots accedir a la informació d'autenticació HTTP que ha introduït l'usuari utilitzant l'array superglobal $ _SERVER. 
+Des PHP pots accedir a la informació d'autenticació HTTP que ha introduït l'usuari utilitzant l'array superglobal $_SERVER. 
 valor contingut
-$ _SERVER [ 'PHP_AUTH_USER'] Nom d'usuari que s'ha introduït.
-$ _SERVER [ 'PHP_AUTH_PW'] Clau introduïda.
-$ _SERVER [ 'AUTH_TYPE']
+$_SERVER [ 'PHP_AUTH_USER'] Nom d'usuari que s'ha introduït.
+$_SERVER [ 'PHP_AUTH_PW'] Clau introduïda.
+$_SERVER [ 'AUTH_TYPE']
 Mètode HTTP usat per autentificar. Pot ser Basic o Digest.
 És a dir, que si crees una pàgina web que mostri els valors d'aquestes variables, i prepares el
 servidor web per utilitzar autenticació HTTP, quan accedeixis a aquesta pàgina amb l'usuari "dwes"
@@ -95,9 +95,9 @@ http://www.w3.org/TR/html4/loose.dtd ">
 </ Head>
 <Body>
 <? Php
-echo "Nom d'usuari:". $ _ SERVER [ 'PHP_AUTH_USER']. "<br />";
-echo "Contrasenya:". $ _ SERVER [ 'PHP_AUTH_PW']. "<br />";
-echo "Mètode d'autenticació:". $ _ SERVER [ 'AUTH_TYPE']. "<br />";
+echo "Nom d'usuari:". $_ SERVER [ 'PHP_AUTH_USER']. "<br />";
+echo "Contrasenya:". $_ SERVER [ 'PHP_AUTH_PW']. "<br />";
+echo "Mètode d'autenticació:". $_ SERVER [ 'AUTH_TYPE']. "<br />";
 ?>
 </ Body>
 </ Html>
@@ -107,7 +107,7 @@ Si no introdueixes un usuari / contrasenya vàlids, el navegador et mostrarà l'
 A més, en PHP pots utilitzar la funció header per forçar que el servidor enviï un error de "Accés no autoritzat" (codi 401). D'aquesta manera no cal utilitzar fitxers .htaccess per indicar-li a Apache quins recursos estan restringits. En el seu lloc, pots afegir les següents línies en les teves pàgines PHP:
 ```php
 <? Php
-if (! isset ($ _ SERVER [ 'PHP_AUTH_USER'])) {
+if (! isset ($_ SERVER [ 'PHP_AUTH_USER'])) {
 header ( 'WWW-Authenticate: Basic Realm = "Contingut restringit"');
 header ( 'HTTP / 1.0 401 Unauthorized');
 echo "Usuari no reconegut!";
@@ -129,8 +129,8 @@ http://www.w3.org/TR/html4/loose.dtd ">
 <! - Desenvolupament Web a Entorn Servidor ->
 <! - Tema 4: Desenvolupament d'aplicacions web amb PHP ->
 <! - Exemple: Funció header per autenticació HTTP ->
-<? Php
-if (! isset ($ _ SERVER [ 'PHP_AUTH_USER'])) {
+<? php
+    if (! isset ($_ SERVER [ 'PHP_AUTH_USER'])) {
 header ( 'WWW-Authenticate: Basic Realm = "Contingut restringit"');
 header ( 'HTTP / 1.0 401 Unauthorized');
 echo "Usuari no reconegut!";
@@ -145,8 +145,8 @@ exit;
 </ Head>
 <Body>
 <? Php
-echo "Nom d'usuari:". $ _ SERVER [ 'PHP_AUTH_USER']. "<br />";
-echo "Contrasenya:". $ _ SERVER [ 'PHP_AUTH_PW']. "<br />";
+echo "Nom d'usuari:". $_ SERVER [ 'PHP_AUTH_USER']. "<br />";
+echo "Contrasenya:". $_ SERVER [ 'PHP_AUTH_PW']. "<br />";
 ?>
 </ Body>
 </ Html>
@@ -159,7 +159,7 @@ El mètode més simple és incloure en el codi PHP de la teva pàgina les sentè
 usuari "dwes" amb contrasenya "abc123.", pots fer:
 ```php
 <? Php
-if ($ _SERVER [ 'PHP_AUTH_USER']! = 'dwes' || $ _SERVER [ 'PHP_AUTH_PW']! = 'abc123.') {
+if ($_SERVER [ 'PHP_AUTH_USER']! = 'dwes' || $_SERVER [ 'PHP_AUTH_PW']! = 'abc123.') {username@host:/path/to/repository
 header ( 'WWW-Authenticate: Basic Realm = "Contingut restringit"');
 header ( 'HTTP / 1.0 401 Unauthorized');
 echo "Usuari no reconegut!";
@@ -193,44 +193,44 @@ INSERT INTO usuaris (usuari, contrasenya) VALUES
 ( 'Dwes', 'e8dc8ccd5e5f9e3a54f07350ce8a2d3d');
 
 ```
-Tot i que es podrien emmagatzemar les contrasenyes en text pla, és millor fer-ho en format encriptat. En l'exemple anterior, per a l'usuari "dwes" s'emmagatzema el hash MD5 (mètode per generar un resum d'un text o un document, de tal manera que a partir de l'resum obtingut no és possible recuperar el text original ni estar un altre text a partir de el qual s'obtingui el mateix resum. Es diu hash a el resum obtingut a l'aplicar una funció hash. Una de les funcions hash més esteses és MD5, que genera 128 bits com a resum (normalment es representa mitjançant una cadena de text de
-28 caràcters o mitjançant 32 dígits hexadecimals)) corresponent a la contrasenya "abc123.". En PHP pots utilitzar la funció md5 per calcular el hash MD5 d'una cadena de text. 
+Tot i que es podrien emmagatzemar les contrasenyes en text pla, és millor fer-ho en format encriptat. En l'exemple anterior, per a l'usuari "dwes" s'emmagatzema el hash MD5 (mètode per generar un resum d'un text o un document, de tal manera que a partir de l'resum obtingut no és possible recuperar el text original ni estar un altre text a partir de el qual s'obtingui el mateix resum. Es diu hash a el resum obtingut a l'aplicar una funció hash. Una de les funcions hash més esteses és MD5, que genera 128 bits com a resum (normalment es representa mitjançant una cadena de text de 28 caràcters o mitjançant 32 dígits hexadecimals)) corresponent a la contrasenya "abc123.". En PHP pots utilitzar la funció md5 per calcular el hash MD5 d'una cadena de text.
 
 http://es.php.net/manual/es/function.md5.php
 
-Utilitza l'extensió MySQLi per modificar l'exercici anterior, de tal manera que les credencials de l'usuari es comproven amb la informació de la nova taula "usuaris" creada a la base de dades "dwes". Si no hi ha l'usuari, o la contrasenya és incorrecta, torna a demanar les credencials a l'usuari. 
+Utilitza l'extensió MySQLi per modificar l'exercici anterior, de tal manera que les credencials de l'usuari es comproven amb la informació de la nova taula "usuaris" creada a la base de dades "dwes". Si no hi ha l'usuari, o la contrasenya és incorrecta, torna a demanar les credencials a l'usuari.
 
 Revisa la solució proposada. Fixa't que s'ha d'usar la funció md5 per comprovar la contrasenya. Si introdueixes un usuari o contrasenya incorrectes, el comportament depèn de el navegador que utilitzis; alguns et demanaran les credencials de forma indefinida, i altres un nombre limitat de vegades.
+
 ```php
-<? Php
+<?php
 // Si l'usuari encara no s'ha entrat, demanem les credencials
-if (! isset ($ _ SERVER [ 'PHP_AUTH_USER'])) {
-header ( 'WWW-Authenticate: Basic realm = "Contingut restringit"');
-header ( "HTTP / 1.0 401 Unauthorized");
-exit;
+if (!isset ($_SERVER [ 'PHP_AUTH_USER'])) {
+    header ('WWW-Authenticate: Basic realm = "Contingut restringit"');
+    header ("HTTP/1.0 401 Unauthorized");
+    exit;
 }
 // Si ja ha enviat les credencials, les vam comprovar amb la base de dades
 else {
-// Connectem a la base de dades
-@ $ Dwes = new mysqli ( "localhost", "dwes", "abc123.", "Dwes");
-$ Error = $ dwes-> connect_errno;
-// Si es va establir la connexió
-if ($ error == null) {
-// Executem la consulta per comprovar si existeix
-// aquesta combinació d'usuari i contrasenya
-$ Sql ​​= "SELECT usuari FROM usuaris
-WHERE usuari = '$ _ SERVER [PHP_AUTH_USER]' AND
-contrasenya = md5 ( '$ _ SERVER [PHP_AUTH_PW]') ";
-$ Resultat = $ dwes-> query ($ sql);
-// Si no existeix, es tornen a demanar les credencials
-if ($ resultat-> num_rows == 0) {
-header ( 'WWW-Authenticate: Basic realm = "Contingut restringit"');
-header ( "HTTP / 1.0 401 Unauthorized");
-exit;
-}
-$ Resultat-> close ();
-$ Dwes-> close ();
-}
+    // Connectem a la base de dades
+    @$dwes = new mysqli("localhost", "dwes", "abc123.", "Dwes");
+    $error = $dwes-> connect_errno;
+    // Si es va establir la connexió
+    if ($error == null) {
+        // Executem la consulta per comprovar si existeix
+        // aquesta combinació d'usuari i contrasenya
+        $sql ​​= "SELECT usuari FROM usuaris
+            WHERE usuari = '$_ SERVER [PHP_AUTH_USER]' AND
+            contrasenya = md5 ( '$_ SERVER [PHP_AUTH_PW]') ";
+        $resultat = $dwes-> query ($sql);
+        // Si no existeix, es tornen a demanar les credencials
+        if ($resultat-> num_rows == 0) {
+            header ( 'WWW-Authenticate: Basic realm = "Contingut restringit"');
+            header ( "HTTP / 1.0 401 Unauthorized");
+            exit;
+        }
+        $resultat->close();
+        $dwes->close();
+    }
 }
 ?>
 <! DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" "
@@ -246,8 +246,8 @@ http://www.w3.org/TR/html4/loose.dtd ">
 </ Head>
 <Body>
 <? Php
-echo "Nom d'usuari:". $ _ SERVER [ 'PHP_AUTH_USER']. "<br />";
-echo "Hash de la contrasenya:" .md5 ($ _ SERVER [ 'PHP_AUTH_PW']). "<br />";
+echo "Nom d'usuari:". $_ SERVER [ 'PHP_AUTH_USER']. "<br />";
+echo "Hash de la contrasenya:" .md5 ($_ SERVER [ 'PHP_AUTH_PW']). "<br />";
 ?>
 </ Body>
 </ Html>
@@ -287,7 +287,7 @@ http://es.php.net/manual/es/function.setcookie.php
 Per exemple, si vols emmagatzemar en una galeta el nom d'usuari que es va transmetre a les
 credencials HTTP (és només un exemple, no és en absolut aconsellable emmagatzemar informació relativa
 a la seguretat en les galetes), pots fer:
-setcookie ( "nom_usuari", $ _SERVER [ 'PHP_AUTH_USER'], time () + 3600);
+setcookie ( "nom_usuari", $_SERVER [ 'PHP_AUTH_USER'], time () + 3600);
 Els dos primers paràmetres són el nom de la galeta i el seu valor. El tercer és la data de
 caducitat de la mateixa (una hora des del moment en què s'executi). En cas de no figurar aquest
 paràmetre, la galeta s'eliminarà quan es tanqui el navegador. Tingues en compte que també es
@@ -300,7 +300,7 @@ pantalla.
 El procés de recuperació de la informació que emmagatzema una galeta és molt simple. quan
 accedeixes a un lloc web, el navegador li envia de forma automàtica tot el contingut de les
 galetes que emmagatzemi relatives a aquest lloc en concret. Des PHP pots accedir a aquesta
-informació per mitjà de l'array $ _COOKIE.
+informació per mitjà de l'array $_COOKIE.
 Sempre que utilitzis galetes en una aplicació web, heu de tenir en compte que en última instància la seva
 disponibilitat està controlada pel client. Per exemple, alguns usuaris deshabiliten
 les galetes al navegador perquè pensen que la informació que emmagatzemen pot suposar un
@@ -313,13 +313,13 @@ Sobre el mateix exercici anterior, s'emmagatzema en una galeta l'últim instant 
 usuari va visitar la pàgina. Si és la seva primera visita, mostra un missatge de benvinguda. en cas
 contrari, mostra la data i hora de la seva anterior visita.
 Revisa la solució proposada. Hauràs utilitzar la funció setcookie per guardar l'instant
-de la seva anterior visita i mostrar el seu contingut utilitzant l'array $ _COOKIE.
+de la seva anterior visita i mostrar el seu contingut utilitzant l'array $_COOKIE.
 
 ```php
 <? Php
 // Si l'usuari encara no s'ha entrat, demanem les credencials
 if (
-! Isset ($ _ SERVER [ 'PHP_AUTH_USER'])) {
+! Isset ($_ SERVER [ 'PHP_AUTH_USER'])) {
 header ( 'WWW-Authenticate: Basic realm = "Contingut restringit"');
 header ( "HTTP / 1.0 401 Unauthorized");
 exit;
@@ -327,30 +327,30 @@ exit;
 // Si ja ha enviat les credencials, les vam comprovar amb la base de dades
 else {
 // Connectem a la base de dades
-@ $ Dwes = new mysqli ( "localhost", "dwes", "abc123.", "Dwes");
-$ Error = $ dwes-> connect_errno;
+@ $Dwes = new mysqli ( "localhost", "dwes", "abc123.", "Dwes");
+$Error = $dwes-> connect_errno;
 // Si es va establir la connexió
-if ($ error == null) {
+if ($error == null) {
 date_default_timezone_set ( 'Europe / Madrid');
 // Executem la consulta per comprovar si existeix
 // aquesta combinació d'usuari i contrasenya
-$ Sql ​​= "SELECT usuari FROM usuaris
-WHERE usuari = '$ {_ SERVER [' PHP_AUTH_USER ']}' AND
-contrasenya = md5 ( '$ {_ SERVER [' PHP_AUTH_PW ']}') ";
-$ Resultat = $ dwes-> query ($ sql);
+$Sql ​​= "SELECT usuari FROM usuaris
+WHERE usuari = '${_ SERVER [' PHP_AUTH_USER ']}' AND
+contrasenya = md5 ( '${_ SERVER [' PHP_AUTH_PW ']}') ";
+$Resultat = $dwes-> query ($sql);
 // Si no existeix, es tornen a demanar les credencials
-if ($ resultat-> num_rows == 0) {
+if ($resultat-> num_rows == 0) {
 header ( 'WWW-Authenticate: Basic realm = "Contingut restringit"');
 header ( "HTTP / 1.0 401 Unauthorized");
 exit;
 } Else {
-if (isset ($ _ COOKIE [ 'ultimo_login'])) {
-$ Ultimo_login = $ _COOKIE [ 'ultimo_login'];
+if (isset ($_ COOKIE [ 'ultimo_login'])) {
+$Ultimo_login = $_COOKIE [ 'ultimo_login'];
 }
 setcookie ( "ultimo_login", time (), time () + 3600);
 }
-$ Resultat-> close ();
-$ Dwes-> close ();
+$Resultat-> close ();
+$Dwes-> close ();
 }
 }
 ?>
@@ -367,16 +367,16 @@ http://www.w3.org/TR/html4/loose.dtd ">
 </ Head>
 <Body>
 <? Php
-if ($ error == null) {
-echo "Nom d'usuari:". $ _ SERVER [ 'PHP_AUTH_USER']. "<br />";
-echo "Hash de la contrasenya:" .md5 ($ _ SERVER [ 'PHP_AUTH_PW']). "<br />";
-if (isset ($ ultimo_login))
-echo "Darrer login:". date ( "d / m / i \ a \ l \ a \ s H: i", $ ultimo_login);
+if ($error == null) {
+echo "Nom d'usuari:". $_ SERVER [ 'PHP_AUTH_USER']. "<br />";
+echo "Hash de la contrasenya:" .md5 ($_ SERVER [ 'PHP_AUTH_PW']). "<br />";
+if (isset ($ultimo_login))
+echo "Darrer login:". date ( "d / m / i \ a \ l \ a \ s H: i", $ultimo_login);
 else
 echo "Benvingut. Aquesta és la seva primera visita.";
 }
 else
-echo "S'ha produït l'error $ error. <br />";
+echo "S'ha produït l'error $error. <br />";
 ?>
 </ Body>
 </ Html>
