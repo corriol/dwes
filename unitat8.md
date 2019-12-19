@@ -74,19 +74,18 @@ A l'incloure l'opció -c el que fem és crear un nou fitxer, amb la qual cosa el
 
 ### 1.1.1.- Mecanismes d'autenticació (II). ###
 
-Des PHP pots accedir a la informació d'autenticació HTTP que ha introduït l'usuari utilitzant l'array superglobal `$_SERVER. `
+Des PHP pots accedir a la informació d'autenticació HTTP que ha introduït l'usuari utilitzant l'array superglobal `$_SERVER`.
+
 | valor | contingut |
 | --- | --- |
-|`$_SERVER['PHP_AUTH_USER']` | Nom d'usuari que s'ha introduït.|
-|`$_SERVER[ 'PHP_AUTH_PW']` | Clau introduïda.|
-| `$_SERVER[ 'AUTH_TYPE']`  | Mètode HTTP usat per autentificar. Pot ser Basic o Digest.|
+| `$_SERVER['PHP_AUTH_USER']` | Nom d'usuari que s'ha introduït. |
+| `$_SERVER['PHP_AUTH_PW']` | Clau introduïda. |
+| `$_SERVER['AUTH_TYPE']`  | Mètode HTTP usat per autentificar. Pot ser Basic o Digest. | 
 
-És a dir, que si crees una pàgina web que mostri els valors d'aquestes variables, i prepares el
-servidor web per utilitzar autenticació HTTP, quan accedeixis a aquesta pàgina amb l'usuari "dwes"
-obtindràs alguna cosa com el següent:
+És a dir, que si crees una pàgina web que mostri els valors d'aquestes variables, i prepares el servidor web per utilitzar autenticació HTTP, quan accedeixis a aquesta pàgina amb l'usuari "dwes" obtindràs alguna cosa com el següent:
 
 ```html
-<! DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" "http://www.w3.org/TR/html4/loose.dtd ">
+<!-- DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" "http://www.w3.org/TR/html4/loose.dtd ">
 <!-- Desenvolupament Web a Entorn Servidor -->
 <!-- Tema 4: Desenvolupament d'aplicacions web amb PHP -->
 <!-- Exemple: Autenticació HTTP -->
