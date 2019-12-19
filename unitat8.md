@@ -160,41 +160,39 @@ tu qui proveeixi un mètode per comprovar que les credencials que ha introduït 
 El mètode més simple és incloure en el codi PHP de la teva pàgina les sentències necessàries per comparar les dades introduïdes amb altres dades fixos. Per exemple, per a permetre l'accés a un
 usuari "dwes" amb contrasenya "abc123.", pots fer:
 ```php
-<? Php
-if ($_SERVER [ 'PHP_AUTH_USER']! = 'dwes' || $_SERVER [ 'PHP_AUTH_PW']! = 'abc123.') {username@host:/path/to/repository
-header ( 'WWW-Authenticate: Basic Realm = "Contingut restringit"');
-header ( 'HTTP / 1.0 401 Unauthorized');
-echo "Usuari no reconegut!";
-exit;
-}
+<?php
+    if ($_SERVER['PHP_AUTH_USER']!='dwes' || $_SERVER['PHP_AUTH_PW']!='abc123.') {
+        header('WWW-Authenticate: Basic Realm = "Contingut restringit"');
+        header('HTTP / 1.0 401 Unauthorized');
+        echo "Usuari no reconegut!";
+    exit;
+    }
 ?>
 ```
 Recorda que el codi PHP no s'envia a el navegador, de manera que la informació d'autenticació que introdueixis en el codi no serà visible per l'usuari. No obstant això, això farà el teu codi menys
 portable. Si necessites modificar el nom d'usuari o la contrasenya, hauràs de fer modificacions en el codi. A més, no podràs permetre a l'usuari introduir la seva pròpia contrasenya.
 Una solució millor és utilitzar un emmagatzematge extern per als noms d'usuari i les seves
-contrasenyes. 
+contrasenyes. Per això podries emprar un fitxer de text, o millor encara, una base de dades. la informació d'autenticació podrà estar aïllada en la seva pròpia base de dades, o compartir espai
+d'emmagatzematge amb les dades que utilitzi la teva aplicació web.
 
-Per això podries emprar un fitxer de text, o millor encara, una base de dades. la informació d'autenticació podrà estar aïllada en la seva pròpia base de dades, o compartir espai
-d'emmagatzematge amb les dades que utilitzi la teva aplicació web. 
-
-Si vols emmagatzemar la informació dels usuaris a la base de dades "dwes", has de crear una nova taula en la seva estructura. Per a això, revisa i executa aquestes sentències SQL.
-- Seleccionem la base de dades 
+Si vols emmagatzemar la informació dels usuaris a la base de dades "`dwes`", has de crear una nova taula en la seva estructura. Per a això, revisa i executa aquestes sentències SQL.
 
 ```sql
+-- Seleccionem la base de dades 
 USE dwes;
 
-- Creem la taula
-
+-- Creem la taula
 CREATE TABLE usuaris (
 usuari VARCHAR (20) NOT NULL PRIMARY KEY,
 contrasenya VARCHAR (32) NOT NULL
 ) ENGINE = InnoDB;
-- Creem l'usuari dwes
 
+-- Creem l'usuari dwes
 INSERT INTO usuaris (usuari, contrasenya) VALUES
-( 'Dwes', 'e8dc8ccd5e5f9e3a54f07350ce8a2d3d');
+('dwes', 'e8dc8ccd5e5f9e3a54f07350ce8a2d3d');
 
 ```
+
 Tot i que es podrien emmagatzemar les contrasenyes en text pla, és millor fer-ho en format encriptat. En l'exemple anterior, per a l'usuari "dwes" s'emmagatzema el hash MD5 (mètode per generar un resum d'un text o un document, de tal manera que a partir de l'resum obtingut no és possible recuperar el text original ni estar un altre text a partir de el qual s'obtingui el mateix resum. Es diu hash a el resum obtingut a l'aplicar una funció hash. Una de les funcions hash més esteses és MD5, que genera 128 bits com a resum (normalment es representa mitjançant una cadena de text de 28 caràcters o mitjançant 32 dígits hexadecimals)) corresponent a la contrasenya "abc123.". En PHP pots utilitzar la funció md5 per calcular el hash MD5 d'una cadena de text.
 
 http://es.php.net/manual/es/function.md5.php
@@ -235,61 +233,51 @@ else {
     }
 }
 ?>
-<! DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" "
-http://www.w3.org/TR/html4/loose.dtd ">
-<! - Desenvolupament Web a Entorn Servidor ->
-<! - Tema 4: Desenvolupament d'aplicacions web amb PHP ->
-<! - Exemple: Utilització de MySQL per autenticació HTTP ->
-<Html>
-<Head>
-<Meta http-equiv = "content-type" content = "text / html; charset = UTF-8">
-<Title> Exemple Tema 4: Utilització de MySQL per autenticació HTTP </ title>
-<Link href = "dwes.css" rel = "stylesheet" type = "text / css">
-</ Head>
-<Body>
-<? Php
-echo "Nom d'usuari:". $_ SERVER [ 'PHP_AUTH_USER']. "<br />";
-echo "Hash de la contrasenya:" .md5 ($_ SERVER [ 'PHP_AUTH_PW']). "<br />";
-?>
-</ Body>
-</ Html>
+<!DOCTYPE html PUBLIC "- // W3C // DTD HTML 4.01 Transitional // EN" "http://www.w3.org/TR/html4/loose.dtd " >
+<!-- Desenvolupament Web a Entorn Servidor -->
+<!-- Tema 4: Desenvolupament d'aplicacions web amb PHP -->
+<!-- Exemple: Utilització de MySQL per autenticació HTTP -->
+<html>
+    <head>
+        <meta http-equiv = "content-type" content = "text / html; charset = UTF-8">
+        <title> Exemple Tema 4: Utilització de MySQL per autenticació HTTP </ title>
+        <link href = "dwes.css" rel = "stylesheet" type = "text / css">
+    </head>
+    <body>
+    <?php
+        echo "Nom d'usuari:". $_ SERVER [ 'PHP_AUTH_USER']. "<br />";
+        echo "Hash de la contrasenya:" .md5 ($_ SERVER [ 'PHP_AUTH_PW']). "<br />";
+    ?>
+    </body>
+</html>
 ```
-Les dues possibilitats que hem vist per sol·licitar a l'usuari que s'autentiqui
-via HTTP són la creació de el fitxer .htaccess, i la utilització de la
-funció header de PHP. Quina d'aquestes dues formes serà preferible si vols que els
-privilegis d'accés a la teva aplicació variïn en funció del dia de la setmana (per exemple,
-uns usuaris que puguin accedir de dilluns a divendres i altres diferents el cap de setmana)?
-El fitxer .htaccess
-La funció header
-Si utilitzes la funció header per enviar les capçaleres HTTP, has d'escriure tu el codi que decideix si l'usuari s'ha entrat
-correctament i se li permet accedir o no. Per tant, pots incloure les regles addicionals que vulguis, per exemple, donar-li o no accés
-en funció del dia de la setmana.
+
+Les dues possibilitats que hem vist per sol·licitar a l'usuari que s'autentiqui via HTTP són la creació de el fitxer .htaccess, i la utilització de la funció header de PHP. Quina d'aquestes dues formes serà preferible si vols que els privilegis d'accés a la teva aplicació variïn en funció del dia de la setmana (per exemple, uns usuaris que puguin accedir de dilluns a divendres i altres diferents el cap de setmana)?
+
+* El fitxer .htaccess
+* La funció header
+
+Si utilitzes la funció header per enviar les capçaleres HTTP, has d'escriure tu el codi que decideix si l'usuari s'ha entrat correctament i se li permet accedir o no. Per tant, pots incloure les regles addicionals que vulguis, per exemple, donar-li o no accés en funció del dia de la setmana.
 
 # 2.- Galetes. #
-## cas pràctic ##
 
-Un cop resolt el tema de l'autenticació, el següent objectiu de Carlos és aprendre a gestionar
-les galetes. Joan li ha explicat què són i com funcionen, i segurament les hagin d'utilitzar en
-l'aplicació que estan desenvolupant.
-Sap que molts dels llocs web que visita les utilitzen, perquè ha provat a desactivar-les en la seva
-navegador, i li han començat a aparèixer missatges demanant-li que les torni a activar. s'ha
-proposat esbrinar per què les fan servir, i com les podran gestionar des de PHP.
-Una galeta és un fitxer de text que un lloc web guarda a l'entorn de l'usuari de navegador.
-El seu ús més típic és l'emmagatzematge de les preferències de l'usuari (per exemple, l'idioma en
-que s'han de mostrar les pàgines), perquè no hagi de tornar a indicar-les la propera vegada que
-visiteu el lloc.
-Si utilitzes Firefox com a navegador, pots instal·lar l'extensió Web Developer per obtenir
-informació sobre les pàgines web que visites. Entre les seves característiques et permet consultar i editar
-les galetes emmagatzemades en el mateix.
+Una galeta és un fitxer de text que un lloc web guarda a l'entorn de l'usuari de navegador. El seu ús més típic és l'emmagatzematge de les preferències de l'usuari (per exemple, l'idioma en
+que s'han de mostrar les pàgines), perquè no hagi de tornar a indicar-les la propera vegada que visiteu el lloc.
+
+Si utilitzes Firefox com a navegador, pots instal·lar l'extensió Web Developer per obtenir informació sobre les pàgines web que visites. Entre les seves característiques et permet consultar i editar les galetes emmagatzemades en el mateix.
+
 https://addons.mozilla.org/es/firefox/addon/web-developer/
-En PHP, per emmagatzemar una galeta al navegador de l'usuari, pots utilitzar la funció setcookie.
-L'únic paràmetre obligatori que has de fer servir és el nom de la galeta, però admet diversos
+
+En PHP, per emmagatzemar una galeta al navegador de l'usuari, pots utilitzar la funció setcookie. L'únic paràmetre obligatori que has de fer servir és el nom de la galeta, però admet diversos
 paràmetres més opcionals.
+
 http://es.php.net/manual/es/function.setcookie.php
-Per exemple, si vols emmagatzemar en una galeta el nom d'usuari que es va transmetre a les
-credencials HTTP (és només un exemple, no és en absolut aconsellable emmagatzemar informació relativa
+
+Per exemple, si vols emmagatzemar en una galeta el nom d'usuari que es va transmetre a les credencials HTTP (és només un exemple, no és en absolut aconsellable emmagatzemar informació relativa
 a la seguretat en les galetes), pots fer:
-setcookie ( "nom_usuari", $_SERVER [ 'PHP_AUTH_USER'], time () + 3600);
+
+    setcookie ( "nom_usuari", $_SERVER [ 'PHP_AUTH_USER'], time () + 3600);
+
 Els dos primers paràmetres són el nom de la galeta i el seu valor. El tercer és la data de
 caducitat de la mateixa (una hora des del moment en què s'executi). En cas de no figurar aquest
 paràmetre, la galeta s'eliminarà quan es tanqui el navegador. Tingues en compte que també es
