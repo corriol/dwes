@@ -4,9 +4,28 @@
         border-radius: 0.25rem; 
         border: 1px #DDD solid; 
 }
+.alert h3 {
+    margin-top: 0.2em;    
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
 
 .alert-info { 
     color: #0c5460;
-    background-color: #d1ecf1;
+    background-color: #b7ded2;
+    border-color: #bee5eb;
+}
+
+.alert-activity { 
+    color: #333;
+    background-color: #f6a6b2 !important;
+    border-color: #f8c8d4;
+}
+
+.alert-question { 
+    color: #0c5460;
+    background-color: #ffecb8;
     border-color: #bee5eb;
 }
