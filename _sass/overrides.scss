@@ -1,11 +1,13 @@
 .alert { 
-        background-color: #EEE; 
-        padding: 0.75em; 
-        border-radius: 0.25rem; 
-        border: 1px #DDD solid; 
+    background-color: #EEE; 
+    padding: 0.75em; 
+    border-radius: 0.25rem; 
+    border: 1px #DDD solid; 
+    background-size: 1em;
 }
-.alert h3 {
-    margin-top: 0.2em;    
+.alert h3 {   
+    margin-top: 0.2em;   
+    padding-left: 2em; 
     font-size: 1.2em;
     font-weight: bold;
     text-transform: uppercase;
@@ -16,6 +18,14 @@
     color: #0c5460;
     background-color: #b7ded2;
     border-color: #bee5eb;
+}
+
+.alert-info h3 {
+    background: url("../../assets/book-reader-solid.svg") no-repeat; 
+}
+
+.alert-activity h3 {
+    background: url("../../assets/laptop-code-solid.svg") no-repeat; 
 }
 
 .alert-activity { 
