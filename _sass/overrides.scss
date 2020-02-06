@@ -1,10 +1,11 @@
 .alert { 
     background-color: #EEE; 
-    padding: 0.75em;     
+    padding: 0.75em;  
+    padding-bottom: 0;
     border-radius: 0.25rem; 
     border: 1px #DDD solid; 
     background-size: 1em;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.5em;
 }
 .alert h3 {   
     margin-top: 0.2em;   
