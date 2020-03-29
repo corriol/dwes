@@ -259,3 +259,45 @@ A mode de resum podíem resumir la gestió de formularis en el següent diagrama
 ![Form handle](images/form-handle.png)
 
 
+## Pujada d'arxius
+
+Per a pujar arxius PHP implementa un mecanisme senzill a través de la variable superglobal `$_FILES`.
+
+En [Pujada d'arxius](https://www.php.net/manual/es/features.file-upload.php) disposeu de tota la informació necessària per a gestionar la pujada d'arxius.
+
+### Algunes consideracions
+
+#### Formulari
+
+Per poder utilitzar el tipus `file` en l'element `input` cal que el formulari incloga l'atribut `enctype="multipart/form-data"`. 
+
+El valor de l'atribut `name` de l'element `input` serà l'índex de l'array associatiu `$_FILES` que ens permetrà obtenir tota la informació del fitxer pujat.
+
+En el següent exemple:
+
+```html
+<input type="file" class="form-control" name="image" />
+```
+
+Emprarem `$_FILES['image']` per obtenir les dades de l'arxiu penjat.
+
+#### Moure el fitxer
+
+El fitxer pujat es guarda en una carpeta temporal. Hem d'emprar la funció [`move_uploaded_file`](https://www.php.net/manual/es/function.move-uploaded-file.php) per a guardar-lo a la ubicació definitiva. 
+
+Abans d'això és molt recomanable emprar la funció [`is_uploaded_file`](https://www.php.net/manual/es/function.is-uploaded-file.php) per a assegurar-nos que l'arxiu que anem a moure ha estat pujat usant HTTP POST i no es tracta d'un arxiu maliciós.
+
+#### Gestió d'errors
+
+PHP torna un códi d'error en l'array de fitxers. El codi es pot trabar en la clau `error` del array de fitxers que PHP crea en pujar els fitxers. Per exemple: `$_FILES['fichero_usuario']['error']`. 
+
+En [Explicació dels missatges d'error](https://www.php.net/manual/es/features.file-upload.errors.php) teniu més informació.
+
+
+
+
+
+
+
+
+
