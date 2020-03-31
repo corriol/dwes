@@ -204,7 +204,24 @@ Per a verificar si un email és correcte podem utilitzar la funció `filter_var`
 ```php
 filter_var($email, FILTER_VALIDATE_EMAIL)
 ```
-o la funció `filter_input` quan obtenin les dades directament d'una font exterior.
+o la funció `filter_input` quan obtenin les dades directament d'una variable extern.
+
+#### filter_input
+
+```php
+filter_input(int $type, string $variable_name[, int $filter=FILTER_DEFAULT[, mixed $options]]):mixed
+```
+La funció `filter_input` agafa una variable externa (`$_GET`, `$_POST`, etc) concreta pel seu nom i aplica el filtre indicat.
+
+Els filtres poden [sanejar](https://www.php.net/manual/es/filter.filters.validate.php) o [validar](https://www.php.net/manual/es/filter.filters.sanitize.php) les variables externes.
+
+Per exemple, si volem agafar el valor del paràmetre *nom*  del querystring (http://localhost/index.php?nom=<h1>Homer</h1>) usarem el tipus INPUT_GET.
+
+El fltre FILTER_SANITIZE_STRING elimina etiquetes, i opcionalment elimina o codifica caracters especials.
+
+```php
+$nom = filter_input(INPUT_GET, 'nom', FILTER_SANITIZE_STRING).  // $nom = Homer
+```
 
 Més informació en:
 
