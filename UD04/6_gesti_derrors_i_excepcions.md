@@ -263,3 +263,44 @@ try {
 }
 ```
 
+## Ampliant les excepcions
+
+És possible crear excepcions personalitzades heretant de la classe
+Exception.
+
+```php
+class NegativeIdException extends Exception {
+  public function __construct($message = null) {
+    $this->message = $message ?: 'ID Negatiu.';
+    parent::__construct($message);
+  }
+}
+```
+
+Després l'utilitzarem així:
+
+```php
+try {
+  $post = new Post(-1, "Hola món", "Aquest és el primer post del blog", new DateTime(), "Vicent");
+} catch (NegativeIdException $e) {
+    echo "No es pot posar un ID negatiu\n";
+} catch (Exception $e) {
+  echo "Excepció desconeguda".  $e->getMessage();
+}
+```
+
+# Exercicis pràctics
+
+# Activitat: gestió d'errors i excepcions
+
+1.  Modifica les classes de l'aplicació del formulari perquè en cas que
+    el atribut $name no tinga valor llance una excepció amb el missatge
+    "L'atribut name no pot estar buit".
+2.  Captura l'excepció.
+3.  Crea una excepció personalitzada `OptionsNotFoundException` en cas
+    que el paràmetre $options del control Select estiga buit.
+4.  Captura l'excepció.
+5.  Crea una excepció personalitzada InvalidFormatOptionsException en
+    cas que el paràmetre $options del control Selecte tinga un array
+    però les claus no siguen name i value.
+6.  Captura l'excepció.
