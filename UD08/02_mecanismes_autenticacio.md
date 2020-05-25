@@ -1,10 +1,20 @@
 ---
 layout: default
 title: 1. Mecanismes d'autenticació via HTTP
+nav_order: 1
 parent: 8. Autenticació d'usuaris i control d'accés 
 ---
 
-# 1. Mecanismes d'autenticació via HTTP #
+ 
+
+# Mecanismes d'autenticació via HTTP 
+{: .no_toc }
+
+## Taula de continguts
+{: .no_toc .text-delta  .nocount }
+
+1. TOC
+{:toc}
 
 El protocol HTTP ofereix un mètode senzill per autenticar els usuaris. El procés és el següent:
 
@@ -56,7 +66,7 @@ fals
 
 A l'incloure l'opció -c el que fem és crear un nou fitxer, amb la qual cosa eliminem el contingut anterior del mateix.
 
-### 1.1.1. Mecanismes d'autenticació ###
+## Mecanismes d'autenticació ##
 
 Des PHP pots accedir a la informació d'autenticació HTTP que ha introduït l'usuari utilitzant l'array superglobal `$_SERVER`.
 
@@ -140,7 +150,7 @@ Hauràs de crear una pàgina similar a l'anterior, i afegir el codi per forçar 
 </html>
 ```
 
-## 1.2. Incorporació de mètodes d'autenticació a una aplicació web ##
+## Incorporació de mètodes d'autenticació a una aplicació web ##
 Si utilitzes la funció `header` per forçar el navegador a sol·licitar credencials HTTP, l'usuari introduirà un nom i una contrasenya. Però el servidor no ha de verificar aquesta informació; hauràs de ser tu qui proveïsca un mètode per comprovar que les credencials que ha introduït l'usuari són correctes.
 
 El mètode més simple és incloure en el codi PHP de la teva pàgina les sentències necessàries per comparar les dades introduïdes amb altres dades fixos. Per exemple, per a permetre l'accés a un usuari "dwes" amb contrasenya "abc123.", pots fer:

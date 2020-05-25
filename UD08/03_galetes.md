@@ -1,13 +1,18 @@
 ---
 layout: default
 title: 2. Galetes (cookies)
-parent: 8. Autenticació d'usuaris i control d'accés
+nav_order: 2
+parent: 8. Autenticació d'usuaris i control d'accés 
 ---
+ 
 
-# 2. Galetes (*cookies*) #
+# Galetes (*cookies*) #
+{: .no_toc .nocount}
 
-Una galeta és un fitxer de text que un lloc web guarda a l'entorn de l'usuari de navegador. El seu ús més típic és l'emmagatzematge de les preferències de l'usuari (per exemple, l'idioma en
-que s'han de mostrar les pàgines), perquè no hagi de tornar a indicar-les la propera vegada que visiteu el lloc.
+
+
+
+Una galeta és un fitxer de text que un lloc web guarda a l'entorn de l'usuari de navegador. El seu ús més típic és l'emmagatzematge de les preferències de l'usuari (per exemple, l'idioma en que s'han de mostrar les pàgines), perquè no hagi de tornar a indicar-les la propera vegada que visiteu el lloc.
 
 Si utilitzes Firefox com a navegador, pots accedir a `Desenvolupador web` &ndash; `Inspector d'emmagatzematge` des del menú principal. Entre les seves característiques et permet consultar i editar les galetes emmagatzemades en el mateix.
 
@@ -16,7 +21,11 @@ Si utilitzes Firefox com a navegador, pots accedir a `Desenvolupador web` &ndash
 En PHP, per emmagatzemar una galeta al navegador de l'usuari, pots utilitzar la funció `setcookie`. L'únic paràmetre obligatori que has de fer servir és el nom de la galeta, però admet diversos paràmetres més opcionals.
 
 {:.alert .alert-info }
+<div markdown="1">
+### Informació
+{: .nocount .no_toc }
 Per a més informació consulta: [https://www.php.net/manual/es/function.setcookie.php](https://www.php.net/manual/es/function.setcookie.php).
+</div>
 
 Per exemple, si vols emmagatzemar en una galeta el nom d'usuari que es va transmetre a les credencials HTTP (és només un exemple, no és en absolut aconsellable emmagatzemar informació relativa a la seguretat en les galetes), pots fer:
 
@@ -32,8 +41,11 @@ sentències `setcookie` s'han d'enviar abans que el navegador mostri cap informa
 El procés de recuperació de la informació que emmagatzema una galeta és molt simple. quan accedeixes a un lloc web, el navegador li envia de forma automàtica tot el contingut de les galetes que emmagatzemi relatives a aquest lloc en concret. Des PHP pots accedir a aquesta informació per mitjà de l'array `$_COOKIE`.
 
 {:.alert .alert-info}
+<div markdown="1">
+### Important
+{: .nocount .no_toc }
 Sempre que utilitzes galetes en una aplicació web, heu de tenir en compte que en última instància la seva disponibilitat està controlada pel client. Per exemple, alguns usuaris deshabiliten les galetes al navegador perquè pensen que la informació que emmagatzemen pot suposar un potencial problema de seguretat. O la informació que emmagatzemen pot arribar a perdre perquè el usuari decideix formatar l'equip o simplement eliminar-les de sistema.
-
+</div>
 Si un cop emmagatzemada una galeta al navegador vols eliminar abans que expire, pots utilitzar la mateixa funció `setcookie` però indicant una data de caducitat anterior a l'actual.
 
 Sobre el mateix exercici anterior, emmagatzema en una galeta l'últim instant en què el usuari va visitar la pàgina. Si és la seva primera visita, mostra un missatge de benvinguda. En cas contrari, mostra la data i hora de la seva anterior visita.
@@ -108,6 +120,7 @@ else {
 {: .alert .alert-info}
 <div markdown="1">
 ### Reflexiona ###
+{: .nocount .no_toc }
 Quina és la durada per defecte d'una galeta si no s'indica la data de caducitat,
 com en la següent crida a la funció setcookie?
 

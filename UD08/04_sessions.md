@@ -2,9 +2,19 @@
 layout: default
 title: 3. Maneig de sessions
 parent: 8. Autenticació d'usuaris i control d'accés
+nav_order: 3
 ---
 
-# 3. Maneig de sessions #
+# Maneig de sessions #
+{: .no_toc  .nocount }
+
+## Taula de continguts
+{: .no_toc .text-delta  .nocount }
+
+1. TOC
+{:toc}
+
+
 
 Com acabes de veure, una forma per guardar informació particular de cada usuari és utilitzar galetes (*cookies*). No obstant això, hi ha diversos problemes associats a les galetes, com el nombre d'elles que admet el navegador, o la seva grandària màxima. Per solucionar aquests inconvenients, existeixen les sessions. El terme sessió fa referència al conjunt d'informació relativa a un usuari concret.
 
@@ -26,7 +36,7 @@ La bona notícia, és que el procés de maneig de sessions en PHP està automati
 {: .alert .alert-info }
 A la informació que s'emmagatzema en la sessió d'un usuari també se li coneix com a galetes en la part de servidor (*server side cookies*). Has de tenir en compte que encara aquesta informació no viatja entre el client i el servidor, sí que ho fa el SID, bé com a part de l'URL o en una capçalera HTTP si es guarda en una galeta. En tots dos casos, això planteja un possible problema de seguretat. El SID pot ser aconseguit per una altra persona, i a partir de la mateixa obtenir la informació de la sessió de l'usuari. La manera més segura d'utilitzar sessions és emmagatzemant els SID en galetes i utilitzar HTTPS per a xifrar la informació que es transmet entre el servidor web i el client.
 
-## 3.1. Configuració ##
+## Configuració ##
 
 Per defecte, PHP inclou suport de sessions incorporat. Abans, però, d'utilitzar sessions en el teu lloc web, has de configurar correctament PHP utilitzant els següents directives en el fitxer
 php.ini segons correspongui:
@@ -51,10 +61,14 @@ En la documentació de PHP tens informació sobre aquestes i altres directives q
 
 [https://www.php.net/manual/es/session.configuration.php](https://www.php.net/manual/es/session.configuration.php)
 
-{: .alert .alert-question}
+{: .alert .alert-question} 
+<div markdown="1">
+### Qüestió
+{: .no_toc .nocount }
 Si la informació de l'usuari que vols emmagatzemar inclou contingut privat com una contrasenya, ¿què utilitzaries, galetes o la sessió de l'usuari?
+</div>
 
-## 3.2. Inici i fi d'una sessió ##
+## Inici i fi d'una sessió ##
 
 L'inici d'una sessió pot tenir lloc de dues maneres. Si has activat la directiva `session.auto_start` en la configuració de PHP, la sessió començarà automàticament quan un usuari es connecte al teu lloc web. En el cas que aquest usuari ja haja obert una sessió amb anterioritat, i aquesta no s'haja eliminat, en lloc d'obrir una nova sessió es reprendrà la anterior. Per a això s'utilitzarà el SID anterior, que estarà emmagatzemat en una galeta (recorda que si fas servir propagació de l'SID, no podràs restaurar sessions anteriors; el SID figura a la URL i es perd quan tanques el navegador).
 
@@ -93,29 +107,28 @@ Si en lloc de el nombre de visites, voldries emmagatzemar l'instant en què es p
 Encara que com ja has vist, pots configurar PHP perquè elimine de forma automàtica les dades de una sessió passat cert temps, en ocasions pot ser necessari tancar-la de forma manual en un moment determinat. Per exemple, si utilitzes sessions per recordar la informació d'autenticació hauràs donar-li a l'usuari de la pàgina web la possibilitat de tancar la sessió quan ho crega convenient.
 
 En PHP tens dues funcions per eliminar la informació emmagatzemada en la sessió:
-* session_unset. Elimina les variables emmagatzemades a la sessió actual, però no elimina la informació de la sessió del dispositiu d'emmagatzematge usat.
-* session_destroy. Elimina completament la informació de la sessió del dispositiu de emmagatzematge.
+* `session_unset`. Elimina les variables emmagatzemades a la sessió actual, però no elimina la informació de la sessió del dispositiu d'emmagatzematge usat.
+* `session_destroy`. Elimina completament la informació de la sessió del dispositiu de emmagatzematge.
 
 {: .alert .alert-activity}
 <div markdown="1">
 ### Activitat ###
-Crea una pàgina similar a l'anterior, emmagatzemant en la sessió d'usuari els instants de totes les seves últimes visites. Si és la seva primera visita, mostra un missatge de benvinguda. En
-cas contrari, mostra la data i hora de totes les seves visites anteriors. Afegeix un botó a la pàgina que permeti esborrar el registre de visites.
+{: .no_toc   .nocount }
+Crea una pàgina similar a l'anterior, emmagatzemant en la sessió d'usuari els instants de totes les seves últimes visites. Si és la seva primera visita, mostra un missatge de benvinguda. En cas contrari, mostra la data i hora de totes les seves visites anteriors. Afegeix un botó a la pàgina que permeti esborrar el registre de visites.
 
 Utilitza també una variable de sessió per a comprovar si l'usuari ja ha iniciat correctament. D'aquesta manera no caldrà comprovar les credencials amb la base de dades constantment.
 </div>
 
-## 3.3. Gestió de la informació de la sessió ##
+## Gestió de la informació de la sessió ##
 
-En aquest punt vas a veure pas a pas un exemple d'utilització de sessions per emmagatzemar la informació de l'usuari. Utilitzaràs la base de dades "blog", usada anteriorment, per crear un
-prototip d'elements favorits.
+Ara veurem pas a pas un exemple d'utilització de sessions per a emmagatzemar informació de l'usuari. Utilitzaràs la base de dades "blog", usada anteriorment, per a crear un prototip d'elements favorits.
 
 Les pàgines de què constarà l'aplicació web seran:
 
-* Login (`UserController/login`). La seva funció és autentificar a l'usuari de l'aplicació web. Tots els usuaris de l'aplicació s'hauran autentificar utilitzant aquesta pàgina abans de poder marcar algun post com a favorit.
-* Afegir a preferits (`PostController/addToFavourite`). Cada entrada disposarà d'un botó per a afegir a favorits sempre que el usuari s'haja validat.
-* Llistat de posts favorits (`PostController/favourite`). Presenta un llistat de les entrades favorites.
-* Logoff (`UserController/logout`). Aquesta pàgina desconnecta a l'usuari de l'aplicació i redirigeix ​​a l'usuari de forma automàtica a la pàgina d'inici. No mostra cap informació en pantalla, pel que no és visible per a l'usuari.
+* Login (`SecurityController::login`). La seva funció és autentificar a l'usuari de l'aplicació web. Tots els usuaris de l'aplicació s'hauran autentificar utilitzant aquesta pàgina abans de poder marcar algun post com a favorit.
+* Afegir a preferits (`PostController::addToFavourite`). Cada entrada disposarà d'un botó per a afegir a favorits sempre que el usuari s'haja validat.
+* Llistat de posts favorits (`PostController::favourite`). Presenta un llistat de les entrades favorites.
+* Logoff (`SecurityController::logout`). Aquesta pàgina desconnecta a l'usuari de l'aplicació i redirigeix ​​a l'usuari de forma automàtica a la pàgina d'inici. No mostra cap informació en pantalla, pel que no és visible per a l'usuari.
 
 Abans de començar tingues en compte que l'aplicació que vas a desenvolupar no és completament funcional. Per exemple:
 * No tindràs en compte la possibilitat que l'usuari afegisca diverses vegades la mateixa entrada.
@@ -125,15 +138,15 @@ Abans de començar tingues en compte que l'aplicació que vas a desenvolupar no 
 
 Encara que reduïm en aquest exemple la funcionalitat, t'animem a que un cop finalitzat el mateix, afegisques pel teu compte totes aquelles opcions que vulguis. Recorda que la millor manera d'aprendre programació és ... programant!
 
-### 3.3.1. Gestión de la información de la sesión ###
+### Autenticar l'usuari ###
 
-La primera pàgina que vas a programar és la d'autenticació de l'usuari (`UserController\login`). Per variar, faràs servir les capacitats de maneig de sessions de PHP per emmagatzemar la identificació dels usuaris.
+La primera pàgina que vas a programar és la d'autenticació de l'usuari (`SecurityController::login`). Per variar, faràs servir les capacitats de maneig de sessions de PHP per emmagatzemar la identificació dels usuaris.
 
 A més, utilitzarem la informació de la taula "User" a la base de dades "bloc", accedint mitjançant PDO.
 
 Vas a crear a la pàgina un formulari amb dos camps, un de tipus text per a l'usuari, i un altre de tipus password per a la contrasenya. En prémer el botó Enviar, el formulari s'enviarà a aquesta mateixa pàgina, on es compararan les credencials proporcionades per l'usuari amb les emmagatzemades en la base de dades. Si les dades són correctes, s'iniciarà una nova sessió i s'emmagatzemarà en ella el nom de l'usuari que s'acaba de connectar.
 
-![UserController/login](images/usercontroller-login.png)
+![UserController::login](images/usercontroller-login.png)
 
 Anem per passos. El codi HTML per crear el formulari, que anirà dins el cos de la pàgina (entre les etiquetes <body>) serà el següent:
 
@@ -154,6 +167,7 @@ Anem per passos. El codi HTML per crear el formulari, que anirà dins el cos de 
 ```
 {% endraw %}
 Fixa't que hi ha un espai per posar els possibles missatges d'error que es produeixin, com la falta d'alguna dada necessari, o un error de credencials errònies.
+
 El codi PHP que ha de figurar a l'començament d'aquesta mateixa pàgina (abans que es mostri qualsevol text), s'encarregarà de:
 
 Comprovar que s'han introduït tant el nom d'usuari com la contrasenya.
@@ -172,7 +186,7 @@ if (($this->request->getParams()->has('username') &&  $this->request->getParams(
     $errors = $userModel->validateLogin($user);
 ```
 
-Comprovem les credenciales.
+Comprovem les credencials.
 
 ```php
 // UserController.php
@@ -226,7 +240,7 @@ Enten bé el codi abans de seguir endavant.
 En el codi anterior, la sessió de l'usuari s'inicia sòl si es proporciona un nom d'usuari i contrasenya correctes. ¿Podria haver-se iniciat la sessió en començar el codi encara que l'usuari no haja proporcionat les credencials?
 
 
-### 3.3.2. Gestió de la informació de la sessió ###
+### Pàgina de favorits ###
 Quan un usuari proporciona unes credencials d'inici de sessió correctes (recorda que tu ja havies afegit l'usuari "jane_admin" amb contrasenya "admin"), se li redirigeix ​​automàticament a la pàgina de la llista d'entrades favorites. Aquesta és la pàgina que vas a programar a continuació.
 
 ```php
@@ -423,7 +437,6 @@ if (!isset($_SESSION['loggedin'])) {
 ```
 Si l'usuari no s'ha autenticat, es mostra un missatge d'error junt amb l'enllaç a la pàgina d'inici de sessió.
 
-### 3.3. Gestió de la informació de sessió. ###
 
 Si des de qualsevol pàgina l'usuari prem l'opció del menú "Favorits", activarà el mètode `favourite()` de `PostController` en la que se vorà totes les entrades que ha marcat com a favorites.
 
@@ -460,7 +473,7 @@ public function favourite()
 
 Les entrades que es mostren en la pàgina s'obtenen de la informació emmagatzemada en la sessió. Usarem `PostModel` per a carregar les dades de cada entrada.
 
-En acabar, l'usuari podrà tancar sessió activant el mètode `logout` de `UserController`:
+En acabar, l'usuari podrà tancar sessió activant el mètode `logout` de `SecurityController`:
 
 ```php
 // Recuperamos la información de la sesión

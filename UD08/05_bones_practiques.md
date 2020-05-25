@@ -1,10 +1,22 @@
 ---
 layout: default
-title: 4. Bones pràctiques
+title:  4. Bones pràctiques
 parent: 8. Autenticació d'usuaris i control d'accés
+nav_order: 4
 ---
 
-# 4. Bones pràctiques #
+# Bones pràctiques #
+{: .no_toc  .nocount }
+
+## Taula de continguts
+{: .no_toc .text-delta  .nocount }
+
+1. TOC
+{:toc}
+
+---
+
+
 
 ## Usa sempre HTTPS ##
 Usa sempre HTTPS si no s'enviarà tota la informació en text pla. Contrasenyes incloses.
