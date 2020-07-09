@@ -5,6 +5,7 @@ nav_order: 5
 parent: 12. Tutorial de Symfony
 has_children: false 
 ---
+# Extrendre els repositoris
 
 {: .no_toc }
 
@@ -14,7 +15,6 @@ has_children: false
 
 1. TOC
 {:toc}
-# Extrendre els repositoris
 
 Com ja has vist, l'objecte `Repository` permet executar consultes senzilles sense pràcticament cap treball:
 
