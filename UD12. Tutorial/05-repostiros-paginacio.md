@@ -6,9 +6,7 @@ parent: 12. Tutorial de Symfony
 has_children: false 
 ---
 # Extrendre els repositoris
-
 {: .no_toc }
-
 
 ## Taula de continguts
 {: .no_toc .text-delta  .nocount }
@@ -16,6 +14,7 @@ has_children: false
 1. TOC
 {:toc}
 
+# Introducció
 Com ja has vist, l'objecte `Repository` permet executar consultes senzilles sense pràcticament cap treball:
 
 ```php
@@ -58,6 +57,7 @@ Quan obtens el repositori (p.e. `->getRepository(Link::class)`), estàs obtenint
 {:.alert .alert-warning}
 <div markdown="1">
 ### Anotacions
+{:.no_toc .nocount }
 Cal assegurar-se que l'entitat té correctament vinculat el repositori mitjançant una anotació. En el nostre exemple l'entitat Link haurà d'incloure:
 
 ```php
@@ -65,7 +65,8 @@ Cal assegurar-se que l'entitat té correctament vinculat el repositori mitjança
 ```
 </div>
 
-Suposem que vols fer una consulta que obtinga tots els objectes Link amb data posterior a certa data. Hauries d'afegir un nou mètode dins del repositori:
+## QueryBuilder 
+Suposem que vols fer una consulta que obtinga tots els objectes `Link` amb data posterior a certa data. Hauries d'afegir un nou mètode dins del repositori:
 
 ```php
 // src/Repository/LinkRepository.php
@@ -110,9 +111,9 @@ $products = $this->getDoctrine()
 // ...
 ```
 
-També es possible utilitzar l'objecte Query, així com executar consultes directament amb PDO.
+## Query 
 
-### Objecte Query ###
+També es possible utilitzar l'objecte Query, així com executar consultes directament amb PDO.
 
 ```php
    /**
@@ -132,7 +133,7 @@ També es possible utilitzar l'objecte Query, així com executar consultes direc
 ```
 
 
-### Consultes SQL 
+## Consultes SQL 
 
 
 ```php
@@ -155,7 +156,7 @@ public function findAllAfterDate(DateTime $date): array
     return $stmt->fetchAll();
 }
 ```
-Aquestes consultes SQL tornen arrays no objectes (a no ser que uses la funcionalitat [NativeQuery](https://www.doctrine-project.org/projects/doctrine-orm/en/latest/reference/native-sql.html)).
+Aquestes consultes SQL tornen arrays, no objectes (a no ser que uses la funcionalitat [NativeQuery](https://www.doctrine-project.org/projects/doctrine-orm/en/latest/reference/native-sql.html)).
 
 Més informació en [Querying for objects the repository](https://symfony.com/doc/current/doctrine.html#querying-for-objects-the-repository)
 
@@ -192,6 +193,7 @@ En el següent exemple pots observar un ús del nou mètode del repositori. Hem 
 {:.alert .alert-activity}
 <div markdown="1">
 ### Implementa el mètode findAllAfterDate
+{: .no_toc .nocount }
 Implementa el mètode `findAllAfterDate()` del repositori i modifica la ruta _homepage_ perquè en cas que reba el paràmetre `start-date` pel _querystring_ mostre sols aquells enllaços amb data d'actualització posterior a la data indicada.
 </div>
 
@@ -199,11 +201,11 @@ Implementa el mètode `findAllAfterDate()` del repositori i modifica la ruta _ho
 
 Symfony no inclou un paginador de forma nativa però al incloure Doctrine permet implementar-ho fàcilment sense necessitat d'instal·lar nous components. A continuació presentarem tres possibles opcions d'implementació.
 
-## Extenent el respositori https://github.com/symfony/demo/blob/master/src/Repository/PostRepository.php
+## Extenent el respositori 
 
 En aquest cas crearíem nous mètodes en el repositori. `findAllPaginated` crea la consulta i la passa al mètode `paginate` que serà el que farà la paginació.
 
-Ens faltaria obtenir el total de registres la qual cosa és ben senzilla ja que la classe Paginator implementa la interfície Countable i simplement usant el mètode `count()` obtindrem el total de registres.
+Ens faltaria obtenir el total de registres la qual cosa és ben senzilla ja que la classe `Paginator` implementa la interfície Countable i simplement usant el mètode `count()` obtindrem el total de registres.
 
 ```php
     public function findAllPaginated($currentPage = 1):?Paginator
@@ -247,12 +249,13 @@ En la descripció del paquet [knplabs/knp-paginator-bundle](https://packagist.or
 {:.alert .alert-activity}
 <div markdown="1">
 ### Implementa el paginador 
+{:.no_toc .nocount}
 Implementa la paginació de links en la pàgina principal de forma que mostre 10 enllaços ordenats des del més actual al més antic. Pots emprar qualsevol dels mètodes que hem demostrat.
 </div>
 
 # Recursos
-https://anil.io/blog/symfony/doctrine/symfony-and-doctrine-pagination-with-twig/
-https://www.drauta.com/como-paginar-los-resultados-con-doctrine
-https://symfony.com/doc/current/components/http_foundation.html#request
-http://zetcode.com/symfony/request/
+* [https://anil.io/blog/symfony/doctrine/symfony-and-doctrine-pagination-with-twig/](https://anil.io/blog/symfony/doctrine/symfony-and-doctrine-pagination-with-twig/)
+* [https://www.drauta.com/como-paginar-los-resultados-con-doctrine](https://www.drauta.com/como-paginar-los-resultados-con-doctrine)
+* [https://symfony.com/doc/current/components/http_foundation.html#request](https://symfony.com/doc/current/components/http_foundation.html#request)
+* [http://zetcode.com/symfony/request/](http://zetcode.com/symfony/request/)
 
