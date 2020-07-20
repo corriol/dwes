@@ -199,42 +199,52 @@ Implementa el mètode `findAllAfterDate()` del repositori i modifica la ruta _ho
 
 # Paginació
 
-Symfony no inclou un paginador de forma nativa però al incloure Doctrine permet implementar-ho fàcilment sense necessitat d'instal·lar nous components. A continuació presentarem tres possibles opcions d'implementació.
+Symfony no inclou un paginador de forma nativa però al incloure *Doctrine* permet implementar-ho fàcilment sense necessitat d'instal·lar nous components. A continuació presentarem tres possibles opcions d'implementació.
 
-## Extenent el respositori 
+## La classe Paginator de Doctrine
 
-En aquest cas crearíem nous mètodes en el repositori. `findAllPaginated` crea la consulta i la passa al mètode `paginate` que serà el que farà la paginació.
+En aquest cas crearíem nous mètodes en el repositori. `findAllPaginated` crea la consulta i la passa al mètode 
+`paginate` que serà el que farà la paginació.
 
-Ens faltaria obtenir el total de registres la qual cosa és ben senzilla ja que la classe `Paginator` implementa la interfície Countable i simplement usant el mètode `count()` obtindrem el total de registres.
+El mètode `paginate` ens tornarà un objecte Paginator que conté en la propietat Paginator::results els resultats.
+
+Ens faltaria obtenir el total de registres la qual cosa és ben senzilla ja que la classe `Paginator` implementa la 
+interfície `Countable` i simplement usant el mètode `count()` obtindrem el total de registres.
 
 ```php
-    public function findAllPaginated($currentPage = 1):?Paginator
-    {
-        $query = $this->createQueryBuilder('l')
-            ->orderBy('l.createdAt', 'DESC')
-            ->getQuery();
+use Doctrine\ORM\Tools\Pagination\Paginator;
+...
+public function findAllPaginated($currentPage = 1):?Paginator
+{
+    $query = $this->createQueryBuilder('l')
+        ->orderBy('l.createdAt', 'DESC')
+        ->getQuery();
 
-        // No need to manually get get the result ($query->getResult())
-        $paginator = $this->paginate($query, $currentPage);
+    // No need to manually get get the result ($query->getResult())
+    $paginator = $this->paginate($query, $currentPage);
 
-        return $paginator;
-    }
+    return $paginator;
+}
 
-    // Paginate results. 
-    public function paginate($dql, $page = 1, $limit = 5):?Paginator
-    {
-        $paginator = new Paginator($dql);
+// Paginate results. 
+public function paginate($dql, $page = 1, $limit = 5):?Paginator
+{
+    $paginator = new Paginator($dql);
 
-        $paginator->getQuery()
-            ->setFirstResult($limit * ($page - 1)) // Offset
-            ->setMaxResults($limit); // Limit
+    $paginator->getQuery()
+    ->setFirstResult($limit * ($page - 1)) // Offset
+    ->setMaxResults($limit); // Limit
 
-        return $paginator;
-    }
+    return $paginator;
+}
 ```
 
-## Classe Paginator
-Un altra opció és fer ús de la classe Paginator que s'utilitza en el projecte d'exemple de Symfony. Empra el paginador de Doctrine i ens proporciona tots els mètodes necessaris per a fer la paginació.
+Més informació  en [Pagination](https://www.doctrine-project.org/projects/doctrine-orm/en/2.7/tutorials/pagination.html) i
+ [Symfony and Doctrine pagination with Twig](https://anil.io/blog/symfony/doctrine/symfony-and-doctrine-pagination-with-twig/)
+
+## Classe Paginator de symfony/demo
+Un altra opció és fer ús de la classe `Paginator` que s'utilitza en el projecte d'exemple de Symfony. Empra la classe
+`Paginator` de Doctrine i ens proporciona tots els mètodes necessaris per a fer la paginació.
 
  * Classe [Paginator](https://github.com/symfony/demo/blob/master/src/Pagination/Paginator.php).
  * Repositori [PostRepositori:findLatest](https://github.com/symfony/demo/blob/master/src/Repository/PostRepository.php).
@@ -244,7 +254,8 @@ Un altra opció és fer ús de la classe Paginator que s'utilitza en el projecte
 ## knplabs/knp-paginator-bundle
 Paginator per a Symfony automatitza la paginació i simplifica l'ordenació i altres característiques.
 
-En la descripció del paquet [knplabs/knp-paginator-bundle](https://packagist.org/packages/knplabs/knp-paginator-bundle) obtindreu més informació.
+En la descripció del paquet [knplabs/knp-paginator-bundle](https://packagist.org/packages/knplabs/knp-paginator-bundle) 
+obtindreu més informació.
 
 {:.alert .alert-activity}
 <div markdown="1">
