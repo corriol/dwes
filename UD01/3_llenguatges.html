@@ -124,7 +124,7 @@
 &lt;ul&gt;
 {% for pelicula in lista_peliculas %}
 &lt;li&gt;&lt;a href="{% url 'pelicula' pelicula.id %}"&gt;{{ pelicula.titulo }}&lt;/a&gt;&lt;/li&gt;
-{% endfor %}
+{% endfor   %}
 &lt;/ul&gt;
 {% else %}
 &lt;p&gt;No hay películas disponibles&lt;/p&gt;
