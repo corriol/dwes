@@ -308,7 +308,7 @@ una classe per a poder accedir al valor de les constants que definisca.
 A més, els seus noms solen escriure's en majúscules.
 
  
- {:.alert .alert-info}
+{:.alert .alert-info}
 <div markdown="1">
 
 ### PHP Standard Recommendations
