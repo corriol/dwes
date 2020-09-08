@@ -47,8 +47,8 @@ has_children: true
     1.  Instal·lació de XAMPP
     2.  Configuració bàsica d\'Apache
     3.  Configuració bàsica del mòdul de PHP
-5.  Eines per a depuració de codi php
+5.  Instal·lació de l\'IDE PhpStorm
+        1.  Ús bàsic de l\'eina
+        2.  Depuració
+6.  Eines per a depuració de codi php
     1.  Instal·lació i configuració de XDebug
-6.  Instal·lació de l\'IDE PhpStorm
-    1.  Ús bàsic de l\'eina
-    2.  Depuració

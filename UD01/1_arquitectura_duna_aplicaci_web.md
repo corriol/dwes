@@ -23,17 +23,17 @@ entre els clients web (navegadors) i els servidors HTTP.
 **HTTP es basa en operacions senzilles de sol·licitud/resposta.** Quan
 un client estableix una connexió amb un servidor i envia un missatge amb
 les dades de la sol·licitud, el servidor respon amb un missatge similar
-que conté l\'estat de l\'operació i el seu resultat de la sol·licitud.
+que conté l'estat de l'operació i el seu resultat de la sol·licitud.
 Totes les operacions poden adjuntar un objecte o recurs sobre el qual
 actuen; cada objecte web (document HTML, arxiu multimèdia o aplicació
-CGI) és conegut pel seu localitzador uniforme de recursos (URL, uniform
-resource locator). Els recursos poden ser arxius, el resultat de
-l\'execució d\'un programa, una consulta a una base de dades, la
-traducció automàtica d'un document, etc
+CGI) és conegut pel seu localitzador uniforme de recursos (URL, _Uniform
+Resource Locator_). Els recursos poden ser arxius, el resultat de
+l'execució d'un programa, una consulta a una base de dades, la
+traducció automàtica d'un document, etc.
 
 **HTTP és un protocol sense estat**, és a dir, no guarda cap informació
-sobre connexions anteriors. El desenvolupament d\'aplicacions web
-freqüentment necessita mantenir estat. Per això s\'utilitzen les galetes
+sobre connexions anteriors. El desenvolupament d'aplicacions web
+freqüentment necessita mantenir estat. Per això s'utilitzen les galetes
 (*cookies*), és a dir, la informació que un servidor pot emmagatzemar en
 el sistema client. Això permet que les aplicacions web institueixin la
 noció de "sessió", i, alhora, permet rastrejar usuaris, ja que les
@@ -43,7 +43,7 @@ Amb la intenció de conèixer amb més profunditat el protocol HTTP podem
 avaluar en què consisteix una transacció HTTP.
 
 Cada vegada que un client fa una petició a un servidor, s'executen un
-seguit d\'accions:
+seguit d'accions:
 
 1.  Un usuari accedeix a una adreça d'Internet (URL) seleccionant un
     enllaç d'un document HTML o introduint-la directament a la barra de

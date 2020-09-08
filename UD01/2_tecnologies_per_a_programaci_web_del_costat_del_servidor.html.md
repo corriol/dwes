@@ -104,35 +104,30 @@ diferenciats en l\'àmbit del desenvolupament web:
 ## Servidors web i servidors d'aplicacions
 
 
-Així com les aplicacions d\'escriptori s\'executen directament sobre el
-propi Sistema Operatiu, les pàgines i aplicacions web necessiten d\'una
+Així com les aplicacions d'escriptori s'executen directament sobre el
+sistema operatiu, les aplicacions web necessiten d'una
 eina addicional que permeti desplegar-les per a la seva posada en marxa.
 Parlem de [servidors
 web](https://en.wikipedia.org/wiki/Comparison_of_web_server_software) i
 [servidors
-d\'aplicacions](https://en.wikipedia.org/wiki/List_of_application_servers),
+d'aplicacions](https://en.wikipedia.org/wiki/Application_server),
 respectivament.
 
-**Què és un servidor web?**
+### Què és un servidor web?
 
 Un servidor web és una aplicació que rep una petició HTTP (normalment a
-través d\'un navegador web) i retorna la pàgina web sol·licitada
+través d'un navegador web) i retorna la pàgina web sol·licitada
 (escrita en llenguatge HTML i podent contenir codi Javascript
 inscrustado) perquè aquesta sigui interpretada i visualitzada pel
-navegador de qui va realitzar la sol·licitud (l\'usuari).
+navegador de qui va realitzar la sol·licitud (l'usuari).
 
-**Què és un servidor d\'aplicacions?**
+### Què és un servidor d'aplicacions? 
 
-Un servidor d\'aplicacions és una aplicació que conté una sèrie de
-serveis dels quals estan accessibles a través d\'una API exposada a
-través d\'Internet. Normalment els servidors d\'aplicacions proporcionen
-més serveis que els servidors web. Per exemple, en el cas dels servidors
-d\'aplicacions per a Java o Python, aquests proporcionen un accés
-transparent a la base de dades perquè el desenvolupador se centri
-exclusivament en implementar la capa de negoci. A més, poden
-proporcionar també serveis com *fail-over* o balanceig de càrrega.
+Un servidor d'aplicacions és una servidor que permet l'execució d'aplicacions web.
 
-**Apache**
+### Exemples
+
+#### Apache
 
 Apache és un dels servidors web més coneguts. És programari lliure i
 multiplataforma, encara que aproximadament el 90% dels servidors Apache
@@ -144,15 +139,15 @@ instal·lat i posat en marxa. Això li fa també molt flexible i pot donar
 servei a webs escrites en els llenguatges de programació web més estesos
 (com PHP, Python, ASP,\...) A través del mòdul corresponent.
 
-**Apache Tomcat**
+#### Apache Tomcat
 
-Apache Tomcat és un servidor d\'aplicacions que funciona com a
-contenidor de Servlets de Java. Actualment és capaç d\'implementar
+Apache Tomcat és un servidor d'aplicacions que funciona com a
+contenidor de Servlets de Java. Actualment és capaç d'implementar
 diverses especificacions de Java EE com Servlets i JSP (Java Server
-Pages) i més proporciona un servidor web pur perquè es faci servir en
-combinació amb l\'entorn Java.
+Pages) i més proporciona un servidor web pur perquè es faça servir en
+combinació amb l'entorn Java.
 
-**WSGI (*Web Server Gateway Interface*)**
+#### WSGI (*Web Server Gateway Interface*)
 
 WSGI és una interfície que defineix com es comunica un servidor web amb
 aplicacions web o frameworks escrits en Python.
