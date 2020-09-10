@@ -103,7 +103,6 @@ diferenciats en l\'àmbit del desenvolupament web:
 
 ## Servidors web i servidors d'aplicacions
 
-
 Així com les aplicacions d'escriptori s'executen directament sobre el
 sistema operatiu, les aplicacions web necessiten d'una
 eina addicional que permeti desplegar-les per a la seva posada en marxa.
@@ -118,12 +117,12 @@ respectivament.
 Un servidor web és una aplicació que rep una petició HTTP (normalment a
 través d'un navegador web) i retorna la pàgina web sol·licitada
 (escrita en llenguatge HTML i podent contenir codi Javascript
-inscrustado) perquè aquesta sigui interpretada i visualitzada pel
+encastat) perquè aquesta sigua interpretada i visualitzada pel
 navegador de qui va realitzar la sol·licitud (l'usuari).
 
 ### Què és un servidor d'aplicacions? 
 
-Un servidor d'aplicacions és una servidor que permet l'execució d'aplicacions web.
+Un servidor d'aplicacions és un servidor que permet l'execució d'aplicacions web.
 
 ### Exemples
 
