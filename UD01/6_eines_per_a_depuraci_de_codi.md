@@ -97,3 +97,5 @@ instal·lat.
 
 ![](Screenshot_2019-09-14_Xdebug_Support__Tailored_Installation_Instructions(1).png)
 </div>
+
+Després caldrà configurar PHPStorm per a connectar-lo a XDebug [Integració amb PHPStorm](https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html#integrationWithProduct) i instal·lar una extensió de Firefox [Xdebug Helper](https://addons.mozilla.org/ca/firefox/addon/xdebug-helper-for-firefox/?src=search) o Chrome.
