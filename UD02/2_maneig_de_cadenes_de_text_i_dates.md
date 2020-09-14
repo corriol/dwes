@@ -40,6 +40,21 @@ Crea una pàgina anomenada `cadenes.php`, copia el contingut de la pàgina `inde
 10. Indica si el nom comença per `al` o no. 
 </div>
 
+{:.alert .alert-activity }
+<div markdown="1">
+### Activitat 2
+{:.nocount .no_toc }
+
+En el mateix document `cadenes.php` i a partir d'una variable que continga una url: 
+```php
+$url='http://username:password@hostname:9090/path?arg=value#anchor';
+``` 
+Utilitza la funció `parse_url` per a extraure de la url les següents parts:  
+1. El protocol utilitzat (en l'exemple http).  
+2. El nom d'usuari (en l'exemple username). 
+3. El path de la url (en l'exemple /path). 
+4. El querystring de la url (en l'exemple arg=value).
+</div>
 ## Maneig de dates
 
 ### Funció `time()`
