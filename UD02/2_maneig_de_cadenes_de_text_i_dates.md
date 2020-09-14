@@ -17,6 +17,29 @@ has_children: false
 
 ## Maneig de cadenes de text
 
+[Funcions de cadena](https://www.php.net/manual/es/ref.strings.php)
+
+{:.alert .alert-activity }
+<div markdown="1">
+
+### Activitat 1
+{:.nocount .no_toc}
+Crea una pàgina anomenada `cadenes.php`, copia el contingut de la pàgina `index.php`, activa la directiva
+ de tipus estricta (`declare( strict_types = 1 );`) i mostra el següent: 
+
+1. Elimina els espais del principi i el final del nom si els hi haguera (_trim_). 
+2. Elimina la lletra a del principi i el final del nom si els hi haguera (_trim_). 
+3. Mostra la variable nom en majúscules, minúscules i amb la primera lletra en majúscula i les altres en minúscules 
+(_strtoupper_, _strtolower_, _ucfirst_). 
+4. Mostra el codi ascii de la primera lletra del nom (_ord_). 
+5. Mostra la longitud del nom (_strlen_). 
+6. Mostra el nombre de vegades que apareix la lletra a (majúscula o minúscula, _substr_count_). 
+7. Mostra la posició de la primera `a` existent en el nom, siga majúscula o minúscula (_strpos_). Si no hi ha cap mostrarà -1. 
+8. El mateix, però amb l'última a. 
+9. Mostra el nom substituint la lletr o pel número zero, siga majúscula o minúscula (_substr_replace_). 
+10. Indica si el nom comença per `al` o no. 
+</div>
+
 ## Maneig de dates
 
 ### Funció `time()`
