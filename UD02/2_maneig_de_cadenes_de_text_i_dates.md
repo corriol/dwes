@@ -36,7 +36,7 @@ Crea una pàgina anomenada `cadenes.php`, copia el contingut de la pàgina `inde
 6. Mostra el nombre de vegades que apareix la lletra a (majúscula o minúscula, _substr_count_). 
 7. Mostra la posició de la primera `a` existent en el nom, siga majúscula o minúscula (_strpos_). Si no hi ha cap mostrarà -1. 
 8. El mateix, però amb l'última a. 
-9. Mostra el nom substituint la lletr o pel número zero, siga majúscula o minúscula (_substr_replace_). 
+9. Mostra el nom substituint la lletr o pel número zero, siga majúscula o minúscula (_str_replace_). 
 10. Indica si el nom comença per `al` o no. 
 </div>
 
@@ -59,7 +59,9 @@ Utilitza la funció `parse_url` per a extraure de la url les següents parts:
 
 ### Funció `time()`
 
-En PHP les dates s'emmagatzemen com a números enters. La funció `time()` retorna el nombre de segons transcorreguts des de l'1 de gener de 1970 (instant conegut com a època Unix). A aquesta forma d'expressar data i hora se li denomina **timestamp**.
+En PHP les dates s'emmagatzemen com a números enters. La funció `time()` retorna el nombre de segons transcorreguts 
+des de l'1 de gener de 1970 (instant conegut com a època Unix). 
+A aquesta forma d'expressar data i hora se li denomina **timestamp**.
 
 ### Funció `date()`
 
@@ -67,7 +69,8 @@ En PHP les dates s'emmagatzemen com a números enters. La funció `time()` retor
 date ( string $format [, int $timestamp = time() ] ) : string
 ```
 
-La funció `date` retorna una cadena formatada segons els codi de format. Si no li passem la variable `timestamp` ens retorna la cadena formatada per a la data i l'hora actual.
+La funció `date` retorna una cadena formatada segons els codi de format. Si no li passem la variable `timestamp` 
+ens retorna la cadena formatada per a la data i l'hora actual.
 
 Els codis de format més habituals  per a la funció `date` són:
 
@@ -95,21 +98,13 @@ La informació completa la pots trobar en el [manual oficial de PHP: date](https
 Suposant que hui és 15 de setembre de 2019 i les 19 hores 20 minuts i 23 segons et mostrem alguns exemples:
 
 ```php
-    date("d-m-Y"); // 15-09-2019
-
-    date("H:i:s");  //  19:20:23
-
-    date("Y"); // 2019
-
-    date("YmdHis"); // 20190915192023
-
-    date("d/m/y H:i a"); // 15/09/19 19:20 pm
-
-    date("d-m-Y H:i", time()); // Moment actual
+date("d-m-Y"); // 15-09-2019
+date("H:i:s");  //  19:20:23
+date("Y"); // 2019
+date("YmdHis"); // 20190915192023
+date("d/m/y H:i a"); // 15/09/19 19:20 pm
+date("d-m-Y H:i", time()); // Moment actual
 ```
-
-
-
 ### Funció `mktime(hora, min, seg, mes, dia, any)`
 
 La funció mktime permet obtenir la marca de temps Unix (_timestamp_) d'una data.
@@ -152,7 +147,7 @@ Per exemple, per poder determinar els dies que falten per a l'1 de gener de 2020
 
 ### Classe DateTime
 
-PHP disposa també de la classe DateTime per a representar les dates, la veurem més avant.
+PHP disposa també de la classe `DateTime` per a representar les dates, la veurem més avant.
 
 
 {: .alert .alert-activity }
@@ -161,7 +156,7 @@ PHP disposa també de la classe DateTime per a representar les dates, la veurem 
 ### Treballar amb dates
 {:.nocount .no_toc}
 
-Crea una pàgina anomenada dates.php i realitza les següents tasques:
+Crea un fitxer anomenat dates.php i realitza les següents tasques:
 
 1.  Mostra la data i hora actuals amb el format: `dd/mm/yyyy hh:mm:ss`
 2.  Mostra el nom de la zona horària que s'utilitza per defecte.
@@ -170,5 +165,4 @@ Crea una pàgina anomenada dates.php i realitza les següents tasques:
 5.  Mostra la data i hora actuals de Nova York.
 6.  Mostra el dia de la setmana que era l'1 de gener d'enguany.
 
-En acabar penja el document a Moodle.
-
+En acabar penja el document a Aules.
