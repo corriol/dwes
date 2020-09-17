@@ -17,6 +17,13 @@ has_children: false
 
 ## Introducció
 
+## _Arrays_ indexats
+
+Alguns recursos: 
+
+* [https://www.studytonight.com/php/indexed-array](https://www.studytonight.com/php/indexed-array)
+* [https://aprende-web.net/php/php6_1.php](https://aprende-web.net/php/php6_1.php)
+
 {: .alert .alert-activity }
 <div markdown="1">
 ### Activitat 4: Arrays indexats
