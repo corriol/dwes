@@ -57,6 +57,7 @@ Segons l'INE les 7 ciutats més grans d’Espanya (per habitants) el 2018 van se
 - Zaragoza, AR, 666.880
 - València, CV,	 791.413
 - Barcelona, CAT, 1.620.343
+
 Definiu un array (cituats.php) que continga aquesta informació sobre ciutats i habitants. Imprimeix una 
 taula d'ubicacions i habitats que incloga la població total de les 7 ciutats.
 </div>
