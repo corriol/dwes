@@ -58,21 +58,52 @@ Segons l'INE les 7 ciutats més grans d’Espanya (per habitants) el 2018 van se
 - València, CV,	 791.413
 - Barcelona, CAT, 1.620.343
 
-Definiu un array (`cituats.php`) que continga aquesta informació sobre ciutats i habitants. Imprimeix una 
-taula d'ubicacions i habitats que incloga la població total de les 7 ciutats.
+Copia index.php i crea un nou document `cituats.php`. Defineix un array que continga aquesta informació sobre ciutats i 
+habitants. Imprimeix una taula d'ubicacions i habitants que incloga la població total de les 7 ciutats.
+
+Opcional:
+Modifica la solució de l’anterior exercici perquè mostre les ciutats ordenades per habitants. Després mostra-les per ordre alfabètic.
+
 </div>
 
 ## Arrays multidimensionals
 
+{: .alert .alert-activity }
 <div markdown="1">
+
 ### Activitat 6: Arrays multidimensionals
 {:.nocount .no_toc }
 
-Crea una pàgina anomenada arrays2.php, copia el contingut de la pàgina index.php i resol els exercicis següents utilitzant funcions d'arrays: 
+Crea una pàgina anomenada `arrays2.php`, copia el contingut de la pàgina index.php i resol els exercicis següents utilitzant funcions d'arrays: 
 
 1. Crea un array d'alumnes on cada element siga un altre array que continga nom i edat de l'alumne. 
 2. Crea una taula HTML en la qual es mostren totes les dades dels alumnes. 
-3. Utilitza la funció `array_column` per a obtenir un array indexat que continga únicament els noms dels alumnes i mostra’ls per pantalla. 
+3. Utilitza la funció `array_column` per a obtenir un array indexat que continga únicament els noms dels alumnes i 
+mostra’ls per pantalla. 
 4. Crea un array amb 10 números : 
-   * utilitza la funció array_sum per a obtenir la suma dels 10 nombres. 
+   * utilitza la funció `array_sum` per a obtenir la suma dels 10 nombres. 
 </div>
+
+{: .alert .alert-activity }
+<div markdown="1">
+### Activitat 6b opciona
+{:.nocount .no_toc }
+
+Modifica la solució del exercici `ciutats.php` perquè la taula continga també la columna del total d’habitants de la 
+comunitat autònoma de les ciutats de la llista i el percentatge sobre els habitants de la comunitat autònoma que representa.
+
+
+Per exemple: 
+
+| Ciutat | Habitants | Habitats CA | % sobre CA |
+| -- | --: | --: | --: | 
+| València | 791.413 |  5.003.769 | 15.81% | 
+
+Pista: Caldrà modificar l'array  `$ciutats` i convertir-lo en multidimensional. Les dades de comunitats autònomes hauran
+d'estar en un altre array. 
+
+Dades: [Municipis de España](https://es.wikipedia.org/wiki/Anexo:Municipios_de_Espa%C3%B1a_por_poblaci%C3%B3n)
+
+</div>
+
+
