@@ -63,3 +63,16 @@ taula d'ubicacions i habitats que incloga la població total de les 7 ciutats.
 </div>
 
 ## Arrays multidimensionals
+
+<div markdown="1">
+### Activitat 6: Arrays multidimensionals
+{:.nocount .no_toc }
+
+Crea una pàgina anomenada arrays2.php, copia el contingut de la pàgina index.php i resol els exercicis següents utilitzant funcions d'arrays: 
+
+1. Crea un array d'alumnes on cada element siga un altre array que continga nom i edat de l'alumne. 
+2. Crea una taula HTML en la qual es mostren totes les dades dels alumnes. 
+3. Utilitza la funció `array_column` per a obtenir un array indexat que continga únicament els noms dels alumnes i mostra’ls per pantalla. 
+4. Crea un array amb 10 números : 
+   * utilitza la funció array_sum per a obtenir la suma dels 10 nombres. 
+</div>
