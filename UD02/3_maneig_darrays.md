@@ -86,7 +86,7 @@ mostra’ls per pantalla.
 
 {: .alert .alert-activity }
 <div markdown="1">
-### Activitat 6b opciona
+### Activitat 6b opcional
 {:.nocount .no_toc }
 
 Modifica la solució del exercici `ciutats.php` perquè la taula continga també la columna del total d’habitants de la 
