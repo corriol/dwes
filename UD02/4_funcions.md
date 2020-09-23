@@ -45,7 +45,7 @@ Una funció com aquesta és una forma senzilla de mantenir correctes les vostres
 ### Activitat 8: Funcions
 {:.nocount .no_toc }
 
-Els colors web com #ffffff i # cc3399 es realitzen concatenant els valors hexadecimals de color per a vermell, 
+Els colors web com `#ffffff` i `#cc3399` es realitzen concatenant els valors hexadecimals de color per a vermell, 
 verd i blau. 
 
 Escriu una funció que accepte 3 arguments: roig, verd i blau, i que retorne un string que conté el color adequat per
@@ -53,47 +53,59 @@ Escriu una funció que accepte 3 arguments: roig, verd i blau, i que retorne un 
 
 Per exemple, si els arguments són 255, 0, i 255, llavors la cadena retornada hauria de ser #FF00FF.
  
-Pot resultar útil utilitzeu la funció `dechex()` integrada, que es troba documentada a http://www.php.net/
+Pot resultar útil utilitzeu la funció `dechex()` integrada, que es troba documentada a [http://www.php.net/](http://www.php.net/)
 
 Assegureu-vos que els paràmetres reben valors enters i que són colors vàlids.
 
-Implementa exemples d’ús de les 3 funcions.
+Implementa 3 exemples d’ús.
 </div>
 
 {: .alert .alert-activity }
 <div markdown="1">
 
-### Activitat 9: 
+### Activitat 9: SQL
 {:.nocount .no_toc }
-Exercici SQL
-Crea un fitxer anomenat funcions_sql.php.
-Crea una funció anomenada insert que ens genere una sentència INSERT INTO en SQL.  
+Crea un fitxer anomenat `funcions_sql.php`.
+
+Crea una funció anomenada `insert`  que ens genere una sentència INSERT INTO en SQL.  
+
 Per a açò la funció rebrà dos paràmetres:  
-El nom de la taula  
-Un array associatiu que contindrà els noms i valors dels camps de la taula. 
+1. El nom de la taula  
+2. Un array associatiu que contindrà els noms i valors dels camps de la taula.
+ 
 La sentència resultant tindrà la següent forma: 
-“INSERT INTO nom_taula (nom dels camps separats per comes) VALUES (valors camps separats per comes amb el caràcter “:” davant)  
+
+```
+“INSERT INTO nom_taula (nom dels camps separats per comes) VALUES (noms dels camps separats per comes amb el caràcter “:” davant)  
+```
 De moment, no farem res amb els valors dels camps. 
-Ajuda:  
-utilitza les funcions sprintf, implode i array_keys
+
+Ajuda: utilitza les funcions `sprintf`, `implode` i `array_keys`
 </div>
 
 {: .alert .alert-activity }
 <div markdown="1">
 
-### Activitat 10: 
+### Activitat 10: SQL 
 {:.nocount .no_toc }
-A partir de l'exercici anterior crea una altra funció que reba els mateixos paràmetres més un paràmetre booleà per a indicar si volem generar la query amb els noms dels camps o no. 
-El paràmetre tindrà el valor true per defecte. 
-Si el seu valor és true generarà la query igual que en l'exercici anterior, però si és false la generarà així: 
-INSERT INTO nom_taula VALUES (valors dels camps separats per comes amb el caràcter ‘:’ davant)
 
+A partir de l'exercici anterior crea una altra funció que reba els mateixos paràmetres més un paràmetre booleà 
+per a indicar si volem generar la query amb els noms dels camps o no. 
+
+El paràmetre tindrà el valor `true` per defecte.
+ 
+Si el seu valor és `true` generarà la consulta igual que en l'exercici anterior, però si és `false` la generarà així: 
+
+```sql
+INSERT INTO nom_taula 
+  VALUES (valors dels camps separats per comes amb el caràcter ‘:’ davant)
+```
 </div>
 
 {: .alert .alert-activity }
 <div markdown="1">
 
-### Activitat 11: Exercici SQL 
+### Activitat 11: SQL 
 {:.nocount .no_toc }
 Repeteix l'exercici anterior amb els següents canvis: 
 
@@ -107,8 +119,8 @@ INSERT INTO taula (camps) VALUES (valors)
 
 Dins de la funció substituirem el següent: 
 
-* El text taula pel nom de la taula. 
-* El text camps pels noms dels camps separats per comes
-* El text valors pels noms dels camps separats per comes i el caràcter ‘:’ davant. 
+1. El text taula pel nom de la taula. 
+2. El text camps pels noms dels camps separats per comes
+3. El text valors pels noms dels camps separats per comes i el caràcter ‘:’ davant. 
 
 </div>
