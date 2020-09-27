@@ -124,16 +124,16 @@ echo $_POST['cognom'];
 {: .alert .alert-activity}
 <div markdown="1">
 
-### Creació d'un formulari
+### Activitat 12 A: Creació d'un formulari
 {: .nocount .no_toc }
 
 Crea un formulari que tinga els següents camps:
         
-* Nom
+* Nom i cognoms
 * Data de naixement
-* Email
-* Observacions
-
+* Correu electrònic
+* Assumpte
+* Missatge
 
 En l'atribut `action` del formulari posarem el següent:
 
@@ -167,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {: .alert .alert-activity}
 <div markdown="1">
 
-### Exercici
+### Activitat 12 B: Creació d'un formulari
 {: .nocount .no_toc }
 
 Soluciona el problema dels paràmetres no enviats de l'exercici anterior.
@@ -256,7 +256,7 @@ També és habitual trobar els controls de data separats en 3 elements input. Un
 {: .alert .alert-activity}
 <div markdown="1">
 
-### Validació d'un formulari
+### Activitat 12 C: Validació d'un formulari
 {: .nocount .no_toc }
 
 Modifica l'exercici anterior realitzant les validacions oportunes.
@@ -310,11 +310,14 @@ PHP torna un códi d'error en l'array de fitxers. El codi es pot trabar en la cl
 
 En [Explicació dels missatges d'error](https://www.php.net/manual/es/features.file-upload.errors.php) teniu més informació.
 
+{: .alert .alert-activity}
+<div markdown="1">
 
+### Activitat 12 D: Pujada d'imatges (opcional)  
+{: .nocount .no_toc }
 
-
-
-
-
+Modifica l'activitat anterior afegint un camp de tipus `FILE` per a pujar una imatge al servidor. Es guardarà en la
+carpeta `uploads` i es mostrarà amb la resta de dades. 
+</div>
 
 
