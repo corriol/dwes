@@ -153,7 +153,8 @@ Errors del tipus
 ```
 Notice: Undefined index: nom in /home/ubuntu/index.php on line 6
 ```
-ens indiquen que la clau `nom`  no existeix en l'array `$_POST`. La variable supergloblal `$_POST` és buida si no ha rebut dades d'un formulari.
+ens indiquen que la clau `nom`  no existeix en l'array `$_POST`. La variable supergloblal `$_POST` està buida si no s'ha
+enviat el formulari.
 
 Per a evitar aquest tipus d'errors és important verificar que s'haja enviat el formulari prèviament:
 
@@ -173,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 Soluciona el problema dels paràmetres no enviats de l'exercici anterior.
 </div>
 
-## Valiadació de formularis 
+## Validació de formularis 
 
 Hem de comprovar que les dades que envia el formulari són correctes.
 
@@ -181,7 +182,7 @@ Les validacions a realitzar són les següents:
 
 1. Els camps requerits no han de quedar buits. Ni contenir espais en blanc a l'inici i al final.
 2. Els camps email i data han de tenir el format esperat.
-3. Tots els camps s'han de filtrar amb `htmlspecialchars`.
+3. Tots els camps s'han de filtrar amb `htmlspecialchars` per a evitar atacs de _Cross-site Scripting_ (XSS).
 
 ### Valors buits
 

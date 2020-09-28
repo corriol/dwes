@@ -12,7 +12,7 @@ has_children: true
     1. Instal·lació i configuració
     2. Treball amb repositoris locals
     3. Treball amb repositoris remots
-    4. Creació de repositori remot en bitbucket
+    4. Creació de repositori remot en Github
     5. Sincronització amb el repositori local
 3. Organització del codi. Separar la lògica de la presentació
    1. Include i require
