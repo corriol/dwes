@@ -17,7 +17,7 @@ Paradigma:
 > Teoria \[…\] el nucli central de la qual \[…\] suministra la base i el
 > model per resoldre problemes i avançar en el coneixement.
 
-Per la qual cosa podem definir la programació orientada a objecte com 
+Per la qual cosa podem definir la programació orientada a objecte com
 un mètode -provat i estudiat- el qual es basa en les interaccions
 d'objectes per resoldre les necessitats d'un sistema informàtic.
 

@@ -61,7 +61,8 @@ echo $_GET['nom'].' '.$_GET['cognom']; // Homer Simpson
 ### Exercici
 {: .nocount .no_toc }
 
-Crea una pàgina que reba com a paràmetre un nom i mostre el text ‘Benvingut [nom]!!!’ sent [nom] el nom has passat com a paràmetre.
+Crea una pàgina que reba com a paràmetre un nom i mostre el text ‘Benvingut [nom]!!!’ sent [nom] el nom has 
+passat com a paràmetre.
 
 Guarda-la amb el nom `exemple_get.php`.
 </div>
@@ -319,6 +320,19 @@ En [Explicació dels missatges d'error](https://www.php.net/manual/es/features.f
 
 Modifica l'activitat anterior afegint un camp de tipus `FILE` per a pujar una imatge al servidor. Es guardarà en la
 carpeta `uploads` i es mostrarà amb la resta de dades. 
+</div>
+
+
+{: .alert .alert-info}
+<div markdown="1">
+
+### Formularis en HTML5  
+{: .nocount .no_toc }
+
+En els següents recursos trobaràs informació addicional sobre els controls de formularis en HTML5:
+* [Formularios en HTML](https://developer.mozilla.org/es/docs/Learn/HTML/Forms) en MDN web docs.
+* [Formularios en HTML5](https://developer.mozilla.org/es/docs/HTML/HTML5/Forms_in_HTML5) en MDN web docs.
+* [HTML Forms](https://www.w3schools.com/html/html_forms.asp) en W3CSchools.
 </div>
 
 

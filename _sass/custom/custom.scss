@@ -73,3 +73,13 @@ h3.nocount:before {
     content: none;
     counter-increment: none;
 }
+
+@media print {
+  #markdown-toc {
+      display: none;
+  }
+  #taula-de-continguts {
+        display: none;
+    }
+    h1 { font-size: 10px}
+}
