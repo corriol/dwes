@@ -10,11 +10,17 @@
 .alert h3 {   
     margin-top: 0.2em;   
     padding-left: 2em; 
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.2em;
 }
+
+.alert h4 {
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
 
 .alert-info { 
     color: #0c5460;
@@ -32,8 +38,8 @@
 
 .alert-activity { 
     color: #333;
-    background-color: #f6a6b2 !important;
-    border-color: #f8c8d4;
+    background-color: #ffeeee !important;
+    border-color: #ffdddd;
 }
 
 .alert-warning h3 {

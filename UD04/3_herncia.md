@@ -257,5 +257,53 @@ A continuació crea les classes `InputText`, `InputEmail` (_type=email_), `Input
  * Enviar (pots implementar la classe `InputSubmit` o escriure'l directament en HTML.
  
  La pàgina de resposta mostrarà els valors enviats pel formulari. 
+ </div>
+
+{:.alert .alert-activity}
+<div markdown="1">
+
+### Activitat 4.3: Herència (i 2)
+{:.no_toc .nocount}
+
+#### Objectius
+{:.no_toc .nocount}
+Els objectius de l'activitat són els següents:
+* Treballar l'herència.
+* Treballar amb classes abstractes
+* Treballar el polimorfisme
+
+#### Enunciat
+{:.no_toc .nocount}
+
+Anem a crear una sèrie de classes per mostrar camps de formulari.
+
+Pots incloure'ls al projecte en `src/utils` o crear-les a banda en la carpeta `activitat4` en 
+l'arrel del projecte.
+
+Crea les classes `InputRange` i `InputRadio` que heretaran de la classe abstracta però que
+tindran el constructor i els atributs diferents. Afig als camps ja existents els camps:
+ 
+ * Edat (de tipus range, 40 serà el valor per defecte)
+ * Sexe (de tipus radio amb el sexe)
+  
+
+Crea la classe `Form` que representarà un formulari HTML.  
+
+El constructor serà 
+```php
+public function __construct(string $action, string $method ='POST');
+```
+
+Tindrà una propietat pública `$elements` que serà un array d'objectes `Input`. Un mètode `Form::add(Input $input)`
+que afegirà elements a l'array.
+
+Tindrà també altres dos mètodes `Form::generateStartHTML()` que generarà l'etiqueta `<form...>` i 
+`Form::generaEndHTML()` que generarà l'etiqueta de tancament `</form>`
+
+Crea un objecte `Form` i afig mitjançant el mètode `add` els elements ja existents i mostra el formulari.
+ 
+La pàgina de resposta mostrarà els valors enviats pel formulari.
  
 </div>
+
+
