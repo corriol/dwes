@@ -191,4 +191,7 @@ Totes les classes creades implementaran eixa interfície.
 
 Modifica `Form::add()` perquè admeta paràmetres de tipus `IControl`.
 
+Implementa en la classe `Form` la interfície `Countable`. 
+
+Després mitjançant la funció `count()` mostra el número total d'elements del formulari.
 </div>
