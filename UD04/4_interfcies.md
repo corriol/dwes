@@ -184,7 +184,7 @@ Crea la interfície `IControl`:
 
 ```php
 interface IControl {
-    public render(): string;
+    public function render(): string;
 }
 ```
 Totes les classes creades implementaran eixa interfície.
