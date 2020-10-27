@@ -27,6 +27,21 @@ A diferència d'altres llenguatges de programació que tenen una gestió d'excep
 més completa PHP manté una gestió d'excepcions lleugera ja que distingeix entre errors i excepcions. 
 Així mentre no es produisca una excepció o un error fatal l'execució del programa continua.
 
+No obstant, en PHP 7 canvia la majoria dels errors notificats per PHP. En lloc de notificar errors a través 
+de l'mecanisme de notificació d'errors tradicional de PHP 5, la majoria dels errors ara són
+ notificats llançant excepcions `Error`.
+
+A l'igual que les excepcions normals, les excepcions `Error` es propagaran fins a arribar al
+primer bloc `catch` coincident. Si no hi ha blocs coincidents, serà invocat qualsevol 
+gestor d'excepcions predeterminat instal·lat amb `set_exception_handler ()`, i si no hi hagués 
+cap gestor d'excepcions predeterminat, l'excepció serà convertida en un error fatal i serà manejada 
+com un error tradicional.
+
+A causa de que la jerarquia d'`Error` no hereta de `Exception`, el codi que empre blocs catch 
+(Exception $ e) {...} per gestionar excepcions no capturades en PHP 5 trobareu que 
+aquests `Errors` no són capturats per aquests blocs. Es requereix, per tant, un bloc 
+`catch (Error $i)` {...} o un gestor `set_exception_handler()`.
+
 
 ## Errors
 PHP defineix una classificació dels errors que es poden produir en
@@ -40,7 +55,6 @@ engloba errors fatals que provoquen que s'interrompa forçosament l'execució.
 La llista completa de constants la pots consultar al manual de PHP, on
 també es descriu el tipus d'errors que representa :
 [http://es.php.net/manual/es/errorfunc.constants.php](http://es.php.net/manual/es/errorfunc.constants.php)
-
 
 ### Canviar el comportament de PHP 
 La configuració inicial de com va a tractar-se cada error segons el seu
@@ -75,6 +89,51 @@ $resultat = $dividend/$divisor;
 error_reporting (E_ALL & ~ E_NOTICE);
 ```
 
+{:.alert .alert-info}
+<div markdown="1">
+
+
+### Notificació d'error en entorns de producció
+{:.no_toc .nocount }
+
+```ini
+; PHP comes packaged with two INI files. One that is recommended to be used
+; in production environments and one that is recommended to be used in
+; development environments.
+
+; php.ini-production contains settings which hold security, performance and
+; best practices at its core. But please be aware, these settings may break
+; compatibility with older or less security conscience applications. We
+; recommending using the production ini in production and testing environments.
+```
+```ini
+; display_errors
+;   Default Value: On
+;   Development Value: On
+;   Production Value: Off
+
+; display_startup_errors
+;   Default Value: Off
+;   Development Value: On
+;   Production Value: Off
+
+; error_reporting
+;   Default Value: E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED
+;   Development Value: E_ALL
+;   Production Value: E_ALL & ~E_DEPRECATED & ~E_STRICT
+
+; html_errors
+;   Default Value: On
+;   Development Value: On
+;   Production value: On
+
+; log_errors
+;   Default Value: Off
+;   Development Value: On
+;   Production Value: On
+```
+</div>
+
 
 ### Gestió global dels errors
 En utilitzar la funció `error_reporting` només controles quin tipus
@@ -90,19 +149,19 @@ nombre de línia, i un bolcat de l'estat de les
 variables en aquest moment).
 
 ```php
-    set_error_handler ("miGestorDeErrores");
-    $resultat = $dividend / $divisor;
-    restore_error_handler ();
-    function miGestorDeErrores ($nivell, $missatge)
-    {
-        switch ($nivell) {
-            case E_WARNING:
-                echo "Error de tipus WARNING: $missatge. <br />";
-                break;
-            default:
-                echo "Error de tipus no especificat: $ missatge. <br />";
-        }
+set_error_handler ("miGestorDeErrores");
+$resultat = $dividend / $divisor;
+restore_error_handler ();
+function miGestorDeErrores ($nivell, $missatge)
+{
+    switch ($nivell) {
+        case E_WARNING:
+          echo "Error de tipus WARNING: $missatge. <br />";
+          break;
+        default:
+          echo "Error de tipus no especificat: $ missatge. <br />";
     }
+}
 ```
 
 La funció `restore_error_handler` restaura el gestor d'errors original
@@ -111,7 +170,8 @@ a `set_error_handler`).
 
 ### ErrorException
 
-Gràcies a la combinació de la classe `ErrorException` i el mètode `set_error_handler` podem convertir fàcilment els errors en excepcions de tipus `ErrorException`:
+Gràcies a la combinació de la classe `ErrorException` i el mètode `set_error_handler` 
+podem convertir fàcilment els errors en excepcions de tipus `ErrorException`:
 
 ```php
 <?php
@@ -148,16 +208,15 @@ Per exemple, per llançar una excepció quan es produeix una divisió per
 zero podries fer:
 
 ```php
-    try {
-        if ($divisor == 0)
-            throw new Exception ( "Divisió per zero.");
-        $resultat = $dividend/$divisor;
-    }
-    catch (Exception $e) {
-        echo "S'ha produït el següent error:". $ e-> getMessage ();
-    }
+try {
+   if ($divisor == 0)
+      throw new Exception ( "Divisió per zero.");
+   $resultat = $dividend/$divisor;
+}
+catch (Exception $e) {
+   echo "S'ha produït el següent error:". $ e-> getMessage ();
+}
 ```
-
 
 PHP ofereix una classe base `Exception` per utilitzar com a gestor
 d'excepcions. Per llançar una excepció no cal indicar cap paràmetre,
@@ -184,9 +243,8 @@ Com hem dit abans, utilitzant la classe `ErrorException` és possible traduir el
 excepcions.[http://es.php.net/manual/es/class.errorexception.php](http://es.php.net/manual/es/class.errorexception.php)
 </div>
 
-
 Concretament, la classe PDO permet definir la fórmula que farà servir
-quan es produeixi un error,  utilitzant l'atribut `PDO::ATTR_ERRMODE`.
+quan es produeixi un error, utilitzant l'atribut `PDO::ATTR_ERRMODE`.
 Les possibilitats són:
 
   - `PDO::ERRMODE\_SILENT`. No es fa res quan ocorre un error. És el
@@ -203,23 +261,22 @@ configurar la connexió fent:
 $dwes-> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ```
 
-
 Per exemple, el següent codi:
 ```php
     $dwes = new PDO ( "mysql: host = localhost; dbname = dwes", "dwes", "abc123.");
     $dwes-> setAttribute (PDO :: ATTR_ERRMODE, PDO :: ERRMODE_EXCEPTION);
     try {
-        $sql ​​= "SELECT * FROM stox";
+        $sql = "SELECT * FROM stox";
         $result = $dwes->query ($sql);
         ...
     }
-    catch (PDOException $ p) {
-        echo "Error". $ p-> getMessage (). "<br />";
+    catch (PDOException $p) {
+        echo "Error". $p-> getMessage (). "<br />";
     }
 ```
 
 Captura l'excepció que llança PDO a causa de que la taula no existeix.
-El bloc catch mostra el següent missatge: 
+El bloc `catch` mostra el següent missatge:
 
 ```php
 Error SQLSTATE [42S02]: Base table or view not found: 1146 Table 'dwes.stox' does not exist
@@ -266,7 +323,7 @@ try {
 ## Ampliant les excepcions
 
 És possible crear excepcions personalitzades heretant de la classe
-Exception.
+`Exception`.
 
 ```php
 class NegativeIdException extends Exception {
@@ -289,18 +346,31 @@ try {
 }
 ```
 
-# Exercicis pràctics
+## Interfície Throwable
+_Throwable_ és la interfície base per a qualsevol objecte que puga ser llançat 
+mitjançant una sentència `throw` en PHP 7, incloent `Error` i `Exception`.
 
-# Activitat: gestió d'errors i excepcions
+Les classes de PHP no poden implementar la interfície `Throwable` directament, 
+de manera que han d'estendre en el seu lloc `Exception`.
 
-1.  Modifica les classes de l'aplicació del formulari perquè en cas que
-    el atribut $name no tinga valor llance una excepció amb el missatge
+Aquesta nova interfície té per objectiu unificar les dos tipologies d'exceptions. Tant `Exception` com 
+`Error` implementen la interfície `Throwable`. 
+
+
+{:.alert .alert-activity }
+<div markdown="1">
+
+### Gestió d'errors i excepcions
+{: .no_toc .nocount}
+
+1.  Modifica les classes Input creades anteriorment perquè en cas que
+    el atribut `$name` no tinga valor llance una excepció amb el missatge
     "L'atribut name no pot estar buit".
 2.  Captura l'excepció.
-3.  Crea una excepció personalitzada `OptionsNotFoundException` en cas
-    que el paràmetre $options del control Select estiga buit.
+3.  Crea una excepció personalitzada `ValuesNotFoundException` en cas
+    que el paràmetre `$values` del control `InputRadio` estiga buit.
 4.  Captura l'excepció.
-5.  Crea una excepció personalitzada InvalidFormatOptionsException en
-    cas que el paràmetre $options del control Selecte tinga un array
-    però les claus no siguen name i value.
+5.  Crea una excepció personalitzada `MovieNotFound` que es llance
+    en cas que l'identificador `$id` sol·licitat no trobe cap pel·licula en `single-page.php`      
 6.  Captura l'excepció.
+</div>
