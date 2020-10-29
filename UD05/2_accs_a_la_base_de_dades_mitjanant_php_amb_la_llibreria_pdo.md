@@ -17,7 +17,7 @@ has_children: false
 
 ## Introducció
 
-Les sigles PDO (PHP Data Objects) fan referència a una interfície de PHP
+Les sigles PDO (_PHP Data Objects_) fan referència a una interfície de PHP
 que ens permet accedir a bases de dades de qualsevol tipus en PHP.
 
 Cada controlador de bases de dades que implemente la interfície PDO pot
@@ -36,64 +36,74 @@ les mateixes funcions per fer consultes i obtenir dades.
 Per saber els controladors PDO disponibles en el nostre sistema:
 
 ```php
-    print_r (PDO :: getAvailableDrivers ());
+print_r (PDO :: getAvailableDrivers ());
 ```
 
 Informació oficial sobre PDO en <http://php.net/manual/es/book.pdo.php>
 
 ## Classes PDO, PDOStatement i PDOException
 
-  - Classe PDO: S'utilitza per representar la connexió entre PHP i un
+  - Classe `PDO`: S'utilitza per representar la connexió entre PHP i un
     servidor de bases de dades. <http://php.net/manual/es/class.pdo.php>
-  - Classe PDOStatement: representa una sentència preparada i també ens
+  - Classe `PDOStatement`: representa una sentència preparada i també ens
     permet accedir al conjunt de resultats associat.
     <http://php.net/manual/es/class.pdostatement.php>
-  - Classe PDOException: representa els errors generats PDO.
+  - Classe `PDOException`: representa els errors generats PDO.
     <http://php.net/manual/es/class.pdoexception.php>
-
 
 ## Connexió a la base de dades
 
-```php
-$pdo = new PDO("mysql: host = $host; dbname = $dbname", $usuari,
-$password);`
-```
-
-**mysql**: tipus de base de dades. Podria ser: MSSQL, Sybase, sqlite,
-etc ..
 
 ```php
-    // Exemple de connexió a diferents tipus de bases de dades.
-    # Connectem a la base de dades
-    $host = 'www.local';
-    $hbname = 'cxbasex';
-    $user = 'cxbasex';
-    $pass = 'xxxxxx';
+public __construct(string $dsn [, string $username [, string $passwd [, array $options ]]] )
+```
+
+El constructor de PDO té els següents paràmetres:
+* `dsn`: cadena de connexió
+* `username`: nom d'usuari
+* `passwd`: contrasenya d'usuari
+* `options`: permet afegir altres opcions
+
+```php
+$pdo = new PDO("mysql:host=localhost; dbname=test", "dbuser", "1234");
+```
+
+En l'exemple anterior  (**mysql**) representa una connexió a una base de dades MySQL (
+podria ser: MSSQL, Sybase, sqlite, etc.) anomenada `test` que es troba al servidor `localhost`. 
+La connexió es realitzarà mitjançant l'usuari `dbuser` i la contrasenya `1234`.
+
+```php
+// Exemple de connexió a diferents tipus de bases de dades.
+# Connectem a la base de dades
+$host = 'www.local';
+$hbname = 'cxbasex';
+$user = 'cxbasex';
+$pass = 'xxxxxx';
+   
+try {
+   # MS SQL Server y Sybase amb PDO_DBLIB
+    $pdo = new PDO("MSSQL:host=$host;dbname=$dbname, $user, $pass");
+    $pdo = new PDO("Sybase:host=$host;dbname=$dbname, $user, $pass");
     
-    try {
-        # MS SQL Server y Sybase amb PDO_DBLIB
-        $pdo = new PDO( "MSSQL: host = $ host; dbname = $ dbname, $ user, $ pass");
-        $pdo = new PDO( "Sybase: host = $ host; dbname = $ dbname, $ user, $ pass");
+    #MySQL amb PDO_MYSQL
+    #Perquè la connexió a mysql utilitzi les collation UTF-8 afegir charset = utf8 a string de la connexió.
+    $pdo = new PDO  ("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
     
-        #MySQL amb PDO_MYSQL
-        #Perquè la connexió a mysql utilitzi les collation UTF-8 afegir charset = utf8 a string de la connexió.
-        $pdo = new PDO ( "mysql: host = $ host; dbname = $ dbname; charset = utf8", $ user, $pass);
+    #Perquè generi excepcions a l'hora de reportar errors.
+    $pdo->setAttribute (PDO :: ATTR_ERRMODE, PDO :: ERRMODE_EXCEPTION);
     
-        #Perquè generi excepcions a l'hora de reportar errors.
-        $pdo->setAttribute (PDO :: ATTR_ERRMODE, PDO :: ERRMODE_EXCEPTION);
+    # SQLite Database
+    $pdo = new PDO ("sqlite:my/database/path/database.db");
+}
+catch (PDOException $e) {
+    die($e-> getMessage ());
+}
     
-        # SQLite Database
-        $pdo = new PDO ( "sqlite: mi / database / path / database.db");
-    }
-    catch (PDOException $e) {
-        echo $e-> getMessage ();
-    }
-    
-    // Si tot va bé en $ pdo tindrem el objecte que gestionarà la connexió amb la base de dades.
+// Si tot va bé en $ pdo tindrem el objecte que gestionarà la connexió amb la base de dades.
 
 ```
 
-**Tancar la connexió a la base de dades**
+### Tancar la connexió a la base de dades ###
 
 Es recomana tancar sempre la connexió a la base de dades quan no es vaja
 a utilitzar més durant el nostre procés.
@@ -106,93 +116,93 @@ amb el servidor, per exemple.
 En tancar la connexió de forma explícita accelerem l'alliberament de
 recursos perquè estiguin disponibles per a altres usuaris.
 
-
 ```php
-// Si volguéssim tancar la connexió amb la base de dades simplement podríem fer al final del fitxer.
+// Si vullguerem tancar la connexió amb la base de dades simplement podríem fer al final del fitxer.
 $pdo = null;
 ```
-
 
 ## Execució de consultes
 
 Les dades s'obtenen a través del mètode `PDOStatement::fetch()` o `PDOStatement::fetchAll()`. 
 
 * `fetch()`: Obté la següent fila d'un recordset (conjunt de
-resultats). http://php.net/manual/es/pdostatement.fetch.php  
+resultats). [http://php.net/manual/es/pdostatement.fetch.php](http://php.net/manual/es/pdostatement.fetch.php)  
 * `fetchAll()`: Retorna un array que conté totes les files del conjunt
 de resultats (el tipus de dades a retornar es pot indicar com a
-paràmetre). http://php.net/manual/es/pdostatement.fetchall.php
+paràmetre). [http://php.net/manual/es/pdostatement.fetchall.php](http://php.net/manual/es/pdostatement.fetchall.php)
 
 Abans de cridar al mètode `fetch()` una bona idea és indicar-li com
 volem que ens retorne les dades de la base de dades.
 
 Tindrem les següents opcions en el mètode `fetch()`:
 
-  - PDO::FETCH_ASSOC: torna un array indexat pel nom de camp de la
+  - `PDO::FETCH_ASSOC`: torna un array indexat pel nom de camp de la
     taula.
-  - PDO::FETCH_BOTH: (per defecte): retorna un array indexat per nom
+  - `PDO::FETCH_BOTH`: (per defecte): retorna un array indexat per nom
     de camp de la taula i per nombre de camp.
-  - PDO::FETCH_BOUND: Assigna els valors retornats a les variables
+  - `PDO::FETCH_BOUND`: Assigna els valors retornats a les variables
     assignades amb el mètode `bindColumn()`.
-  - PDO::FETCH_CLASS: Assigna els valors dels camps a les propietats
+  - `PDO::FETCH_CLASS`: Assigna els valors dels camps a les propietats
     d'una classe. Si les propietats no existeixen en aquesta classe, les
     crearà.
-  - PDO::FETCH_INTO: Actualitza una instància existent d'una classe.
-  - PDO::FETCH_LAZY: Combina PDO::FETCH_BOTH / PDO::FETCH_OBJ,
+  - `PDO::FETCH_INTO`: Actualitza una instància existent d'una classe.
+  - `PDO::FETCH_LAZY`: Combina PDO::FETCH_BOTH / PDO::FETCH_OBJ,
     creant les variables de l'objecte a mesura que es van fent servir.
-  - PDO::FETCH_NUM: Retorna un array indexat pel nombre de camp.
-  - PDO::FETCH_OBJ: Retorna un objecte anònim amb els noms de les
+  - `PDO::FETCH_NUM`: Retorna un array indexat pel nombre de camp.
+  - `PDO::FETCH_OBJ`: Retorna un objecte anònim amb els noms de les
     propietats que es corresponen amb els noms de columnes.
 
 Per ajustar la manera de resposta:
 
+```php
 $stmt->setFetchMode (PDO::FETCH_ASSOC);
+```
 
-FETCH_ASSOC
+### FETCH_ASSOC
 
 Per executar la consulta SELECT si no tenim paràmetres en la consulta
-podrem usar -\> query () de l'objecte PDO
+podrem usar `PDO::query()`
 
 Vegem un exemple de consulta SELECT:
 
 
 ```php
-    try {
-        #Per executar la consulta SELECT si no tenim paràmetres en la consulta podrem usar -> query ()
-        $stmt = $pdo-> query ( 'SELECT name, addr, city from col·legi');
-       #Indiquem en quin format volem obtenir les dades de la taula en format d'array associatiu.
-       #Si no indiquem res per defecte s'usarà FETCH_BOTH el que ens permetrà accedir com a vector associatiu o array numèric.
-        $stmt-> setFetchMode (PDO :: FETCH_ASSOC);
+try {
+    #Per executar la consulta SELECT si no tenim paràmetres en la consulta podrem usar -> query ()
+    $stmt = $pdo-> query ( 'SELECT name, addr, city from school');
+    #Indiquem en quin format volem obtenir les dades de la taula en format d'array associatiu.
+    #Si no indiquem res per defecte s'usarà FETCH_BOTH el que ens permetrà accedir com a vector associatiu o array numèric.
+    $stmt-> setFetchMode (PDO::FETCH_ASSOC);
     
-        #Llegim les dades del recordset amb el mètode -> fetch ()
-        while ($ row = $ stmt-> fetch ()) {
-            echo $ row [ 'name']. "<br/>";
-            echo $ row [ 'addr']. "<br/>";
-            echo $ row [ 'city']. "<br/>";
-        }
-    
-        #Per alliberar els recursos utilitzats en la consulta SELECT
-        $stmt = null;
-    } Catch (PDOException $ err) {
-        // Mostrem un missatge genèric d'error.
-        echo "Error: executant consulta SQL.";
+    #Llegim les dades del recordset amb el mètode -> fetch ()
+    while ($row=$stmt->fetch ()) {
+       echo $row['name']. "<br/>";
+       echo $row['addr']. "<br/>";
+       echo $row['city']. "<br/>";
     }
     
+     #Per alliberar els recursos utilitzats en la consulta SELECT
+     $stmt = null;
+ } catch (PDOException $err) {
+        // Mostrem un missatge genèric d'error.
+    echo "Error: executant consulta SQL.";
+ }
     
-    # ------------------------------------------------- ----------------------------------------------
-    # Per executar la consulta SELECT si tenim paràmetres ho faríem així:
     
-    # Preparem la consulta com sempre
-    $stmt = $ pdo-> prepare( 'SELECT name, addr, city from col·legues where city =: ciutat');
+# ------------------------------------------------- ----------------------------------------------
+# Per executar la consulta SELECT si tenim paràmetres ho faríem així:
+   
+# Preparem la consulta com sempre
+$stmt = $pdo-> prepare( 'SELECT name, addr, city from school where city =: ciutat');
     
-    try {
-        #indiquem en quin format volem obtenir les dades de la taula en format d'array associatiu.
+try {
+      #indiquem en quin format volem obtenir les dades de la taula en format d'array associatiu.
         #Si no indiquem res per defecte s'usarà FETCH_BOTH el que ens permetrà accedir com a vector associatiu o array numèric.
-        $stmt-> execute (array ( 'ciutat' => 'Santiago de Compostel·la');
+     $stmt->execute(array( 'ciutat' => 'Santiago de Compostel·la');
         #Llegim les dades del recordset amb el mètode -> fetch ()
         #Per defecte ja els torna a forma de vector associatiu si no indiquem res amb setFetchMode ()
     
-        while ($ row = $ stmt-> fetch ())
+        while ($row = $stmt->fetch ())
         {
             echo $ row [ 'name']. "<br/>";
             echo $ row [ 'addr']. "<br/>";
@@ -209,7 +219,7 @@ Vegem un exemple de consulta SELECT:
 
 ```
 
-**FETCH\_OBJ**
+### FETCH_OBJ
 
 En aquest tipus de manera de consulta es crearà un objecte estàndard per
 cada fila que llegim del recordset.
@@ -226,22 +236,64 @@ exemple:
         #Mostrem els resultats.
         #Fixeu-vos que es torna un objecte cada vegada que es llegeix una fila del recordset.
     
-        while ($ row = $ stmt-> fetch ()) {
-            echo $ row-> name. "<br/>";
-            echo $ row-> addr. "<br/>";
-            echo $ row-> city. "<br/>";
+        while ($row = $stmt-> fetch ()) {
+            echo $row->name. "<br/>";
+            echo $row->addr. "<br/>";
+            echo $row->city. "<br/>";
         }
     
         #Alliberem els recursos utilitzats per $stmt
         $stmt = null;
     }
-    catch (PDOException $ err)
+    catch (PDOException $err)
     {
     // Mostrem un missatge genèric d'error.
     echo "Error: executant consulta SQL.";
     }
 ```
 
+### FETCH_CLASS
+Paràmetre de `fetch()` i `fetchAll()` que torna una nova instància de la classe solicitada, 
+fent correspondre les columnes del conjunt de resultats amb els noms de les propietats de la classe, 
+i cridant  al constructor després, a menys que también es proporcione l'opció `PDO::FETCH_PROPS_LATE`.
+
+```php
+class Persona
+{
+    private $name;
+
+    public function __construct()
+    {
+        $this->decir();
+    }
+
+    public function decir()
+    {
+        if (isset($this->name)) {
+            echo "Soy {$this->name}.\n";
+        } else {
+            echo "Aún no tengo nombre.\n";
+        }
+    }
+}
+
+$sth = $dbh->query("SELECT * FROM people");
+$sth->setFetchMode(PDO::FETCH_CLASS, 'Persona');
+$persona = $sth->fetch();
+$persona->decir();
+$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Persona');
+$persona = $sth->fetch();
+$persona->decir();
+```
+
+Mostrarà:
+
+```
+Soy Alice.
+Soy Alice.
+Aún no tengo nombre.
+Soy Bob. 
+```
 
 ## Consultes preparades
 
@@ -262,14 +314,14 @@ sentència SQL.
 Hi ha tres formes de fer-ho:
 
 ```php
-    # Marcadores anónimos
-    $stmt = $pdo->prepare("INSERT INTO colegas (name, addr, city) values (?, ?, ?)");
+# Marcadores anónimos
+$stmt = $pdo->prepare("INSERT INTO colegas (name, addr, city) values (?, ?, ?)");
     
-    # Marcadores conocidos
-    $stmt = $pdo->prepare("INSERT INTO colegas (name, addr, city) values (:name, :addr, :city)");
+# Marcadores conocidos
+$stmt = $pdo->prepare("INSERT INTO colegas (name, addr, city) values (:name, :addr, :city)");
     
-    # Aquí no lleva marcadores - ideal para una inyección SQL! ('''no usar este método'''). !! Hay que usar los marcadores !!
-    $stmt = $pdo->prepare("INSERT INTO colegas (name, addr, city) values ($name, $addr, $city)");
+# Aquí no lleva marcadores - ideal para una inyección SQL! ('''no usar este método'''). !! Hay que usar los marcadores !!
+$stmt = $pdo->prepare("INSERT INTO colegas (name, addr, city) values ($name, $addr, $city)");
 ```
 
 Hauràs d'usar el primer o el segon mètode dels que es mostren
@@ -281,42 +333,42 @@ d'assignar eixos marcadors.
 Per enllaçar els marcadors anònims amb el seu corresponent valor es pot
 utilitzar `bindParam` o `bindValue`:
 
-ATENCIÓ:` $pdo->prepare()` usant marcadors anònims ?, tracta totes les
-variables com si fossin cadenes, per la qual cosa farà servir cometes
+ATENCIÓ:` $pdo->prepare()` usant marcadors anònims `?`, tracta totes les
+variables com si foren cadenes, per la qual cosa farà servir cometes
 per delimitar els seus valors per defecte.
 
 ```php
 
-    # Marcadores anónimos
-    $stmt = $pdo->prepare("INSERT INTO friend (name, addr, city) values (?, ?, ?)");
+# Marcadores anónimos
+$stmt = $pdo->prepare("INSERT INTO friend (name, addr, city) values (?, ?, ?)");
     
-    # Assignem variables a cada marcador, indexats l'1 al 3
-    $stmt->bindParam(1, $name);
-    $stmt->bindParam(2, $addr);
-    $stmt->bindParam(3, $city);
+# Assignem variables a cada marcador, indexats l'1 al 3
+$stmt->bindParam(1, $name);
+$stmt->bindParam(2, $addr);
+$stmt->bindParam(3, $city);
     
-    # Insertamos una fila.
-    $name = "Daniel"
-    $addr = "1 Wicked Way";
-    $city = "Arlington Heights";
-    $stmt->execute();
+# Insertamos una fila.
+$name = "Daniel"
+$addr = "1 Wicked Way";
+$city = "Arlington Heights";
+$stmt->execute();
     
-    # Insertamos otra fila con valores diferentes.
-    $name = "Steve"
-    $addr = "5 Circle Drive";
-    $city = "Schaumburg";
-    $stmt->execute();
+# Insertamos otra fila con valores diferentes.
+$name = "Steve"
+$addr = "5 Circle Drive";
+$city = "Schaumburg";
+$stmt->execute();
 ```
 
 Un altra forma d'assignació amb marcadors anònims és mitjançant un array
 associatiu:
 
 ```php
-    # Los datos que queremos insertar
-    $datos = array('Cathy', '9 Dark and Twisty Road', 'Cardiff');
+ # Los datos que queremos insertar
+ $datos = array('Cathy', '9 Dark and Twisty Road', 'Cardiff');
     
-    $stmt = $pdo->prepare("INSERT INTO colegas (name, addr, city) values (?, ?, ?)");
-    $stmt->execute($datos);
+ $stmt = $pdo->prepare("INSERT INTO colegas (name, addr, city) values (?, ?, ?)");
+ $stmt->execute($datos);
 ```
 
 
@@ -332,143 +384,134 @@ just en el moment d'executar la instrucció `bindValue`.
 Exemple de diferència entre `bindParam` i `bindValue`:
 
 ```php
-    // Ejemplo con bindParam:
-    $sex = 'hombre';
-    $s = $dbh->prepare('SELECT name FROM studiantes WHERE sexo = :sexo');
-    $s->bindParam(':sexo', $sex);
-    $sex = 'mujer';
-    $s->execute(); // se ejecutó con el valor WHERE sexo = 'mujer'
+// Ejemplo con bindParam:
+$sex = 'hombre';
+$s = $dbh->prepare('SELECT name FROM studiantes WHERE sexo = :sexo');
+$s->bindParam(':sexo', $sex);
+$sex = 'mujer';
+$s->execute(); // se ejecutó con el valor WHERE sexo = 'mujer'
     
-    // El mismo ejemplo con bindValue:
-    $sex = 'hombre';
-    $s = $dbh->prepare('SELECT name FROM students WHERE sexo = :sexo');
-    $s->bindValue(':sexo', $sex);
-    $sex = 'mujer';
-    $s->execute(); // se ejecutó con el valor WHERE sexo = 'hombre'
+// El mismo ejemplo con bindValue:
+$sex = 'hombre';
+$s = $dbh->prepare('SELECT name FROM students WHERE sexo = :sexo');
+$s->bindValue(':sexo', $sex);
+$sex = 'mujer';
+$s->execute(); // se ejecutó con el valor WHERE sexo = 'hombre'
 ```
-
 
 ### Assignació amb marcadors coneguts
 
-Los marcadores conocidos es la forma más recomendable de trabajar con
-PDO, ya que a la hora de hacer el bindParam o el bindValue se puede
-especificar el tipo de datos y la longitud máxima de los mismos.
+Els marcadors coneguts són la forma més recomanable de treballar amb PDO, ja que a l'hora 
+de fer el `bindParam` o el `bindValue` es pot especificar 
+el tipus de dada i la seua longitud.
 
-  - Información sobre bindParam
-  - Información sobre bindValue
-  - Constantes y Tipos de Datos utilizados en bindParam y bindValue
-
-Formato de bindParam con marcadores conocidos:
+Format de `bindParam`  amb marcadors coneguts:
 
 ```php
-    bindParam(':marcador', $variableVincular, TIPO DATOS PDO)
+bindParam(':marcador', $variableVincular, TIPO DATOS PDO)
 ```
 
-Ejemplo de uso de bindParam:
+Exemple d'ús de `bindParam`:
 
 ```php
-    $stmt->bindParam(':calorias', $misCalorias, PDO::PARAM_INT);
-    $stmt->bindParam(':apellidos', $misApellidos, PDO::PARAM_STR, 35); // 35 caracteres como máximo.
+$stmt->bindParam(':calorias', $misCalorias, PDO::PARAM_INT);
+$stmt->bindParam(':apellidos', $misApellidos, PDO::PARAM_STR, 35); // 35 caracteres como máximo.
 ```
 
-
-Con marcadores conocidos quedaría de la siguiente forma:
+Amb marcadors coneguts quedaria de la següent forma:
 
 ```php
-    $stmt = $pdo->prepare("INSERT INTO colegas (name, addr, city) value (:name, :addr, :city)");
+$stmt = $pdo->prepare("INSERT INTO colegas (name, addr, city) value (:name, :addr, :city)");
     
-    # El primer argumento de bindParam es el nombre del marcador y el segundo la variable que contendrá los datos.
+# El primer argumento de bindParam es el nombre del marcador y el segundo la variable 
+# que contendrá los datos.
     
-    # Los marcadores conocidos siempre comienzan con :
-    $stmt->bindParam(':name', $name);
-    $name='Pepito';
+ # Los marcadores conocidos siempre comienzan con :
+$stmt->bindParam(':name', $name);
+$name='Pepito';
     
-    $stmt->bindParam(':addr', $addr);
-    $addr='Duanes, 17';
+$stmt->bindParam(':addr', $addr);
+$addr='Duanes, 17';
     
-    $stmt->bindParam(':city', $city);
-    $city = 'Pego';
+$stmt->bindParam(':city', $city);
+$city = 'Pego';
     
-    $stmt->execute();
+$stmt->execute();
     
-    # Otra forma es creando un array asociativo con los marcadores y sus valores:
-    # Los datos a insertar en forma de array asociativo
-    $datos = array( 'name' => 'Cathy', 'addr' => '9 Dark and Twisty', 'city' => 'Cardiff' );
+# Otra forma es creando un array asociativo con los marcadores y sus valores:
+# Los datos a insertar en forma de array asociativo
+$datos = array( 'name' => 'Cathy', 'addr' => '9 Dark and Twisty', 'city' => 'Cardiff' );
     
-    # Fijarse que se pasa el array de datos en execute().
-    $stmt = $pdo->prepare("INSERT INTO colegas (name, addr, city) value (:name, :addr, :city)");
-    $stmt->execute($datos);
+# Fijarse que se pasa el array de datos en execute().
+$stmt = $pdo->prepare("INSERT INTO colegas (name, addr, city) value (:name, :addr, :city)");
+$stmt->execute($datos);
     
-    # La última instrucción se podría poner también así:
-    $stmt->execute(array(
+# La última instrucción se podría poner también así:
+$stmt->execute(array(
     'name' => 'Cathy',
     'addr' => '9 Dark and Twisty',
     'city' => 'Cardiff'
-    ));
-
+));
 ```
 
-Otra característica de los marcadores conocidos es que nos permitirán
-trabajar con objetos directamente en la base de datos, asumiendo que las
-propiedades de ese objeto coinciden con los nombres de los campos de la
-tabla en la base de datos.
+Una altra característica dels marcadors coneguts és que ens permetran
+treballar amb objectes directament a la base de dades, assumint que les
+propietats d'aquest objecte coincideixen amb els noms dels camps de la
+taula a la base de dades.
 
-Ejemplo de uso de marcadores conocidos y objetos:
+Exemple d'ús de marcadors coneguts i objectes:
 
 ```php
 
-    # Un objeto sencillo
-    
-    class person {
+# Un objeto sencillo
+class person {
     public $name;
     public $addr;
     public $city;
     
     function __construct($n,$a,$c) {
-    $this->name = $n;
-    $this->addr = $a;
-    $this->city = $c;
+        $this->name = $n;
+        $this->addr = $a;
+        $this->city = $c;
     }
     # etc ...
-    }
+}
     
-    $cathy = new person('Cathy','9 Dark and Twisty','Cardiff');
+$cathy = new person('Cathy','9 Dark and Twisty','Cardiff');
     
-    # Preparación de la consulta
-    $stmt = $pdo->prepare("INSERT INTO colegas (name, addr, city) value (:name, :addr, :city)");
+# Preparación de la consulta
+$stmt = $pdo->prepare("INSERT INTO colegas (name, addr, city) value (:name, :addr, :city)");
     
-    # Inserción del objeto
-    $stmt->execute((array)$cathy);
+# Inserción del objeto
+$stmt->execute((array)$cathy);
 ```
 
 ### Exemple d'ús
-
 Per a utilitzar les consultes preparades seguirem sempre aquest esquema:
 
 ![](consultes-preparades.png)
 
 ```php
-    <?php
+$pdo = new PDO('sqlite:/path/db/users.db');
+
+# 1. Preparem la connexió
+$stmt = $pdo->prepare('SELECT name FROM users WHERE id = :id');
     
-    $pdo = new PDO('sqlite:/path/db/users.db');
-    # 1. Preparem la connexió
-    $stmt = $pdo->prepare('SELECT name FROM users WHERE id = :id');
+$id = 5;
     
-    $id = 5;
+# 2. Vinculem els paràmetres
+$stmt->bindParam(':id', $id, PDO::PARAM_INT); 
     
-    # 2. Vinculem els paràmetres
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT); 
+# 3. Executem la consulta
+ $stmt->execute();
     
-    # 3. Executem la consulta
-    $stmt->execute();<br><br>
+ # 4. Obtenim els registres
     
-    # 4. Obtenim els registres<br><br>
+ # Un a un
+ $row = $stmt->fetch();
     
-    # Un a un
-    $row = $stmt->fetch()
-    
-    # Tots
-    $rows = $stmt->fetchAll()
+ # Tots
+ $rows = $stmt->fetchAll();
 
 ```
   
@@ -481,37 +524,41 @@ un proceso de 2 pasos.
 ![Prepare Bind Execute](Prepare-bind-execute.png
 "Prepare \> Bind \> Execute")
 
-Ejemplo de uso:
+Exemple d'ús:
 
 ```php
-    # $stmt sería un objeto de tipo PDOStatement (consulta preparada)
-    $stmt = $pdo->prepare("INSERT INTO alumnos( nombre, apellidos) values ( 'Taylor','Swift' )");
-    # Ejecutamos la consulta con ->execute() método del objeto PDOStatement
-    # Este método devuelve true o false.
-    $stmt->execute();
+# $stmt sería un objeto de tipo PDOStatement (consulta preparada)
+$stmt = $pdo->prepare("INSERT INTO alumnos( nombre, apellidos) values ( 'Taylor','Swift' )");
+
+# Ejecutamos la consulta con ->execute() método del objeto PDOStatement
+# Este método devuelve true o false.
+$stmt->execute();
     
-    // Como resultado de la ejecución tendríamos en $stmt un valor true o false indicado si la instrucción se ha ejecutado correctamente.
+// Como resultado de la ejecución tendríamos en $stmt un valor true o false indicado si 
+// la instrucción se ha ejecutado correctamente.
     
-    // Se podría realizar lo anterior también con la sentencia query o exec del objeto PDO ahorrándonos una instrucción:
-    // Es útil cuando son sentencias SQL que no reciben parámetros.
+// Se podría realizar lo anterior también con la sentencia query o exec del objeto PDO
+//  ahorrándonos una instrucción:
+// Es útil cuando son sentencias SQL que no reciben parámetros.
     
-    // $pdo->query("consulta SQL") -> Devolverá un objeto de tipo PDOStatement. (recomendable para SELECT)
-    // $pdo->exec("consulta SQL") -> Devolverá el número de registros afectados por la consulta (recomendable para INSERT, UPDATE o DELETE).
+// $pdo->query("consulta SQL") -> Devolverá un objeto de tipo PDOStatement. (recomendable para SELECT)
+// $pdo->exec("consulta SQL") -> Devolverá el número de registros afectados por 
+// la consulta (recomendable para INSERT, UPDATE o DELETE).
     
-    // Como resultado de la ejecución tendríamos en $numregistros el número de filas afectadas por la instrucción.
-    $numregistros= $pdo->query("INSERT INTO alumnos( nombre, apellidos) values ( 'Taylor','Swift' )");
+// Como resultado de la ejecución tendríamos en $numregistros el número de filas afectadas por la instrucción.
+$numregistros= $pdo->query("INSERT INTO alumnos( nombre, apellidos) values ( 'Taylor','Swift' )");
     
-    # Si queremos borrar registros se podría hacer con:
-    $pdo->exec("DELETE FROM colegas WHERE apellidos='Swift'");
+# Si queremos borrar registros se podría hacer con:
+$pdo->exec("DELETE FROM colegas WHERE apellidos='Swift'");
 
 ```
 
-### Ejemplos CRUD: INSERT, UPDATE y DELETE
+### Exemples CRUD (**C**reate, **R**ead, **U**pdate, **D**elete): INSERT, UPDATE y DELETE
 
 #### INSERT
 
 ```php
-    try {
+try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
@@ -522,18 +569,18 @@ Ejemplo de uso:
     
     # Affected Rows?
     echo $stmt->rowCount(); // 1
-    } catch(PDOException $e) {
+} catch(PDOException $e) {
     echo 'Error: ' . $e->getMessage();
-
+}
 ```
 
 #### UPDATE
 
 ```php
-    $id = 5;
-    $name = "Joe the Plumber";
+$id = 5;
+$name = "Joe the Plumber";
     
-    try {
+try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
@@ -544,16 +591,17 @@ Ejemplo de uso:
     ));
     
     echo $stmt->rowCount(); // 1
-    } catch(PDOException $e) {
+} catch(PDOException $e) {
     echo 'Error: ' . $e->getMessage();
+}
 ```
 
 #### DELETE
 
 ```php
-    $id = 5; // From a form or something similar
+$id = 5; // From a form or something similar
     
-    try {
+try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
@@ -562,10 +610,9 @@ Ejemplo de uso:
     $stmt->execute();
     
     echo $stmt->rowCount(); // 1
-    } catch(PDOException $e) {
+} catch(PDOException $e) {
     echo 'Error: ' . $e->getMessage();
-    }
-
+}
 ```
 
 ## Gestió d'errors en l'accés
@@ -577,20 +624,20 @@ bloc try/catch per gestionar si produeix algun error.
 Podem forçar PDO perquè treballi en qualsevol de les tres maneres
 següents:
 
-  - PDO::ERRMODE\_SILENT -\> És el mode per defecte. Aquí haurem de
-    revisar els errors usant -\> errorCode () i -\> errorInfo ().
-  - PDO::ERRMODE\_WARNING -\> Genera errors de revisió de resultats
+  - `PDO::ERRMODE_SILENT`. És el mode per defecte. Aquí haurem de
+    revisar els errors usant `errorCode()` i `errorInfo()`.
+  - `PDO::ERRMODE_WARNING`. Genera errors de revisió de resultats
     PHP però permetria l'execució normal de l'aplicació.
-  - PDO::ERRMODE\_EXCEPTION -\> Serà la forma més utilitzada en PDO.
+  - `PDO::ERRMODE_EXCEPTION`. Serà la forma més utilitzada en PDO.
     Dispara una excepció permetent-nos gestionar l'error de forma
     amigable.
 
 ```php
-    //Activació de la manera de treball de PDO
-    $pdo-> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-    $pdo-> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+//Activació de la manera de treball de PDO
+$pdo-> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+$pdo-> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     
-    // Es recomana activar aquesta opció per gestionar els errors amb PDOException
+// Es recomana activar aquesta opció per gestionar els errors amb PDOException
     $pdo-> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ```
 
@@ -598,30 +645,30 @@ següents:
 
 ```php
     
-    # Connectem a la base de dades
-    $host = 'www.local';
-    $dbname = 'cxbasex';
-    $user = 'cxbasex';
-    $pass = 'xxxxxx';
+# Connectem a la base de dades
+$host = 'www.local';
+$dbname = 'cxbasex';
+$user = 'cxbasex';
+$pass = 'xxxxxx';
     
-    try {
-        $pdo = new PDO ( "mysql: host = $ host; dbname = $ dbname; charset = utf8", $ user, $ pass);
-        $pdo-> setAttribute (PDO :: ATTR_ERRMODE, PDO :: ERRMODE_EXCEPTION);
-    }
-    catch (PDOException $e) {
-        echo "S'ha produït un error en intentar connectar al servidor MySQL:". $e-> getMessage ();
-    }
+try {
+    $pdo = new PDO ( "mysql: host = $ host; dbname = $ dbname; charset = utf8", $ user, $ pass);
+    $pdo-> setAttribute (PDO :: ATTR_ERRMODE, PDO :: ERRMODE_EXCEPTION);
+}
+catch (PDOException $e) {
+    echo "S'ha produït un error en intentar connectar al servidor MySQL:". $e-> getMessage ();
+}
     
-    try {
-        # Un altre Exemple d'error! DELECT en lloc de SELECT!
-        $pdo-> exec ( 'DELECT name FROM people');
-    }
-    catch (PDOException $e) {
-        echo "S'ha produït un error en l'ejecucion de la consulta:". $ e-> getMessage ();
+try {
+    # Un altre Exemple d'error! DELECT en lloc de SELECT!
+    $pdo-> exec ( 'DELECT name FROM people');
+}
+catch (PDOException $e) {
+    echo "S'ha produït un error en l'ejecucion de la consulta:". $e->getMessage();
     
-        # En aquest cas hem mostrat el missatge d'error i, a més emmagatzemem en un fitxer els errors generats.
-        file_put_contents ( 'PDOErrors.txt', $ e-> getMessage (), FILE_APPEND);
-    }
+    # En aquest cas hem mostrat el missatge d'error i, a més emmagatzemem en un fitxer els errors generats.
+    file_put_contents ('PDOErrors.txt', $e->getMessage(), FILE_APPEND);
+}
 ```   
 ## Exercicis pràctics
 
