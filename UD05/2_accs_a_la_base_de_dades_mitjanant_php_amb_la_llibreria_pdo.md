@@ -680,7 +680,8 @@ try {
 catch (PDOException $e) {
     echo "S'ha produït un error en l'ejecucion de la consulta:". $e->getMessage();
     
-    # En aquest cas hem mostrat el missatge d'error i, a més emmagatzemem en un fitxer els errors generats.
+    /* En aquest cas hem mostrat el missatge d'error i, a més emmagatzemem 
+       en un fitxer els errors generats. */
     file_put_contents ('PDOErrors.txt', $e->getMessage(), FILE_APPEND);
 }
 ```   
@@ -688,20 +689,35 @@ catch (PDOException $e) {
 {: .alert .alert-activity }
 <div markdown="1">
 
-### Accés a la base de dades del projecte
+### Accés i consulta a la base de dades 
 {:.no_toc .nocount}
 
-Modifica el projecte perquè obtinga els posts de la base de
+#### Enunciat
+Modifica el projecte perquè obtinga els partners i les pel·lícules de la base de
 dades.
 
-Canvia la pàgina principal i la pàgina `movies.php` perquè s'obtinguen les dades de la base de dades
-  A més d'un enllaç a la pàgina `single-page.php` que mostrarà tots els camps d'una pel·lícula determinada.
+Canvia la pàgina principal i la pàgina `movies.php` perquè s'obtinguen les dades de la base de dades.
+  
+**Obtin la resposta com un array d'objectes de la classe `Movie` amb el tipus de retorn `FETCH_CLASS`** . 
+
+</div>
+
+
+{: .alert .alert-activity }
+<div markdown="1">
+
+### Consultes preparades
+{:.no_toc .nocount}
+
+Crea la classe `DBConnection`. 
+
+Modifica `single-page.php` perquè  obtinga les dades de la base de dades.
 
 **Utilitza consultes preparades sempre que calga usar paràmetres.**
 
-** Obtin la resposta com un array d'objectes de la classe `Movie` amb el tipus de retorn `FETCH_CLASS` **. 
-
+**Obtin la resposta com un array d'objectes de la classe `Movie` amb el tipus de retorn `FETCH_CLASS`**. 
 </div>
+
 
 {: .alert .alert-activity }
 <div markdown="1">
@@ -721,6 +737,7 @@ Canvia la pàgina principal i la pàgina `movies.php` perquè s'obtinguen les da
 ### Modificant i esborrants pel·lícules
 {:.no_toc .nocount}
 
-Crea un formulari per a editar i esborrar pel·lícules.
+- Crea un formulari per a editar i esborrar pel·lícules.
+- Afig en en $movies un enllaç per a esborrar i editar la película de la fila.
 
 </div>
