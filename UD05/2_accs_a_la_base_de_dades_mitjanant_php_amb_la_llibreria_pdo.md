@@ -81,16 +81,17 @@ $user = 'cxbasex';
 $pass = 'xxxxxx';
    
 try {
-   # MS SQL Server y Sybase amb PDO_DBLIB
+    # MS SQL Server y Sybase amb PDO_DBLIB
     $pdo = new PDO("MSSQL:host=$host;dbname=$dbname, $user, $pass");
     $pdo = new PDO("Sybase:host=$host;dbname=$dbname, $user, $pass");
     
-    #MySQL amb PDO_MYSQL
-    #Perquè la connexió a mysql utilitzi les collation UTF-8 afegir charset = utf8 a string de la connexió.
+    /* MySQL amb PDO_MYSQL
+     Perquè la connexió a mysql utilitzi les collation UTF-8 afegir charset = utf8 a string 
+     de la connexió. */
     $pdo = new PDO  ("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
     
-    #Perquè generi excepcions a l'hora de reportar errors.
-    $pdo->setAttribute (PDO :: ATTR_ERRMODE, PDO :: ERRMODE_EXCEPTION);
+    // Perquè generi excepcions a l'hora de reportar errors.
+    $pdo->setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
     # SQLite Database
     $pdo = new PDO ("sqlite:my/database/path/database.db");
@@ -99,7 +100,7 @@ catch (PDOException $e) {
     die($e-> getMessage ());
 }
     
-// Si tot va bé en $ pdo tindrem el objecte que gestionarà la connexió amb la base de dades.
+// Si tot va bé en $pdo tindrem el objecte que gestionarà la connexió amb la base de dades.
 
 ```
 
@@ -123,13 +124,22 @@ $pdo = null;
 
 ## Execució de consultes
 
-Les dades s'obtenen a través del mètode `PDOStatement::fetch()` o `PDOStatement::fetchAll()`. 
+Per a realitzar consultes podem usar:
+* `PDO::query()` per a consultes de recuperació de dades (SELECT).
+* `PDO::exec()` per a consultes d'inserció, modificació i esborrat de dades (INSERT, UPDATE i DELETE)
+* `PDO::prepare()` per a consultes preparades. Aquest és el mètode recomanat però això
+hem dedicat un apartat específic.
+
+Una vegada executada la consulta les dades s'obtenen a través del mètode `PDOStatement::fetch()` o 
+`PDOStatement::fetchAll()`. 
 
 * `fetch()`: Obté la següent fila d'un recordset (conjunt de
 resultats). [http://php.net/manual/es/pdostatement.fetch.php](http://php.net/manual/es/pdostatement.fetch.php)  
 * `fetchAll()`: Retorna un array que conté totes les files del conjunt
 de resultats (el tipus de dades a retornar es pot indicar com a
 paràmetre). [http://php.net/manual/es/pdostatement.fetchall.php](http://php.net/manual/es/pdostatement.fetchall.php)
+
+### Tipus de resposta 
 
 Abans de cridar al mètode `fetch()` una bona idea és indicar-li com
 volem que ens retorne les dades de la base de dades.
@@ -157,21 +167,24 @@ Per ajustar la manera de resposta:
 ```php
 $stmt->setFetchMode (PDO::FETCH_ASSOC);
 ```
-
-### FETCH_ASSOC
+També es pot indicar el tipus de resposta mitjançant un paràmetre en `PDOStatement::fetch()`
+ i `PDOStatement::fechtall()`.
+ 
+#### FETCH_ASSOC
 
 Per executar la consulta SELECT si no tenim paràmetres en la consulta
 podrem usar `PDO::query()`
 
 Vegem un exemple de consulta SELECT:
 
-
 ```php
 try {
     #Per executar la consulta SELECT si no tenim paràmetres en la consulta podrem usar -> query ()
-    $stmt = $pdo-> query ( 'SELECT name, addr, city from school');
-    #Indiquem en quin format volem obtenir les dades de la taula en format d'array associatiu.
-    #Si no indiquem res per defecte s'usarà FETCH_BOTH el que ens permetrà accedir com a vector associatiu o array numèric.
+    $stmt = $pdo->query ('SELECT name, addr, city from school');
+    
+    /* Indiquem en quin format volem obtenir les dades de la taula en format d'array associatiu.
+       Si no indiquem res per defecte s'usarà FETCH_BOTH el que ens permetrà accedir com a vector 
+        associatiu o array numèric. */
     $stmt-> setFetchMode (PDO::FETCH_ASSOC);
     
     #Llegim les dades del recordset amb el mètode -> fetch ()
@@ -204,9 +217,9 @@ try {
     
         while ($row = $stmt->fetch ())
         {
-            echo $ row [ 'name']. "<br/>";
-            echo $ row [ 'addr']. "<br/>";
-            echo $ row [ 'city']. "<br/>";
+            echo $row['name']. "<br/>";
+            echo $row['addr']. "<br/>";
+            echo $row['city']. "<br/>";
         }
     
     #Per alliberar els recursos de la consulta SELECT
@@ -219,7 +232,7 @@ try {
 
 ```
 
-### FETCH_OBJ
+#### FETCH_OBJ
 
 En aquest tipus de manera de consulta es crearà un objecte estàndard per
 cada fila que llegim del recordset.
@@ -229,14 +242,14 @@ exemple:
 ```php
     try {
         #Creem la consulta
-        $stmt = $ pdo-> query ( 'SELECT name, addr, city from col·legues');
+        $stmt = $pdo->query('SELECT name, addr, city from col·legues');
         #Ajustem la manera d'obtenció de dades
-        $stmt-> setFetchMode (PDO :: FETCH_OBJ);
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
     
         #Mostrem els resultats.
         #Fixeu-vos que es torna un objecte cada vegada que es llegeix una fila del recordset.
     
-        while ($row = $stmt-> fetch ()) {
+        while ($row = $stmt->fetch()) {
             echo $row->name. "<br/>";
             echo $row->addr. "<br/>";
             echo $row->city. "<br/>";
@@ -252,7 +265,7 @@ exemple:
     }
 ```
 
-### FETCH_CLASS
+#### FETCH_CLASS
 Paràmetre de `fetch()` i `fetchAll()` que torna una nova instància de la classe solicitada, 
 fent correspondre les columnes del conjunt de resultats amb els noms de les propietats de la classe, 
 i cridant  al constructor després, a menys que también es proporcione l'opció `PDO::FETCH_PROPS_LATE`.
@@ -320,7 +333,8 @@ $stmt = $pdo->prepare("INSERT INTO colegas (name, addr, city) values (?, ?, ?)")
 # Marcadores conocidos
 $stmt = $pdo->prepare("INSERT INTO colegas (name, addr, city) values (:name, :addr, :city)");
     
-# Aquí no lleva marcadores - ideal para una inyección SQL! ('''no usar este método'''). !! Hay que usar los marcadores !!
+// Aquí no lleva marcadores - ideal para una inyección SQL! ('''no usar este método'''). 
+// !! Hay que usar los marcadores !!
 $stmt = $pdo->prepare("INSERT INTO colegas (name, addr, city) values ($name, $addr, $city)");
 ```
 
@@ -670,38 +684,43 @@ catch (PDOException $e) {
     file_put_contents ('PDOErrors.txt', $e->getMessage(), FILE_APPEND);
 }
 ```   
-## Exercicis pràctics
 
 {: .alert .alert-activity }
 <div markdown="1">
-### Accés a la base de dades Blog
+
+### Accés a la base de dades del projecte
 {:.no_toc .nocount}
 
-Modifica el projecte del Bloc perquè obtinga els posts de la base de
+Modifica el projecte perquè obtinga els posts de la base de
 dades.
 
-En la pàgina principal mostrarà un llistat de *posts* (com a mínim els
-camps Títol, Data de publicació i Autor). A més d'un enllaç a una pàgina
-que mostrarà tots els camps d'un *post* determinat.
+Canvia la pàgina principal i la pàgina `movies.php` perquè s'obtinguen les dades de la base de dades
+  A més d'un enllaç a la pàgina `single-page.php` que mostrarà tots els camps d'una pel·lícula determinada.
 
 **Utilitza consultes preparades sempre que calga usar paràmetres.**
+
+** Obtin la resposta com un array d'objectes de la classe `Movie` amb el tipus de retorn `FETCH_CLASS` **. 
+
 </div>
 
 {: .alert .alert-activity }
 <div markdown="1">
-### Inserint nous posts
+### Inserint noves pel·lícules
 {:.no_toc .nocount}
 
-  - Crea un formulari per a inserir nous posts.
-  - Crea la pàgina que processa el formulari i després de validar tots
-    els camps els insereix a la base de dades.
+  - Crea un formulari (`movie-create.php`) per a inserir noves pel·lícules.
+  - Posa un enllaç al formulari en `movies.php`.
+  - La pàgina (`movie-create.php`) processarà el formulari i després de validar tots
+    els camps els inserirà a la base de dades.
+    
+   Cal tenir en compte la separació de la lògica i la presentació.
 </div>
 
 {: .alert .alert-activity }
 <div markdown="1">
-### Modificant i esborrants post
+### Modificant i esborrants pel·lícules
 {:.no_toc .nocount}
 
-Crea un formulari per a editar posts i per esborrar-los.
+Crea un formulari per a editar i esborrar pel·lícules.
 
 </div>

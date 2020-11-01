@@ -1,91 +1,177 @@
-.alert { 
-    background-color: #EEE; 
-    padding: 0.75em;  
-    padding-bottom: 0;
-    border-radius: 0.25rem; 
-    border: 1px #DDD solid; 
-    background-size: 1em;
-    margin-bottom: 0.5em;
+.alert {
+  background-color: #EEE;
+  padding: 0.75em;
+  padding-bottom: 0;
+  border-radius: 0.25rem;
+  border: 1px #DDD solid;
+  background-size: 1em;
+  margin-bottom: 0.5em;
 }
-.alert h3 {   
-    margin-top: 0.2em;   
-    padding-left: 2em; 
-    font-size: 1.1em;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
+
+.alert h3 {
+  margin-top: 0.2em;
+  padding-left: 2em;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
 }
 
 .alert h4 {
-    font-size: 1em;
-    text-transform: uppercase;
+  font-size: 1em;
+  text-transform: uppercase;
 }
 
 
-.alert-info { 
-    color: #0c5460;
-    background-color: #b7ded2;
-    border-color: #bee5eb;
+.alert-info {
+  color: #0c5460;
+  background-color: #b7ded2;
+  border-color: #bee5eb;
 }
 
 .alert-info h3 {
-    background: url("../../assets/book-reader-solid.svg") no-repeat; 
+  background: url("../../assets/book-reader-solid.svg") no-repeat;
 }
 
 .alert-activity h3 {
-    background: url("../../assets/laptop-code-solid.svg") no-repeat; 
+  background: url("../../assets/laptop-code-solid.svg") no-repeat;
 }
 
-.alert-activity { 
-    color: #333;
-    background-color: #ffeeee !important;
-    border-color: #ffdddd;
+.alert-activity {
+  color: #333;
+  background-color: #ffeeee !important;
+  border-color: #ffdddd;
 }
 
 .alert-warning h3 {
-    background: url("../../assets/exclamation-triangle-solid.svg") no-repeat; 
+  background: url("../../assets/exclamation-triangle-solid.svg") no-repeat;
 }
-.alert-question { 
-    color: #0c5460;
-    background-color: #ffecb8;
-    border-color: #bee5eb;
+
+.alert-question {
+  color: #0c5460;
+  background-color: #ffecb8;
+  border-color: #bee5eb;
 }
 
 // Autonumbering. Source: https://2ality.com/2012/01/numbering-headingshtml.html
 
 body {
-    counter-reset: h2counter;
-}
-h1 {
-    counter-reset: h2counter;
+  counter-reset: h2counter;
 }
 
-h2 { counter-reset:  h3counter;}
-h2:before {
-    content: counter(h2counter) ". ";
-    counter-increment: h2counter;
-    counter-reset: h3counter;
+h1 {
+  counter-reset: h2counter;
 }
+
+h2 {
+  counter-reset: h3counter;
+}
+
+h2:before {
+  content: counter(h2counter) ". ";
+  counter-increment: h2counter;
+  counter-reset: h3counter;
+}
+
 h2.nocount:before {
-    content: none;
-    counter-increment: none;
+  content: none;
+  counter-increment: none;
 }
 
 h3:before {
-    content: counter(h2counter) "." counter(h3counter) ". ";
-    counter-increment: h3counter;
+  content: counter(h2counter) "." counter(h3counter) ". ";
+  counter-increment: h3counter;
 }
+
 h3.nocount:before {
-    content: none;
-    counter-increment: none;
+  content: none;
+  counter-increment: none;
 }
 
 @media print {
   #markdown-toc {
-      display: none;
+    display: none;
   }
   #taula-de-continguts {
-        display: none;
-    }
-    h1 { font-size: 10px}
+    display: none;
+  }
+  h1 {
+    font-size: 10px
+  }
+}
+
+.side-bar {
+  z-index: 0;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f5f6fa;
+  width: 100% !important;
+  height: auto !important;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.site-header {
+  display: flex;
+  min-height: 60px;
+  align-items: center;
+}
+
+.site-nav, .site-header, .site-footer {
+  width: 100%;
+}
+
+.site-nav {
+  display: none;
+}
+
+#site-button {
+  display: flex !important;
+}
+.site-button {
+  display: flex !important;
+  height: 100%;
+  padding: 1rem;
+  align-items: center;
+}
+
+.site-title {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  flex-grow: 1;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  color: #27262b;
+  font-size: 18px !important;
+}
+
+.main-header {
+  z-index: 0;
+  display: none;
+  background-color: #f5f6fa;
+}
+
+.main {
+  margin: auto !important;
+
+}
+
+.main-content-wrap {
+
+
+}
+.site-footer {
+  display: none;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: #959396;
+  font-size: 11px !important;
 }
