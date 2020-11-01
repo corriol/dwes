@@ -693,10 +693,13 @@ catch (PDOException $e) {
 {:.no_toc .nocount}
 
 #### Enunciat
-Modifica el projecte perquè obtinga els partners i les pel·lícules de la base de
-dades.
 
-Canvia la pàgina principal i la pàgina `movies.php` perquè s'obtinguen les dades de la base de dades.
+1. Crea la base de dades `movies`.
+2. Importa l'arxiu `movies.sql`.
+3. Crea l'usuari `dbuser` amb `1234` de constrasenya.
+4. Dona-li els privilegis necessaris perquè sols puga fer SELECT, INSERT, DELETE i UPDATE 
+5. Modifica el projecte perquè obtinga els partners de la base de dades.
+6. Modifica també les pel·lícules perquè les obtinga de la base de dades.
   
 **Obtin la resposta com un array d'objectes de la classe `Movie` amb el tipus de retorn `FETCH_CLASS`** . 
 
