@@ -1,12 +1,12 @@
 ---
 layout: default
-title: 2. Accés a la base de dades mitjançant PHP amb la llibreria PDO
+title: 2. Accés a  dades mitjançant PHP PDO
 parent: 5. Accés a dades amb PHP
 nav_order: 2
 has_children: false
 ---
 
-# Accés a la base de dades mitjançant PHP amb la llibreria PDO
+# Accés a dades mitjançant PHP PDO 
 {: .no_toc }
 
 ## Taula de continguts
