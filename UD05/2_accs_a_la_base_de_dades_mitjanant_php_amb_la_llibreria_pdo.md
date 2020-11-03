@@ -693,6 +693,7 @@ catch (PDOException $e) {
 {:.no_toc .nocount}
 
 #### Enunciat
+{:.no_toc .nocount}
 
 1. Crea la base de dades `movies`.
 2. Importa l'arxiu `movies.sql`.
@@ -712,12 +713,16 @@ catch (PDOException $e) {
 ### Consultes preparades
 {:.no_toc .nocount}
 
-Crea la classe `DBConnection`. 
+#### Enunciat
+{:.no_toc .nocount}
 
-Modifica `single-page.php` perquè  obtinga les dades de la base de dades.
+1. Implementa el filtre de búsqueda en `partners.php` (seguint el vídeo)
+2. Modifica `single-page.php` perquè  obtinga les dades de la base de dades. 
+Rebrà `id` com a paràmetre pel querystring.
+3. Modifica el filtratge i l'ordenació en `movies.php` perquè funcione des de la base 
+de dades (**opcional**)
 
 **Utilitza consultes preparades sempre que calga usar paràmetres.**
-
 **Obtin la resposta com un array d'objectes de la classe `Movie` amb el tipus de retorn `FETCH_CLASS`**. 
 </div>
 
