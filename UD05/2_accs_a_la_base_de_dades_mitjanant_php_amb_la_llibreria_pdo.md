@@ -732,10 +732,14 @@ de dades (**opcional**)
 ### Inserint noves pel·lícules
 {:.no_toc .nocount}
 
+#### Enunciat
+{:.no_toc .nocount}
+
+  - Seguint les indicacions del vídeo crea el formulari de creació de partners.
   - Crea un formulari (`movie-create.php`) per a inserir noves pel·lícules.
   - Posa un enllaç al formulari en `movies.php`.
   - La pàgina (`movie-create.php`) processarà el formulari i després de validar tots
-    els camps els inserirà a la base de dades.
+    els camps els inserirà a la base de dades.    
     
    Cal tenir en compte la separació de la lògica i la presentació.
 </div>
@@ -745,7 +749,12 @@ de dades (**opcional**)
 ### Modificant i esborrants pel·lícules
 {:.no_toc .nocount}
 
-- Crea un formulari per a editar i esborrar pel·lícules.
-- Afig en en $movies un enllaç per a esborrar i editar la película de la fila.
+#### Enunciat
+{:.no_toc .nocount}
+
+ - Seguint les indicacions del vídeo crea el formulari d'edició de partners.
+ - Crea el formulari per a editar pel·lícules.
+ - Crea el formulari per a esborrar pel·lícules. 
+ - Afig en en $movies un enllaç per a esborrar i editar la película de la fila.
 
 </div>
