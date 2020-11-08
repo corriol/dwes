@@ -15,26 +15,92 @@ has_children: false
 1. TOC
 {:toc}
 
+## La classe Database
+
+La classe `Database` serà l'encarregada de gestionar la connexió amb la base de dades,
+contindrà un mètode estàtic `getConnetion()` que tornarà una instància d'una connexió `PDO`. Els mètodes estàtics 
+ són accessibles sense necessitat d'instanciar la classe. Així fent `$pdo = Database::getConnection()` obtindríem 
+ una instància de PDO.
+
+Avís: aquesta classe conté diverses males pràctiques que cal evitar. Temps tindrem d'arreglar-ho. De moment l'objectiu
+és que siga senzilla d'usar.  
+
+```php
+# src/Database.php
+
+class Database
+{
+    private PDO $connection;
+
+    private function __construct()
+    {
+        try {           
+            $name = "movies";
+            $user = "dbuser";
+            $pass = "1234";
+            $connection = "mysql:host=localhost;charset=utf8";            
+            $options = [                
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_PERSISTENT => true
+                ];
+            $this->connection = new PDO("$connection;dbname=$name", $user, $pass, $options);
+        } catch (PDOException $e) {
+            die ("Eerror en intentar connectar al servidor de base de dades: " . $e->getMessage());
+        } catch (Exception $e) {
+            die("Error en intentar connectar al servidor de base de dades: " . $e->getMessage());
+        }
+    }
+
+    public static function getConnection(): PDO
+    {
+        try {
+            $PDO = new Database();
+        } catch (Exception $e) {
+            die("Error en intentar connectar al servidor de base de dades: " . $e->getMessage());
+        }
+        return $PDO->connection;
+    }
+}
+```
+
+
 ## Arxiu de configuració
 
-És important que totes les dades de configuració que siguen susceptibles
+En l'exemple anterior les dades de la connexió estan posades directament, el que fa que sempre que vullguen 
+reutilitzar la classe haguem de modificar manualment la classe.  
+
+La solució habitual és  que totes les dades de configuració que siguen susceptibles
 de canviar en els diferents entorns (desenvolupament, producció, test,
 etc.) es separen en un o diversos fitxers de configuració.
 
 Aquests fitxers es poden codificar en PHP o utilitzar un altre format
 que després puga ser llegit per PHP (Per exemple, ara s'utilitza molt
-YAML)
+YAML).
+
+
+{: .alert .alert-info }
+<div markdown="1">
+### Dotenv
+{:.no_toc .nocount}
+
+Dotenv és una mena d'estàndard de facto per a emmagatzemar la informació sensible de les aplicacions. Mitjançant
+ fitxers `.env` s'estableix la configuració que després es carrega com a variables d'entorn.
+
+El seu origen està en el paquet Ruby dotenv i s'utilitza en diversos frameworks com Symfony i Nodejs.
+</div>
+
 
 Per exemple
 
 ```php
-#config.php
+# config/config.php
 $config = [
     'database' => [
         'username' => 'blog',
         'password' => '1234',
-        'connection' => 'mysql: host=blog.local, dbname=blog',
-        'options' => []
+        'connection' => 'mysql:host=blog.local;dbname=blog;charset=utf8',
+        'options' => [  PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_PERSISTENT => true ]
     ]
 ];
 
@@ -47,17 +113,19 @@ En format JSON:
     "database": {
         "username": "blog",
         "password": "blog",
-        "connection": "mysql: host=blog.local; dbname=blog",
-        "options": {
-        }
+        "connection": "mysql:host=blog.local;dbname=blog",
+        "options": { }
       }
     }
 ```
 
-## Creació de les entitats i la interfície a la base de dades
 
-Anomenarem entitats a les classes que mapejaran les taules de la base de
-dades, tindran un atribut per cada camp de la taula que mapegen.
+## Creació de les entitats 
+
+Les entitats són les classes que mapejaran les taules de la base de dades. Tindran un atribut per cada camp de la 
+taula que mapegen. Aquest tipus de classes també poden anomenar-se dominis (_domains_) o DAO (Data Access Objects). 
+Independentment del nom que se li done caldrà tenir en consideració la seua funcionalitat: representar 
+registres d'una taula.
 
 En la majoria dels casos només contindran:
 
@@ -73,130 +141,69 @@ Les consultes que obtindran dades de la BBDD tornaran un array d'entitats.
 Per exemple:
 
 ```php
-    class Book
-    {
-        private $id;
-        private $isbn;
-        private $title;
-        private $author;
-        private $stock;
-        private $price;
-    
-        public function getId(): int
-        {
-            return $this->id;
-        }
-    
-        public function getIsbn(): string
-        {
-            return $this->isbn;
-        }
-    
-        public function getTitle(): string
-        {
-            return $this->title;
-        }
-    
-        public function getAuthor(): string
-        {
-            return $this->author;
-        }
-    
-        public function getStock(): int
-        {
-            return $this->stock;
-        }
-    
-        public function getCopy(): bool
-        {
-            if ($this->stock < 1) {
-                return false;
-            } else {
-                $this->stock--;
-                return true;
-            }
-        }
-    
-        public function addCopy()
-        {
-            $this->stock++;
-        }
-    
-        public function getPrice(): float
-        {
-            return $this->price;
-        }
-    }
-```
-
-Tant el mètode `fetch` com el mètode `fetchAll` de la classe `PDOStatement`
-tenen la possibilitat de retornar les dades de la BBDD com a objectes de
-la classe que li indiquem.
-
-Utilitzarem el paràmetre `PDO::FETCH_CLASS` passant el nom de l'entitat
-com a segon paràmetre.
-
-```php
-$classEntity = 'Post';
-$posts= $stmt->fetchAll(PDO::FETCH_CLASS, $classEntity);
-```
-
-En aquest cas, obtindríem un array que conté totes les files del conjunt
-de resultats com a objectes de l'entitat `Post`
-
-Veure documentació del mètode:
-
-  - <https://www.php.net/manual/es/pdostatement.fetchall.php>
-
-Cal tenir en compte que si la classe té constructor caldrà emprar el 3
-paràmetre del mètode i afegir-los mitjançant un `array` i en el primer
-paràmetre afegir `PDO::FETCH_PROPS_LATE`.
-
-`PDO::FETCH_PROPS_LATE` s'usa amb `PDO::FETCH_CLASS` i el que fa és cridar 
-al constructor abans que s'assignen els atributs.
-
-
-```php
-class Persona
+class Book
 {
-    private $name;
+    private $id;
+    private $isbn;
+    private $title;
+    private $author;
+    private $stock;
+    private $price;
     
-    public function __construct(string $name)
+    public function getId(): int
     {
-        $this->name = $name;
-        $this->decir();
+        return $this->id;
     }
     
-    public function decir()
+    public function getIsbn(): string
     {
-        if (isset($this->name)) {
-            echo "Soy {$this->name}.\n";
+        return $this->isbn;
+    }
+    
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+    
+    public function getAuthor(): string
+    {
+        return $this->author;
+    }
+    
+    public function getStock(): int
+    {
+        return $this->stock;
+    }
+    
+    public function getCopy(): bool
+    {
+        if ($this->stock < 1) {
+            return false;
         } else {
-            echo "Aún no tengo nombre.\n";
+            $this->stock--;
+            return true;
         }
+    }
+    
+    public function addCopy()
+    {
+        $this->stock++;
+    }
+    
+    public function getPrice(): float
+    {
+        return $this->price;
     }
 }
-    
-$sth = $dbh->query("SELECT * FROM people"); // El name del primer és Paco.
-$sth->setFetchMode(PDO::FETCH_CLASS, 'Persona', ['Alicia']); // Soy Paco
-$persona = $sth->fetch(); 
-$persona->decir();
-    
-$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Persona', ['Alicia']); // Soy Alícia
-$persona = $sth->fetch(); 
-$persona->decir();
-
 ```
-Altra opció més senzilla seria que els paràmetres del constructor tingueren valors per defecte.
+
+Com ja hem vist en l'apartat anterior tant el mètode `fetch` com el mètode `fetchAll` de la classe `PDOStatement`
+tenen la possibilitat de retornar les dades de la BBDD com a objectes de la classe que li indiquem.
+
+Utilitzarem el paràmetre `PDO::FETCH_CLASS` passant el nom de l'entitat com a segon paràmetre.
 
 ```php
-   
-    public function __construct(string $name = '')
-    {
-        $this->name = $name;
-        $this->decir();
-    }
-
+$posts= $stmt->fetchAll(PDO::FETCH_CLASS, 'Book');
 ```
 
 ## Contenidors de serveis
@@ -207,13 +214,13 @@ serveis (és a dir, dels objectes).
 
 Suposem per exemple que tens una classe PHP senzilla que envia missatges
 de correu electrònic. Sense un contenidor de serveis, has de crear
-manualment l'objecte cada vegada que ho necessitis:
+manualment l'objecte cada vegada que el necessites:
 
 ```php
-    use Acme\HelloBundle\Mailer;
+use Acme\HelloBundle\Mailer;
     
-    $mailer = new Mailer ( 'sendmail');
-    $mailer-> send ('ryan@foobar.net ', ...);
+$mailer = new Mailer ( 'sendmail');
+$mailer-> send ('ryan@foobar.net ', ...);
 ```
 
 Aquest codi és bastant fàcil, ja que la classe imaginària Mailer
@@ -225,6 +232,44 @@ la forma en què s'envien els correus electrònics? Has de buscar en el
 codi de tota l'aplicació i canviar la mateixa configuració desenes de
 vegades?
 
-## Repositori d'entitats o models.
+## Model
 
-## Gestió de les relacions.
+El model representa la lògica de negocis.  S’encarrega d’accedir de forma directa a les dades actuant com a 
+“intermediari” amb la base de datos.
+
+En Symfony, per exemple, no trobareu models, és per això que llegireu que no és un MVC "pur",en canvi disposa 
+de repositoris d'entitats que en la pràtica són homologables als models. 
+ 
+En el nostre MVC tindrem la classe abstracta `Model` que implementarà les operacions habituals amb la base de dades.
+
+```php
+abstract class Model
+{
+ 
+  protected string $className;
+
+  protected string $tableName;
+
+  protected PDO $pdo;
+ 
+  public function __construct(PDO $pdo, string $tableName, string $className) {}
+
+  public function findAll($order = []): array {}
+  
+  public function find(int $id): Entity {}
+
+  public function findBy(array $data = [], $operator = "AND"): array {}
+  
+  public function findOneBy(array $data = []): ?Entity  {}
+
+  public function update(Entity $entity): bool {}
+  
+  public function save(Entity $entity): bool {}
+  
+  public function delete(Entity $entity): bool  { }
+
+  public function executeQuery(string $sql, array $parameters = []): array {}
+}
+```
+
+## Gestió de les relacions
