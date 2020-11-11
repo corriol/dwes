@@ -290,7 +290,8 @@ abstract class Model
 {:.no_toc .nocount}
 
 1. Implementa el model seguint les indicacions dels vídeos
-2. Implementa els mètodes `delete`, `update` i `executeQuery`.
+2. Implementa els mètodes `delete`, `update` i `executeQuery`. En `update` pots usar `array_map`
+per a generar la sentència `UPDATE` tenint en compte que la clau primària no pot canviar mai.
 3. Fes ús del model sempre que calga interactuar en la base de dades. 
 </div>
 
