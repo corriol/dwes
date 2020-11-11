@@ -252,24 +252,178 @@ abstract class Model
 
   protected PDO $pdo;
  
-  public function __construct(PDO $pdo, string $tableName, string $className) {}
+  public function __construct(PDO $pdo, string $tableName, string $className);
 
-  public function findAll($order = []): array {}
+  public function findAll($order = []): array;
   
-  public function find(int $id): Entity {}
+  public function find(int $id): Entity;
 
-  public function findBy(array $data = [], $operator = "AND"): array {}
+  public function findBy(array $data = [], $operator = "AND"): array;
   
-  public function findOneBy(array $data = []): ?Entity  {}
+  public function findOneBy(array $data = []): ?Entity ;
 
-  public function update(Entity $entity): bool {}
+  public function update(Entity $entity): bool;
   
-  public function save(Entity $entity): bool {}
+  public function save(Entity $entity): bool;
   
-  public function delete(Entity $entity): bool  { }
+  public function delete(int $id): bool;
 
+  // Rep una sentència SELECT en paràmetres que seran passats com a un array on la clau serà
+  // el nom del paràmetre i el valor el valor i torna un array amb el resultat. 
+  // per exemple si $sql és "SELECT * FROM movie WHERE title LIKE :text" el paràmetre
+  // passat  serà ["title"=>"%Ava%"]. 
   public function executeQuery(string $sql, array $parameters = []): array {}
 }
 ```
 
 ## Gestió de les relacions
+
+
+
+{: .alert .alert-activity }
+<div markdown="1">
+
+### Implementació del model 
+{:.no_toc .nocount}
+
+#### Enunciat
+{:.no_toc .nocount}
+
+1. Implementa el model seguint les indicacions dels vídeos
+2. Implementa els mètodes `delete`, `update` i `executeQuery`.
+3. Fes ús del model sempre que calga interactuar en la base de dades. 
+</div>
+
+{: .alert .alert-activity }
+<div markdown="1">
+
+### La classe FileUpload  
+{:.no_toc .nocount}
+
+#### Enunciat
+{:.no_toc .nocount}
+
+```php
+/**
+ * Class UploadedFile
+ *
+ * Classe que gestiona la pujada de fitxers al servidor mitjançant formularis
+ */
+class UploadedFile
+{
+    /**
+     * @var array
+     *
+     * Array del fitxer pujat. $_FILES['nom_del_camp_del_formuari']
+     */
+    private $file;
+    /**
+     * @var string
+     *
+     * Nom amb que es guardarà el fitxer.
+     */
+    private $fileName;
+    /**
+     * @var int
+     *
+     * Mida màxima en bytes del fitxer, 0 indica que no hi ha límit.
+     */
+
+    private $maxSize;
+    /**
+     * @var array
+     *
+     * Array amb els MimeType acceptats. Per exemple ['image/jpg', 'image/gif', image/png']. 
+     * Si l'array és buit  s'accepten tots els tipus.
+     */
+    private $acceptedTypes;
+
+    /**
+     * UploadedFile constructor. Comprova que s'ha pujat un fitxer, si no llançarà una excepció
+     * UploadFileNoFileException.
+     * En qualsevol altre error en la pujada llançarà l'excepció UploadFileException.
+     *
+     * El paràmetre $inputName rebrà la clau de $_FILES en que s'emmagatzemen les dades del 
+     * fitxer pujat.     
+     * 
+     * El paràmetre $maxSize indica la grandària màxima en bytes permesa. És opcional, 
+     * serà 0 per defecte.  Si és 0 la grandària és ilimitada.
+     *
+     * El paràmetre $acceptedTypes és opcional. Contindrà els mimetype (tipus de fitxers) permesos. 
+     * Per defecte estarà buit, en eixe cas es podrà pujar qualsevol tipus de fitxer.
+     *
+     * @param string $inputName
+     * @param int $maxSize
+     * @param array $acceptedTypes
+     * @throws UploadFileException
+     * @throws UploadFileNoFileException
+     */
+    public function __construct(string $inputName, int $maxSize = 0, 
+        array $acceptedTypes = array());
+
+    /**
+     * @return bool
+     *
+     * Comprova que el fitxer s'haja pujat correctament, que no supera el 
+     * limit de grandària i és del tipus indicat.
+     * Si no passa la validació llançarà una excepció.
+     * @throws UploadFileException
+     */
+    public function validate(): bool;
+
+    /**
+     * @return string
+     *
+     * Tornarà el nom del fitxer.
+     */
+    public function getFileName(): string
+    {
+        return $this->fileName;
+    }
+
+    /**
+     * @param string $directory
+     * @param string $fileName
+     * @return bool
+     *
+     * Guarda el fitxer en la ubicació indicada.
+     * Si no s'indica nom es guardarà amb el mateix nom que s'ha penjat.
+     * Si s'indica es guardarà en eixe nom, l'extensió s'obtindrà de forma automàtica a partir 
+     * del nom del que s'ha pujat.
+     *
+     * Exemple: $path = '/public/images/', $fileName = 'prova.png'
+     *
+     * Torna true si s'ha pogut moure la imatge a la ubicació indicada.
+     */
+    public function save(string $directory, $fileName = ""): bool
+    {
+        if (!is_uploaded_file($this->file['tmp_name'])) {
+            return false;
+        }
+        // TODO: Implementar el que falta
+    }
+
+    /**
+     * Extrau del nom de fitxer pujat la seua extensió
+     * @return string
+     */
+    private function getExtension(): string
+    {
+        $file = $this->file["name"];
+        $extensionArray = explode(".", $file);
+        $extension = end($extensionArray);
+        return $extension ? ".$extension" : "";
+    }
+}
+```
+
+1. A partir de la documentació en PHPDoc implementa els mètodes que falten de la classe `FileUpload`.
+2. Implementa també les excepcions personalitzades.
+3. Fes ús de la classe per a gestionar la pujada d'imatges en pel·lícules, limitant-les al format jpg i a la grandària
+de 300KB.
+4. En [Handling file uploads](https://www.php.net/manual/es/features.file-upload.php) teniu informació addicinal. 
+No cal que es cree el directori si no existeix. Anem a suposar que ja existeix. 
+ </div>
+
+
+
