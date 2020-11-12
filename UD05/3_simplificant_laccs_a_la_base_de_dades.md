@@ -271,7 +271,7 @@ abstract class Model
   // Rep una sentència SELECT en paràmetres que seran passats com a un array on la clau serà
   // el nom del paràmetre i el valor el valor i torna un array amb el resultat. 
   // per exemple si $sql és "SELECT * FROM movie WHERE title LIKE :text" el paràmetre
-  // passat  serà ["title"=>"%Ava%"]. 
+  // passat  serà ["text"=>"%Ava%"]. 
   public function executeQuery(string $sql, array $parameters = []): array {}
 }
 ```
