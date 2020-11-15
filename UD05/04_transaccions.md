@@ -1,7 +1,6 @@
 ---
 layout: default
-title: 4. Transaccions
-parent: 5. Accés a dades amb PHP
+parent: 5. Accés a dades amb PHP PDO
 nav_order: 4
 has_children: false
 ---

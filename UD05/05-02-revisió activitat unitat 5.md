@@ -1,12 +1,11 @@
 ---
 layout: default
-title: Annex 1. Revisió activitats unitat 5
 parent: 5. Accés a dades amb PHP
 nav_order: 5
 has_children: false
 ---
 
-# Revisió d'activitat capítol 5.2
+# Errors freqüents
 
 ## Problemes amb $releaseDate
 

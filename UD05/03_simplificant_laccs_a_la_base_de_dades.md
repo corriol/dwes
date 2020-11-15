@@ -1,7 +1,6 @@
 ---
 layout: default
-title: 3. Simplificant l'accés a la base de dades
-parent: 5. Accés a dades amb PHP
+parent: 5. Accés a dades amb PHP PDO
 nav_order: 3
 has_children: false
 ---
@@ -79,7 +78,7 @@ YAML).
 
 
 {: .alert .alert-info }
-<div markdown="1">
+<div markdown="1" class="info">
 ### Dotenv
 {:.no_toc .nocount}
 
@@ -266,7 +265,7 @@ abstract class Model
   
   public function save(Entity $entity): bool;
   
-  public function delete(int $id): bool;
+  public function delete(Entity $entity): bool;
 
   // Rep una sentència SELECT en paràmetres que seran passats com a un array on la clau serà
   // el nom del paràmetre i el valor el valor i torna un array amb el resultat. 
@@ -278,10 +277,8 @@ abstract class Model
 
 ## Gestió de les relacions
 
-
-
 {: .alert .alert-activity }
-<div markdown="1">
+<div markdown="1" class="activity">
 
 ### Implementació del model 
 {:.no_toc .nocount}
@@ -296,7 +293,7 @@ per a generar la sentència `UPDATE` tenint en compte que la clau primària no p
 </div>
 
 {: .alert .alert-activity }
-<div markdown="1">
+<div markdown="1" class="activity">
 
 ### La classe FileUpload  
 {:.no_toc .nocount}
@@ -424,7 +421,23 @@ class UploadedFile
 de 300KB.
 4. En [Handling file uploads](https://www.php.net/manual/es/features.file-upload.php) teniu informació addicinal. 
 No cal que es cree el directori si no existeix. Anem a suposar que ja existeix. 
- </div>
+</div>
 
 
+{: .alert .alert-activity }
+<div markdown="1" class="activity">
+
+### Gèneres  
+{:.no_toc .nocount}
+
+#### Enunciat
+{:.no_toc .nocount}
+
+1. Implementa el model per a la taula `Genre`.
+2. En `Movie` afig la propietat `$genre_id` que serà la clau aliena a la taula `Genere` i crea els mètodes 
+`Movie::setGenreId()` i `Movie::getGenreId()` per a accedir a la propietat.
+3. Modifica el formulari de creació de pel·lícules perquè es puga triar el gènere d'una llista desplegable.
+4. En el llistat de pel·lícules (`movies.php`) afig una columna que mostre el `id` de gènere.
+5. Modifica `Model::save()` perquè assigne l'últim id inserit a l'element Entity.  
+</div>
 
