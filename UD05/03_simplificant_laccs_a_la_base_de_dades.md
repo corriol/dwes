@@ -276,6 +276,22 @@ abstract class Model
 ```
 
 ## Gestió de les relacions
+A l'hora d'obtenir les dades de les entitats relacionades podem optar per dues estratègies: 
+_lazy loading_ o _eager loading_.
+
+* _Lazy loading_ o càrrega diferida és un patró de disseny que s’utilitza habitualment en programació,  
+ sobretot en el disseny i desenvolupament de pàgines web per diferir la inicialització d’un objecte
+  fins al punt en què es necessita.
+  
+ * _Eager loading_ o càrrega immediata és un patró de disseny pel qual una consulta per a un tipus d’entitat 
+ també carrega entitats relacionades com a part de la consulta, de manera que no necessitem executar una
+  consulta independent per a entitats relacionades. 
+
+En el nostre cas optarem per la càrrega diferida per ser més senzilla. Aprofundirem més en aquestes conceptes
+ quan parlem de _frameworks_ com Laravel o Symfony.
+
+
+## Activitats
 
 {: .alert .alert-activity }
 <div markdown="1" class="activity">
@@ -292,14 +308,6 @@ per a generar la sentència `UPDATE` tenint en compte que la clau primària no p
 3. Fes ús del model sempre que calga interactuar en la base de dades. 
 </div>
 
-{: .alert .alert-activity }
-<div markdown="1" class="activity">
-
-### La classe FileUpload  
-{:.no_toc .nocount}
-
-#### Enunciat
-{:.no_toc .nocount}
 
 ```php
 /**
@@ -415,6 +423,17 @@ class UploadedFile
 }
 ```
 
+{: .alert .alert-activity }
+<div markdown="1" class="activity">
+
+### La classe FileUpload  
+{:.no_toc .nocount}
+
+#### Enunciat
+{:.no_toc .nocount}
+
+Fes una ullada a la classe FileUpload anterior.
+
 1. A partir de la documentació en PHPDoc implementa els mètodes que falten de la classe `FileUpload`.
 2. Implementa també les excepcions personalitzades.
 3. Fes ús de la classe per a gestionar la pujada d'imatges en pel·lícules, limitant-les al format jpg i a la grandària
@@ -439,5 +458,19 @@ No cal que es cree el directori si no existeix. Anem a suposar que ja existeix.
 3. Modifica el formulari de creació de pel·lícules perquè es puga triar el gènere d'una llista desplegable.
 4. En el llistat de pel·lícules (`movies.php`) afig una columna que mostre el `id` de gènere.
 5. Modifica `Model::save()` perquè assigne l'últim id inserit a l'element Entity.  
+</div>
+
+{: .alert .alert-activity }
+<div markdown="1" class="activity">
+
+### Obtenint en gènere  
+{:.no_toc .nocount}
+
+#### Enunciat
+{:.no_toc .nocount}
+
+1. Implementa el mètode `MovieModel::getGenre()` de forma que en rebre l'id d'un gènere et torne 
+l'objecte gènere relacionat.
+2. Utilitza el mètode anterior perquè en `movies.php` aparega el nom del gènere enlloc del seu `id`.
 </div>
 

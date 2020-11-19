@@ -1,7 +1,7 @@
 ---
 layout: default
-parent: 5. Accés a dades amb PHP
-nav_order: 5
+parent: 5. Accés a dades amb PHP PDO
+nav_order: 7
 has_children: false
 ---
 

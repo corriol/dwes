@@ -546,6 +546,7 @@ $result = $stmt->execute();
 
 #### INSERT
 
+
 ```php
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
@@ -569,6 +570,7 @@ try {
 
 #### UPDATE
 
+
 ```php
 $id = 5;
 $name = "Joe the Plumber";
@@ -590,6 +592,7 @@ try {
 ```
 
 #### DELETE
+
 
 ```php
 $id = 5; // From a form or something similar

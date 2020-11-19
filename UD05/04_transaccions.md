@@ -96,5 +96,21 @@ necessari.
         $mbd->rollBack();
         echo "Fallo: " . $e->getMessage();
     }
-
 ```
+
+
+
+{:.alert .alert-activity}
+<div markdown="1">
+
+### Transaccions
+{:.nocount .no_toc}
+
+#### Enunciat
+{:.nocount .no_toc}
+
+Implementa una transacció de forma que les operacions d'inserció de pel·lícules en la base de dades
+i d'actualització del número de gèneres s'execute de forma única (com si fos una).
+</div>    
+ 
+
