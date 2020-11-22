@@ -463,7 +463,7 @@ No cal que es cree el directori si no existeix. Anem a suposar que ja existeix.
 {: .alert .alert-activity }
 <div markdown="1" class="activity">
 
-### Obtenint en gènere  
+### Obtenint el gènere  
 {:.no_toc .nocount}
 
 #### Enunciat

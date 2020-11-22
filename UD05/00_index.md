@@ -22,5 +22,21 @@ toc-title: "Índex de continguts"
 secnumdepth: 2
 markdown_in_html_blocks: false
 has_children: true
+header-includes:
+- |
+  ```{=latex}
+  \usepackage{tcolorbox}
+
+  \newtcolorbox{info-box}{colback=cyan!5!white,arc=0pt,outer arc=0pt,colframe=cyan!60!black}
+  \newtcolorbox{warning-box}{colback=orange!5!white,arc=0pt,outer arc=0pt,colframe=orange!80!black}
+  \newtcolorbox{error-box}{colback=red!5!white,arc=0pt,outer arc=0pt,colframe=red!75!black}
+  \newtcolorbox{activity-box}{colback=green!5!white,arc=0pt,outer arc=0pt,colframe=green!75!black} 
+  ```
+pandoc-latex-environment:
+  tcolorbox: [box]
+  info-box: [info]
+  warning-box: [warning]
+  error-box: [error]
+  activity-box: [activity]
 ---
 

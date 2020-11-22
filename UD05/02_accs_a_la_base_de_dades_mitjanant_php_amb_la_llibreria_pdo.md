@@ -544,7 +544,7 @@ $result = $stmt->execute();
 
 ### Exemples CRUD (**C**reate, **R**ead, **U**pdate, **D**elete): INSERT, UPDATE y DELETE
 
-#### INSERT
+**INSERT**
 
 
 ```php
@@ -568,8 +568,7 @@ try {
 }
 ```
 
-#### UPDATE
-
+**UPDATE**
 
 ```php
 $id = 5;
@@ -591,7 +590,7 @@ try {
 }
 ```
 
-#### DELETE
+**DELETE**
 
 
 ```php
@@ -644,6 +643,18 @@ $pdo-> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 $pdo-> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ```
 
+
+{: .alert .alert-warning }
+<div markdown="1" class="warning"> 
+Es recomana activar aquesta opció per gestionar els errors amb PDOException, d'altra forma no 
+apareixerà cap missatge i serà complicat detectar-los. 
+
+```php
+$pdo-> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+```
+</div>
+
+
 **Exemple d'ús:**
 
 ```php
@@ -676,6 +687,7 @@ catch (PDOException $e) {
 ```   
 
 
+{: .alert .alert-activity }
 <div markdown="1" class="activity">
 
 ### Accés i consulta a la base de dades 

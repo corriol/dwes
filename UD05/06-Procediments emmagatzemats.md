@@ -113,7 +113,7 @@ $sentencia->execute();
 ```
 
 {:.alert .alert-activity}
-<div markdown="1">
+<div markdown="1" class="activity">
 
 ### Procediment emmagatzemat
 {:.nocount .no_toc}
@@ -121,13 +121,10 @@ $sentencia->execute();
 #### Enunciat
 {:.nocount .no_toc}
 
-Crea un procediment emmagatzemant anomenat `sp_update_number_of_movies()`que actualitze els 
-contadors de pel·lícues de gènere.
-
-Aquest procediment serà excutat regularment perquè cada gènere tinga el número de pel·lícules del
-gènere actualitat.
-
-Crea en el projecte la pàgina `tasks.php` que incloga l'execució del procediment emmagatzemant.
+1. Crea un procediment emmagatzemant anomenat `sp_update_number_of_movies()`que actualitze els 
+contadors de pel·lícues de gènere. Aquest procediment serà excutat regularment perquè cada gènere tinga 
+el número de pel·lícules del gènere actualitat.
+2. Crea en el projecte la pàgina `tasks.php` que incloga l'execució del procediment emmagatzemant.
 </div>    
  
 ## Webgrafia
