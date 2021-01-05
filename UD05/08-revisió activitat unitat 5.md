@@ -20,8 +20,7 @@ Eixe és el problema si usem `private DateTime $release_date`, que com la data l
 propietat és de tipus  `DateTime` mostra un error. 
 
 La solució més elegant que he trobat i que ens permet usar el mode `FETCH_PROPS_LATE` en el `fechtAll()` es tractar 
-d'aprofitar que quan recuperem dades d'una taula amb `FETCH_CLASS` si les propietats que no eixisteixen  
-en la classe les crea.
+d'aprofitar que quan recuperem dades d'una taula amb `FETCH_CLASS` si les propietats que no eixisteixen  en la classe les crea.
 
 Això dispara el mètode màgic `__set($name, $value)` i perment que puguem llegir el valor i convertir-lo en 
 `DateTime` sobre la propietat $releaseDate.

@@ -1,3 +1,7 @@
+
+body {
+  color: #001122 !important;
+}
 .alert {
   background-color: #EEE;
   padding: 0 .75em;
@@ -5,16 +9,24 @@
   border: 1px #DDD solid;
   background-size: 1em;
   margin: 0;
+  margin-bottom: 1em;
+
+  background-repeat:  no-repeat;
+  background-position-y: center;
+  background-position-x: 10px;
+  background-blend-mode: soft-light;
+
+  padding-left: 40px;
 
 }
 
-.alert h3 {
-  margin-top: 0.2em;
-  padding-left: 2em;
-  font-size: 1.1em;
-  font-weight: bold;
+.main-content .alert h3 {  
+  margin-top: 1.5rem;
+  font-weight: 500;  
+  margin-bottom: 1rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+
+  
 }
 
 .alert h4 {
@@ -25,42 +37,48 @@
 
 .alert-info {
   color: #0c5460;
-  background-color: #b7ded2;
+  background-color: #d1ecf1;
+  background-image: url("../../assets/info-circle-solid.svg");
   border-color: #bee5eb;
-}
 
-.alert-info h3 {
-  background: url("../../assets/book-reader-solid.svg") no-repeat;
-}
 
-.alert-activity h3 {
-  background: url("../../assets/laptop-code-solid.svg") no-repeat;
 }
 
 .alert-activity {
-  color: #333;
-  background-color: #ffeeee !important;
-  border-color: #ffdddd;
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  background-image: url("../../assets/laptop-code-solid.svg");
+
 }
 
 .alert-warning {
-  color: #60240c;
-  background-color: #faf0e2;
-  border-color: #f8ab1b;
-}
-.alert-warning h3 {
-  background: url("../../assets/exclamation-triangle-solid.svg") no-repeat;
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+  background-image: url("../../assets/exclamation-triangle-solid.svg");
 }
 
+
 .alert-question {
-  color: #0c5460;
-  background-color: #ffecb8;
-  border-color: #bee5eb;
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+  background-image: url("../../assets/question-circle-solid.svg");
+
+}
+
+
+html { font-size: 18px !important;
+ }
+
+#main-content {
+  font-family: Georgia, Serif;
 }
 
 // Autonumbering. Source: https://2ality.com/2012/01/numbering-headingshtml.html
 
-body {
+/* body {
   counter-reset: h2counter;
 }
 
@@ -92,7 +110,7 @@ h3.nocount:before {
   content: none;
   counter-increment: none;
 }
-
+*/
 @media print {
   #markdown-toc {
     display: none;
@@ -105,6 +123,8 @@ h3.nocount:before {
   }
 }
 
+h1, h2, h3, h4, h5, h6 { font-family: Arial, sans-serif}
+/*
 .side-bar {
   z-index: 0;
   display: flex;
@@ -179,4 +199,4 @@ h3.nocount:before {
   padding-bottom: 1rem;
   color: #959396;
   font-size: 11px !important;
-}
+}*/

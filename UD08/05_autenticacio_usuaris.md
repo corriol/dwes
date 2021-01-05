@@ -1,20 +1,20 @@
 ---
-layout: default
-title: 1. Mecanismes d'autenticació via HTTP
-nav_order: 1
-parent: 8. Autenticació d'usuaris i control d'accés 
+layout: default 
+title: 5. Autenticació d'usuaris
+parent: 8. Seguretat i control d'errors 
+nav_order: 5
 ---
 
- 
+# Autenticació d'usuaris
+{: .no_toc .nocount }
 
-# Mecanismes d'autenticació via HTTP 
-{: .no_toc }
 
-## Taula de continguts
-{: .no_toc .text-delta  .nocount }
-
-1. TOC
+1. TOC 
 {:toc}
+
+
+
+## Autenticació basada en HTTP
 
 El protocol HTTP ofereix un mètode senzill per autenticar els usuaris. El procés és el següent:
 
@@ -29,7 +29,7 @@ http://httpd.apache.org/docs/2.0/es/howto/auth.html
 
 Per exemple, per crear el fitxer d'usuari i afegir-li el usuari "dwes", pots fer:
 
-```
+```console
 sudo htpasswd -c users dwes
 ```
 
@@ -49,12 +49,12 @@ requereix valid-user
 
 El significat de cadascuna de les directives anteriors és el següent:
 
-| Directiva | significat |
-| --- | --- |
-| AuthName | Nom de domini que es farà servir en l'autenticació. Si el client s'autentica correctament, aquesta mateixa informació d'autenticació s'utilitzarà automàticament en la resta de les pàgines de el mateix domini. |
-| AuthType | Mètode d'autenticació que es farà servir. A més de l'mètode Basic, Apache també permet utilitzar el mètode Digest. |
-| AuthUserFile | Camí de l'arxiu de credencials que has creat amb htpasswd. |
-|Require | Permet indicar que només puguin accedir alguns usuaris o grups d'usuaris concrets. Si indiquem "valid-user", podran accedir tots els usuaris que es s'autentifiquin correctament. |
+| Directiva    | significat                                                                                                                                                                                                       |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AuthName     | Nom de domini que es farà servir en l'autenticació. Si el client s'autentica correctament, aquesta mateixa informació d'autenticació s'utilitzarà automàticament en la resta de les pàgines de el mateix domini. |
+| AuthType     | Mètode d'autenticació que es farà servir. A més de l'mètode Basic, Apache també permet utilitzar el mètode Digest.                                                                                               |
+| AuthUserFile | Camí de l'arxiu de credencials que has creat amb htpasswd.                                                                                                                                                       |
+| Require      | Permet indicar que només puguin accedir alguns usuaris o grups d'usuaris concrets. Si indiquem "valid-user", podran accedir tots els usuaris que es s'autentifiquin correctament.                                |
 
 A més hauràs de assegurar-te que en la configuració d'Apache s'utilitza la directiva AllowOverride perquè s'apliqui correctament la configuració que figura en els fitxers `.htaccess`.
 
@@ -70,11 +70,11 @@ A l'incloure l'opció -c el que fem és crear un nou fitxer, amb la qual cosa el
 
 Des PHP pots accedir a la informació d'autenticació HTTP que ha introduït l'usuari utilitzant l'array superglobal `$_SERVER`.
 
-| valor | contingut |
-| --- | --- |
-| `$_SERVER['PHP_AUTH_USER']` | Nom d'usuari que s'ha introduït. |
-| `$_SERVER['PHP_AUTH_PW']` | Clau introduïda. |
-| `$_SERVER['AUTH_TYPE']`  | Mètode HTTP usat per autentificar. Pot ser Basic o Digest. | 
+| valor                       | contingut                                                  |
+| --------------------------- | ---------------------------------------------------------- |
+| `$_SERVER['PHP_AUTH_USER']` | Nom d'usuari que s'ha introduït.                           |
+| `$_SERVER['PHP_AUTH_PW']`   | Clau introduïda.                                           |
+| `$_SERVER['AUTH_TYPE']`     | Mètode HTTP usat per autentificar. Pot ser Basic o Digest. |
 
 És a dir, que si crees una pàgina web que mostre els valors d'aquestes variables, i prepares el servidor web per utilitzar autenticació HTTP, quan accedisques a aquesta pàgina amb l'usuari "dwes" obtindràs alguna cosa com el següent:
 
@@ -150,7 +150,7 @@ Hauràs de crear una pàgina similar a l'anterior, i afegir el codi per forçar 
 </html>
 ```
 
-## Incorporació de mètodes d'autenticació a una aplicació web ##
+## Incorporació de mètodes d'autenticació a una aplicació web 
 Si utilitzes la funció `header` per forçar el navegador a sol·licitar credencials HTTP, l'usuari introduirà un nom i una contrasenya. Però el servidor no ha de verificar aquesta informació; hauràs de ser tu qui proveïsca un mètode per comprovar que les credencials que ha introduït l'usuari són correctes.
 
 El mètode més simple és incloure en el codi PHP de la teva pàgina les sentències necessàries per comparar les dades introduïdes amb altres dades fixos. Per exemple, per a permetre l'accés a un usuari "dwes" amb contrasenya "abc123.", pots fer:

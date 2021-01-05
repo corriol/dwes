@@ -101,7 +101,7 @@ necessari.
 
 
 {:.alert .alert-activity}
-<div markdown="1">
+<div markdown="1" class="activity">
 
 ### Transaccions
 {:.nocount .no_toc}

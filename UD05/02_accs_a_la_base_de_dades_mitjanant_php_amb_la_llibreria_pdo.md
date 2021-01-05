@@ -181,14 +181,16 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
 O en el moment de recuperar-los:
 
 ```php
-$stmt->fetch(PDO::FETCH_ASSOC)
-$stmt->fechtall(PDO::FETCH_ASSOC)
+$stmt->fetch(PDO::FETCH_ASSOC);
+$stmt->fechtall(PDO::FETCH_ASSOC);
 ```
- 
-#### FETCH_ASSOC
 
-Per executar la consulta SELECT si no tenim paràmetres en la consulta
-podrem usar `PDO::query()`
+Cal saber que no podem usar `PDO::FETCH_CLASS` com a paràmetre de `PDOStatement::fetch()`. Cal controlar l'estil de
+búsqueda amb `PDOStatement::setFetchMode()`.     
+ 
+**FETCH_ASSOC**
+
+Per executar la consulta SELECT si no tenim paràmetres en la consulta podrem usar `PDO::query()`
 
 Vegem un exemple de consulta SELECT:
 
@@ -218,7 +220,7 @@ try {
  }       
 ```
 
-#### FETCH_OBJ
+**FETCH_OBJ**
 
 En aquest estil de búsqueda es crearà un objecte estàndard (`stdClass`) per
 cada fila que llegim del recordset.
@@ -251,11 +253,13 @@ Per exemple:
     }
 ```
 
-#### FETCH_CLASS
-En aquest estil de búsqueda de `fetch()` i `fetchAll()` els registres es tornaran en una nova instància 
+**FETCH_CLASS**
+
+En aquest estil de búsqueda els registres es tornaran en una nova instància 
 de la classe indicada en el segon paràmetre, fent correspondre les columnes del conjunt de resultats amb els noms de les
  propietats de la classe, i cridant  al constructor després, a menys que también es proporcione 
- l'opció `PDO::FETCH_PROPS_LATE`. Si la propietat no existein en la classe es crearà.
+ l'opció `PDO::FETCH_PROPS_LATE`. Si algun nom de camp no existeix com a propietat en la classe es crearà dinàmicament.
+ 
 
 ```php
 class Persona
@@ -333,12 +337,13 @@ d'assignar els valors d'eixos marcadors.
 Per enllaçar els marcadors anònims amb el seu corresponent valor es pot
 utilitzar `bindParam` o `bindValue`:
 
+<div markdown="1" class="info">
 ATENCIÓ:` $pdo->prepare()` usant marcadors anònims `?`, tracta totes les
-variables com si foren cadenes, per la qual cosa farà servir cometes
+variables com si foren _string_, per la qual cosa farà servir cometes
 per delimitar els seus valors per defecte.
+</div>
 
 ```php
-
 # Marcadors anònims
 $stmt = $pdo->prepare("INSERT INTO colleague (name, addr, city) values (?, ?, ?)");
     
@@ -348,7 +353,7 @@ $stmt->bindParam(2, $addr);
 $stmt->bindParam(3, $city);
     
 # Inserim una fila.
-$name = "Daniel"
+$name = "Daniel";
 $addr = "1 Wicked Way";
 $city = "Arlington Heights";
 $stmt->execute();
@@ -365,7 +370,7 @@ associatiu:
 
 ```php
  # Les dades que volem inserir
- $dades = array('Cathy', '9 Dark and Twisty Road', 'Cardiff');
+ $dades = ['Cathy', '9 Dark and Twisty Road', 'Cardiff'];
     
  $stmt = $pdo->prepare("INSERT INTO colleague (name, addr, city) values (?, ?, ?)");
  $stmt->execute($dades);
@@ -487,7 +492,7 @@ $stmt->execute((array)$cathy);
 ### Exemple d'ús
 Per a utilitzar les consultes preparades seguirem sempre aquest esquema:
 
-![](consultes-preparades.png)
+![Consultes preparades](consultes-preparades.png)
 
 ```php
 $pdo = new PDO('sqlite:/path/db/users.db');
@@ -512,6 +517,15 @@ $stmt->bindParam(':id', $id, PDO::PARAM_INT);
  $rows = $stmt->fetchAll();
 
 ```
+
+{: .alert .alert-info }
+<div markdown="1" class="info"> 
+
+Recorda que el tipus DATE de MySQL es recupera com un _string_ en format "YYYY-MM-DD" i a l'hora
+d'emmagatzemar-lo cal que tinga el mateix format. 
+
+Si fóra DATETIME també caldria afegir l'hora "YY-MM-DD hh:mm:ss".
+</div>
   
 ## Inserció, modificació i eliminació de dades de la BBDD
 
@@ -647,7 +661,7 @@ $pdo-> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 {: .alert .alert-warning }
 <div markdown="1" class="warning"> 
 Es recomana activar aquesta opció per gestionar els errors amb PDOException, d'altra forma no 
-apareixerà cap missatge i serà complicat detectar-los. 
+apareixerà cap missatge i serà complicat detectar-los.
 
 ```php
 $pdo-> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -693,8 +707,7 @@ catch (PDOException $e) {
 ### Accés i consulta a la base de dades 
 {:.no_toc .nocount}
 
-#### Enunciat
-{:.no_toc .nocount}
+**Enunciat**
 
 1. Crea la base de dades `movies`.
 2. Importa l'arxiu `movies.sql`.
@@ -714,8 +727,7 @@ catch (PDOException $e) {
 ### Consultes preparades
 {:.no_toc .nocount}
 
-#### Enunciat
-{:.no_toc .nocount}
+**Enunciat**
 
 1. Implementa el filtre de búsqueda en `partners.php` (seguint el vídeo)
 2. Modifica `single-page.php` perquè  obtinga les dades de la base de dades. 
@@ -733,7 +745,7 @@ de dades (**opcional**)
 ### Inserint noves pel·lícules
 {:.no_toc .nocount}
 
-#### Enunciat
+**Enunciat**
 {:.no_toc .nocount}
 
   - Seguint les indicacions del vídeo crea el formulari de creació de partners.
@@ -750,7 +762,7 @@ de dades (**opcional**)
 ### Modificant i esborrants pel·lícules
 {:.no_toc .nocount}
 
-#### Enunciat
+**Enunciat**
 {:.no_toc .nocount}
 
  - Seguint les indicacions del vídeo crea el formulari d'edició de partners.

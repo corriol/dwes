@@ -1,3 +1,8 @@
+---
+parent: 6. Cap a un framework MVC
+nav_order: 1
+---
+
 # El controlador frontal 
  
 El controlador frontal és un patró de disseny que apareix en diversos catàlegs de patrons 
@@ -220,96 +225,4 @@ Els flags indiquen:
  * `L`, indica que aplicada la regla, s'ature l'execució. 
 
 Més informació:
-
 * [Apache mod_rewrite](https://httpd.apache.org/docs/2.4/rewrite/)
-
-# Routing
-Una de les tasques que hem de realitzar a l'hora d'analitzar un projecte és com anem a
- organitzar la taula de rutes. Nosaltres seguirem la guia següent: [REST resource naming](https://restfulapi.net/resource-naming/). 
-
-Una ruta serà la url que ens donarà accés a un controlador. Com que encara no disposem de controladors
-el que farem serà associar les dades de la URL amb l'script encarregat de resoldre aquesta operació.
-
-## La classe Router
-És convenient encapsular l'operativa amb la taula de rutes dins d'una classe que siga la responsable 
-d'aquesta tasca.
-
-Aquesta classe tindrà l'array de rutes com a atribut. I tindrà els següents mètodes:
-
-* `setRoutes()`, que ens permetrà carregar les rutes de la taula.
-* `route()`, que activarà el controlador encarregat de gestionar una ruta.
-
-La ubicarem dins del directori `Core`, ja que serà una classe del nostre _framework_.
-
-La seva responsabilitat serà gestionar tot el que tinga a veure amb les rutes de l'aplicació.
-
-```
-# config/routes.php
-return [
-        ""=>"index.php",
-        "movies"=>"movies.php",
-        "partners"=>"partners.php",
-        "movies-show"=>"single-page" 
-];
-```
-
-# La classe Request
-La ubicarem dintre de Core.
-
-Serà la responsable de gestionar les peticions. Tindrà tres propietats `domain`, `path` i `method`. De moment
-crearem el mètode `Request::getPath()` per obtenir la ruta sol·licitada.  
-
-```php
-public function __construct() {
-    $this->domain = $_SERVER['HTTP_HOST'];
-    $this->path = explode('?', $_SERVER['REQUEST_URI'])[0];
-    $this->method = $_SERVER['REQUEST_METHOD'];
-}
-```
-
-## Què necessites? La injecció de dependències
-
-La injecció de dependències (_dependency injection_) és un patró de disseny orientat a objectes en
- què es subministren els objectes a una classe en lloc de ser la pròpia classe la que creu aquests objectes. 
-
-Aquests objectes compleixen contractes (interfícies, classes abstractes) que necessiten les nostres
- classes per poder funcionar (d'aquí el concepte de dependència). 
-
-Les nostres classes no creen els objectes que necessiten, sinó que se'ls subministra una altra classe 'contenidora' que injectarà la implementació desitjada al nostre contracte.
-
-Simplificant:
-
-> La injecció de dependències proporciona a una classe les seves dependències ja siga mitjançant la injecció del constructor, crides a mètodes o l’establiment de propietats.
-
-Exemple:
-https://github.com/Seldaek/monolog/blob/master/doc/01-usage.md
-
-Exemple
-
-## Contenidor de serveis
-
-Utilitat que ajuda a la implementació de la injecció de dependències.
-
-La classe App
-
-``` php
-class App
-{
-    private static $container = array();
-    public static function bind($key, $value) {
-        static:: $container [$key] = $value;
-    }
-}
-public static function get($key)
-{
-    if(! array_key_exists ($key, static:: $container )) {
-        throw new Exception("The $key doesn't in the container");
-    }
-    return static:: $container [$key];
-}
-}
-```
-
-## Webgrafia i recursos
-
-* WIKIPEDIA CONTRIBUTORS. Front controller [en llínia].[https://en.wikipedia.org/w/index.php?title=Front_controller&oldid=965938044](https://en.wikipedia.org/w/index.php?title=Front_controller&oldid=965938044). Data de consulta: 20/11/2020.

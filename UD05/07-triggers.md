@@ -42,7 +42,7 @@ ON table_name FOR EACH ROW
 trigger_body
 ```
 
-Aquest trigger executarà abans d'actualitzar una pe·lícula:
+En aquest exemple el trigger executarà despŕes (AFTER UPDATE) d'actualitzar una pe·lícula:
 
 ```sql
 DELIMITER $$
