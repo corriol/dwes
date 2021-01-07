@@ -167,6 +167,30 @@ Si és la seva primera visita, mostra un missatge de benvinguda. En cas contrari
 les seves visites anteriors. A més a més, afegeix un botó a la pàgina que permeta esborrar el registre de visites.
 </div>
 
+### Solució proposada
+
+```php
+# index.php
+
+// We turn on the session support
+session_start();
+
+$sessionKey = "visits";
+
+// check if is the first visit
+$visits = $_SESSION[$sessionKey]??[];
+
+// if not empty generate an HTML Unordered List
+if (!empty($visits))
+    $messageSession =  "<ul><li>" . implode("</li><li>", array_map(function($v) {
+            return date("d/m/Y h:i:s", $v);
+        }, $visits)) . "</li></ul>";
+else
+    $messageSession = "Welcome to our reservation system (session version)!";
+
+$_SESSION[$sessionKey][] = time();
+```
+
 ## Gestió de la informació de la sessió ##
 
 Anem a utilitzar la informació de la sessió per a millorar alguns aspectes de la gestió del formulari de reserves. 
