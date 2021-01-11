@@ -1,8 +1,8 @@
 ---
 layout: default
-title:  4. Bones pràctiques
-parent: 8. Autenticació d'usuaris i control d'accés
-nav_order: 4
+title:  5. Bones pràctiques
+parent: 8. Seguretat i control d'errors 
+nav_order: 5
 ---
 
 # Bones pràctiques #
@@ -13,9 +13,6 @@ nav_order: 4
 
 1. TOC
 {:toc}
-
----
-
 
 
 ## Usa sempre HTTPS ##
@@ -140,7 +137,7 @@ if (password_verify("contrenya-errònia", $passwordHash)) {
 
 {: .alert .alert-activity }
 <div markdown="1">
-### Activitat ###
+**Activitat 10. Implementació de bones pràctiques**
 
 Adapta el projecte de forma que:
 
@@ -149,7 +146,6 @@ Adapta el projecte de forma que:
  3. Les constrasenyes s'encripten amb *bcrypt*.
  4. Es tanque la sessió tal com s'indica.
 </div>
-
 
 
 ## Recursos ##

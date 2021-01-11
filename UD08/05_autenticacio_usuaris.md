@@ -1,6 +1,6 @@
 ---
 layout: default 
-title: 5. Autenticació d'usuaris
+title: 4. Altres formes d'autenticació d'usuaris
 parent: 8. Seguretat i control d'errors 
 nav_order: 5
 ---

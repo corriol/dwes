@@ -219,13 +219,23 @@ exit();
 ```
 </div>
 
+
+<div markdown="1" class="alert-warning alert">
+**Compte amb les redireccions**
+
+És molt important fer una correcta gestió dels errors abans de fer
+una redirecció sinó és possible que s'amaguen els errors i passen
+coses estranyes.
+</div>
+
+
 <div markdown="1" class="alert-activity alert">
 **Activitat 4. Errors de validació**
 
 Modifica les pàgines `reservations-create.php` i `reservations-store.php` per a gestionar els errors tal com s'indica
 en l'explicació anterior.
 
-Una vegada s'ha obtés la informació dels errors en la variable de sessió caldrà eliminar-la.
+Una vegada s'ha obtés la informació dels errors de la variable de sessió caldrà eliminar-la.
 </div>
 
 ### Missatges entre pàgines
@@ -265,16 +275,9 @@ variables de sessió.
 class FlashMessage
 {
     /**
-     * @var string
+     * string
      */
-    private string $sessionKey;
-
-    /**
-     * FlashMessage constructor.
-     * Session key is the $_SESSION key name.
-     * @param string $sessionKey
-     */
-    public function __construct(string $sessionKey = "flash-message");
+    const $sessionKey = "flash-message";
 
     /**
      * get the value of the key passed as argument.
