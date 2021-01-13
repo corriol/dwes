@@ -255,7 +255,7 @@ En la majoria de sistemes operatius, per a simplificar la gestió de l'autoritza
 creen grups administratius. 
 
 En les aplicacions web s'empra un sistema semblant basat en **rols**. Cada rol té associat
-una sèrie de privilegis, en altres paraules, coses que poden fer els usuaris que tenen eixe rol.
+una sèrie de privilegis, coses que poden fer els usuaris que tenen eixe rol.
 
 En el nostre projecte usarem un sistema de rols senzill:
 
@@ -263,7 +263,7 @@ En el nostre projecte usarem un sistema de rols senzill:
 * `ROLE_USER`. Serà el rol mínim que tindrà un usuari autenticat. 
 * `ROLE_ADMIN`. Un rol destinat a l'usuari administrador.
 
-El rols seran jeràrquics, és a dir, un usuari amb `ROLE_ADMIN` tindrà els privilegis
+Els rols seran jeràrquics, és a dir, un usuari amb `ROLE_ADMIN` tindrà els privilegis
 de `ROLE_USER` i `ROLE_ANONYMOUS`. 
 
 El rol de cada usuari s'emmagatzemarà en el camp `role` de la taula `user`.
@@ -289,13 +289,17 @@ Cal destacar que a major valor, més privilegis.
 
 ### Esquema de privilegis
 
-Els privilegis seran els següents:
+En la nostra aplicació els privilegis seran els següents:
 
 * ROLE_ADMIN. Tindrà tots els privilegis.
-* ROLE_USER. Sols podrà editar pel·licules.
+* ROLE_USER. Sols podrà crear i editar pel·licules.
 * ROLE_ANONYMOUS. Podrà navegar per les pàgines que no requereixen autenticació.
 
 ### Implementació de la seguretat basada en rols
+
+Els rols els associarem a cada ruta. Sent el rol mínim (`ROLE_ANONYMOUS`)
+el rol per defecte. Haurem de fer canvis en els mètodes `Router::get`
+i `Router::post`.
 
 ```php
 # src/Core/Router.php
@@ -309,6 +313,11 @@ public function get(string $path, string $controller, string $action,
                         "name" => $name, "role"=>$role];
     }
 ```
+
+En el mètode `Router::route()` obtindrem el rol mínin associat a la ruta i 
+li'l passarem al mètode `Security::isUserGranted()`. Aquest mètode tornarà
+`true` en cas que l'usuari autenticat tinga rol amb major o igual valor que 
+el rol mínim associat a la ruta.
 
 ```php
 # src/Core/Router.php
@@ -325,6 +334,12 @@ public function route(Request $request): string
         ...
 ```
 
+Si el rol mínim de la ruta és `ROLE_ANONYMOUS` tornarà `true`
+immediatament. Si no, obtindrem l'usuari que ha iniciat sessió
+i comprovarem si el rol de l'usuari és major o igual que el rol de
+la ruta. 
+
+
 ```php
 # src/Core/Security.php
 public static function isUserGranted(string $minRole): bool
@@ -337,10 +352,14 @@ public static function isUserGranted(string $minRole): bool
     } else
     $userRole = $user->getRole();
 
+    // we load the app roles
     $roles = App::get("config")["security"]["roles"];
+    
+    // we get the role values
     $userRoleValue = $roles[$userRole]; //ROLE_USER => 2
     $minRoleValue = $roles[$minRole]; //ROLE_ADMIN => 3
-
+    
+    // we return the comparison
     return ($userRoleValue >= $minRoleValue);
 }
 ```
