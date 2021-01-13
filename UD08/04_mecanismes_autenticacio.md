@@ -34,9 +34,9 @@ El primer que caldrà serà crear la taula `User`.
 
 ```sql
 --
--- Estructura de la taula `User`
+-- Estructura de la taula `user`
 --
-CREATE TABLE `User` (
+CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
@@ -46,15 +46,15 @@ CREATE TABLE `User` (
 
 ```sql
 --
--- Índexs per a la taula `User`
+-- Índexs per a la taula `user`
 --
-ALTER TABLE `User`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `UNIQUE_USERNAME` (`username`);
 ``` 
 
 ```sql
-INSERT INTO `User` (`id`, `username`, `password`, `role`) VALUES
+INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES
 (1, 'user', 'user', 'ROLE_USER'),
 (2, 'admin', 'admin', 'ROLE_ADMIN')
 ```
@@ -121,20 +121,20 @@ class AuthController extends Controller
         $messages = [];
         $username = filter_input(INPUT_POST, 'username');
         $password = filter_input(INPUT_POST, 'password');
-        if (!empty($username) && !empty(password)) {
+        if (!empty($username) && !empty($password)) {
             // TODO: Authentication                                    
             
         }
         App::get('flash')->set("message", "No s'ha pogut iniciar sessió");
-        App::get('router')->redirect("/login");
+        App::get(Router::class)->redirect("login");
     }
 
     public function logout()
     {
         session_unset();
-        unset($_SESSION);
         session_destroy();
-        App::get('router')->redirect("/");
+        setcookie(session_name());
+        App::get(Router::class)->redirect("");
     }
 }
 ```
@@ -152,7 +152,7 @@ redirigiràs a `/movies` i afegiràs a la variable de sessió `loggedUser` l'id 
 
 ## Autorització
 
-Per a gestionar l'autorització crearem la classe Security. En aquesta classe implementarem
+Per a gestionar l'autorització crearem la classe `Security`. En aquesta classe implementarem
 els mètodes que tinguen relació en la seguretat de la aplicació.
 
 Començarem per un mètode bàsic `isAuthenticatedUser()`. Aquest mètode comprova
@@ -175,8 +175,7 @@ class Security
                 catch (NotFoundException $notFoundException) {
                     return false;
                 }   
-            }         
-                         
+            }                                  
         }
         return false;
     }
@@ -205,17 +204,22 @@ intentarem carregar la informació de l'usuari en cas d'estar autenticat.
 ```php
 # src/bootstrap.php
 
-$id = filter_var($_SESSION["loggedUser"], FILTER_VALIDATE_INT);
+// we use the coalesce operator to check if loggedUser is set
+// if not we assign 0 to $loggedUser.
+$loggedUser = $_SESSION["loggedUser] ?? 0;
+
+// we check if $loggedUser is a valid integer 
+$id = filter_var($loggedUser, FILTER_VALIDATE_INT);
 if (!empty($id)) {
     try {
-        App::set('user', App::getModel(UserModel::class)->find($id));            
+        App::bind('user', App::getModel(UserModel::class)->find($id));            
     } 
     catch (NotFoundException $notFoundException) {
-        App::set('user',null);            
+        App::bind('user',null);            
     }
 }
 else
-    App::set('user', null);
+    App::bind('user', null);
 ```
 
 El primer que fem és obtenir el valor de la variable de sessió `loggedUser`, si existeix

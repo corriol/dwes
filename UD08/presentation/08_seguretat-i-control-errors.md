@@ -522,6 +522,28 @@ Més informació sobre les sessions en PHP: [Maneig de sessions (PHP)](https://w
 
 ---
 
+```php
+# reservation-store.php
+    ...
+    session_start();
+    // we save the message
+    $_SESSION["message"] = "Your reservation has ...";
+
+    // we redirect to form
+    header('Location: /index.php');
+    exit();
+    ...
+```
+
+```php
+# index.php
+...
+// We turn on the session support
+session_start();
+$confirmationMessage = $_SESSION["message"] ?? "";
+unset($_SESSION["message"]);
+...
+```
 
 ---
 ## Millores en el _framework_ MVC
@@ -583,7 +605,36 @@ Com que usem Bootstrap en el projecte poder fer ús de les seues formats d'avís
 [Alerts in Bootsrap 4.5](https://getbootstrap.com/docs/4.5/components/alerts/)
 </div>
 
+---
 
+```php
+namespace ?
+
+/**
+ * Class FlashMessage
+ *
+ */
+class FlashMessage
+{
+
+    const SESSION_KEY = "flash-message";
+
+    public static function get(string $key, $defaultValue = '') {
+        $value = $_SESSION[self::SESSION_KEY][$key]??$defaultValue;
+        self::unset($key);
+        return $value;
+    }
+
+    public static function set(string $key, $value){
+        $_SESSION[self::SESSION_KEY][$key] = $value;
+    }
+
+    public static function unset(string $key){
+        unset($_SESSION[self::SESSION_KEY][$key]);
+    }
+}
+```
+---
 
 ---
 <!--
@@ -672,20 +723,19 @@ Ara ja podem implementar el formulari d'inici de sessió.
                     <label for="username">Username</label>
                     <input type="text" class="form-control" 
                         name="username" id="username"
-                        value="<?= null ?? "" ?>" 
+                        value="" 
                         placeholder="Username:" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Contrasenya</label>
                     <input type="text" class="form-control" 
                     name="password" id="password"
-                           value="<?= null ?? "" ?>" 
+                           value="" 
                            placeholder="Password:" required>
                 </div>
                 <input type="submit" value="Login">
             </form>
         </div>
-
     </div>
 </div>
 ```
@@ -709,8 +759,7 @@ class AuthController extends Controller
         $username = filter_input(INPUT_POST, 'username');
         $password = filter_input(INPUT_POST, 'password');
         if (!empty($username) && !empty(password)) {
-            // TODO: Authentication                                    
-            
+            // TODO: Authentication                                                
         }
         App::get('flash')->set("message", "No s'ha pogut iniciar sessió");
         App::get('router')->redirect("/login");
@@ -719,8 +768,8 @@ class AuthController extends Controller
     public function logout()
     {
         session_unset();
-        unset($_SESSION);
         session_destroy();
+        setcookie(session_name());
         App::get('router')->redirect("/");
     }
 }
