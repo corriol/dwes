@@ -145,6 +145,14 @@ Adapta el projecte de forma que:
  2. Sols use http per accedir a la *cookie* de sessió.
  3. Les constrasenyes s'encripten amb *bcrypt*.
  4. Es tanque la sessió tal com s'indica.
+ 
+Per a gestionar les contrasenyes cal crear els següents  mètodes en la classe 
+`Security`:
+
+```php
+public static function encode(string $password): bool
+public static function checkPassword(string $password, string $userPassword): bool
+```
 </div>
 
 
