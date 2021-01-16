@@ -26,7 +26,7 @@ El que sí s'envia és l'identificador de sessió. Caldrà prendre mesures perqu
 Segons l'[OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project):
 > Session settings are some of the MOST important values to concentrate on in configuring. It is a good practice to change session.name to something new.
 
-I proposen la següent configuració bàsica:
+I proposen la següent [configuració bàsica](https://cheatsheetseries.owasp.org/cheatsheets/PHP_Configuration_Cheat_Sheet.html):
 
 ```
  session.save_path                = /path/PHP-session/
@@ -48,6 +48,9 @@ I proposen la següent configuració bàsica:
  session.hash_function            = 1 # PHP 7.0-7.1
  session.hash_bits_per_character  = 6 # PHP 7.0-7.1
 ```
+
+Moltes directives es poden canviar amb la funció [`ini_set()`](https://www.php.net/manual/en/function.ini-set.php)
+
 
 Les recomanacions en major detall:
 
@@ -81,9 +84,9 @@ Les recomanacions en major detall:
 
  2. No emmagatzeneu res a la galeta (almenys qualsevol informació sensible com el nom d’usuari o la contrasenya) sols’ID de sessió.
 
- 3. Definiu el senyalador només http per desactivar la captura de l'identificador de sessió mitjançant XSS.
+ 3. Definiu directiva _httponly_ per desactivar la captura de l'identificador de sessió mitjançant XSS.
 
-4. Quan siga possible, utilitzeu un xifrat fort (SSL) i l'atribut `cookie_secure` per permetre la transmissió de cookies només a través de https.
+ 4. Quan siga possible, utilitzeu un xifrat fort (SSL) i l'atribut `cookie_secure` per permetre la transmissió de cookies només a través de https.
 
 ### Emmagatzematge de dades de sessió ###
 
@@ -97,7 +100,7 @@ Les recomanacions en major detall:
 
 Al final, tothom crea una aplicació PHP que es basa en la sessió d’usuari. Els noms d’usuari i les contrasenyes s’emmagatzemen en una base de dades i s’utilitzen posteriorment per autentificar els usuaris després de l’inici de sessió.
 
-És important que fer *hash* de les contrasenyes correctament abans d’emmagatzemar-les. El *hashing* i el xifrat són dues coses molt diferents que sovint es confonen.
+És important fer *hash* de les contrasenyes correctament abans d’emmagatzemar-les. El *hashing* i el xifrat són dues coses molt diferents que sovint es confonen.
 
 El *hashing* és una funció irreversible i unidireccional. És produeix una cadena de longitud fixa que no es pot invertir. Això vol dir que podeu comparar un *hash* amb un altre per determinar si tots dos provenien de la mateixa cadena font, però no podeu determinar la cadena original. Si les contrasenyes no s'emmagatzemen amb *hashing* i un tercer no autoritzat accedeix a la vostra base de dades, tots els comptes d'usuari estaran compromesos.
 
@@ -132,8 +135,9 @@ if (password_verify("contrenya-errònia", $passwordHash)) {
 ```
 `password_hash()` s'ocupa de la salificació de contrasenyes. La *sal* s'emmagatzema, juntament amb l'algorisme i el "cost", com a part del hash. `password_verify()` extreu això per determinar com comprovar la contrasenya, de manera que no necessiteu un camp de base de dades independent per emmagatzemar les vostres sals.
 
-{: .alert .alert-info}
+<div markdown="1" class="alert-info alert">
 **PASSWORD_DEFAULT**. Actualment utilitza l’algoritme bcrypt (predeterminat a partir de PHP 5.5.0). Observeu que aquesta constant està pensada per a adaptar-se sempre que hi haja un algoritme nou i més fort a PHP. Per aquesta raó, la longitud del resultat d’utilitzar aquest identificador pot canviar amb el temps. Per tant, es recomana emmagatzemar el resultat en una columna d’una base de dades de més de 60 caracters (255 caracters seria una bona elecció).
+</div>
 
 {: .alert .alert-activity }
 <div markdown="1">
@@ -146,15 +150,19 @@ Adapta el projecte de forma que:
  3. Les constrasenyes s'encripten amb *bcrypt*.
  4. Es tanque la sessió tal com s'indica.
  
-Per a gestionar les contrasenyes cal crear els següents  mètodes en la classe 
+Per a gestionar les contrasenyes cal crear els següents mètodes en la classe 
 `Security`:
 
 ```php
 public static function encode(string $password): bool
-public static function checkPassword(string $password, string $userPassword): bool
+public static function 
+    checkPassword(string $password, string $userPassword): bool
 ```
+
 </div>
 
+Podeu generar contrasenyes encriptades usant aquesta web:
+[https://bcrypt-generator.com/](https://bcrypt-generator.com/)
 
 ## Recursos ##
 

@@ -990,3 +990,180 @@ public static function isUserGranted(string $minRole): bool
 Seguint les indicacions anteriors implementa la seguretat basada en rols basada 
 en l'esquema indicat.
 </div>
+
+
+---
+
+---
+<!--
+_class: lead 
+header: 8. Seguretat i control d'errors / Bones pràctiques
+-->
+# Bones pràctiques #
+
+---
+
+## Usa sempre HTTPS ##
+Usa sempre HTTPS si no s'enviarà tota la informació en text pla. Contrasenyes incloses.
+
+---
+## Usa sessions ##
+Les dades emmagatzemades en les sessions no s'envien mitjançant els encapçalats HTTP, romanen al servidor.
+
+Sols s'envia **l'identificador de sessió**. 
+
+Caldrà prendre mesures perquè l'identificador no puga ser accessible per tercers i així poder accedir a les dades emmagatzemades.
+
+Segons l'[OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project):
+> Session settings are some of the MOST important values to concentrate on in configuring. It is a good practice to change session.name to something new.
+
+---
+I proposen la següent configuració bàsica:
+
+```
+ session.save_path                = /path/PHP-session/
+ session.name                     = myPHPSESSID
+ session.auto_start               = Off
+ session.use_trans_sid            = 0
+ session.cookie_domain            = full.qualified.domain.name
+ #session.cookie_path             = /application/path/
+ session.use_strict_mode          = 1
+ session.use_cookies              = 1
+ session.use_only_cookies         = 1
+ session.cookie_lifetime          = 14400 # 4 hours 
+ session.cookie_secure            = 1
+ session.cookie_httponly          = 1
+ session.cookie_samesite          = Strict
+ session.cache_expire             = 30 
+ session.sid_length               = 256
+ session.sid_bits_per_character   = 6 # PHP 7.2+
+ session.hash_function            = 1 # PHP 7.0-7.1
+ session.hash_bits_per_character  = 6 # PHP 7.0-7.1
+```
+Moltes directives es poden canviar amb la funció [`ini_set()`](https://www.php.net/manual/en/function.ini-set.php)
+
+---
+### Control de la vida de sessió ###
+
+ 1. Fes que expire la sessió després d’un curt període d’inactivitat.
+
+ 2. Habilita l’opció de tancament de sessió (_logout_). 
+
+ 3. Eviteu els inicis de sessió persistents (opció "recordeu-me").
+
+ 4. Fes que expire la sessió quan hi haja error de seguretat.
+
+ 5. Fes caducar la sessió quan siga de llarga durada.
+
+ 6. Elimineu la galeta de sessió en destruir una sessió.
+
+---
+### Identificador de sessió ###
+
+ 1. **Utilitzeu només galetes per propagar l’ID de sessió**
+
+ 2. **Regenereu l'identificador de sessió**
+
+ 3. **Comproveu si l'identificador de sessió és vàlid** 
+
+ 4. **L'identificador de sessió hauria de ser adequadament llarg, imprevisible, difícil de reproduir i creat a partir de fonts aleatòries d'alta qualitat**.
+
+---
+### Cookie de sessió ###
+
+ 1. Definiu el domini de la galeta a quelcom més específic que el domini de primer nivell.
+
+ 2. No emmagatzeneu res a la galeta (almenys qualsevol informació sensible com el nom d’usuari o la contrasenya) sols’ID de sessió.
+
+ 3. Definiu la directiva _httponly_ per desactivar la captura de l'identificador de sessió mitjançant XSS.
+
+4. Quan siga possible, utilitzeu un xifrat fort (SSL) i l'atribut `cookie_secure` per permetre la transmissió de cookies només a través de https.
+
+---
+### Emmagatzematge de dades de sessió ###
+
+ 1. Determineu on s'emmagatzemen les dades de sessió i si es tracta d’un sistema de fitxers o d’una base de dades, determineu qui més podria tenir accés a aquestes dades.
+ 2. Quan s'emmagatzemen les dades de sessió en fitxers, assegureu-vos que l'aplicació està configurada per utilitzar un directori privat independent (per exemple, la directiva `session.save_path`). 
+ 3. Totes les variables de sessió s’han de validar i sanejar per assegurar-se que siguem correctes i que no conté caràcters inesperats.
+---
+## No conèixer les contrasenyes ##
+
+És important fer *hash* de les contrasenyes correctament abans d’emmagatzemar-les. 
+
+El *hashing* i el xifrat són dues coses molt diferents que sovint es confonen.
+
+El *hashing* és una funció irreversible i unidireccional. És produeix una cadena de longitud fixa que no es pot invertir. 
+
+A diferència del *hashing*, el xifrat és reversible (sempre que tingueu la clau). El xifratge és útil en altres àrees, però és una estratègia deficient per emmagatzemar contrasenyes de forma segura.
+
+--- 
+## No conèixer les contrasenyes /2##
+
+Les contrasenyes també han de *salar-se* individualment afegint una cadena aleatòria a cada contrasenya abans d'aplicar *hashing*. 
+
+El *hashing* i el salat són vitals, ja que sovint els usuaris utilitzen la mateixa contrasenya per a diversos serveis i la qualitat de la contrasenya és deficient.
+
+La llista breu d'algorismes de hashing de contrasenya acceptables (a juny de 2018) a utilitzar són:
+
+* Argon2 (disponible a PHP 7.2 i versions posteriors)
+* Scrypt
+* Bcrypt (PHP us proporciona aquesta; vegeu més avall)
+* PBKDF2 amb HMAC-SHA256 o HMAC-SHA512
+
+---
+## *Hashing* amb `password_hash` 
+
+En PHP tenim `password_hash()` que actualment utilitzat BCrypt.
+
+Exemple:
+
+```php
+$passwordHash = password_hash("contrasenya-secreta", PASSWORD_DEFAULT);
+if (password_verify("contrenya-errònia", $passwordHash)) {
+    // Contrasenya correcta
+} else {
+    // Contrasenya incorrecta
+}
+```
+
+---
+`password_hash()` s'ocupa de la salificació de contrasenyes. La *sal* s'emmagatzema, juntament amb l'algorisme i el "cost", com a part del hash. `password_verify()` extreu això per determinar com comprovar la contrasenya, de manera que no necessiteu un camp de base de dades independent per emmagatzemar les vostres sals.
+
+---
+
+**PASSWORD_DEFAULT**. Actualment utilitza l’algoritme bcrypt (predeterminat a partir de PHP 5.5.0). Observeu que aquesta constant està pensada per a adaptar-se sempre que hi haja un algoritme nou i més fort a PHP. Per aquesta raó, la longitud del resultat d’utilitzar aquest identificador pot canviar amb el temps. Per tant, es recomana emmagatzemar el resultat en una columna d’una base de dades de més de 60 caracters (255 caracters seria una bona elecció).
+
+---
+
+**Activitat 10. Implementació de bones pràctiques**
+
+Adapta el projecte de forma que:
+
+ 1. Cada 15 minuts es regenere la sessió.
+ 2. Sols use http per accedir a la *cookie* de sessió.
+ 3. Les constrasenyes s'encripten amb *bcrypt*.
+ 4. Es tanque la sessió tal com s'indica.
+ 
+Per a gestionar les contrasenyes cal crear els següents mètodes en la classe 
+`Security`:
+
+```php
+public static function encode(string $password): bool
+public static function 
+    checkPassword(string $password, string $userPassword): bool
+```
+
+Podeu generar contrasenyes encriptades usant aquesta web:
+[https://bcrypt-generator.com/](https://bcrypt-generator.com/)
+
+---
+## Recursos i fonts
+
+ * [The 2018 Guide to Building Secure PHP Software](https://paragonie.com/blog/2017/12/2018-guide-building-secure-php-software)
+ * [PHP: The Right Way. Security](https://phptherightway.com/#security)
+ * [Session Management Basics](https://www.php.net/manual/en/features.session.security.management.php)
+ * [Ultimate PHP Security Best Practices](https://www.cloudways.com/blog/php-security/)
+ * [PHP Session Security Best Practices](https://github.com/sobstel/sesshin/wiki/PHP-Session-Security---Best-Practices)
+ * [PHP Sessions in depth](https://www.phparch.com/2018/01/php-sessions-in-depth/)
+ * [Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)
+
