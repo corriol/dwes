@@ -4,6 +4,7 @@ title: 4. Seguretat
 nav_order: 4
 parent: 12. Tutorial de Symfony
 has_children: false 
+nav_exclude: true
 ---
 
 # Seguretat

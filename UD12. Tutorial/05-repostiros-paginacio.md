@@ -4,6 +4,7 @@ title: 5. Extenent els repositoris. Paginació.
 nav_order: 5
 parent: 12. Tutorial de Symfony
 has_children: false 
+nav_exclude: true
 ---
 # Extrendre els repositoris
 {: .no_toc }

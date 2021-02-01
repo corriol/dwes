@@ -4,6 +4,7 @@ title: 1. El projecte en Symfony
 nav_order: 1
 parent: 12. Tutorial de Symfony
 has_children: false 
+nav_exclude: true
 ---
 
 

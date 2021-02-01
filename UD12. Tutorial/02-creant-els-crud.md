@@ -4,6 +4,7 @@ title: 2. Creant els CRUD
 nav_order: 2
 parent: 12. Tutorial de Symfony
 has_children: false 
+nav_exclude: true
 ---
 
 # CRUD i assets

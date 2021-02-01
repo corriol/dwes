@@ -4,6 +4,7 @@ title: 6. La classe Request. Filtratge
 nav_order: 6
 parent: 12. Tutorial de Symfony
 has_children: false 
+nav_exclude: true
 ---
 
 # La classe Request. Filtratge

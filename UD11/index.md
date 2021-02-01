@@ -1,8 +1,9 @@
 ---
 layout: default
-title: 11. Introducció a Symfony
+title: 11. Introducció a Symfony (old)
 nav_order: 11
 has_children: true 
+nav_exclude: true
 ---
 
       1. Instal·lació i configuració de Symfony

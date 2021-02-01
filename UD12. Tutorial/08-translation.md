@@ -4,6 +4,7 @@ title: 8. Translation
 nav_order: 8
 parent: 12. Tutorial de Symfony
 has_children: false
+nav_exclude: true
 ---
 
 # Translation

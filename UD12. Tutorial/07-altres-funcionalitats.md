@@ -4,6 +4,7 @@ title: 7. Altres funcionalitats
 nav_order: 7
 parent: 12. Tutorial de Symfony
 has_children: false 
+nav_exclude: true
 
 ---
 

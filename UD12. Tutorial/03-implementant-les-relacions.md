@@ -4,6 +4,7 @@ title: 3. Implementant les relacions
 nav_order: 3
 parent: 12. Tutorial de Symfony
 has_children: false 
+nav_exclude: true
 ---
 
 # Implementació de les relacions

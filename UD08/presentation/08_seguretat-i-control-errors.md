@@ -1167,3 +1167,23 @@ Podeu generar contrasenyes encriptades usant aquesta web:
  * [PHP Sessions in depth](https://www.phparch.com/2018/01/php-sessions-in-depth/)
  * [Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)
 
+---
+<!-- 
+_class: lead
+header: 08. Seguretat i control d'errors / Gestor global d'errors
+-->
+# Gestió global d'errors
+
+---
+```php
+# public/index.php
+
+try {
+
+    echo $router->route($url, $request->getMethod());
+}
+catch (AppException $appException){
+    echo $appException->handleException();
+}
+```
+---
