@@ -154,11 +154,10 @@ Per a gestionar les contrasenyes cal crear els següents mètodes en la classe
 `Security`:
 
 ```php
-public static function encode(string $password): bool
+public static function encode(string $password): string
 public static function 
     checkPassword(string $password, string $userPassword): bool
 ```
-
 </div>
 
 Podeu generar contrasenyes encriptades usant aquesta web:

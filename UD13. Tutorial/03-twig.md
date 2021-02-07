@@ -468,7 +468,7 @@ incloure el CSS dins d'aquest bloc, perquè ho utilitzen totes les
 subplantillas:
 
 {% raw %}
-```ruby
+```php
 <!DOCTYPE html>
 <html>
     <head>
@@ -609,9 +609,6 @@ de fila alterns, podem fer alguna cosa així:
 
 Existeixen altres opcions que no hem vist i podeu consultar
 en la [web oficial de Twig]([https://twig.symfony.com/).
-
-En aquest punt, pots realitzar l'Exercici 2 dels proposats al final de
-la sessió.
 
 ## 4. Exercicis
 

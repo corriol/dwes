@@ -12,14 +12,14 @@ has_children: false
 
 ## Introducció
 
-La **injecció de dependències** és un concepte molt habitualment lligat
-a frameworks de desenvolupament web, i fa referència a un patró de
+La **injecció de dependències** és un concepte habitualment lligat
+a _frameworks_ de desenvolupament web. Fa referència a un patró de
 disseny orientat a relacionar adequadament els objectes que componen
-l'aplicació, de manera que es comparteixen certs recursos globals, o se
-subministren a cada classe que els necessite, en lloc de ser la pròpia
-classe qui els creu. Açò afavoreix el desacoblament de la nostra
+l'aplicació de manera que es comparteixen certs recursos globals o es
+subministren a cada classe que els necessite en lloc de ser la pròpia
+classe qui els crea. Açò afavoreix el desacoblament de la nostra
 aplicació, en permetre que els elements que la componen siguen més
-independents entre si. Per exemple, imaginem que hem d'accedir des de
+independents entre sí. Per exemple, imaginem que hem d'accedir des de
 diverses classes o fitxers font a una base de dades MySQL. Sense la
 injecció de dependències, hauríem de crear la connexió a la base de
 dades en cadascuna d'aqueixes classes o fitxers font. No obstant açò,
@@ -27,15 +27,14 @@ comptant amb aquesta característica, algun element de l'aplicació
 s'encarregarà de crear la connexió, i facilitar-la als altres elements
 que la necessiten.
 
-Per a gestionar aquesta injecció de dependències, Symfony utilitza un
-objecte anomenat **contenidor de serveis** , que és qui es va a
-encarregar de crear les instàncies de tots aqueixos elements que van a
+Per a gestionar aquesta injecció de dependències Symfony utilitza un
+objecte anomenat **contenidor de serveis** que és qui s'encarregarà
+ de crear les instàncies de tots aqueixos elements que van a
 ser compartits o accedits des de diferents llocs del codi, i que
-cridarem **serveis**. En aquesta sessió veurem com funciona aquest
-contenidor i com podem afegir-li serveis i accedir a ells des de fora.
+cridarem **serveis**. 
 
 Symfony ja compta amb una sèrie de serveis predefinits, i cada mòdul de
-tercers (*bundle*) que afegim a l'aplicació, incorpora els seus
+tercers (*bundle*) que afegim a l'aplicació incorpora els seus
 propis.
 
 ### Configuració general dels serveis
@@ -47,14 +46,14 @@ apartats:
 
 1.  Configuració de paràmetres globals per a tots els serveis. Ací
     definirem les propietats que podran ser accedides per tots els
-    serveis que utilitzem o creiem. Per exemple, hi ha un paràmetre
+    serveis que utilitzem o creem. Per exemple, hi ha un paràmetre
     *locale* per a indicar que la localització de l'aplicació empra
     l'idioma anglés per defecte 
     ```yaml
     parameters:
         locale: 'en'
     ```
-2.  Després, es té la secció de *services*. El primer apartat dins
+2.  Després es té la secció de *services*. El primer apartat dins
     d'aquesta secció indica la configuració per defecte que tindran els
     serveis: 
     ```yaml
@@ -120,7 +119,7 @@ php bin/console debug:autowiring
 
 ## Utilitzar serveis
 
-En Symfony existeixen multitud de serveis ja predefinits i llests per a
+En Symfony existeixen multitud de serveis ja predefinits i llestos per a
 utilitzar-se, com per exemple un *mailer* per a enviar correus
 electrònics, o un *logger* per a generar missatges de log de diferent
 índole (errors, *warnings* , etc). Per a utilitzar-los, n'hi ha prou
@@ -282,14 +281,15 @@ d'un servei? Tenim dues alternatives:
     mateixa classe, podem fer açò: 
     ```php
     class MyClass
-{
-private array $movies;
-private LoggerInterface $logger;
-public function __construct(DBTest $data, LoggerInterface $logger)
-{
-    $this->movies = $data->get();
-    $this->logger = $logger;
-}
+    {
+        private array $movies;
+        private LoggerInterface $logger;
+        public function __construct(DBTest $data, LoggerInterface $logger)
+        {
+            $this->movies = $data->get();
+            $this->logger = $logger;
+        }
+    }
 ```
 
 2.  Com a segona alternativa, també es pot crear una classe que
@@ -299,36 +299,36 @@ public function __construct(DBTest $data, LoggerInterface $logger)
     crearíem una classe que encapsulara un objecte `DBTest` i un altre
     `LoggerInterface`... 
 
-```php
-class CombinedService
-{
-private array $movies;
-private LoggerInterface $logger;
-public function __construct(DBTest $datas, LoggerInterface $logger)
-{
-    $this->movies = $data->get();
-    $this->logger = $logger;
-}
-// create getters or methods to acces 
-```
+    ```php
+    class CombinedService
+    {
+        private array $movies;
+        private LoggerInterface $logger;
+        public function __construct(DBTest $datas, LoggerInterface $logger)
+        {
+            $this->movies = $data->get();
+            $this->logger = $logger;
+        }
+        // create getters or methods to acces 
+    ```
 ... i després l'utilitzariem en la classe:
 
-```php
-class MyClass
-{
-    private $service;
-    public function __construct(CombinedService $service)
+    ```php
+    class MyClass
     {
-        $this->$service = $service;
-    }
-    ...
-```
+        private $service;
+        public function __construct(CombinedService $service)
+        {
+            $this->$service = $service;
+        }
+        ...
+    ```
 
-### Arguments sense *"*autowiring*" 
+### Arguments sense *"autowiring"* 
 
 Hem vist que l'opció de configuració *autowiring* existent en l'arxiu
 *config/services.yaml* fa referència al fet que quan passem un objecte
-d'un servei determinat a un mètode (indicant el tipus d'objecte),
+d'un servei determinat a un mètode (indicant el tipus d'objecte)
 Symfony automàticament crea l'objecte per nosaltres i li'l passa al
 mètode.
 
@@ -505,3 +505,22 @@ D'aquesta manera, sempre que utilitzem un objecte de tipus
 *LoggerInterface*, se li associarà una instància del logger de
 *Monolog* també.
 
+## Exercicis
+
+<div markdown="1" class="alert-activity alert">
+### Exercici 4.1
+Crea el servei `DBTest` vist en la sessió i fes-ne ús en `MovieController`. D'aquesta
+forma l'array de pel·lícules l'obtindrem des del servei.
+
+A més, modifica `HomeController` perquè en faça ús.
+
+Finalment, modifica `home.html.twig`  perquè s'assemble a les de projecte `Movies`.
+</div>
+
+<div markdown="1" class="alert-activity alert">
+### Exercici 4.2
+Implementa el sistema de registre en `HomeController`, de forma que cada vegada
+que s'accedisca a la pàgina principal quede registrada la data i l'hora d'accés.
+
+El format de la data es podrà configurar globalment.
+</div>
