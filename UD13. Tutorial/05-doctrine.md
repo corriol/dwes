@@ -15,15 +15,15 @@ has_children: false
 
 ### Què és un ORM?
 
-Un ORM (_Object Relational Mapping_) és un framework encarregat de tractar
+Un ORM (_Object Relational Mapping_) és un _framework_ encarregat de tractar
 amb una base de dades relacional (connectar amb ella, realitzar
 operacions de consulta, inserció, etc.), de manera que, de cara a
-l'aplicació, es converteixen a objectes tots els elements que
-s'extraguen de la base de dades, i viceversa (els objectes de
+l'aplicació, *es converteixen a objectes tots els elements que
+s'extraguen de la base de dades*m i viceversa (els objectes de
 l'aplicació es transformen en registres de la base de dades, arribat el
 cas). D'aquesta forma, l'ORM s'encarregarà de realitzar aquesta
 conversió o mapatge automàticament per nosaltres. Definint una sèrie de
-regles, indicarem què taules de la base de dades relacional es
+regles, indicarem quines taules de la base de dades relacional es
 corresponen amb quines classes del nostre model, i quins camps de cada
 taula es corresponen amb quins atributs de cada classe. A partir d'ací,
 l'ORM s'encarregarà d'extraure la informació de la base de dades i
@@ -33,7 +33,7 @@ corresponents columnes.
 
 El principal avantatge d'utilitzar un ORM com Doctrine és aïllar
 l'aplicació del gestor de base de dades que hàgem triat (MySQL, Oracle,
-PostgreSQL...) ja que a nivell d'aplicació treballarem amb objectes, i
+PostgreSQL...) ja que a *nivell d'aplicació treballarem amb objectes*, i
 serà Doctrine qui s'encarregue de connectar amb la base de dades
 triada, i transformar els objectes per a adaptar-los a la mateixa.
 
@@ -50,7 +50,7 @@ necessaris per a accedir, així com el nom de la base de dades a la qual
 connectar. Per exemple, per a una base de dades MySQL, l'estructura
 general serà aquesta:
 
-```env
+```shell
 DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
 ```
 
@@ -58,7 +58,7 @@ Tenint en compte l'usuari i contrasenya per defecte de phpMyAdmin per a
 XAMPP (usuari _root_ i contrasenya buida), aquest podria ser un valor
 vàlid per a connectar a la nostra base de dades de contactes:
 
-```env
+```shell
 DATABASE_URL=mysql://root@127.0.0.1:3306/movies-symfony
 ```
 
@@ -111,9 +111,7 @@ comando:
 php bin/console doctrine:database:create
 
 Created database 'movies-symfony' for connection named default
-
 ```
-
 Automàticament, es prendrà el nom de la base de dades de la variable
 d'entorn anterior, es connectarà al servidor i es crearà (sense taules,
 de moment).
@@ -144,7 +142,7 @@ construir l'entitat:
 Per exemple, per al cas de la nostra classe `Movie`, el procés quedaria
 així:
 
-```shell
+```
 php bin/console make:entity
 
  Class name of the entity to create or update (e.g. FiercePuppy):
@@ -153,7 +151,7 @@ php bin/console make:entity
  created: src/Entity/Movie.php
  created: src/Repository/MovieRepository.php
  
- Entity generated! Now let\'s add some fields!
+ Entity generated! Now let's add some fields!
  You can always add more fields later manually or by re-running this command.
 
  New property name (press <return> to stop adding fields):
@@ -170,7 +168,8 @@ php bin/console make:entity
 
  updated: src/Entity/Movie.php
 
- Add another property? Enter the property name (or press <return> to stop adding fields):
+ Add another property? Enter the property name (or press <return> 
+ to stop adding fields):
  > tagline
 
  Field type (enter ? to see all types) [string]:
@@ -184,7 +183,8 @@ php bin/console make:entity
 
  updated: src/Entity/Movie.php
 
- Add another property? Enter the property name (or press <return> to stop adding fields):
+ Add another property? Enter the property name (or press <return> 
+ to stop adding fields):
  > poster
 
  Field type (enter ? to see all types) [string]:
@@ -198,7 +198,8 @@ php bin/console make:entity
 
  updated: src/Entity/Movie.php
 
- Add another property? Enter the property name (or press <return> to stop adding fields):
+ Add another property? Enter the property name (or press <return> 
+ to stop adding fields):
  > releaseDate 
 
  Field type (enter ? to see all types) [string]:
@@ -209,7 +210,8 @@ php bin/console make:entity
 
  updated: src/Entity/Movie.php
 
- Add another property? Enter the property name (or press <return> to stop adding fields):
+ Add another property? Enter the property name (or press <return> 
+ to stop adding fields):
  > overview
 
  Field type (enter ? to see all types) [string]:
@@ -220,13 +222,13 @@ php bin/console make:entity
 
  updated: src/Entity/Movie.php
 
- Add another property? Enter the property name (or press <return> to stop adding fields):
+ Add another property? Enter the property name (or press <return> 
+ to stop adding fields):
  > 
            
-  Success! 
-           
-
- Next: When you're ready, create a migration with php bin/console make:migration
+ Success! 
+          
+Next: When you're ready, create a migration with php bin/console make:migration
 
 ```
 
@@ -336,7 +338,6 @@ class Movie
         return $this;
     }
 }
-
 ```
 Com podem observar, el camp `id` que usàvem en la nostra base de dades
 de prova (el servei creat a tal efecte) l'hem reemplaçat per un camp enter 
@@ -383,30 +384,30 @@ vulguem migrar (perquè s'haja generat equivocadament, per exemple),
 haurem d'eliminar-la abans.
 
 <div markdown="1" class="alert-activity alert">
-### Exercici 1
+### Exercici 5.1
 
 En l'aplicació de pel·lícules, crea una nova entitat anomenada `Movie` amb
 els següents atributs:
 
--   id (_enter_, autonumèric). Aquest atribut haurà de ser establit
-    com a clau primària
 -   title (_string_ de grandària 255)
 -   tagline (_string_ de grandària 100)
 -   poster (_string_ de grandària 255)
 -   overview (_text_)
--   release_date(_DateTime_)
+-   releaseDate(_DateTime_)
 
 Sol el camp _tagline_ admetra nuls. Recorda definir prèviament la
 variable `DATABASE_URL` en les variables d'entorn, crear la base de
 dades, i després migrar aquests canvis a la base de dades, emprant els
 comandos vistos en aquesta sessió.
+
+El camp `id` (_enter_, autonumèric) es crea automàticament.
 </div>
 
 <div markdown="1" class="alert-activity alert">
 ### Exercici 2
 
 Realitza l'exercici anterior en el teu projecte Symfony, creant la base de dades,
-l'entitat principai i la taula relacionada.
+l'entitat principai i la taula relacionada en la base de dades.
 </div>
 
 
@@ -426,7 +427,7 @@ anterior.
 ### Establir altres claus primàries
 
 Per defecte, hem vist que Doctrine agrega un camp `id` a les entitats,
-que és autonumérico i actua com a clau primària. En el cas que no
+que és autonuméric i actua com a clau primària. En el cas que no
 vulguem que siga així, i preferim triar un altre camp no autonumèric
 com a clau primària, hem de seguir aquests passos:
 
@@ -440,7 +441,6 @@ com a clau primària, hem de seguir aquests passos:
  */
   private $fieldName
 ```
-
 En el cas que siga una clau primària composta per més d'un camp, haurem
 d'afegir aquesta anotació en cada camp que forme part de la clau
 primària.
@@ -461,9 +461,9 @@ que creiem un objecte de l'entitat corresponent en el mètode oportú, i
 cridem al mètode persist i flush de l'entity manager de Doctrine.
 
 Per exemple, per a provar, anem a crear un controlador en la nostra
-classe ContactoController associat a una ruta /contacte/inserir, que de
+classe `MovieController` associat a una ruta `/movies/create`, que de
 moment serà de proves fins que fem un formulari d'inserció. Dins
-d'aquest mètode, vam crear un objecte Contacte amb dades prefixades,
+d'aquest mètode, crearem un objecte `Movie` amb dades prefixades,
 obtenim l'entity manager de Doctrine i persistim l'objecte:
 
 ```php
@@ -491,6 +491,8 @@ public function create()
 Si accedim des del navegador a `movies-symfony/movies/create`
 podrem veure el resultat en la taula
 `movie` de la nostra base de dades:
+
+
 
 És important recalcar que la cridada `persist` per si sola no actualitza
 la base de dades, sinó que indica que es vol persistir l'objecte
@@ -577,8 +579,13 @@ la pel·lícua amb l'id que hem rebut com a paràmetre:
 ```
 
 <div markdown="1" class="alert-activity alert">
-### Exercici 3
+### Exercici 5.3
 
+#### Movies
+Implementa el mètode `create` vist anteriorment en el projecte `Movies`.
+
+
+#### Projecte personal
 Sobre la base de dades del teu projecte i l'entitat/taula principal que hem creat
 en l'exercici anterior, implementa mitjançant un controlador per a l'entitat:
 
@@ -684,12 +691,13 @@ Builder](https://www.doctrine-project.org/projects/doctrine-orm/en/latest/refere
 com del [llenguatge DQL](https://www.doctrine-project.org/projects/doctrine-orm/en/latest/reference/dql-doctrine-query-language.html).
 
 <div markdown="1" class="alert-activity alert">
-### Exercici 4 
+### Exercici 5.4 
 
-Afig un nou mètode a la classe EntityController que es cride
-`filter` i que cerque el elements que continguen una text determinat 
-enviat pel _query string_. Anirà associat a la URI `/entities/filter` i 
-renderizará una vista (pot ser la pàgina principal), passant-li com a paràmetre el llistat filtrat.
+Modifica el mètode `filter` anterior de la classe `MovieController`
+ i perquè cerque els elements que continguen una text determinat 
+però enviat pel _query string_. Anirà associat a la URI `/movies/filter` i 
+renderizará una vista (pot ser la pàgina principal), 
+passant-li com a paràmetre el llistat filtrat.
 
 Per a obtenir els paràmetres del query string pots usar la classe
 [Request](https://symfony.com/doc/current/components/http_foundation.html#request) creant 
