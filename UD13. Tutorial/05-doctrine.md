@@ -404,7 +404,7 @@ El camp `id` (_enter_, autonumèric) es crea automàticament.
 </div>
 
 <div markdown="1" class="alert-activity alert">
-### Exercici 2
+### Exercici 5.2
 
 Realitza l'exercici anterior en el teu projecte Symfony, creant la base de dades,
 l'entitat principai i la taula relacionada en la base de dades.
@@ -613,22 +613,23 @@ parell de mètodes de prova que podríem definir per a ampliar les
 capacitats de l'entitat.
 
 En el nostre cas, anem a afegir un mètode que s'encarregarà d'obtenir
-les pel·lícules el títol dels quals continga un text determinat que li
+les pel·lícules el títol o la sinopsi dels quals continga un text determinat que li
 passem com a paràmetre:
 ```php
     /**
-      * @return Movie[] Returns an array of Movie objects
-      */
+      * @return Movie[] Returns an array of Movie objects 
+     */
 
-    public function findByTitle(string $value)
+    public function filterByText(string $text): array
     {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.title LIKE :value')
-            ->setParameter('value', "%".$value."%")
-            ->orderBy('m.title', 'ASC')
-            ->getQuery()
-            ->getResult()
-        ;
+        $qb = $this->createQueryBuilder('m')
+            ->orWhere('m.title LIKE :value')
+            ->orWhere('m.overview LIKE :value');
+
+        $qb->setParameter('value', "%".$text."%");
+        $qb->orderBy('m.title', 'ASC');
+        $query = $qb->getQuery();
+        return $query->getResult();
     }
 ```
 Emprem el _query builder_ de Doctrine per a construir la consulta amb
@@ -671,8 +672,8 @@ $qb = $this->createQueryBuilder('p')
     ->getQuery();
 ```
 
-Alternativament, també podem emprar un llenguatge anomenat DQL (Doctrine
-Query Language) per a realitzar la consulta anterior:
+Alternativament, també podem emprar un llenguatge anomenat DQL (_Doctrine
+Query Language_) per a realitzar la consulta anterior:
 
 ```php
     $entityManager = $this->getEntityManager();
@@ -699,9 +700,18 @@ però enviat pel _query string_. Anirà associat a la URI `/movies/filter` i
 renderizará una vista (pot ser la pàgina principal), 
 passant-li com a paràmetre el llistat filtrat.
 
-Per a obtenir els paràmetres del query string pots usar la classe
+Per a obtenir els paràmetres del query string has d'usar la classe
 [Request](https://symfony.com/doc/current/components/http_foundation.html#request) creant 
 l'objecte posant-lo com a paràmetre tipat.
+
+Per exemple:
+
+```php
+public function filter(Request $request) {
+    $text = $request->query->getAlnum("text");
+    ...
+}
+```
 
 Empra per a fer la consulta o bé el _Query Builder_ de Doctrine o bé el
 seu llenguatge DQL, afegint el mètode corresponent en el repositori de
@@ -727,7 +737,7 @@ Si, per exemple, volguérem actualitzar les dades de la pel·lícula amb `id` =
 ```php
     $entityManager = $this->getDoctrine()->getManager();
     $repository = $this->getDoctrine()->getRepository(Movie::class); 
-    $movie = $repository->find( 1 );
+    $movie = $repository->find(1);
 
     if ($movie) {
         $movie->setTitle("Updated movie");
@@ -817,7 +827,7 @@ açò, editem l'entitat `Movie` i li afegim un nou camp, anomenat
 gènere, que serà de tipus **relació molts a un** (una pel·lícula pertanyerà
 a una categoria, i un gènere pot tenir moltes pel·lícules).
 
-```shell
+```
 php bin/console make:entity
 
 Class name of the entity to create or update (i.g. DeliciousPuppy):
@@ -968,10 +978,11 @@ diferida.
 
 
 <div markdown="1" class="alert-activity alert">
-### Exercici 5
+### Exercici 5.5
 
 Implementa la relació de Genre i Movie en el projecte `movies-symfony`.
 
+#### Projecte personal
 En el projecte personal crea una nova entitat relacionada i
 implementa la inserció amb d'un elementa amb l'entitat relacionada.
 </div>
