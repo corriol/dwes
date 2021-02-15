@@ -1,7 +1,7 @@
 ---
 layout: default
 parent: 11. Introducció a Symfony 
-nav_order: 4
+nav_order: 5
 has_children: false 
 ---
 
@@ -888,6 +888,15 @@ entitat perquè la relació siga bidireccional (és a dir, perquè des d'un
 objecte de qualsevol de les dues entitats puguem consultar el/els
 objecte(s) associat(s) de l'altra. En aquest cas indiquem que no per a
 simplificar el codi.
+
+<div markdown="1" class="alert-warning alert">
+Cal tenir en compte que si la taula `movie` ja té pel·lícules, i a l'hora
+de crear la clau aliena decidim que no puga tenir valors nuls tindrem 
+problemes, ja que fallarà la integritat referencial. 
+
+Hi ha diverses solucions com crear un gènere amb id 0 o indicar que 
+la clau aliena `genre`  sí pot contenir valors nuls. I després, canviar-ho.
+</div>
 
 Després d'aquests canvis, realitzem de nou la migració, i ja tindrem el
 nou camp afegit en la nostra entitat Movie i a la taula movie de
