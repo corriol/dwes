@@ -126,7 +126,7 @@ Amb açò, el formulari quedaria així:
 ### Renderitzant el formulari
 
 El codi del controlador anterior acaba renderitzant una vista cridada
-`new.html.twig` que, ara com ara, no existeix. En aquesta vista haurem de
+`create.html.twig` que, ara com ara, no existeix. En aquesta vista haurem de
 renderizar el formulari. Podria quedar-se així:
 
 {% raw %}
@@ -406,6 +406,17 @@ public function buildForm(FormBuilderInterface $builder, array $options)
             ]
         )
         ->add('create', SubmitType::class, array('label' => 'Create'));
+    }
+```
+
+A més caldrà crear el mètode `configureOptions`:
+
+```php
+   public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => Movie::class,
+        ]);
     }
 ```
 Ara, només ens queda reemplaçar el codi de crear el formulari en nou o
