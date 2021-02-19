@@ -1,12 +1,12 @@
 ---
 layout: default
-title: 5. Extenent els repositoris. Paginació.
 nav_order: 5
-parent: 12. Tutorial de Symfony
+parent: 11. Introducció a Symfony
 has_children: false 
-nav_exclude: true
+nav_exclude: false
+
 ---
-# Extrendre els repositoris
+# Extrendre els repositoris. Paginació
 {: .no_toc }
 
 ## Taula de continguts
