@@ -1,14 +1,13 @@
 ---
 layout: default
-title: 7. Altres funcionalitats 
-nav_order: 7
-parent: 12. Tutorial de Symfony
+nav_order: 9
+parent: 11. Introducció a Symfony
 has_children: false 
-nav_exclude: true
+nav_exclude: false
 
 ---
 
-# Funcionalitats extra
+# Altres funcionalitats. Bundles
 {: .no_toc }
 
 ## Taula de continguts
