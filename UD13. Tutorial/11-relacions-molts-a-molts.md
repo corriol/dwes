@@ -2,11 +2,12 @@
 layout: default
 nav_order: 11
 parent: 11. Introducció a Symfony
+title: 11. Relacions molts a molts
 has_children: false 
 nav_exclude: false
 ---
 
-# Relacions molts amb molts
+# Relacions molts a molts
 {:no_toc}
 
 1. Taula de continguts
