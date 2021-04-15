@@ -55,8 +55,7 @@ Per a accedir als paràmetres de la petició anterior:
 echo $_GET['nom'].' '.$_GET['cognom']; // Homer Simpson
 ```
 
-{: .alert .alert-activity}
-<div markdown="1">
+<div markdown="1" class="alert-activity alert">
 
 ### Exercici
 {: .nocount .no_toc }
@@ -77,7 +76,7 @@ El mètode POST té les següents característiques:
 * No es pot utilitzar en un enllaç.
 * No roman en l'historial.
 * No tenim la limitació de grandària dels paràmetres.
-* Se solen utilitzar en els formularis.
+* Es solen utilitzar en els formularis.
 
 ## Definició de formularis 
 
@@ -122,8 +121,7 @@ echo $_POST['nom'];
 echo $_POST['cognom'];
 ```
 
-{: .alert .alert-activity}
-<div markdown="1">
+<div markdown="1" class="alert-activity alert">
 
 ### Activitat 12 A: Creació d'un formulari
 {: .nocount .no_toc }
@@ -197,7 +195,8 @@ Les validacions a realitzar són les següents:
 
 ### Escapar l'entrada
 
-Sempre hem de filtrar l'entrada amb `htmlspecialchars` abans de mostrar el camp amb `echo` o similar.
+Sempre hem de filtrar l'entrada amb `htmlspecialchars` abans de mostrar el camp amb `echo` o similar. Acò convertirà
+qualsevol caràcter especial d'html en la entitat, així no interferirà en el el programa.
 
 ### Comprovar l'email
 
@@ -207,6 +206,12 @@ Per a verificar si un email és correcte podem utilitzar la funció `filter_var`
 filter_var($email, FILTER_VALIDATE_EMAIL)
 ```
 o la funció `filter_input` quan obtenin les dades directament d'una variable extern.
+
+```php
+// suposem que rebem les dades d'un formulari que té un quadre de text de nom 'email'
+$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL)
+
+```
 
 #### filter_input
 
@@ -255,8 +260,7 @@ https://www.php.net/manual/es/function.strtotime.php
 
 També és habitual trobar els controls de data separats en 3 elements input. Un per a l’any, l’altre per a mes i l’altre per al dia.
 
-{: .alert .alert-activity}
-<div markdown="1">
+<div markdown="1" class="alert-activity alert">
 
 ### Activitat 12 C: Validació d'un formulari
 {: .nocount .no_toc }
@@ -264,67 +268,18 @@ També és habitual trobar els controls de data separats en 3 elements input. Un
 Modifica l'exercici anterior realitzant les validacions oportunes.
 </div>
 
-## Bones pràctiques en l’obtenció de dades des de l’exterior ($_GET, $_POST, etc.)
+## Bones pràctiques en l’obtenció de dades des de l’exterior
 
 Cal seguir les següents bones pràctiques:
 
 1. No confieu mai (mai) en l’entrada des de l’exterior del vostre PHP.
 2. Sanegeu i valideu l’entrada de dades sempre.
-3. Les funcions `filter_var()` i `filter_input()` poden sanejar el text i validar els formats de text (per exemple, adreces de correu electrònic).
+3. Les funcions `filter_var()` i `filter_input()` poden sanejar el text i validar els formats de text (per exemple, adreces de correu electrònic, enters).
 4. Recordeu que l’entrada de dades no es limita a formularis enviats per l’usuari. Els fitxers carregats i descarregats, els valors de sessió, les dades de galetes i les dades de serveis web de tercers també són d’entrada estrangera.
 
 A mode de resum podíem resumir la gestió de formularis en el següent diagrama de flux.
 
 ![Form handle](images/form-handle.png)
-
-
-## Pujada d'arxius
-
-Per a pujar arxius PHP implementa un mecanisme senzill a través de la variable superglobal `$_FILES`.
-
-En [Pujada d'arxius](https://www.php.net/manual/es/features.file-upload.php) disposeu de tota la informació necessària per a gestionar la pujada d'arxius.
-
-### Algunes consideracions
-
-#### Formulari
-
-Per poder utilitzar el tipus `file` en l'element `input` cal que el formulari incloga l'atribut `enctype="multipart/form-data"`. 
-
-El valor de l'atribut `name` de l'element `input` serà l'índex de l'array associatiu `$_FILES` que ens permetrà obtenir tota la informació del fitxer pujat.
-
-En el següent exemple:
-
-```html
-<input type="file" class="form-control" name="image" />
-```
-
-Emprarem `$_FILES['image']` per obtenir les dades de l'arxiu penjat.
-
-#### Moure el fitxer
-
-El fitxer pujat es guarda en una carpeta temporal. Hem d'emprar la funció [`move_uploaded_file`](https://www.php.net/manual/es/function.move-uploaded-file.php) per a guardar-lo a la ubicació definitiva. 
-
-Abans d'això és molt recomanable emprar la funció [`is_uploaded_file`](https://www.php.net/manual/es/function.is-uploaded-file.php) per a assegurar-nos que l'arxiu que anem a moure ha estat pujat usant HTTP POST i no es tracta d'un arxiu maliciós.
-
-#### Gestió d'errors
-
-PHP torna un códi d'error en l'array de fitxers. El codi es pot trabar en la clau `error` del array de fitxers que PHP crea en pujar els fitxers. Per exemple: `$_FILES['fichero_usuario']['error']`. 
-
-En [Explicació dels missatges d'error](https://www.php.net/manual/es/features.file-upload.errors.php) teniu més informació.
-
-{: .alert .alert-activity}
-<div markdown="1">
-
-### Activitat 12 D: Pujada d'imatges (opcional)  
-{: .nocount .no_toc }
-
-Modifica l'activitat anterior afegint un camp de tipus `FILE` per a pujar una imatge al servidor. Es guardarà en la
-carpeta `uploads` i es mostrarà amb la resta de dades. 
-</div>
-
-
-{: .alert .alert-info}
-<div markdown="1">
 
 ### Formularis en HTML5  
 {: .nocount .no_toc }

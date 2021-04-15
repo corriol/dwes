@@ -142,8 +142,16 @@ Per exemple, per poder determinar els dies que falten per a l'1 de gener de 2020
        els dividim entre 24 i obtenim els dies 
 
    */
-
 ```
+
+### Validar dates
+
+En la funció `checkdate` podem validar una data.
+
+```php
+checkdate (int $month, int $day ,int $year): bool
+```
+La funció torna `true` si la data es vàlida, si no, torna  `false`. 
 
 ### Classe DateTime
 

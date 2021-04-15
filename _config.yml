@@ -31,7 +31,9 @@ github_username:  corriol
 
 # Build settings
 # theme: just-the-docs
-remote_theme: pmarsceill/just-the-docs
+
+remote_theme:  pmarsceill/just-the-docs 
+# remote_theme: aksakalli/jekyll-doc-theme@gh-pages   
 plugins:
   - jekyll-feed
 

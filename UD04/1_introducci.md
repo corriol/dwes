@@ -14,7 +14,7 @@ anglès) és un paradigma de programació.
 
 Paradigma:
 
-> Teoria \[…\] el nucli central de la qual \[…\] suministra la base i el
+> Teoria […] el nucli central de la qual \[…\] suministra la base i el
 > model per resoldre problemes i avançar en el coneixement.
 
 Per la qual cosa podem definir la programació orientada a objecte com
@@ -46,7 +46,7 @@ Els pilars fonamentals de la POO són:
     redefinir-los.
   - **Abstracció**. Fa referència al fet que cada classe oculta en el seu
     interior les peculiaritats de la seua implementació, i presenta a
-    l'exterior una sèrie de mètodes (interface) el comportament dels
+    l'exterior una sèrie de mètodes (interfície) el comportament dels
     quals està ben definit. Vist des de l'exterior, cada objecte és un
     ens abstracte que realitza un treball.
   - **Polimorfisme**. Un mateix mètode pot tenir comportaments diferents en

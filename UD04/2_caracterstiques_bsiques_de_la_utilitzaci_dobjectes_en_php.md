@@ -90,7 +90,7 @@ class Product {
 }
 ```
 Com comentàvem abans, és preferible que cada classe figure en el seu
-propi fitxer (**`Producto.php`**). A més, molts programadors prefereixen
+propi fitxer (**`Product.php`**). A més, molts programadors prefereixen
 utilitzar per a les classes noms que comencen per lletra majúscula, per
 a, d'aquesta forma, distingir-los dels objectes i altres variables.
 
@@ -123,7 +123,7 @@ $product->name = 'Samsung Galaxy S';
 $product->show();
 ```
 
-Quan es declara un atribut, s'ha d'indicar el seu nivell d'accés (o visibilitat). Els
+Quan es declara una propietat o un mètode, s'ha d'indicar el seu nivell d'accés (o visibilitat). Els
 principals nivells són:
 
   - `public`. Els atributs declarats com `public` poden utilitzar-se
@@ -133,6 +133,7 @@ principals nivells són:
     accedits i modificats per els mètodes definits en la classe, no
     directament per els objectes de la mateixa. És el cas de l'atribut
     `$code`.
+  - `protected`. Una propietat o mètode `protected` sols pot ser accedida per la classe on es defineix o per un subclasse. No és accessible des de fora.  
 
 
 Un dels motius per a crear atributs privats és que el seu valor forma
@@ -148,7 +149,7 @@ exemple:
 ```php
 private $code;
 public function setCode($newCode) {
-    if (noExisteCodigo($newCode)) {
+    if (!existsCode($newCode)) {
         $this->code = $newCode;
         return true;
     }
@@ -185,7 +186,7 @@ Com ja has vist, per a instanciar objectes de una classe s'utilitza la
 paraula `new`:
 
 ```php
-    $product = new Product();
+$product = new Product();
 ```
 
 En PHP7 pots definir en les classes mètodes constructors, que s'executen
@@ -195,32 +196,32 @@ El constructor d'una classe ha d'anomenar-se `__construct`. Es poden utilitzar, 
 per assignar valors a atributs.
 
 ```php
-    class Product {
-        private static $numProducts = 0;
-        private $code;
-        public function __construct()
-        {
-            self::$numPoducts++;
-        }
-       …
+class Product {
+    private static $numProducts = 0;
+    private $code;
+    public function __construct()
+    {
+        self::$numPoducts++;
     }
+    …
+}
 ```
 
-El constructor de una classe pot cridar a altres mètodes o tenir
+El constructor d'una classe pot cridar a altres mètodes o tenir
 paràmetres, en aquest cas hauran de passar-se quan es crea l'objecte.
 No obstant açò, només pot haver-hi un mètode constructor en cada classe.
 
 ```php
-    class Product {
-        private static $numProducts = 0;
-        private $code;
-        public function __construct($codigo) {
-            $this->$code = $codigo;
-            self::$numProducts++;
-        }
-      ...
+class Product {
+    private static $numProducts = 0;
+    private $code;
+    public function __construct($code) {
+        $this->$code = $code;
+        self::$numProducts++;
     }
-    $p = new Product('GALAXYS');
+    ...
+}
+$p = new Product('GALAXYS');
 
 ```
 
@@ -233,29 +234,29 @@ També és possible definir un mètode destructor, que ha d'anomenar-se
 
 ```php
 
-    class Producto {
-        private static $num_productos = 0;
-        private $codigo;
-        public function __construct($codigo) {
-            $this->$code = $codigo;
-            self::$num_productos++;
-        }
-        public function __destruct() {
-            self::$num_productos--;
-        }
-        ...
+class Product {
+private static $numProducts = 0;
+    private $code;
+    public function __construct($code) {
+        $this->$code = $code;
+        self::$numProducts++;
     }
-    $p = new Producto('GALAXYS');
+    public function __destruct() {
+        self::$numProducts--;
+    }
+    ...
+}
+$p = new Product('GALAXYS');
 
 ```
 
 
 ### La pseuodovariable $this
 
-Quan des de un objecte s'invoca un mètode de la classe, a aquest se li
+Quan des d'un objecte s'invoca un mètode de la classe, a aquest se li
 passa sempre una referència a l'objecte que ha fet la crida. Aquesta
 referència s'emmagatzema en la pseudovariable `$this.` S'utilitza, per
-exemple, en el codi anterior per a tenir accés a els atributs privats de
+exemple, en el codi anterior per a tenir accés als atributs privats de
 l'objecte (que només són accessibles des dels mètodes de la classe).
 
 ```php
@@ -267,12 +268,16 @@ En la documentació de PHP tens més informació sobre els mètodes màgics:
 
 ### Constants de classe
 
-A més de mètodes i propietats, en una classe també es poden definir constants, utilitzant la paraula `const`. 
-És important que no confongues els atributs amb les constants. Són conceptes diferents: les constants
-no poden canviar el seu valor (òbviament, de ací el seu nom), no usen el caràcter `$` i, a més, el seu valor va 
-sempre entre cometes i està associat a la classe, és a dir, no existeix una còpia de el mateix en cada objecte. 
-Per tant, per a accedir a les constants de una classe, s'ha d'utilitzar el nom de la classe i l'operador `::`, anomenat
-operador de resolució d'àmbit (que s'utilitza per a accedir a els elements de una classe).
+A més de mètodes i propietats, en una classe també es poden definir constants, 
+utilitzant la paraula `const`. És important que no confongues els atributs amb
+les constants. Són conceptes diferents: les constants no poden canviar el seu 
+valor (òbviament, de ací el seu nom), no usen el caràcter `$`, s'escriuen en 
+majúscules (per convenció)  i el seu valor està associat a la classe, és a dir, 
+no existeix una còpia del mateix en cada objecte. 
+
+Per tant, per a accedir a les constants d'una classe, s'ha d'utilitzar el 
+nom de la classe i l'operador `::`, anomenat operador de resolució d'àmbit 
+(que s'utilitza per a accedir a els elements de una classe).
 
 ```php
 class DB {
@@ -284,8 +289,6 @@ echo DB::USUARIO;
 
 És important ressaltar que no és necessari que existisca cap objecte de
 una classe per a poder accedir al valor de les constants que definisca.
-A més, els seus noms solen escriure's en majúscules.
-
  
 {:.alert .alert-info}
 <div markdown="1">
@@ -310,17 +313,14 @@ Algunes recomancions que cal seguir:
 Més informació en [Estándares](http://coppeldev.github.io/php/standards/psr-1.html)
 </div>
 
-
-
 ### Mètodes o atributs estàtics
 
-Tampoc s'han de confondre les constants amb els membres estàtics de una
+Tampoc s'han de confondre les constants amb els membres estàtics d'una
 classe. En PHP7, una classe pot tenir atributs o mètodes estàtics, també
-anomenats a voltes atributs o mètodes de classe. Es defineixen utilitzant
+anomenats a vegades atributs o mètodes de classe. Es defineixen utilitzant
 la paraula clau `static`.
 
 ```php
-
 class Product {
     private static $numProducts = 0;
     public static function newProduct() {
@@ -336,7 +336,7 @@ haurà d'accedir-se utilitzant el nom de la classe i l'operador de
 resolució d'àmbit.
 
 ```php
-Producto::newProduct();
+Product::newProduct();
 ```
 
 Si és privat, com l'atribut `$numProducts` en l'exemple anterior,
@@ -345,7 +345,7 @@ utilitzant la paraula `self`. De la mateixa forma que `$this` referencia
 a l'objecte actual, `self` fa referència a la classe actual.
 
 ```php
-self::$numProductes ++;
+self::$numProductes++;
 ```
 
 Els atributs estàtics d'una classe s'utilitzen per a guardar informació general sobre la mateixa, com pot ser 
@@ -366,16 +366,16 @@ Ja saps com instanciar un objecte utilitzant `new`, i com accedir a els
 seus mètodes i atributs públics amb l'operador fletxa:
 
 ```php
-    $producte = new Product();
-    $producte->name= 'Samsung Galaxy S';
-    $producte->show();
+$product = new Product();
+$product->name= 'Samsung Galaxy S';
+$product->show();
 ```
 
 Una vegada creat un objecte, pots utilitzar l'operador `instanceof` per
 a comprovar si és o no una instància de una classe determinada.
 
 ```php
-if ($producte instanceof Product) {
+if ($product instanceof Product) {
         …
 }
 ```
@@ -385,9 +385,9 @@ de ser els objectes que es passen com a paràmetres. Per a açò, has
 d'especificar el tipus abans del paràmetre.
 
 ```php
-    public function venProducte(Product $producte) {
-        …
-    }
+public function sellProduct(Product $product) {
+    …
+}
 ```
 
 Si quan es realitza la crida, el paràmetre no és del tipus adequat, es
@@ -398,26 +398,26 @@ succeeix amb els objectes quan els passes a una funció, o simplement
 quan executes un codi com el següent:
 
 ```php
-    $p = new Product();
-    $p->name = 'Samsung Galaxy S';
-    $a = $p;
+$p = new Product();
+$p->name = 'Samsung Galaxy S';
+$a = $p;
 ```
 
 El codi anterior simplement crearia un nou identificador del mateix objecte. Açò és,
-quan s'utilitze un qualsevol dels identificadors per a canviar el valor de algun atribut, aquest canvi es 
+quan s'utilitze qualsevol dels identificadors per a canviar el valor de algun atribut, aquest canvi es 
 veuria també reflectit en accedir utilitzant l'altre identificador. Recorda que, encara que hi haja dos o
-més identificadors de el mateix objecte, en realitat tots es refereixen a l'única còpia que s'emmagatzema 
+més identificadors del mateix objecte, en realitat tots es refereixen a l'única còpia que s'emmagatzema 
 del mateix.
 
 Per tant, a partir de PHP5 no pots copiar un objecte utilitzant
 l'operador `=`. Si necessites copiar un objecte, has d'utilitzar `clone`. En
-utilitzar `clone` sobre un objecte existent, es crea una còpia de del mateix.
+utilitzar `clone` sobre un objecte existent, es crea una còpia del mateix.
 
 A més, existeix una forma senzilla de personalitzar la còpia per a cada
 classe particular. Per exemple, pot succeir que vulgues copiar tots els
 atributs menys algun. En el nostre exemple, almenys el codi de cada
 producte ha de ser diferent i, per tant, potser no tinga sentit
-copiar-ho en crear un nou objecte. Si aquest fóra el cas, pots crear un
+copiar-lo en crear un nou objecte. Si aquest fóra el cas, pots crear un
 mètode de nom `__clone` en la classe. Aquest mètode es cridarà
 automàticament després de copiar tots els atributs en el nou objecte.
 
@@ -444,13 +444,13 @@ $copia_objecte = clone $objecte;
 
 Quan es clona un objecte, PHP7 durà a terme una còpia superficial de les
 propietats de l'objecte. Les propietats que siguen referències a altres
-variables, mantindran les referències.
+variables (per exemple, objectes), mantindran les referències.
 
 Compte: si els atributs són objectes no es clonaran.
 
 ### Iteració d'objectes
 
-PHP 7 ofereix una manera per definir objectes, de manera que és possible
+PHP 7 ofereix una forma de definir objectes, de manera que és possible
 recórrer una llista d'elements amb, per exemple, una sentència `foreach`.
 Per defecte, s'utilitzaran totes les propietats visibles per a la
 iteració.
@@ -522,9 +522,4 @@ Els objectius de l'activitat són els següents:
 2. La pàgina `single-page.php` mostrarà les dades de la pel·licula que tinga l'`id` que s'ha passat pel 
 querystring.
 3. Post usar `array_filter` per trobar l'objecte que té l'id indicat.
-
 </div>
-
-
-
-
