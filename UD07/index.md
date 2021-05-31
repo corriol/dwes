@@ -7,9 +7,9 @@ has_children: true
 
 # 7. Composer
 
-1. Instalación de Composer
+1. Instalació de Composer
    a) Packagist
 2. Semantic Versioning
-3. Uso de librerías de terceros
+3. Ús de llibreries de tercers
 4. Namespaces
-5. Uso de la librería Swiftmailer
+5. Ús de la llibreria Swiftmailer

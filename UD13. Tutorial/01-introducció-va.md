@@ -17,7 +17,7 @@ Un **framework** és una eina que proporciona una sèrie de mòduls que
 ajuden a organitzar i desenvolupar un producte de programari. En el cas
 concret dels frameworks PHP, la majoria d'ells proporcionen una sèrie
 de comandos o eines per a crear projectes amb una estructura determinada
-(normalment, seguint el patró MVC que veurem després), de manera que ja
+(normalment, seguint el patró MVC), de manera que ja
 donen una base de treball feta, i facilitats per a poder crear el model
 de dades, la connexió a la base de dades, les rutes de les diferents
 seccions de l'aplicació, etc.
@@ -60,7 +60,7 @@ desenvolupar les nostres aplicacions. Alguns dels més populars són:
 Quasi tots els frameworks PHP tenen una sèrie de característiques
 comunes, com són l'ús del patró MVC per a desenvolupar els seus
 projectes, la injecció de dependències per a gestionar recursos tals com
-a connexions a bases de dades, o elements compartits per tota l'aplicació, 
+a connexions a bases de dades o elements compartits per tota l'aplicació, 
 la possibilitat de desenvolupar tant webs completes
 com a serveis REST accessibles des de diversos clients, etc.
 
@@ -76,7 +76,7 @@ CakePHP.
 Cada framework pot estar millor orientat que un altre para determinats
 tipus de projectes o necessitats. Si volem aprendre alguna cosa ràpid
 per a llançar l'aplicació com més prompte millor, potser Symfony no
-siga la millor opció. Si, per contra, preferim xopar-nos d'un framework
+siga la millor opció. Si, per contra, preferim fer ús d'un framework
 amb una comunitat important darrere que ens puga donar suport i ens
 garantisca un temps de vida llarg, llavors Symfony o Laravel poden ser
 millors candidats.
@@ -84,23 +84,23 @@ millors candidats.
 #### Per què Symfony?
 
 Arribats a aquest punt... quin característiques té Symfony que ens hagen
-fet triar-ho per a aquest curs enfront d'altres frameworks? El
-principal inconvenient que pot tenir aquest framework és, potser, la
+fet triar-ho per a aquest curs enfront d'altres _frameworks_? El
+principal inconvenient que pot tenir aquest _framework_ és, potser, la
 seua corba d'aprenentatge, que és bastant elevada comparada amb uns
 altres. No obstant açò, els avantatges que ofereix compensen aquest
 inconvenient:
 
--   És un framework amb molt recorregut (creat en 2005)
--   Desenvolupa versions LTS (Long Term Support) que garanteixen un
-    suport a llarg termini
+-   És un framework amb molt recorregut (creat en 2005).
+-   Desenvolupa versions LTS (_Long Term Support_) que garanteixen un
+    suport a llarg termini.
 -   Té una gran comunitat darrere, la qual cosa permet trobar fàcilment
-    ajuda per a problemes que tinguem
+    ajuda per a problemes que tinguem.
 -   Té una bona documentació. De fet, en la pròpia pàgina de Symfony es
     tenen disponibles alguns llibres editats pel propi equip de
     desenvolupament, i una web amb la documentació oficial de l'actual
-    versió
+    versió.
 -   Utilitza (i anima a utilitzar) bones pràctiques de programació en
-    els projectes
+    els projectes.
 -   S'enllaça bé amb altres frameworks i llibreries de tercers molt
     útils, denominades bundles. Alguns exemples que utilitzarem en el
     curs són Twig (un potent motor de plantilles per a desenvolupar les
@@ -115,7 +115,7 @@ continuació.
 
 ## Recursos previs
 
-A l'hora de treballar amb Symfony (versió 5), necessitem tenir
+A l'hora de treballar amb Symfony 5, necessitem tenir
 prèviament instal·lats en el nostre sistema una sèrie de recursos
 programari, com són:
 
@@ -126,7 +126,7 @@ programari, com són:
 -   PHP (versió 7.4 o posterior)
 -   El propi framework Symfony.
 -   Un IDE (entorn de desenvolupament) amb el qual editar el codi dels
-    nostres projectes
+    nostres projectes.
 
 ### Instal·lar Apache, MySQL i PHP
 
@@ -425,7 +425,8 @@ seguim aquests passos:
 
 ![testing home](assets/testing-home.png)
 
-NOTA: per a les següents aplicacions que faces, no serà necessari realitzar els passos 2 i 3, ja que amb açò ja hauràs donat permisos d'accés a la teua 
+NOTA: per a les següents aplicacions que faces, no serà necessari realitzar els 
+passos 2 i 3, ja que amb açò ja hauràs donat permisos d'accés a la teua 
 carpeta de treball, i deixat habilitats els hosts virtuals per al futur.
 
 En aquest punt, pots realitzar l'exercici 2 del final de la sessió.
