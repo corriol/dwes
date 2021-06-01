@@ -134,7 +134,7 @@ php bin/console make:entity
 S'iniciarà un assistent que ens anirà demanant informació per a
 construir l'entitat:
 
--   Nom de la classe o entitat
+-   Nom de la classe o entitat.
 -   Propietats o atributs de la classe, per a cadascun, demanarà el nom
     (si directament premem `Intro` deixarà de demanar-nos més dades), el
     tipus de dada, la longitud o grandària del camp, si admet nuls...
