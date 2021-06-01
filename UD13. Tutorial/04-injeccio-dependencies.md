@@ -290,7 +290,7 @@ d'un servei? Tenim dues alternatives:
             $this->logger = $logger;
         }
     }
-```
+    ```
 
 2.  Com a segona alternativa, també es pot crear una classe que
     encapsule els objectes necessaris (para no passar-los per separat
