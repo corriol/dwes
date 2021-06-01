@@ -18,7 +18,7 @@ Els exemples de controladors vistos fins ara queden un poc
 limitats, perquè el disseny brilla per la seua absència. Ens hem limitat
 a mostrar un text pla amb les dades per a comprovar que el controlador
 funciona, o en tot cas, a generar un HTML rudimentari en l'objecte
-Response per a mostrar una llista. Però si volem generar una vista més
+`Response` per a mostrar una llista. Però si volem generar una vista més
 complicada, no és bona idea fer-ho afegint els elements en la cadena de
 text per a la resposta. Ara veurem com podem generar vistes amb una mica
 de disseny, gràcies al motor de plantilles Twig.
@@ -29,9 +29,9 @@ que tota la lògica de negoci queda fora de la vista (en el controlador,
 normalment), i en aquesta deixem el necessari per a mostrar el contingut
 al client.
 
-Per a açò, el que sol fer és, des del controlador, accedir al
+Per a açò, el que es sol fer és, des del controlador, accedir al
 model per a obtenir o modificar les dades necessàries, emmagatzemar-los
-en variables i passar-li aquestes variables a les vistes o plantilles,
+en variables i passar aquestes variables a les vistes o plantilles,
 de manera que aquestes només hagen d'encarregar-se de mostrar aqueixa
 informació amb l'estructura i disseny adequats. Aïllem, per tant, el
 treball del programador d'una banda (controlador i model), i el del
@@ -41,7 +41,7 @@ dissenyador per un altre (vistes)
 
 Anem a veure com renderizar una plantilla amb Twig. En primer lloc, hem
 de fer alguns petits canvis en el controlador que vaja a usar Twig:
-farem que la classe del controlador herete d'AbstractController
+farem que la classe del controlador herete d'`AbstractController`
 (incorporant aquesta classe del seu corresponent espai de noms):
 
 ```php
